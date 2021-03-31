@@ -1,0 +1,30 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0160|1.5.8|20797|
+This function gets the default position of the dummies contained in a vehicle model.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float, float, float getVehicleModelDummyDefaultPosition ( int modelID, string dummy )
+</syntaxhighlight>
+{{OOP||[[Vehicle]].getVehicleModelDummyDefaultPosition }}
+
+===Required Arguments=== 
+* '''modelID''': The model ID which you want to apply the change to
+* '''dummy''': The dummy whose position you want to get
+
+==Allowed dummies==
+{{VehicleDummies}}
+
+===Returns===
+Returns three floats indicating the default position ''x'', ''y'' and ''z'' of the given dummy. It returns ''false'' otherwise.
+
+==Example== 
+{{Needs Example}}
+
+==Requirements==
+{{Requirements||1.5.8-9.20797|}}
+
+==See Also==
+{{Client_vehicle_functions}}

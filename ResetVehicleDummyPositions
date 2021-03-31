@@ -1,0 +1,26 @@
+{{Client function}}
+__NOTOC__
+
+{{New feature/item|3.0160|1.5.8|20797|
+This function resets the vehicle dependent dummy positions to the vehicle's current model dummy positions.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool resetVehicleDummyPositions ( vehicle theVehicle )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:resetDummyPositions||}}
+
+===Required Arguments=== 
+*'''theVehicle:''' The [[vehicle]] to reset
+
+===Returns===
+Returns ''true'' for success, ''false'' otherwise.
+
+==Example==
+{{Needs Example}}
+
+==Requirements==
+{{Requirements||1.5.8-9.20797|}}
+
+==See Also==
+{{Client vehicle functions}}

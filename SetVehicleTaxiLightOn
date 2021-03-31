@@ -1,0 +1,35 @@
+__NOTOC__ 
+{{Server client function}}
+This function will set the taxi light on in a taxi (vehicle ID's 420 and 438)
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setVehicleTaxiLightOn ( vehicle taxi, bool LightState )              
+</syntaxhighlight> 
+{{OOP||[[vehicle]]:setTaxiLightOn|taxiLightOn|isVehicleTaxiLightOn}}
+===Required Arguments=== 
+*'''taxi:''' The vehicle element of the taxi that you wish to turn the light on.
+*'''LightState:''' whether the light is on. ''True'' for on, ''False'' for off.
+
+===Returns===
+Returns ''true'' if the state was successfully set, ''false'' otherwise.
+
+==Example==
+This example allows the driver of a taxi to toggle on/off taxi light with a command
+<syntaxhighlight lang="lua">
+function toggleTaxiLight()
+	local vehicle = getPedOccupiedVehicle(localPlayer)
+		if vehicle and getVehicleController(vehicle) == localPlayer then
+		local vehModel = getElementModel(vehicle)
+			if (vehModel) == 420 or (vehModel) == 438 then
+			setVehicleTaxiLightOn (vehicle, not isVehicleTaxiLightOn(vehicle))
+		else
+			outputChatBox ("You're not in a Taxi!", 255, 0, 0, true)
+		end
+	end 
+end
+addCommandHandler("taxilight",toggleTaxiLight)
+</syntaxhighlight>
+
+==See Also==
+{{vehicle functions}}

@@ -1,0 +1,28 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0155|1.5.5|11702|
+This function sets the position of the exhaust fumes the vehicle model emits. Use [[setVehicleComponentPosition]] to adjust the exhaust position.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setVehicleModelExhaustFumesPosition ( int modelID, float posX, float posY, float posZ )
+</syntaxhighlight>
+{{OOP||[[Vehicle]].setModelExhaustFumesPosition||getVehicleModelExhaustFumesPosition}}
+
+===Required Arguments=== 
+* '''modelID''': The model ID which you want to apply the change to
+* '''posX''', '''posY''', '''posZ''': The desired position
+
+===Returns===
+Returns ''true'' if everything went fine, ''false'' otherwise.
+
+==Example== 
+<syntaxhighlight lang="lua">
+local x, y, z = getVehicleModelExhaustFumesPosition( 411 ) -- Get its exhaust fumes position
+setVehicleModelExhaustFumesPosition( 411, x, y, z + 1 ) -- Set its exhaust fumes position
+local vehicle = createVehicle( 411, 0, 0, 3 ) -- Create a vehicle
+</syntaxhighlight>
+
+==See Also==
+{{Client_vehicle_functions}}

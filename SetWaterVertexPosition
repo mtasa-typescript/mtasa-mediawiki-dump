@@ -1,0 +1,44 @@
+__NOTOC__
+{{Server client function}}
+
+Sets the world position of a corner point of a water area.
+{{Note|X and Y positions will be changed to an even integer. i.e. -2, 0, 2, 4 etc.}}
+==Syntax==
+<syntaxhighlight lang="lua">bool setWaterVertexPosition ( water theWater, int vertexIndex, int x, int y, float z )</syntaxhighlight>
+
+{{OOP||[[water]]:setVertexPosition||getWaterVertexPosition}}
+
+===Required Arguments===
+*'''theWater:''' the water element of which to change a vertex.
+*'''vertexIndex:''' the index of the vertex to move. Values range from 1 to 4 for water quads, and 1 to 3 for triangles.
+*'''x:''' the X coordinate to set for the vertex.
+*'''y:''' the Y coordinate to set for the vertex.
+*'''z:''' the Z coordinate to set for the vertex.
+
+===Returns===
+Returns ''true'' if successful, ''false'' otherwise.
+
+==Example==
+<section name="Server" class="server" show="true">
+This example creates a water whose vertices 2 and 4 go up and down when someone uses the '/water' command.
+<syntaxhighlight lang="lua">
+waterSquare = createWater (1418, -625, 91.8, 1436, -625, 91.8, 1418, -613, 91.8, 1436, -613, 91.8)
+local waterVertices = false
+
+function waterUp ()
+    if waterVertices == false then
+        setWaterVertexPosition (waterSquare, 2, 1436, -625, 94.8)
+        setWaterVertexPosition (waterSquare, 4, 1436, -613, 94.8)
+        waterVertices = true
+    else
+        setWaterVertexPosition (waterSquare, 2, 1436, -625, 91.8)
+        setWaterVertexPosition (waterSquare, 4, 1436, -613, 91.8)
+        waterVertices = false
+    end
+end
+addCommandHandler("water", waterUp)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Water functions}}

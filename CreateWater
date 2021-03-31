@@ -1,0 +1,93 @@
+__NOTOC__
+{{Server client function}}
+
+Creates an area of [[water]].
+
+The largest possible size of a water area is 5996&#0215;5996. Also be aware that the function will change all x and y coordinates you specify into even integer numbers if necessary: this is because of a limitation of San Andreas.
+
+You are able to give the water a shallow water effect, which practically changes the water invisible to the eye. However, all elements still work the same way as without the shallow effect - allowing swimming, diving, vehicles to sink, etc.
+{{Note|X and Y positions will be changed to an even integer. i.e. -2, 0, 2, 4 etc.}}
+{{Important Note|If you're working with dimensions, be sure to apply it by using [[setElementDimension]].}}
+==Syntax==
+<syntaxhighlight lang="lua">water createWater ( float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3 [, float x4, float y4, float z4 ] [, bool bShallow = false ] )</syntaxhighlight>
+[[Image:WaterAreas.jpg|thumb|Example of water quadrant.|284x230px]]
+
+{{OOP||[[Water]]}}
+
+===Required Arguments===
+*'''x1, y1, z1:''' position of bottom left (south-west) corner.
+*'''x2, y2, z2:''' position of bottom right (south-east) corner.
+*'''x3, y3, z3:''' position of top left (north-west) corner.
+''Note: Only 3 coords creates a triangle''
+
+===Optional Arguments===
+*'''x4, y4, z4:''' position of top right (north-east) corner.
+*'''bShallow:''' gives the water a shallow water effect.
+
+===Returns===
+Returns a water element if successful, ''false'' otherwise. The water element can be repositioned with [[setElementPosition]] and destroyed with [[destroyElement]].
+
+==Example== 
+<section name="Client" class="client" show="true">
+Example code for creating a water area to cover the entire San Andreas Map (flood the cities). Also, [[setWaterLevel]] is used to raise the existing rivers and lakes.
+<syntaxhighlight lang="lua">
+-- Setting water properties.
+height = 40
+SizeVal = 2998
+-- Defining variables.
+southWest_X = -SizeVal
+southWest_Y = -SizeVal
+southEast_X = SizeVal
+southEast_Y = -SizeVal
+northWest_X = -SizeVal
+northWest_Y = SizeVal
+northEast_X = SizeVal
+northEast_Y = SizeVal
+
+-- OnClientResourceStart function that creates the water.
+function thaResourceStarting( )
+    water = createWater ( southWest_X, southWest_Y, height, southEast_X, southEast_Y, height, northWest_X, northWest_Y, height, northEast_X, northEast_Y, height )
+    setWaterLevel ( height )
+end
+addEventHandler("onClientResourceStart", resourceRoot, thaResourceStarting)
+</syntaxhighlight>
+</section>
+<section name="Client" class="client" show="true">
+This example creates water at the given coordinates and sets the height of the water level to 20 for when the client joins.
+<syntaxhighlight lang="lua">
+function thaResourceStarting( )
+    water = createWater ( 1866, -1444, 10, 1968, -1442, 10, 1866, -1372, 10, 1968, -1370, 10 )
+    setWaterLevel ( water, 20 )
+end
+addEventHandler("onClientResourceStart", resourceRoot, thaResourceStarting)
+</syntaxhighlight>
+</section>
+<section name="Server" class="server" show="true">
+This example fills the Easter Basin with water.
+<syntaxhighlight lang="lua">
+function fillDock()
+    waters = {
+        createWater (-1612, 108, 0, -1550, 108, 0, -1612, 170, 0),
+        createWater (-1733, 48, 0, -1612, 48, 0, -1612, 170, 0),
+        createWater (-1673, 48, 0, -1612, 48, 0, -1673, -13, 0),
+        createWater (-1612, 86, 0, -1574, 86, 0, -1612, 48, 0),
+        createWater (-1612, 86, 0, -1574, 86, 0, -1612, 108, 0, -1574, 108, 0), -- Rectangle
+        createWater (-1610, 168, 0, -1600, 168, 0, -1610, 170, 0, -1600, 170, 0), -- Rectangle
+        createWater (-1612, 170, 0, -1610, 170, 0, -1610, 168, 0),
+    }
+end
+addEventHandler ("onResourceStart", resourceRoot, fillDock)
+</syntaxhighlight>
+</section>
+
+== Issues ==
+{{Issues|
+{{Issue|7542|Water functions in general do not work outside the -3000 -3000 3000 3000 bounds}}
+{{Issue|9608|(Fixed in r13987) "shallow" argument only works client-side}}
+}}
+
+==See Also==
+{{Client water functions}}
+
+[[en:CreateWater]]
+[[hu:createWater]]

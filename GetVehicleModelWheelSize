@@ -1,0 +1,45 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0158|1.5.7|20642|This function gets the size of a group of wheels for a [[Vehicle IDs|vehicle model]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float|table getVehicleModelWheelSize ( int vehicleModel [, string wheelGroup ] )
+</syntaxhighlight>
+{{OOP||[[Vehicle]].getModelWheelSize||setVehicleModelWheelSize}}
+
+===Required Arguments===
+*'''vehicleModel''': The [[Vehicle IDs|vehicle model]] ID.
+
+===Optional Arguments===
+*'''wheelGroup''': The group of wheels of the vehicle model to retrieve their size value. If not specified, it defaults to ''all_wheels''. The following values are supported:
+**''front_axle'': Represents the wheels in the front axle.
+**''rear_axle'': Represents the wheels in the rear axle.
+**''all_wheels'': Convenience group that returns all the wheel sizes in a table of the following format:
+<syntaxhighlight lang="lua">{ front_axle = 0.8, rear_axle = 0.7 }</syntaxhighlight>
+
+===Returns===
+Returns a decimal number or a table, depending on the specified wheel group. If the specified vehicle model ID or wheel group are not valid, an error is raised instead. The meaning of the wheel size values is documented in [[setVehicleModelWheelSize]].
+
+==Example==
+This example adds a ''hoverme'' command that exploits the fact that the wheel size changes the ground clearance of a vehicle model to make it hover over the ground.
+<syntaxhighlight lang="lua">
+addCommandHandler("hoverme", function()
+    local veh = getPedOccupiedVehicle(localPlayer)
+    if veh then
+        local vehicleId = getElementModel(veh)
+        local currentSizes = getVehicleModelWheelSize(vehicleId)
+        setVehicleModelWheelSize(vehicleId, "front_axle", currentSizes.front_axle * 2)
+        setVehicleModelWheelSize(vehicleId, "rear_axle", currentSizes.rear_axle * 2)
+        outputChatBox("Vehicle model wheel size doubled!", 0, 255, 0)
+    else
+        outputChatBox("You must be in a vehicle to use this command.", 255, 0, 0)
+    end
+end)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.20642|}}
+
+==See Also==
+{{Client_vehicle_functions}}

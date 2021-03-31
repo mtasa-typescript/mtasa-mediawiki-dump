@@ -1,0 +1,40 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0158|1.5.7|20642|This function sets the size of a group of wheels for a [[Vehicle IDs|vehicle model]]. The wheel size mainly determines their width, collision box (used to check if a bullet hits a tire, for example) and the ground clearance of vehicles with that model (i.e., the minimum distance from the center of the car geometry to the ground). It also changes the visual scale and rotation of the wheels, if not all the wheel groups have equal size. The visual scaling is applied before the per-vehicle [[setVehicleWheelScale|wheel scale]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setVehicleModelWheelSize ( int vehicleModel, string wheelGroup, float wheelSize )
+</syntaxhighlight>
+{{OOP||[[Vehicle]].setModelWheelSize||getVehicleModelWheelSize}}
+
+===Required Arguments===
+*'''vehicleModel''': The [[Vehicle IDs|vehicle model]] ID.
+*'''wheelGroup''': The group of wheels of the vehicle model that will have its size set by this function. The following values are supported:
+**''front_axle'': Represents the wheels in the front axle. The default value for this group is read by GTA from the ''WheelScale_Front'' field of the ''vehicles.ide'' data file.
+**''rear_axle'': Represents the wheels in the rear axle. The default value for this group is read by GTA from the ''WheelScale_Rear'' field of the ''vehicles.ide'' data file.
+**''all_wheels'': Convenience group that contains the other wheel groups: ''front_axle'' and ''rear_axle''.
+*'''wheelSize''': The wheel size value to set. Default GTA values for automobiles usually are around 0.7. It must be greater than 0.
+
+===Returns===
+Returns ''true'' if the size for the specified wheel group and vehicle model has been set successfully, or an error if some parameter is invalid.
+
+==Example==
+This example replaces the Infernus model with a Huntley model and sets the intended wheel scale for the new model accordingly, so that the vehicle does not look sunken into the ground.
+<syntaxhighlight lang="lua">
+engineImportTXD(engineLoadTXD("huntley.txd"), 411)
+engineReplaceModel(engineLoadDFF("huntley.txd"), 411)
+setVehicleModelWheelSize(411, "all_wheels", 0.9) -- Default Huntley model wheel size, from default vehicles.ide
+</syntaxhighlight>
+
+[[File:Wheel size example preview.png|thumb|Preview of the funky Bandito example]]
+This example sets the rear axle size of the Bandito to a high value, to showcase its effect and make it more funky.
+<syntaxhighlight lang="lua">
+setVehicleModelWheelSize(568, "rear_axle", 1.8) -- 0.7 is the usual value
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.20642|}}
+
+==See Also==
+{{Client_vehicle_functions}}

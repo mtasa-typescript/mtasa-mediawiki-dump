@@ -1,0 +1,31 @@
+{{Client function}}
+__NOTOC__
+
+{{New feature/item|3.0160|1.5.8|20797|
+This function sets the position of the dummy for the given vehicle.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setVehicleDummyPosition ( vehicle theVehicle, string dummy, float x, float y, float z )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:setDummyPosition||getVehicleDummyPosition}}
+
+===Required Arguments=== 
+*'''theVehicle:''' The [[vehicle]] you want to set the dummy position for
+*'''dummy:''' The dummy whose position you want to set
+*'''x''', '''y''', '''z''' The new dummy position
+
+==Allowed dummies==
+{{VehicleDummies}}
+
+===Returns===
+Returns ''true'' for success, ''false'' otherwise.
+
+==Example==
+{{Needs Example}}
+
+==Requirements==
+{{Requirements||1.5.8-9.20797|}}
+
+==See Also==
+{{Client vehicle functions}}

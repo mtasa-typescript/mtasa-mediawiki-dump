@@ -1,0 +1,52 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0158|1.5.7|19626|This function is used to find out whether the lights of the vehicle are on.}}
+{{Note|
+*This is different to [[getVehicleOverrideLights]] because this function will return '''true''' if the lights were turned on by natural causes.
+* Unless [[setVehicleOverrideLights]] is used, vehicles always automatically disable their lights at 06:25 and enable them at 20:26.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool areVehicleLightsOn ( vehicle theVehicle )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:areLightsOn|lightsOn}}
+===Required Arguments===
+*'''theVehicle''': the [[vehicle]] you wish to retrieve the lights state of.
+
+===Returns===
+Returns ''true'' if the lights are on, ''false'' otherwise.
+
+==Example==
+This example checks if your vehicle lights are on/off and tells you the reason
+<syntaxhighlight lang="lua">addCommandHandler('checkMyLights' , function ()
+if not isPedInVehicle(localPlayer) then
+outputChatBox('Please enter your vehicle first' , 150 , 50 , 0 )
+return end
+local message = ''
+local myVehicle = getPedOccupiedVehicle(localPlayer)
+local checkIfOverrided = getVehicleOverrideLights(myVehicle)
+	if checkIfOverrided == 0 then
+		if areVehicleLightsOn(myVehicle) then
+			local h , m = getTime()
+			if h > 6 and h < 20 then
+				message = 'on. Reason: You are in a dark place' -- vehicle lights turn on in some dark places during the day like this position   x:-1513  y:-287  z:6
+			else
+				message = 'on. Reason: It is night'
+			end
+		else
+			message = 'off. Reason: It is day'
+		end
+	elseif checkIfOverrided == 1 then
+		message = 'off. Reason: They are forced off'
+	else
+		message = 'on. Reason: They are forced on'
+	end
+	
+outputChatBox('Your vehicle lights are turned '..message , 0 , 150 , 50 )
+end)</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.19626|}}
+
+==See Also==
+{{Client vehicle functions}}

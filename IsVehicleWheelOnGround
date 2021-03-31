@@ -1,0 +1,43 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0160|1.5.5|11854|
+This function returns a [[boolean]] whether the [[vehicle]]'s wheel is on ground (true) or in air (false).
+}}
+{{Note|In vehicles with 3 wheels, the wheels are combined 2 in 1, in motorbikes only the left - <code>"front_left"</code> and <code>"rear_left"</code>}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool isVehicleWheelOnGround ( vehicle theVehicle, string|int wheel )</syntaxhighlight> 
+{{OOP||[[vehicle]]:isWheelOnGround}}
+===Required Arguments=== 
+*'''theVehicle''' The [[vehicle]], which you want to check.
+*'''wheel''' The wheel name or number, see list below:
+** <code>"front_left"</code> or 0
+** <code>"rear_left"</code> or 1
+** <code>"front_right"</code> or 2
+** <code>"rear_right"</code> or 3
+
+===Returns===
+Returns ''true'' if the vehicle wheel is on ground/collided, ''false'' otherwise.
+
+==Example==
+This example displays four colored rectangles on the screen. If the wheel is colliding, the rectangle will be green, otherwise it will be red.
+<syntaxhighlight lang="lua">
+local Green = tocolor(0, 255, 0, 255)
+local Red = tocolor(255, 0, 0, 255)
+
+addEventHandler( "onClientRender", root,
+    function( )
+        local theVehicle = getPedOccupiedVehicle( localPlayer )
+
+        if isElement( theVehicle ) then
+            dxDrawRectangle( 100, 100, 20, 20, isVehicleWheelOnGround ( theVehicle, 0 ) and Green or Red )
+            dxDrawRectangle( 100, 140, 20, 20, isVehicleWheelOnGround ( theVehicle, 1 ) and Green or Red )
+            dxDrawRectangle( 140, 100, 20, 20, isVehicleWheelOnGround ( theVehicle, 2 ) and Green or Red )
+            dxDrawRectangle( 140, 140, 20, 20, isVehicleWheelOnGround ( theVehicle, 3 ) and Green or Red )
+        end
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+{{Client_vehicle_functions}}

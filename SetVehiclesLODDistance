@@ -1,0 +1,25 @@
+{{Client function}}__NOTOC__
+{{New feature/item|3.0154|1.5.3|11199|
+Sets the distance of vehicles LOD.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setVehiclesLODDistance ( float vehiclesDistance, float trainsAndPlanesDistance = vehiclesDistance * 2.14 )
+</syntaxhighlight>
+===Required Arguments=== 
+*'''vehiclesDistance:''' general distance used for most vehicles, this value is clamped to 0 – 500
+===Optional Arguments===
+*'''trainsAndPlanesDistance:''' distance used for trains and planes, this value is clamped to 0 – 500
+
+==Example==
+<syntaxhighlight lang="lua">
+addEventHandler("onClientResourceStart",resourceRoot,function()
+	setVehiclesLODDistance(10)
+end)
+</syntaxhighlight>
+
+==See Also==
+* [[engineGetModelLODDistance]]
+* [[engineSetModelLODDistance]]
+{{Client world functions}}

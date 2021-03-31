@@ -1,0 +1,27 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0155|1.5.5|11702|
+This function returns the position of the exhaust fumes the vehicle model emits.
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float, float, float getVehicleModelExhaustFumesPosition ( int modelID )
+</syntaxhighlight>
+{{OOP||[[Vehicle]].getModelExhaustFumesPosition||setVehicleModelExhaustFumesPosition}}
+
+===Required Arguments=== 
+* '''modelID''': The vehicle model ID.
+
+===Returns===
+Returns the position of the exhaust fumes if everything went fine or ''false'' otherwise.
+
+==Example== 
+<syntaxhighlight lang="lua">
+local x, y, z = getVehicleModelExhaustFumesPosition( 411 ) -- Get its exhaust fumes position
+setVehicleModelExhaustFumesPosition( 411, x, y, z + 1 ) -- Set its exhaust fumes position
+local vehicle = createVehicle( 411, 0, 0, 3 ) -- Create a vehicle
+</syntaxhighlight>
+
+==See Also==
+{{Client_vehicle_functions}}

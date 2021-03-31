@@ -1,0 +1,23 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20718|This function is used to reset the color filtering to its default values.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool resetColorFilter ()
+</syntaxhighlight>
+
+===Returns===
+Returns true if the color filtering was reset, false otherwise.
+
+==Example==
+This example lets any player reset the color filtering
+<syntaxhighlight lang="lua">
+function resetFilter()
+   resetColorFilter()
+end
+addCommandHandler("reset_filter", resetFilter) -- Add the command
+</syntaxhighlight>
+
+==See Also==
+{{World functions}}

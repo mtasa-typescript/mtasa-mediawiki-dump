@@ -1,0 +1,49 @@
+__NOTOC__
+{{Client function}}
+
+Enables or disables a special world property.
+
+==Syntax==
+<syntaxhighlight lang="lua">bool setWorldSpecialPropertyEnabled ( string propname, bool enable )</syntaxhighlight>
+{{OOP||||isWorldSpecialPropertyEnabled}}
+[[File:Randomfoliage.jpeg|frame|right|A photo demonstrating ''randomfoliage'' enabled and disabled.]]
+===Required Arguments===
+*'''propname:''' the name of the property to set. Possible values are:
+**'''hovercars''' - equivalent of the JBGVNB cheat, and allows cars to drive on water.
+**'''aircars''' - equivalent of the RIPAZHA cheat, and allows cars to fly.
+**'''extrabunny''' - equivalent of the CJPHONEHOME or JHJOECW cheat, and allows you to bunny hop on bicycles much higher.
+**'''extrajump''' - equivalent of the KANGAROO cheat, and allows you to jump on foot much higher.
+**'''randomfoliage''' - toggle randomly generated foliage on the GTA:SA map (default: true)
+**'''snipermoon''' - toggle the GTA:SA easter egg, which increases the size of the moon every time you shoot it with a sniper rifle (default: false)
+**'''extraairresistance''' - toggle the vehicle speed limit on cross-country roads (default: true)
+**{{New feature/item|3.0156|1.5.5|12286|'''underworldwarp''' - toggle warp of peds and vehicles when fall under map (default: true)}}
+*'''enable:''' whether or not to enable the property.
+
+===Returns===
+Returns ''true'' if successful, ''false'' otherwise.
+
+==Example==
+
+'''Example 1:''' Allows cars to fly.
+<syntaxhighlight lang="lua">
+addEventHandler( "onClientResourceStart", resourceRoot,
+    function( )
+        setWorldSpecialPropertyEnabled( "aircars", true )
+    end
+)
+</syntaxhighlight>
+
+'''Example 2:''' Allow cars to drive on water.
+<syntaxhighlight lang="lua">
+addEventHandler( "onClientResourceStart", resourceRoot,
+    function( )
+        setWorldSpecialPropertyEnabled( "hovercars", true )
+    end
+)</syntaxhighlight>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.5.5-3.12286|Added "underworldwarp" property}}
+
+==See Also==
+{{Client world functions}}

@@ -1,0 +1,44 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|4.0140|1.5.6|14489|
+This function gets the component scale of a [[vehicle]].}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float, float, float getVehicleComponentScale ( vehicle theVehicle, string theComponent [, string base = "root" ] )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:getComponentScale||setVehicleComponentScale}}
+
+===Required Arguments=== 
+*'''theVehicle:''' The [[vehicle]] you wish to get component scale of.
+*'''theComponent:''' A [[Vehicle_Components|vehicle component]] (this is the frame name from the model file of the component you wish to modify)
+
+===Optional Arguments=== 
+*'''base:''' A string representing what the returned scale is relative to. It can be one of the following values:
+**'''parent:''' The scale is relative to the parent component.
+**'''root:''' The scale  is relative to the root component.
+**'''world:''' The scale is a world scale.
+
+===Returns=== 
+Returns three ''floats'' indicating the scale of the component, ''x'', ''y'' and ''z'' respectively.
+
+==Example==
+<section class="client" show="true" name="This example gets the name and the scale of the components and outputs it in the chat.">
+<syntaxhighlight lang="lua">
+addCommandHandler("vcs", -- short for 'vehicle component scale'
+    function()
+        local theVeh = getPedOccupiedVehicle(localPlayer)
+	local getComponent = getVehicleComponents(theVeh) -- returns table with all the components of the vehicle
+        if (theVeh) then
+            for k in pairs (getComponent) do
+		local x, y, z = getVehicleComponentScale(theVeh, k)
+                outputChatBox("Scale of "..k.." is"..x.." "..y.." "..z)
+            end
+        end
+    end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_vehicle_functions}}

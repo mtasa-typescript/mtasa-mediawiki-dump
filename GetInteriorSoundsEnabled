@@ -1,0 +1,28 @@
+__NOTOC__
+{{Client function}}
+
+This function checks to see if the music played by default in clubs is disabled or not.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool getInteriorSoundsEnabled ( )
+</syntaxhighlight>
+
+==Returns==
+Returns true if music is playing, returns false if music is not playing.
+
+==Example==
+Command check_sounds checks if the interior sounds enabled or not
+<syntaxhighlight lang="lua">
+addCommandHandler("check_sounds",
+function()
+	if getInteriorSoundsEnabled() then 
+		outputChatBox("Interior sounds are enabled!!!",0,255,0)
+	else
+		outputChatBox("Interior sounds are disabled!!!",255,0,0) 
+	end
+end)
+</syntaxhighlight>
+
+==See Also==
+{{Client world functions}}

@@ -1,0 +1,28 @@
+__NOTOC__
+{{Client function}}
+
+{{New feature/item|3.0141|1.4.1|6948|
+This function resets near clip distance set by [[setNearClipDistance]].
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool resetNearClipDistance ( )
+</syntaxhighlight>
+
+===Returns===
+*'''boolean:''' always returns '''true'''
+
+==Requirements==
+{{Requirements|n/a|1.4.1-9.06948}}
+
+==Example==
+This example will reset near clip distance.
+<syntaxhighlight lang="lua">
+addCommandHandler("rncd", function()
+    resetNearClipDistance()
+end)
+</syntaxhighlight>
+
+==See Also==
+{{Client world functions}}

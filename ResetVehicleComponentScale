@@ -1,0 +1,46 @@
+__NOTOC__
+{{Client function}}
+
+{{New feature/item|4.0140|1.5.6|14489|
+This function reset to default component scale for [[vehicle]].
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool resetVehicleComponentScale ( vehicle theVehicle, string theComponent )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:resetComponentScale}}
+
+===Required Arguments=== 
+*'''theVehicle:''' The [[vehicle]] you wish to reset component scale.
+*'''theComponent:''' A vehicle component (this is the frame name from the model file of the component you wish to modify)
+
+===Returns=== 
+Returns ''true'' if the scale of the component was reset, ''false'' otherwise.
+
+==Example== 
+'''Example 1:''' This example would change the scale of the component when the player enters a vehicle and resets it when he exit.  
+<syntaxhighlight lang="lua">
+
+addEventHandler("onClientVehicleEnter", getRootElement(),
+ function(player,seat)
+    local getComponent = getVehicleComponents(source) -- returns table with all the components of the vehicle
+    for k in pairs (getComponent) do
+       local x, y, z = getVehicleComponentScale(source, k) --get the scale of the component
+       setVehicleComponentScale(source, k, x*2, y*2, z*2) -- double the sizes
+    end
+ end
+)
+ 
+addEventHandler("onClientVehicleExit", getRootElement(),
+ function(player, seat)
+    local getComponent = getVehicleComponents(source) -- returns table with all the components of the vehicle
+    for k in pairs (getComponent) do
+       resetVehicleComponentScale(source, k) -- resets the scale of the component
+    end
+ end
+)
+</syntaxhighlight>
+
+==See Also==
+{{Client_vehicle_functions}}

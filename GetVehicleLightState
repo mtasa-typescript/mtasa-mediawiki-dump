@@ -1,0 +1,26 @@
+__NOTOC__
+{{Server client function}}
+This function returns the current state of the specified light on the vehicle.
+
+==Syntax==
+<syntaxhighlight lang="lua">int getVehicleLightState ( vehicle theVehicle, int light )</syntaxhighlight>
+{{OOP||[[vehicle]]:getLightState||setVehicleLightState}}
+
+==Required Arguments==
+*'''theVehicle:''' the [[vehicle]] that you wish to know the light state of.
+*'''light:''' A whole number determining the individual light:
+**'''0:''' Front left
+**'''1:''' Front right
+**'''2:''' Rear right
+**'''3:''' Rear left
+
+==Returns==
+Returns 0 (working) or 1 (broken)
+
+==Example==
+<syntaxhighlight lang="lua">newcar = createVehicle ( 520, 1024, 1024, 1024 )
+state = getVehicleLightState ( newcar, 0 )
+outputChatBox ( "The front-left light state on this car: " .. state )</syntaxhighlight>
+
+==See Also==
+{{Vehicle functions}}

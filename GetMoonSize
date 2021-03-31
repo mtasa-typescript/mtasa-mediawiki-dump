@@ -1,0 +1,31 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0132|1.3.1|5063|
+This function returns the moon size.
+{{Note|The function will return ''false'' server-side if moon size has not been set before the function is called.}}
+
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+int getMoonSize ()
+</syntaxhighlight>
+
+===Returns===
+Returns a integer being the moon size that is currently set, depending on which side it is used.
+
+==Example==
+<section name="Server" class="server" show="true">
+This example will tell the moon size to everyone when the resource is started.
+<syntaxhighlight lang="lua">
+function handleResourceStart( )
+    outputChatBox( string.format( "Server's moon size is set to %d", getMoonSize() ) )
+end
+addEventHandler( "onResourceStart", resourceRoot, handleResourceStart )</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.3.1-9.05063|1.3.1-9.05063}}
+
+==See Also==
+{{Client_world_functions}}

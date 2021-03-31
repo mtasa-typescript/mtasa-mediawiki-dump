@@ -1,0 +1,30 @@
+__NOTOC__
+{{Client function}}
+
+Sets the gravity vector of a vehicle. The vehicle will fall in this direction, and the camera of any occupants will also be rotated to match it. Can be used for e.g. driving on walls or upside down on ceilings.
+
+==Syntax==
+<syntaxhighlight lang="lua">bool setVehicleGravity ( vehicle theVehicle, float x, float y, float z )</syntaxhighlight>
+
+===Required Arguments===
+*'''theVehicle:''' the vehicle of which to change the gravity.
+*'''x, y, z:''' the components of the new gravity vector. If this vector has length 1, the strength of the gravity will be same as the global gravity for other entities. If it is 2, it will be twice as strong, etc.
+
+===Returns===
+Returns ''true'' if successful, ''false'' otherwise.
+
+===Example===
+This example will set 0 gravity to the vehicle if a local player enters it
+<syntaxhighlight lang="lua">
+addEventHandler("onClientVehicleEnter",getRootElement(),function(thePlayer)
+	if (thePlayer == localPlayer) then -- if thePlayer is localPlayer
+		local gravity = setVehicleGravity(source,0,0,0) -- Set the gravity
+		if (gravity) then -- If the gravity was set succesfully
+			local gravity_pos = Vector3(getVehicleGravity(source)) -- get the gravity vector
+			outputChatBox("Gravity was set to "..gravity_pos.x.." "..gravity_pos.y.." "..gravity_pos.z,0,255,0) -- output to chat
+		end
+	end
+end)
+</syntaxhighlight>
+==See Also==
+{{Client vehicle functions}}

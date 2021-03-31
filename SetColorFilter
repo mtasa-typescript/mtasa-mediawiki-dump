@@ -1,0 +1,34 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20718|This function is used to override the default color filtering values.}}
+{{Tip|Normally the game is adding these colors to a screen to simulate weather effects. Sometimes it can be important to disable these effects. You can get rid of the effects by calling this function with zero values.}} 
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setColorFilter ( int aRed, int aGreen, int aBlue, int aAlpha, int bRed, int bGreen, int bBlue, int bAlpha  )
+</syntaxhighlight>
+
+===Required Arguments=== 
+*'''aRed:''' The amount of red (0-255).
+*'''aGreen:''' The amount of green (0-255).
+*'''aBlue:''' The amount of blue (0-255).
+*'''aAlpha:''' The amount of alpha (0-255).
+*'''bRed:''' The amount of red (0-255).
+*'''bGreen:''' The amount of green (0-255).
+*'''bBlue:''' The amount of blue (0-255).
+*'''bAlpha:''' The amount of alpha (0-255).
+
+===Returns===
+Returns true if the color filter was set, false otherwise.
+
+==Example==
+This example lets any player disable the default color filtering
+<syntaxhighlight lang="lua">
+function disableFilter()
+   setColorFilter(0, 0, 0, 0, 0, 0, 0, 0)
+end
+addCommandHandler("disable_filter", disableFilter) -- Add the command
+</syntaxhighlight>
+
+==See Also==
+{{World functions}}

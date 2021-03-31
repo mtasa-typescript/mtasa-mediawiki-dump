@@ -1,0 +1,26 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0154|1.5.3|11199|
+Resets the distance of vehicles LOD to default. Default values depends on client setting. If client has enabled ''high detail vehicles'' in video options, value will be reset to (500, 500) - otherwise to (70, 150). You can check value of this option using [[dxGetStatus]] (''SettingHighDetailVehicles'').
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool resetVehiclesLODDistance ( )
+</syntaxhighlight>
+
+===Returns===
+Returns true if the vehicles LOD distance was reset, false otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">
+function resetLOD( )
+    resetVehiclesLODDistance( )
+end
+addCommandHandler( "resetlod", resetLOD )
+</syntaxhighlight>
+
+==See Also==
+* [[engineGetModelLODDistance]]
+* [[engineSetModelLODDistance]]
+{{Client world functions}}

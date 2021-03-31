@@ -1,0 +1,40 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0158|1.5.7|20642|This function sets the scale of all the wheels of a [[vehicle]]. The wheel scale multiplies the visible height and length (but not width) of all the wheels in a vehicle, without affecting their collisions or the handling, similarly to [[setVehicleComponentScale]]. The wheel scale is applied after the [[setVehicleModelWheelSize|model wheel size]].}}
+{{Note|Installing or removing a wheel upgrade from a vehicle resets the wheel scale to the default value.}}
+{{Tip|The default value for vehicles without wheel upgrades is 1, which renders the wheels in the model as usual. On the other hand, the default value for vehicles with a wheel upgrade is the [[setVehicleModelWheelSize|size of the wheels in the front axle]] of the vehicle model.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setVehicleWheelScale ( vehicle theVehicle, float wheelScale )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:setWheelScale|wheelScale|getVehicleWheelScale}}
+
+===Required Arguments===
+*'''theVehicle''': The [[vehicle]] whose wheel scale you wish to modify.
+*'''wheelScale''': The wheel scale value to set.
+
+===Returns===
+Returns ''true'' if the wheel scale has been set successfully, or an error if some parameter is invalid.
+
+==Example==
+[[File:Wheel scale example preview.png|thumb|Preview of the results of invoking the ''shrinkwheels'' command]]
+This example adds a ''shrinkwheels'' command that reduces the wheel scale of a vehicle in half each time it is invoked.
+<syntaxhighlight lang="lua">
+addCommandHandler("shrinkwheels", function()
+    local veh = getPedOccupiedVehicle(localPlayer)
+    if veh then
+        local newScale = getVehicleWheelScale(veh) * 0.5
+        setVehicleWheelScale(veh, newScale)
+        outputChatBox("Vehicle wheel scale set to " .. newScale .. ".", 0, 255, 0)
+    else
+        outputChatBox("You must be in a vehicle to use this command.", 255, 0, 0)
+    end
+end)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.20642|}}
+
+==See Also==
+{{Client_vehicle_functions}}

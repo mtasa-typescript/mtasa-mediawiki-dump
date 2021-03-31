@@ -1,0 +1,38 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0158|1.5.7|19626|This function creates an [[Xmlnode]] from a string input.}}
+==Syntax==
+<syntaxhighlight lang="lua">
+xmlnode xmlLoadString ( string xmlString )
+</syntaxhighlight> 
+{{OOP|This function is a static function underneath the XML class.|[[XML]].loadstring||}}
+===Required Arguments=== 
+*'''xmlString:''' A string containing XML data
+
+===Returns===
+Returns the root [[xmlnode]] object of an xml string if successful, or ''false'' otherwise (invalid XML string).
+
+==Example== 
+This example loads an XML string and loops the children while outputting to debugscript.
+<syntaxhighlight lang="lua">
+local rootNode = xmlLoadString("<animals test='x'><monkey name='crosroad'></monkey> <fox name='luxy'></fox></animals>")
+
+if rootNode then
+	local rootAttributes = xmlNodeGetAttributes(rootNode)
+	print("Root Node", "Name: "..xmlNodeGetName(rootNode),  "Attributes :"..toJSON(rootAttributes))
+	
+	local children = xmlNodeGetChildren(rootNode)
+	
+	for i, childNode in ipairs(children) do
+		local attributes = xmlNodeGetAttributes(childNode)
+		print("Child #"..i, "Name: "..xmlNodeGetName(childNode), "Attributes :"..toJSON(attributes))
+	end
+end
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.7-9.19626|1.5.7-9.19626|}}
+
+==See Also==
+{{Shared xml functions}}
+[[ru:xmlLoadString]]

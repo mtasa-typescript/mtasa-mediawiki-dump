@@ -1,0 +1,22 @@
+__NOTOC__ 
+{{Client function}}
+This function is used to reset the background sounds to the default setting.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool resetAmbientSounds()
+</syntaxhighlight>
+
+===Returns===
+Returns true if the ambient sounds were reset, false otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">
+function resetAmbient() 
+	resetAmbientSounds() --This will reset the Ambient Sounds of the game
+end
+addCommandHandler("resetambient", resetAmbient) -- If you use this command it would trigger the resetAmbient function
+</syntaxhighlight>
+
+==See Also==
+{{Client world functions}}

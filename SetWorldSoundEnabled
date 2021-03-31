@@ -1,0 +1,75 @@
+__NOTOC__
+{{Client function}}
+
+This function allows you to disable world sounds. A world sound is a sound effect which has '''''not''''' been caused by [[playSound]] or [[playSound3D]].
+{{Note|
+*The values for ''group'' and ''index'' can be determined by using the client command [[Client_Commands#showsound|showsound]] in conjunction with [[setDevelopmentMode]]
+*This function does not affect sounds which are already playing, such as the wind sound that can only be stopped by entering an interior.
+* See also: [[setAmbientSoundEnabled]]}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setWorldSoundEnabled ( int group, [ int index = -1, ] bool enable [, bool immediate = false ] )
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''group:''' An [[int|integer]] representing the [[World sound groups|world sound group]]
+*'''enable:''' Set to ''false'' to disable, ''true'' to enable
+
+===Optional Arguments=== 
+*'''index:''' An [[int|integer]] representing an individual sound within the group
+{{New feature/item|3.0156|1.5.5|11860|
+*'''immediate:''' A [[boolean]] if set to true will cancel the sound if it's already playing. This parameter only works for stopping the sound.
+}}
+
+===Returns===
+Returns ''true'' if the world sound was correctly enabled/disabled, ''false'' if invalid values were passed.
+
+==Example== 
+This is a simplified example that lets the client toggle their weapon sounds.
+<syntaxhighlight lang="lua">
+function toggleWeaponSounds_f ( )
+    local enabled = isWorldSoundEnabled ( 5 ) -- We place this variable here for checking.
+    enabled       = not enabled -- And here we invert (toggle) the variable, so if it's false, it becomes true, if it's true, it becomes false.
+    -- Used for the chat declaration:
+    local state   = "enabled"
+
+    if ( not enabled ) then
+        state = "disabled"
+    end
+    --
+
+    setWorldSoundEnabled ( 5, enabled ) -- And here the toggling happens.
+    outputChatBox ( "Weapon sounds " .. state )
+end
+addCommandHandler ( "toggleweaponsounds", toggleWeaponSounds_f )
+</syntaxhighlight>
+
+This is the more advanced version of the 
+<syntaxhighlight lang="lua">
+function toggleWeaponSounds_f ( )
+    local enabled = not isWorldSoundEnabled (5)
+    setWorldSoundEnabled ( 5, enabled ) -- And here the toggling happens.
+    outputChatBox ( "Weapon sounds " .. (enabled and "enabled" or "disabled"))
+end
+addCommandHandler ( "toggleweaponsounds", toggleWeaponSounds_f )
+</syntaxhighlight>
+
+{{New feature/item|3.0156|1.5.5|11860|
+This example disables the wind sound effect immediately without changing the interior afterwards.
+<syntaxhighlight lang="lua">
+setWorldSoundEnabled(0, 0, false, true)
+setWorldSoundEnabled(0, 29, false, true)
+setWorldSoundEnabled(0, 30, false, true)
+</syntaxhighlight>
+}}
+
+==Requirements==
+{{Requirements|n/a|1.3.0-9.04134|}}
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.5.5-9.11860|Added immediate argument}}
+
+==See Also==
+{{Client world functions}}

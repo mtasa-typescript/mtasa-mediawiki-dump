@@ -1,0 +1,48 @@
+__NOTOC__
+{{Client function}}
+
+{{New feature/item|4.0140|1.5.6|14489|
+This function sets the component scale of a [[vehicle]].
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setVehicleComponentScale ( vehicle theVehicle, string theComponent, float scaleX, float scaleY, float scaleZ [, string base = "root"] )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:setComponentScale||getVehicleComponentScale}}
+
+===Required Arguments=== 
+*'''theVehicle:''' The [[vehicle]] you wish to set component scale.
+*'''theComponent:''' A [[Vehicle_Components|vehicle component]] (this is the frame name from the model file of the component you wish to modify)
+*'''scaleX:''' The new x scale of this component.
+*'''scaleY:''' The new y scale of this component.
+*'''scaleZ:''' The new z scale of this component.
+
+===Optional Arguments=== 
+*'''base''': A string representing what the supplied scale (''scaleX'', ''scaleY'', ''scaleZ'') is relative to. It can be one of the following values:
+**'''parent''': The scale is relative to the parent component.
+**'''root''' (default if not specified): The scale is relative to the root component.
+**'''world''': The scale is a world scale, relative to the world's center of coordinates.
+
+===Returns=== 
+Returns ''true'' if component scale was set successfully, ''false'' otherwise.
+
+==Example== 
+'''Example 1:''' This example would set the scale of the component. 
+<syntaxhighlight lang="lua">
+addCommandHandler("scs", -- short for 'set component scale'
+    function()
+        local theVeh = getPedOccupiedVehicle(localPlayer)
+	local getComponent = getVehicleComponents(theVeh) -- returns table with all the components of the vehicle
+        if (theVeh) then
+            for k in pairs (getComponent) do
+		local x, y, z = getVehicleComponentScale(theVeh, k) --get the scale of the component
+                setVehicleComponentScale(theVeh, k, x*2, y*2, z*2) -- double the sizes
+            end
+        end
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+{{Client_vehicle_functions}}

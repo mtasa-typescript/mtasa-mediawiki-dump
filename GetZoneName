@@ -1,0 +1,66 @@
+__NOTOC__
+{{Server client function}}
+This function allows you to retrieve the zone name of a certain location.
+ 
+==Syntax==
+<syntaxhighlight lang="lua">
+string getZoneName ( float x, float y, float z, [bool citiesonly=false] )
+</syntaxhighlight>
+
+===Required Arguments=== 
+*'''x:''' The X axis position
+*'''y:''' The Y axis position
+*'''z:''' The Z axis position
+
+===Optional Arguments===
+{{OptionalArg}}
+* '''citiesonly''': An optional argument to choose if you want to return one of the following city names:
+** Tierra Robada
+** Bone County
+** Las Venturas
+** San Fierro
+** Red County
+** Whetstone
+** Flint County
+** Los Santos
+
+===Returns===
+Returns the string of the zone name
+
+==Example==
+<section name="Server" class="server" show="true">
+'''Example 1:''' This example returns the player's City & Zone.
+<syntaxhighlight lang="lua">
+function outputPlayerZone(thePlayer)
+    -- get the player position
+    x, y, z = getElementPosition(thePlayer)
+    -- get the player zone
+    zone = getZoneName(x, y, z)
+    -- get the player city (citiesonly as true)
+    city = getZoneName(x, y, z, true)
+    -- output to local player's chatbox
+    outputChatBox("City: ".. city .." / Zone: ".. zone, thePlayer)
+end
+addCommandHandler("getloc", outputPlayerZone)
+</syntaxhighlight>
+
+'''Example 2:''' This example will tell you what zone a specified player is in when the "getloc" console command is used.
+<syntaxhighlight lang="lua">
+function scriptGetLoc ( source, command, playername ) --when getloc is called
+  local thePlayer = getPlayerFromName ( playername ) --get the player from nickname
+  if ( thePlayer ~= false ) then --if there is a player from the nickname
+    local x, y, z = getElementPosition ( thePlayer )
+    local location = getZoneName ( x, y, z )
+	local city = getZoneName ( x, y, z, true )
+    outputChatBox ( playername .. " is at " .. location .. " (" .. city .. ")", source ) --announce his zone
+  else outputChatBox ( "Player does not exist" )
+  end
+end
+addCommandHandler( "getloc", scriptGetLoc ) -- add a command "getloc" which initiates "scriptGetloc" function
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{World functions}}
+
+[[ru:getZoneName]]

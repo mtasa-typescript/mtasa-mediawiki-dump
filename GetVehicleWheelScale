@@ -1,0 +1,37 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0158|1.5.7|20642|This function gets the scale of all the wheels of a [[vehicle]].}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float getVehicleWheelScale ( vehicle theVehicle )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:getWheelScale|wheelScale|setVehicleWheelScale}}
+
+===Required Arguments=== 
+*'''theVehicle''': The [[vehicle]] to get its wheel scale of.
+
+===Returns===
+Returns the wheel scale of the specified vehicle as a decimal number, or an error if the vehicle is invalid. For more information about the returned number, see [[setVehicleWheelScale]].
+
+==Example==
+[[File:Wheel scale example preview.png|thumb|Preview of the results of invoking the ''shrinkwheels'' command]]
+This example adds a ''shrinkwheels'' command that reduces the wheel scale of a vehicle in half each time it is invoked.
+<syntaxhighlight lang="lua">
+addCommandHandler("shrinkwheels", function()
+    local veh = getPedOccupiedVehicle(localPlayer)
+    if veh then
+        local newScale = getVehicleWheelScale(veh) * 0.5
+        setVehicleWheelScale(veh, newScale)
+        outputChatBox("Vehicle wheel scale set to " .. newScale .. ".", 0, 255, 0)
+    else
+        outputChatBox("You must be in a vehicle to use this command.", 255, 0, 0)
+    end
+end)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.20642|}}
+
+==See Also==
+{{Client_vehicle_functions}}

@@ -1,0 +1,30 @@
+__NOTOC__
+{{Client function}}
+This function allows you to check if some background sound effects are enabled.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isAmbientSoundEnabled( string theType )
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''theType:''' The type of ambient sound to test. Can be either "gunfire" or "general".
+
+===Returns===
+Returns ''true'' if the ambient sound is enabled, ''false'' if it is disabled or invalid values were passed.
+
+===Example===
+This command checks if the type of  ambient sound is enabled or not.
+/check <type>
+<syntaxhighlight lang="lua">
+addCommandHandler("check",function(_,_type)
+	if isAmbientSoundEnabled(_type) then
+		outputChatBox(_type.." is enabled!",0,255,0)
+	else
+		outputChatBox(_type.." is disabled!",255,0,0)
+	end
+end)
+</syntaxhighlight> 
+
+==See Also==
+{{Client world functions}}

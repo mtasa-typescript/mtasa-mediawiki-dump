@@ -1,0 +1,25 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0156|1.5.5|13771|Resets the distance of peds LOD to default. Default values depends on client setting. If client has enabled ''high detail peds'' in video options, value will be reset to 500 - otherwise to 60.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool resetPedsLODDistance ( )
+</syntaxhighlight>
+
+===Returns===
+Returns ''true'' if the peds LOD distance was reset, ''false'' otherwise.
+
+==Example==
+This adds a command "resetlod", which resets the peds LOD distance.
+<syntaxhighlight lang="lua">
+function resetLOD( )
+    resetPedsLODDistance( )
+end
+addCommandHandler( "resetlod", resetLOD )
+</syntaxhighlight>
+
+==See Also==
+* [[engineGetModelLODDistance]]
+* [[engineSetModelLODDistance]]
+{{Client world functions}}

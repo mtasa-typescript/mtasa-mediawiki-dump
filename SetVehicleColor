@@ -1,0 +1,71 @@
+__NOTOC__
+{{Server client function}}
+This function will set the color of a vehicle using either a RGB format, or the [[Vehicle Colors|standard San Andreas color IDs.]] Vehicles can have up to 4 colors, most of the vehicles have 2 colors only. 
+
+{{New feature|3.0110|1.1|
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setVehicleColor(vehicle veh, int r1, int g1, int b1, [int r2, int g2, int b2, int r3, int g3, int b3, int r4, int g4, int b4])            
+</syntaxhighlight>
+
+<syntaxhighlight lang="lua">
+bool setVehicleColor(vehicle veh, int p1, int p2, int p3, int p4)            
+</syntaxhighlight> 
+
+{{OOP||[[vehicle]]:setColor}}
+
+===Required Arguments=== 
+*'''theVehicle:''' The [[vehicle]] that you wish to set the color of.
+* RGB format:
+** '''r1, g1, b1:''' Three integers indicating the red, green and blue components of the first (main) color for the vehicle
+* Palette format:
+** '''p1, p2, p3, p4:''' Exactly four integers indicating the [[Vehicle Colors|vehicle color IDs]] from the palette. <br> If a vehicle has fewer than four colours, you must still provide four colours, otherwise the RGB format will be used.
+===Optional Arguments (RGB format only)===
+*'''r2, g2, b2:''' Three integers indicating the red, green and blue components of the second color for the vehicle
+*'''r3, g3, b3:''' Three integers indicating the red, green and blue components of the third color for the vehicle
+*'''r4, g4, b4:''' Three integers indicating the red, green and blue components of the fourth color for the vehicle
+}}
+===Returns===
+Returns ''true'' if vehicle's color was set, ''false'' if an invalid vehicle or invalid colors were specified.
+
+==Examples== 
+<section name="Example 1 - RGB format" class="server" show="true">
+This example implements a serverside ''random_color'' console command.
+<syntaxhighlight lang="lua">
+addCommandHandler( 'random_color',
+	function( uPlayer )
+		if isPedInVehicle( uPlayer ) then
+			local uVehicle = getPedOccupiedVehicle( uPlayer )
+			if uVehicle then
+				local r, g, b = math.random( 255 ), math.random( 255 ), math.random( 255 )
+				setVehicleColor( uVehicle, r, g, b )
+			end
+		end
+	end
+)
+</syntaxhighlight> 
+</section>
+
+
+<section name="Example 2 - palette format" class="server" show="true">
+This example implements a serverside command for the player to spawn a red and white Banshee, using the palette colors.
+<syntaxhighlight lang="lua">
+addCommandHandler("banshee", function(player)
+    local x, y, z = getElementPosition(player)
+    local rx, ry, rz = getElementRotation(player)
+    local vehicle = createVehicle(429, x, y, z, 0.0, 0.0, rz, "PALETTE")
+    setVehicleColor(vehicle, 3, 1, 0, 0)-- A red and white Banshee!
+    addVehicleUpgrade(vehicle, 1010)
+    warpPedIntoVehicle(player, vehicle, 0)
+    outputChatBox("You have spawned a red and white Banshee! I also added NOS for you!", source, 50, 168, 82)
+end)
+</syntaxhighlight>
+</section>
+
+== Issues ==
+{{Issues|
+{{Issue|9033|Clientside setVehicleColor doesn't work directly after creation}}
+}}
+
+==See Also==
+{{Vehicle_functions}}

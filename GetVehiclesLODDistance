@@ -1,0 +1,28 @@
+{{Client function}}__NOTOC__
+{{New feature/item|3.0154|1.5.3|11199|
+Returns the distance of vehicles LOD.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float, float getVehiclesLODDistance ( )
+</syntaxhighlight>
+
+== Returns ==
+* '''float:''' general distance used for most vehicles
+* '''float:''' distance used for trains and planes
+
+==Example==
+This example shows the lod distance of vehicles
+<syntaxhighlight lang="lua">
+addEventHandler("onClientResourceStart",resourceRoot,function()
+	local vehicles,planes_trains = getVehiclesLODDistance()
+	outputChatBox("general distance of most vehicles: "..math.floor(vehicles),0,255,0)
+	outputChatBox("distance of planes and trains: "..math.floor(planes_trains),0,255,0)
+end)
+</syntaxhighlight>
+
+==See Also==
+* [[engineGetModelLODDistance]]
+* [[engineSetModelLODDistance]]
+{{Client world functions}}
