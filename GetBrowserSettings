@@ -1,0 +1,45 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0150|1.5||
+This function returns a table containing the browser settings.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+table getBrowserSettings ()
+</syntaxhighlight>
+{{OOP||[[Element/Browser|Browser]].getSettings}}
+
+==Returns==
+A table having the following keys:
+* '''RemoteEnabled''': ''true'' if remote websites are enabled, ''false'' otherwise
+* '''RemoteJavascript''': ''true'' if Javascript is enabled on remote websites, ''false'' otherwise
+* '''PluginsEnabled''': ''true'' if plugins such as Flash, Silverlight (but not Java) are enabled, ''false'' otherwise. This setting is ''false'' by default.
+
+==Example==
+<section name="Example" class="client" show="true">
+This creates a browser and get the browser settings when the browser has been created
+<syntaxhighlight lang="lua">
+window = guiCreateWindow(377, 156, 671, 454, "", false)
+guiWindowSetSizable(window, true)
+
+webBrowser = guiCreateBrowser(9, 26, 652, 418, false, false, false, window)
+
+local theBrowser = guiGetBrowser(webBrowser)
+
+addEventHandler("onClientBrowserCreated", theBrowser, function()
+showCursor(true)
+loadBrowserURL(source, "http://google.com\\")
+for k,v in pairs(getBrowserSettings(theBrowser)) do
+outputChatBox("['"..tostring(k).."'] = "..tostring(v))
+end
+end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{CEF_functions}}
+
+[[hu:getBrowserSettings]]
+[[RO:getBrowserSettings]]

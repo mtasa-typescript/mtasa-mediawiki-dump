@@ -1,0 +1,30 @@
+__NOTOC__
+{{Client function}}
+This function sets the color for a [[Element/Light|light]] element.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setLightColor ( light theLight, float r, float g, float b )
+</syntaxhighlight>
+{{OOP||[[light]]:setColor|color|getLightColor}}
+
+===Required Arguments=== 
+*'''theLight:''' The [[Element/Light|light]] that you wish to set the color of.
+
+=== Returns ===
+Returns ''true'' if the function was successful, ''false'' otherwise.
+
+===Example===
+<syntaxhighlight lang="lua">
+local light = createLight(1, 2, 3, 4)
+addCommandHandler("setcoloroflight",
+	function(cmd, r, g, b)
+		if r and g and b then
+			setLightColor(light, tonumber(r), tonumber(g), tonumber(b))
+               end
+	end
+)
+</syntaxhighlight>
+
+==See also==
+{{Client_light_functions}}

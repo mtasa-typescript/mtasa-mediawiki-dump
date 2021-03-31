@@ -1,0 +1,38 @@
+{{Client function}} 
+__NOTOC__ 
+Sets an analog state of a specified [[ped]]'s control, as if they pressed or released it.
+
+This function only works on [[ped]]s, to change the analog control state for a player, please use [[setAnalogControlState]].
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool setPedAnalogControlState ( ped thePed, string control, float state ) </syntaxhighlight> 
+
+===Required Arguments=== 
+*'''thePed:''' The ped you wish to set the control state of.
+*'''control:''' The control that you want to set the state of. See [[control names]] for a list of possible controls.
+*'''state:''' A [[float]] between 0 and 1 indicating the amount the control is pressed.
+
+===Returns===
+Returns ''true'' if the control state was successfully set, ''false'' otherwise.
+
+==Example==  
+This example uses setPedAnalogControlState to very slowly accelerate a ped-controlled NRG-500.
+<syntaxhighlight lang="lua">
+function createAnalogControlTest( )
+    local playerPosition = Vector3( getElementPosition( localPlayer ) )
+    local theVehicle = createVehicle( 522, playerPosition )
+    local thePed = createPed( 0, playerPosition )
+
+    warpPedIntoVehicle( thePed, theVehicle )
+
+    setPedAnalogControlState( thePed, "accelerate", 0.05 )
+    setPedAnalogControlState( thePed, "vehicle_left", 1 )
+end
+addCommandHandler( "analogcontroltest", createAnalogControlTest )
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.3.0-9.04185|}}
+
+==See Also==
+{{Client ped functions}}

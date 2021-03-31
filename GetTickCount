@@ -1,0 +1,65 @@
+__NOTOC__
+{{Server client function}}
+This function returns amount of time that your system has been running in milliseconds. By comparing two values of [[getTickCount]], you can determine how much time has passed (in milliseconds) between two events. This could be used to determine how efficient your code is, or to time how long a player takes to complete a task.
+
+{{Server client function}}{{Important Note|The value returned by this function client-side may not be reliable if a client is maliciously modifying their operating system speed.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">int getTickCount ()</syntaxhighlight>
+
+===Returns===
+Returns an integer containing the number of milliseconds since the system the server is running on started. This has the potential to wrap-around.
+
+==Example==
+The below code is a good example on how to implement basic anti-spam protection for a command, for which using getTickCount is better than the regular timer functions.
+<syntaxhighlight lang="lua">
+local spam = {}
+
+function setSkin(player, cmd, skin)
+    if spam[player] and getTickCount() - spam[player] < 4000 then
+        return outputChatBox("You cannot change skin that often!", player, 255, 0, 0)
+    end
+
+    skin = skin and tonumber(skin)
+
+    if getElementModel(player) == skin or isPedDead(player) then
+        return
+    end
+
+    if skin and skin <= 99999 then -- what do we know about dynamic ped ID range?
+        setElementModel(player, skin)
+        spam[player] = getTickCount()
+    else
+        outputChatBox("Invalid skin ID!", player, 255, 0, 0)
+    end
+end
+addCommandHandler("skin", setSkin)
+
+function cleanUp()
+    if spam[source] then
+        spam[source] = nil
+    end
+end
+addEventHandler("onPlayerQuit", root, cleanUp)
+</syntaxhighlight>
+
+This example will start a timer displayed at the top of the screen displayed every frame. You can log any specific moment in time by outputting the currentCount variable.
+
+<syntaxhighlight lang="lua">screenX,screenY = guiGetScreenSize()
+function startTheClock ()
+	
+	if not systemUpTime then
+            systemUpTime = getTickCount() --Store the system tick count, this will be 0 for us
+	end
+	
+	currentCount = getTickCount()
+	
+	dxDrawRectangle (screenX *.40, screenY * .09, 250, 50, tocolor(0,0,0,150))
+	dxDrawText (currentCount - systemUpTime, screenX * .48, screenY * .1, screenX, screenY, tocolor(255,255,255), 2)
+end
+addEventHandler ("onClientRender", root, startTheClock)
+</syntaxhighlight>
+
+==See Also==
+{{Utility functions}}
+[[ru:GetTickCount]]

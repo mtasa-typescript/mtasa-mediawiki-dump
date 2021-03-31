@@ -1,0 +1,36 @@
+__NOTOC__
+{{Client function}}
+This retrieves the analog control state of a control.  This is useful for detecting sensitive controls, such as those used on a joypad.
+
+To get the analog control state for a [[ped]], please use [[getPedAnalogControlState]].
+
+==Syntax==
+<syntaxhighlight lang="lua">float getAnalogControlState ( string control [, bool rawValue ] )</syntaxhighlight>
+
+===Required Arguments===
+*'''control:''' The control that you want to get the state of. See [[control names]] for a list of possible controls.
+
+===Optional Arguments===
+{{New feature/item|3.0157|1.5.7|20383|
+*'''rawValue:''' A bool indicating if it should return the raw player input value.
+}}
+
+===Returns===
+Returns a [[float]] between 0 and 1 indicating the amount the control is pressed.
+
+==Example==
+This creates an ''/forwards'' command, which toggles your ''forwards'' control state between 0 and 1.
+<syntaxhighlight lang="lua">
+addCommandHandler( "forwards",
+    function( )
+        if ( getAnalogControlState( "forwards" ) == 0 ) then
+            setAnalogControlState( "forwards", 1 )
+        else
+            setAnalogControlState( "forwards", 0 )
+        end
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+{{Client input functions}}

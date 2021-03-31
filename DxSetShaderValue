@@ -1,0 +1,34 @@
+{{Client function}}
+__NOTOC__
+This sets a named parameter for a [[shader]] element
+
+{{Important Note|It's enough to set the texture only once if it's a render target}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool dxSetShaderValue ( element theShader, string parameterName, mixed value )
+</syntaxhighlight> 
+{{OOP||[[shader]]:setValue}}
+
+===Required Arguments=== 
+*'''theShader:''' The shader element whose parameter is to be changed
+*'''parameterName:''' The name of parameter
+*'''value:''' The value to set, which can be a [[texture]], a bool, a number or a list of numbers('''max 16 floats(numbers)''')
+
+===Returns===
+Returns ''true'' if the shader element's parameter was successfully changed, ''false'' otherwise.
+
+==Example== 
+<syntaxhighlight lang="lua">
+myShader = dxCreateShader( "hello.fx" )
+myTexture = dxCreateTexture( "man.png" )
+dxSetShaderValue( myShader, "texture0", myTexture )                -- Set a texture
+dxSetShaderValue( myShader, "bShowThing", true )                  -- Set a bool                  
+dxSetShaderValue( myShader, "speed", 2.4 )                        -- Set a float
+dxSetShaderValue( myShader, "positionOfCheese", 100, 200, 300 )   -- Set a list of numbers, with max 16 numbers. Btw, this is a float: 3.4. This can be used to fill an array in HLSL.
+</syntaxhighlight>
+
+==See Also==
+{{Drawing_functions}}
+
+[[hu:dxSetShaderValue]]

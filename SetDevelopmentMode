@@ -1,0 +1,42 @@
+__NOTOC__
+{{Server client function}}
+This function is used to set the development mode. Setting development mode allows access to special commands which can assist with script debugging.
+
+'''Client-side''' development mode commands:
+* '''[[Client_Commands#showcol|showcol]]''': Enables colshapes to be viewed as a wireframe object.
+* '''[[Client_Commands#showsound|showsound]]''': Enables world sound ids to be printed in the debug output window.
+
+'''Shared''' development mode functions:
+* '''[[debugSleep]]''': Sets the freeze time for the client/server.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setDevelopmentMode ( bool enable [, bool enableWeb = false ] )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''enable''': A boolean to indicate whether development mode is on (''true'') or off (''false'') 
+{{New feature/item|3.0150|1.5||
+*'''enableWeb''': A boolean to indicate whether browser debug messages will be filtered (''false'') or not (''true'')
+}}
+
+===Returns===
+Returns ''true'' if the mode was set correctly, ''false'' otherwise.
+
+==Requirements==
+{{Requirements|1.5.4-9.11305|1.1.1-9.03355|}}
+
+==Example== 
+'''Example 1:''' This example would set the development mode of the client. Use /showcol [<0-1>] and /showsound [<0-1>] later to enable/disable respective functions. 
+<syntaxhighlight lang="lua">
+addCommandHandler("devmode",
+    function()
+        setDevelopmentMode(true)
+    end
+)
+</syntaxhighlight>
+It is important to note that this example has to be in a client side script. Otherwise, the execution of the command would only result in the shared dev mode that does not allow the use of '''[[Client_Commands#showcol|showcol]]''' and '''[[Client_Commands#showsound|showsound]]'''.
+
+
+==See Also==
+{{Client_utility_functions}}

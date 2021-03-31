@@ -1,0 +1,55 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0158|1.5.7|20147|This function is used to un-assign the specified model ID from the [[engineRequestModel]] assignment.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool engineFreeModel ( int modelID )
+</syntaxhighlight>
+===Required Arguments===
+*'''modelID''': the model ID you want to have un-assigned.
+
+===Returns===
+Returns ''true'' if the model was successfully freed, ''false'' otherwise.
+
+==Example==
+This example creates a ped and then gives you the opportunity to change its model. If the resource stops, then the IDs allocated will be deallocated. Use ''/cap'' for creating the ped and ''/sap'' to skin the ped. You will need some skins added to a folder and to the meta.xml for ''/sap'' to work.
+<syntaxhighlight lang="lua">
+local peds = {}
+function createAllocatedPed()
+    local x, y, z = getElementPosition(localPlayer)
+    local id = engineRequestModel("ped")
+    peds[id] = createPed(id, x+0.5, y, z+0.5)
+    outputChatBox("New ped with ID "..id.." created.")
+end
+addCommandHandler("cap", createAllocatedPed, false, false)
+
+function skinAllocatedPeds()
+    local txd, dff;
+    for id,ped in pairs(peds) do
+        if fileExists("skins/" .. id .. ".txd") and fileExists("skins/" .. id .. ".dff") then
+            txd = engineLoadTXD("skins/" .. id .. ".txd")
+            engineImportTXD(txd, id)
+            dff = engineLoadDFF("skins/" .. id .. ".dff")
+            engineReplaceModel(dff, id)
+            outputChatBox("Model ID "..id.." changed correctly.")
+        else
+            outputChatBox("Model ID "..id.." couldn't change. REASON: skins/" .. id .. ".txd or skins/" .. id .. ".dff does not exist.")
+        end
+    end
+end
+addCommandHandler("sap", skinAllocatedPeds, false, false)
+
+function onStop()
+    for id,ped in pairs(peds) do
+        engineFreeModel(id)
+    end
+end
+addEventHandler("onClientResourceStop", resourceRoot, onStop)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.20147|}}
+
+==See Also==
+{{Engine functions}}

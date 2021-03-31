@@ -1,0 +1,59 @@
+__NOTOC__
+{{Server client function}}
+Opens an existing file for reading and writing.
+{{Note|To prevent memory leaks, ensure each successful call to [[fileOpen]] has a matching call to [[fileClose]].}}
+{{Tip|The file functions should not be used to implement configuration files. It is encouraged to use the XML functions for this instead.}}
+{{MessageBox|bordercolorhex=FFB2B2|bgcolorhex=FFE5E5|image=File:Dialog-warning.png|title=Warning:|message=As of 1.5.4 [https://buildinfo.mtasa.com/?Author=&Branch=&Revision=10413 r10413], this function will fail when trying to access a script file of another resource, even with ''general.ModifyOtherObjects'' rights granted, which uses a ''mysql'' connection through [[dbConnect]] when [[Server_mtaserver.conf#database_credentials_protection|''database_credentials_protection'']] is enabled in the server configuration. Additionally, meta.xml will be un-writable and will always open in read-only mode.}} <!-- The {Warning} template didn't want to work with an external link to buildinfo, so I had to use the {MessageBox} template -->
+
+==Syntax==
+<syntaxhighlight lang="lua">
+file fileOpen ( string filePath [, bool readOnly = false ])
+</syntaxhighlight>
+{{OOP|The function will only attempt to open the file, it won't create it.|[[File]]}}
+
+{{New feature/item|9.0156|1.5.6|11865|
+{{OOP|This is a static function underneath the File class. Using '''File(...)''' to open a file will attempt to create the file, if it doesn't exist|[[File]].open}}
+}}
+
+===Required Arguments===
+*'''filePath:''' The [[filepath]] of the file in the following format: '''":resourceName/path"'''. 'resourceName' is the name of the resource the file is in, and 'path' is the path from the root directory of the resource to the file.
+:For example, if there is a file named 'coolObjects.txt' in the resource 'objectSearch', it can be opened from another resource this way: ''fileOpen(":objectSearch/coolObjects.txt")''.
+:If the file is in the current resource, only the file path is necessary, e.g. ''fileOpen("coolObjects.txt")''.
+
+===Optional Arguments===
+*'''readOnly:''' By default, the file is opened with reading and writing access. You can specify ''true'' for this parameter if you only need reading access.
+
+===Returns===
+If successful, returns a file handle for the file. Otherwise returns ''false'' (f.e. if the file doesn't exist).
+
+==Example==
+This example opens the file test.txt that is in the root of the current resource, and outputs its contents to the console.
+<syntaxhighlight lang="lua">
+local hFile = fileOpen("test.txt", true)       -- attempt to open the file (read only)
+if hFile then                                  -- check if it was successfully opened
+    local buffer
+    while not fileIsEOF(hFile) do              -- as long as we're not at the end of the file...
+        buffer = fileRead(hFile, 500)          -- ... read the next 500 bytes...
+        outputConsole(buffer)                  -- ... and output them to the console
+    end
+    fileClose(hFile)                           -- close the file once we're done with it
+else
+    outputConsole("Unable to open test.txt")
+end
+</syntaxhighlight>
+
+This example show how to append data to an existing file:
+<syntaxhighlight lang="lua">
+local hFile = fileOpen("test.txt")             -- attempt to open the file (read and write mode)
+if hFile then                                  -- check if it was successfully opened
+    fileSetPos( hFile, fileGetSize( hFile ) )  -- move position to the end of the file
+    fileWrite(hFile, "hello" )                 -- append data
+    fileFlush(hFile)                           -- Flush the appended data into the file.
+    fileClose(hFile)                           -- close the file once we're done with it
+else
+    outputConsole("Unable to open test.txt")
+end
+</syntaxhighlight>
+
+==See Also==
+{{File functions}}

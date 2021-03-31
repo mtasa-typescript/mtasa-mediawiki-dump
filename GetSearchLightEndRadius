@@ -1,0 +1,25 @@
+__NOTOC__ 
+{{Client function}}
+{{Needs_Example}}
+
+This function gets the end radius of a [[Element/Searchlight|searchlight]] element.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float getSearchLightEndRadius ( searchlight theSearchLight )
+</syntaxhighlight>
+{{OOP||[[Element/Searchlight|searchLight]]:getEndRadius|endRadius|setSearchLightEndRadius}}
+
+===Required Arguments===
+*'''theSearchLight''': the searchlight to get the radius of the searchlight's light cone in its end.
+
+===Returns===
+If the specified searchlight element is valid, this function will return one ''float'', which is the searchlight's end radius. If not, it will return ''false'' plus an error message.
+
+==Example==
+<syntaxhighlight lang="lua">
+-- TODO
+</syntaxhighlight>
+
+==See also==
+{{Client_searchlight_functions}}

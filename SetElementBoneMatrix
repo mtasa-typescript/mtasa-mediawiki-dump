@@ -1,0 +1,27 @@
+{{Client function}}
+__NOTOC__ 
+{{New feature/item|3.0160|1.5.8|20704|This function sets the transformation matrix of a specific bone. Currently the following element types are accepted:
+* [[Element/Player|Player]]
+* [[Element/Ped|Ped]]
+}}
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+{{Tip|For [[matrix]] manipulation which goes beyond the basic examples given on this page, see the [[Lua matrix library]]. Using the built-in [[matrix]] class is also recommended.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setElementBoneMatrix ( element theElement, int bone, matrix matrix )
+</syntaxhighlight>
+
+===Required Arguments=== 
+*'''theElement:''' the element to set the bone matrix on.
+*'''bone:''' the ID of the bone. See [[Bone IDs]]
+*'''matrix:''' the MTA [[matrix]] to set.
+
+===Returns===
+Returns ''true'' if the function was successful, ''false'' otherwise.
+
+==Example== 
+{{Needs Example}}
+
+==See Also==
+{{Client_element_functions}}

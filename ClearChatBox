@@ -1,0 +1,47 @@
+__NOTOC__ 
+{{Server client function}} 
+{{New feature/item|3.0156|1.5.5|14165|This function clears the chatbox. It does not clear the console (F8)}}
+
+==Syntax==
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+bool clearChatBox ()
+</syntaxhighlight>
+===Returns===
+Returns ''true'' if the player's chat was cleared successfully, ''false'' otherwise.
+</section>
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+bool clearChatBox ( [ element clearFor = getRootElement() ])
+</syntaxhighlight>
+
+===Required Arguments=== 
+*'''clearFor :''' The [[player]] whose chat is to be cleared. By default, this is set to the root element, which will affect all players.
+
+===Returns===
+Returns ''true'' if the player's chat was cleared successfully, ''false'' otherwise.
+</section>
+
+==Example== 
+<section name="Client" class="client" show="true">
+This example removes spam caused by outputChatBox
+<syntaxhighlight lang="lua">
+for i=1,10 do
+  outputChatBox( "spam ..." )
+end
+
+clearChatBox()
+outputChatBox("Chat cleared successfully!")
+</syntaxhighlight>
+</section>
+
+<section name="Server" class="server" show="false">
+This example deletes messages for reandom player
+<syntaxhighlight lang="lua">
+local RandomPlayer = getRandomPlayer ( )
+clearChatBox(RandomPlayer)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Server functions}}

@@ -1,0 +1,27 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0157|1.5.7|19626|This function restores original physical properties group used by given model.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool engineRestoreModelPhysicalPropertiesGroup ( int modelID )</syntaxhighlight> 
+===Required Arguments===
+*'''modelID''': the id of model which you wish to restore original physical properties group of.
+
+===Returns===
+Returns '''true''' if there were no issues, if passed arguments were invalid an error is raised.
+
+==Example== 
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function restoreID(_, id)
+    engineRestoreModelPhysicalPropertiesGroup(tonumber(id))
+end
+addCommandHandler ( "restoreID", restoreID )
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.19626|}}
+
+==See Also==
+{{Client_object_functions}}

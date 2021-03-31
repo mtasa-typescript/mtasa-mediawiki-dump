@@ -1,0 +1,42 @@
+{{Server client function}}
+__NOTOC__
+{{New items|3.0153|1.5.3|
+This function returns human-readable representations of tables and MTA datatypes as a string.
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+string inspect ( mixed var [, table options] )    
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''var:''' A variable of any datatype.
+*'''options:''' A table of options. It is not mandatory, but when it is provided, it must be a table. For a list of options, see the [https://github.com/kikito/inspect.lua#options Inspect's GitHub page].
+
+===Returns===
+Always returns a string. The contents can change if we update the inspect library, so it is not expected to be consistent across Lua versions.
+
+==Example== 
+<section name="Client" class="client" show="true">
+This example draws the contents of a table and its data type:
+<syntaxhighlight lang="lua">
+local Table = {    
+    ["matrix"] = {position = {getElementPosition(localPlayer)},rotation = {getElementRotation( localPlayer )}},
+    ["localplayer"] = getPlayerName(localPlayer),
+}
+local inspectedTblStr = inspect(Table)
+
+addEventHandler("onClientRender",root,
+    function( )
+        --> then draw the created string.
+        --> Try to NOT use such functions under onClientRender, since it works with loops, and if we want to print a bigger table, it will drop some frames.
+        dxDrawText(inspectedTblStr,10,250)
+    end
+)
+</syntaxhighlight>
+This is an example of what it should look like:
+[[File:InspectReturn.png|frame|none]]
+</section>
+
+==See Also==
+{{Utility functions}}

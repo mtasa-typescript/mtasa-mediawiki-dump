@@ -1,0 +1,34 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0156|1.5.5|13823|This function checks if a GUI window is movable.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool guiWindowIsMovable ( gui-window guiWindow )
+</syntaxhighlight> 
+{{OOP|||movable|guiWindowSetMovable}} 
+===Required Arguments=== 
+*'''guiWindow:''' the window to check the movable flag of
+
+===Returns===
+Returns ''true'' if the window is movable, ''false'' if not, ''nil'' if an invalid window was provided.
+
+==Example== 
+<syntaxhighlight lang="lua">
+addEventHandler( "onClientResourceStart", resourceRoot,
+    function( )
+        local window = guiCreateWindow( 0.5, 0.5, 0.22, 0.22, "isMovable window", true )
+        guiWindowSetMovable( window, false ) -- make it unmovable
+        addCommandHandler( "isMovable",
+            function( )
+                local movable = guiWindowIsMovable( window ) -- check the window movable flag
+                outputChatBox( "Window is " .. ( movable and "movable" or "unmovable" ) ) -- show info about the window
+            end
+        )
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

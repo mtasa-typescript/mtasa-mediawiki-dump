@@ -1,0 +1,25 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0157|1.5.6|16361|This function focuses a defocused GUI element. Used primarily for edit fields and memos.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool guiFocus ( element guiElement )
+</syntaxhighlight> 
+{{OOP||[[GUI widgets|GuiElement]]:focus||}}
+
+===Required Arguments=== 
+*'''guiElement:''' the GUI element that you want to focus
+
+===Returns===
+Returns ''true'' if the function was successful, ''false'' otherwise.
+
+==Example== 
+<syntaxhighlight lang="lua">
+local edit= guiCreateMemo ( 0.4, 0.4, 0.4, 0.08, "it's edit!", true )
+guiFocus(edit)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

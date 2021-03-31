@@ -1,0 +1,34 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0150|1.5||
+This function injects a mouse movement.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool injectBrowserMouseMove ( browser webBrowser, int posX, int posY )
+</syntaxhighlight>
+{{OOP||[[Element/Browser|browser]]:injectMouseMove}}
+
+===Required arguments===
+*'''webBrowser:''' The browser which will retrieve the mouse movement
+*'''posX:''' Absolute X screen coordinate
+*'''posY:''' Absolute Y screen coordinate
+
+===Returns===
+Returns ''true'' if the movement was injected successfully, ''false'' otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">
+addEventHandler("onClientCursorMove", root,
+    function (relativeX, relativeY, absoluteX, absoluteY)
+        injectBrowserMouseMove(browser, absoluteX, absoluteY)
+    end
+)
+</syntaxhighlight>
+
+==See also==
+{{CEF_functions}}
+
+[[hu:injectBrowserMouseMove]]
+[[RO:injectBrowserMouseMove]]

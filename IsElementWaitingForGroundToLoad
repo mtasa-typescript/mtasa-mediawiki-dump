@@ -1,0 +1,33 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0140|1.4.0|6715|This function checks whether MTA has frozen an element because it is above map objects which are still loading or not.}}
+{{Note|When vehicles are frozen waiting for collisions to load they '''do not''' overwrite the frozen status set by [[setElementFrozen]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isElementWaitingForGroundToLoad ( element theElement )
+</syntaxhighlight>
+{{New feature/item|3.0141|1.4.0|6987|{{OOP||[[element]]:isWaitingForGroundToLoad|waitingForGroundToLoad}}}}
+
+===Required arguments===
+* '''theElement:''' the element to check its frozen waiting for custom map objects to load status. It can be a [[vehicle]], [[ped]] or [[player]].
+
+===Returns===
+Returns ''true'' if the specified [[element]] is frozen waiting for collisions of custom map objects to load. Returns ''false'' if it's not or if the specified [[element]] is invalid.
+
+==Example==
+<section name="Clientside example" class="client" show="true">
+The next code snippet outputs a message when a vehicle respawns far away from players, above an [[object]].
+
+<syntaxhighlight lang="lua">
+local function notifyFarRespawnOnMap()
+    if isElementWaitingForGroundToLoad(source) then
+        outputChatBox("* A " .. getVehicleName(source) .. " respawned above an object which is far away! Find it quick!", 128, 255, 0)
+    end
+end
+addEventHandler("onClientVehicleRespawn", root, notifyFarRespawnOnMap)
+</syntaxhighlight>
+</section>
+
+==See also==
+{{Element functions}}

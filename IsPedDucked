@@ -1,0 +1,45 @@
+__NOTOC__
+{{Server client function}}
+This function checks if the specified [[ped]] is ducked (crouched) or not.
+
+==Syntax==
+<syntaxhighlight lang="lua">bool isPedDucked ( ped thePed )</syntaxhighlight>
+{{OOP||[[ped]]:isDucked|ducked}}
+
+===Required Arguments===
+*'''thePed''': The [[ped]] to check.
+
+===Returns===
+Returns ''true'' if the ped is ducked, ''false'' otherwise.
+
+==Example==
+<section class="client" name="Client" show="true">
+This example checks if a random player is ducked or not, and if so displays a message in the chat box.
+<syntaxhighlight lang="lua">
+local players = getElementsByType ( "player" )
+local randomPlayer = players[math.random(#players)]
+if isPedDucked ( randomPlayer ) then
+	outputChatBox ( getPlayerName ( randomPlayer ) .. " is currently crouching." )
+end
+</syntaxhighlight>
+
+This example creates a function that lets you toggle the crouching state of a ped.
+<syntaxhighlight lang="lua">
+function setPedDucked(ped, bool)
+	local alreadyDucked = isPedDucked(ped)
+	if (alreadyDucked and not bool) then
+		setPedControlState(ped, "crouch", true)
+		setTimer(setPedControlState, 50, 1, ped, "crouch", false)
+		return true
+	elseif (not alreadyDucked and bool) then
+		setPedControlState(ped, "crouch", true)
+		setTimer(setPedControlState, 50, 1, ped, "crouch", false)
+		return true
+	end
+	return false
+end
+</syntaxhighlight>
+</section>
+[[ru:IsPedDucked]]
+==See Also==
+{{Ped functions}}

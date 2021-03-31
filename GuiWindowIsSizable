@@ -1,0 +1,36 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0156|1.5.5|13823|This function checks if a GUI window is sizable.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool guiWindowIsSizable ( gui-window guiWindow )
+</syntaxhighlight> 
+[[File:Sizable.png|thumb|a sizeable GUI]]
+{{OOP|||sizable|guiWindowSetSizable}}
+===Required Arguments=== 
+*'''guiWindow:''' the window to check the sizable flag of
+
+===Returns===
+Returns ''true'' if the window is sizable, ''false'' if not, ''nil'' if an invalid window was provided.
+
+
+==Example== 
+<syntaxhighlight lang="lua">
+addEventHandler( "onClientResourceStart", resourceRoot,
+    function( )
+        local window = guiCreateWindow( 0.5, 0.5, 0.22, 0.22, "isSizable window", true )
+        guiWindowSetSizable( window, false ) -- make it unsizable
+        addCommandHandler( "isSizable",
+            function( )
+                local sizable = guiWindowIsSizable( window ) -- check the window sizable flag
+                outputChatBox( "Window is " .. ( sizable and "sizable" or "unsizable" ) ) -- show info about the window
+            end
+        )
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

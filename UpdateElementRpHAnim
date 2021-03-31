@@ -1,0 +1,26 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20704|This function updates GTA bone animation for a given [[element]]. Currently the following element types are accepted:
+* [[Element/Player|Player]]
+* [[Element/Ped|Ped]]
+This function must be called after [[setElementBoneRotation]] for changes to take effect. It should only be called once per frame, after you are done rotating bones on that element, as it is quite heavy.
+}}
+
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool updateElementRpHAnim ( element theElement )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''theElement:''' the element to update.
+
+===Returns===
+Returns ''true'' if successful, ''false'' otherwise.
+
+==Example==
+{{Needs Example}}
+
+==See Also==
+{{Client_element_functions}}

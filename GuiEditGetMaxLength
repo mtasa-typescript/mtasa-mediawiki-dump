@@ -1,0 +1,31 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0156|1.5.5|13814|This function returns the maximum text length that can be typed within an edit box.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int guiEditGetMaxLength ( gui-edit guiEdit )
+</syntaxhighlight>
+{{OOP||[[Element/GUI/Edit_field|GuiEdit]]:getMaxLength|maxLength|guiEditSetMaxLength}}
+
+===Required Arguments=== 
+*'''guiEdit:''' The edit box you want to get the maximum text length of.
+
+===Returns===
+Returns the maximum text length on success, ''false'' otherwise.
+
+==Example==
+This example outputs the maximum text length of an edit field to the chat.
+<syntaxhighlight lang="lua">
+local edit = guiCreateEdit( 0.4, 0.4, 0.3, 0.1, "", true )
+
+addEventHandler( "onClientGUIChanged", edit,
+    function( )
+        outputChatBox( "Characters remaining in edit box: " .. guiEditGetMaxLength( source ) - #guiGetText( source ) ) -- output remaining amount of characters
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

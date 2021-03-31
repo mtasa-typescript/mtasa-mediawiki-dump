@@ -1,0 +1,31 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0135|1.3.5|6054|
+This function returns the caret (the text cursor) position within the editbox.
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int guiEditGetCaretIndex ( element theElement )
+</syntaxhighlight>
+{{OOP||[[Element/GUI/Edit_field|GuiEdit]]:getCaretIndex|caretIndex|guiEditSetCaretIndex}}
+
+===Required Arguments=== 
+*'''theElement:''' The edit box you want to get the caret position from
+
+===Returns===
+Returns the caret index on success, ''false'' otherwise.
+
+==Example==
+This example outputs the caret position of the edit field to the chat
+<syntaxhighlight lang="lua">
+local edit = guiCreateEdit(0.4,0.4,0.3,0.1,"",true)
+
+addEventHandler("onClientGUIChanged",edit,function()
+	outputChatBox("Caret index is: "..guiEditGetCaretIndex(edit)) -- output index to chat
+end)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

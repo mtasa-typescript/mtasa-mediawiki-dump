@@ -1,0 +1,35 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0155|1.5.5|11350|
+This function is used to get the type of the current cursor image.
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+string guiGetCursorType ( )
+</syntaxhighlight>
+{{OOP||[[GUI widgets|GuiElement]].getCursorType|cursorType|}}
+
+===Returns===
+Returns a string containing the cursor type:
+* '''"none"'''            // cursor has no image
+* '''"arrow"'''           // default cursor
+* '''"sizing_ns"'''       // N-S (up-down) sizing cursor
+* '''"sizing_ew"'''       // E-W (left-right) sizing cursor
+* '''"sizing_nwse"'''     // NW-SE diagonal sizing cursor
+* '''"sizing_nesw"'''     // NE-SW diagonal sizing cursor
+* '''"sizing_eswe"'''     // ES-WE horizontal sizing cursor
+* '''"move"'''            // move cursor
+* '''"container_drag"'''  // drag container cursor (note: not in use)
+* '''"segment_moving"'''  // segment moving cursor (note: not in use)
+* '''"segment_sizing"'''  // segment sizing cursor (note: not in use)
+
+==Example== 
+This example prints the current cursor type in the console.
+<syntaxhighlight lang="lua">
+outputConsole( guiGetCursorType( ) )
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

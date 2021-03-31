@@ -1,0 +1,22 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0160|1.5.8|20788|Determines if the transfer box should be visible.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isTransferBoxVisible()
+</syntaxhighlight>
+
+===Returns===
+On '''server''' this returns a boolean, whether the transfer box should be visible during downloads or not.
+
+On '''client''' this returns a boolean, whether the transfer box should be visible or not at the time of invocation.
+
+==Examples==
+{{Needs Example}}
+
+==Requirements==
+{{Requirements|1.5.8-9.20788|1.5.8-9.20788|}}
+
+==See Also==
+{{Shared_server_functions}}

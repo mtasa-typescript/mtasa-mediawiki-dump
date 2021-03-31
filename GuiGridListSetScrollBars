@@ -1,0 +1,30 @@
+{{Client function}}
+__NOTOC__ 
+This function allows a gridlist's scrollbar to be forced '''on''', or returned to default.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool guiGridListSetScrollBars ( element guiGridlist, bool horizontalBar, bool verticalBar )
+</syntaxhighlight>
+{{OOP||[[Element/GUI/Gridlist|GuiGridList]]:setScrollBars}} 
+
+===Required Arguments=== 
+*'''guiGridlist:''' The GUI gridlist you wish to change the state of scrollbars
+*'''horizontalBar:''' A bool where ''true'' forces the horizontal scrollbar on, and ''false'' returns them to default.
+*'''verticalBar:''' A bool where ''true'' forces the verical scrollbar on, and ''false'' returns them to default.
+
+===Returns===
+Returns ''true'' if the scrollbars were successfully set, ''false'' otherwise.
+
+==Example== 
+This example creates a gridlist and checks if it's created then sets the scroll bars. (TESTED!) 
+<syntaxhighlight lang="lua">gridlist = guiCreateGridList(332,195,286,249,false)
+
+if(gridlist)then
+	guiGridListSetScrollBars(gridlist,true,true)
+end
+</syntaxhighlight>
+
+==See Also==
+{{GUI functions}}
+{{GUI_events}}

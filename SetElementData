@@ -1,0 +1,135 @@
+{{Server client function}}
+__NOTOC__ 
+This function stores [[element data]] under a certain key, attached to an element. Element data set using this is then synced with all clients and the server. The data can contain server created elements, but you should avoid passing data that is not able to be synced such as xmlnodes, acls, aclgroups etc.
+
+As element data is synced to all clients, it can generate a lot of network traffic and be heavy on performance. Events are much more efficient for sending data from a client to the server only, or from the server to a specific client. <br/>
+Usage of element data should be disencouraged where your goal can be achieved with events like above, and [[table|tables]] for storing and retrieving data.
+
+{{Tip|A simple and efficient way to make a variable known to the server and clients is to use setElementData on the [[root]] element.}}
+{{Note|See [[Script security]] for tips on preventing cheaters when using events and element data}}
+{{Note|For performance reasons, never use setElementData in events that fire often (like [[onClientRender]]) without further optimization or conditions. In fact, using element data in general can take such a toll on performance that not using it unless strictly neccesary (e.g use alternatives such as storing data in tables) is recommended.}}.
+
+
+{{New items|5.0157|1.5.7-9.20477|A subscription mode has been introduced for [[setElementData]] serverside. When setting data in subscription mode, only clients that are added through [[addElementDataSubscriber]] will receive the data, which is good for performance.
+Note this mode only works when setting element data serverside. Setting data clientside still sends the update to all clients if 'synchronize' is set to true.
+}}
+
+==Syntax== 
+
+<syntaxhighlight lang="lua">
+bool setElementData ( element theElement, string key, var value [, bool synchronize = true ] )
+</syntaxhighlight> 
+{{OOP||[[element]]:setData||getElementData}}
+
+===Required Arguments=== 
+*'''theElement:''' The [[element]] you wish to attach the data to.
+*'''key:''' The key you wish to store the data under. (Maximum 128 characters.) 
+*'''value:''' The value you wish to store. See [[element data]] for a list of acceptable datatypes.
+
+===Optional Arguments=== 
+*'''synchronize:''' Determines whether or not the data will be synchronized with the clients(server-side variation) or server(client-side variation)
+
+===Returns===
+Returns ''true'' if the data was set succesfully, ''false'' otherwise.
+
+{{New items|5.0157|1.5.7-9.20477|
+==Syntax== 
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+bool setElementData ( element theElement, string key, var value [, var syncMode="broadcast"] )
+</syntaxhighlight> 
+{{OOP||[[element]]:setData||getElementData}}
+
+===Required Arguments=== 
+*'''theElement:''' The [[element]] you wish to attach the data to.
+*'''key:''' The key you wish to store the data under. (Maximum 31 characters.) 
+*'''value:''' The value you wish to store. See [[element data]] for a list of acceptable datatypes.
+
+===Optional Arguments=== 
+*'''syncMode:''' Synchronisation mode.
+**''"broadcast"'' - Synchronise to all clients (default behavior). You can also parse ''true'' for this option.
+**''"local"'' - Don't synchronise. You can also parse ''false'' for this option.
+**''"subscribe"'' - Only synchronise to specific clients. See [[addElementDataSubscriber]] and [[removeElementDataSubscriber]].
+</section>
+
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+bool setElementData ( element theElement, string key, var value [, bool synchronize = true ] )
+</syntaxhighlight> 
+{{OOP||[[element]]:setData||getElementData}}
+
+===Required Arguments=== 
+*'''theElement:''' The [[element]] you wish to attach the data to.
+*'''key:''' The key you wish to store the data under. (Maximum 31 characters.) 
+*'''value:''' The value you wish to store. See [[element data]] for a list of acceptable datatypes.
+
+===Optional Arguments=== 
+*'''synchronize:''' Determines whether or not the data will be synchronized with the server.
+</section>
+
+===Returns===
+Returns ''true'' if the data was set succesfully, ''false'' otherwise.
+}}
+
+===Issues===
+{{Issues|
+{{Issue|7389|[Fixed in 1.3.5-7389] Problem with floating numbers}}
+}}
+
+==Example== 
+<section name="Server" class="server" show="true">
+This example allows a player to add a custom tag onto their nickname, and also reverts it back to normal if they wish.
+<syntaxhighlight lang="lua">
+function addPlayerCustomTag ( thePlayer, command, newTag )
+	--Let's make sure the newTag param has been entered...
+	if ( newTag ) then
+		--Grab their current playername for saving.
+		local sPlayerNickname = getPlayerName ( thePlayer )
+		--Create their new nickname with their tag
+		local sNewPlayerNickname = newTag .. " " .. sPlayerNickname
+		
+		--Let's first load the element data, see if it's there already
+		--The reason for this is that if a player were to do /addtag twice,
+		--the tag would be prepended a second time
+		local sOldNick = getElementData( thePlayer, "tempdata.originalnick" )
+		if ( sOldNick == false ) then
+			--Save their orignal nickname in their element data
+			setElementData ( thePlayer, "tempdata.originalnick", sPlayerNickname )
+		end
+		
+		--Set their new nickname globally
+		setPlayerName ( thePlayer, sNewPlayerNickname )
+		
+		--Tell them it's done
+		outputChatBox ( "Your new nickname has been set, to put it back to its original state you can use /deltag", thePlayer )
+	else
+		--The newTag param was not entered, give an error message
+		outputChatBox ( "/addtag - Incorrect syntax, Correct: /addtag <newtag>", thePlayer )
+	end
+end
+addCommandHandler ( "addtag", addPlayerCustomTag )
+
+function removePlayerCustomTag ( thePlayer, command )
+	--We first need to check that they have already used /addtag, let's do that now
+	local sOldNick = getElementData( thePlayer, "tempdata.originalnick" )
+	if ( sOldNick ) then
+		--Great, they have a tag added, let's reset them
+		
+		--First we will want to reset the element data back to its default (that being false)
+		setElementData ( thePlayer, "tempdata.originalnick", false )
+		
+		--Now set the client name back
+		setPlayerName( thePlayer, sOldNick )
+		
+		--Notify them
+		outputChatBox ( "Your old nickname has been set", thePlayer )
+	end
+end
+addCommandHandler ( "deltag", removePlayerCustomTag )
+</syntaxhighlight>
+</section>
+[[tr:setElementData]]
+
+==See Also==
+[[pt-br:SetElementData]]
+{{Element_functions}}

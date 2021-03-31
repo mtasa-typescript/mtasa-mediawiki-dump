@@ -1,0 +1,67 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20307|
+Gets all [[FetchRemote|fetchRemote]] and [[CallRemote|callRemote]] requests currently running.
+}}
+==Syntax==
+<syntaxhighlight lang="lua">
+table getRemoteRequests ( [ resource theResource = nil ] )
+</syntaxhighlight>
+
+===Optional Arguments===
+* '''theResource''': the resource to get all requests from
+
+==Returns==
+Returns a table with all requests, false if an invalid resource was provided
+
+==Example==
+<section name="Server" class="server" show="true">
+This example prints how many request are currently pending.
+<syntaxhighlight lang="lua">
+function CMD_requestInfo(player, _, resourceName)
+    local res = resourceName and getResourceFromName(resourceName) or not resourceName and nil
+	
+    if(res == false) then
+        outputChatBox("There is no resource named '" .. resourceName .. "'", player)
+        return
+    elseif(res and getResourceState(res) ~= "running") then
+        outputChatBox("The provided resource '" .. resourceName .. "' is not running", player)
+        return
+    end
+
+    local requests = getRemoteRequests(res)
+	
+    outputChatBox(("There are %d request%s running"):format(#requests, #requests == 1 and '' or 's'), player)
+end
+
+addCommandHandler("requestinfo", CMD_requestInfo)
+</syntaxhighlight>
+</section>
+<section name="Client" class="client" show="true">
+This example prints how many request are currently pending.
+<syntaxhighlight lang="lua">
+function CMD_requestInfo(_, resourceName)
+    local res = resourceName and getResourceFromName(resourceName) or not resourceName and nil
+	
+    if(res == false) then
+        outputChatBox("There is no resource named '" .. resourceName .. "'")
+        return
+    elseif(res and getResourceState(res) ~= "running") then
+        outputChatBox("The provided resource '" .. resourceName .. "' is not running")
+        return
+    end
+
+    local requests = getRemoteRequests(res)
+	
+    outputChatBox(("There are %d request%s running"):format(#requests, #requests == 1 and '' or 's'))
+end
+
+addCommandHandler("requestinfo", CMD_requestInfo)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.7-9.20307|1.5.7-9.20307}}
+
+==See Also==
+{{Resource functions}}

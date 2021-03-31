@@ -1,0 +1,30 @@
+__NOTOC__
+{{Server client function}}
+This function returns the current armor of the specified [[ped]].
+
+==Syntax==
+<syntaxhighlight lang="lua">float getPedArmor ( ped thePed )</syntaxhighlight>
+{{OOP||[[ped]]:getArmor|armor|setPedArmor}}
+
+===Required Arguments===
+*'''thePed:''' The [[ped]] whose armor you want to check
+
+===Returns===
+A ''float'' with the armor, ''false'' if an invalid ped was given.
+
+==Example==
+<section name="Client" class="client" show="true">
+This example defines a "showarmor" console command that shows the player that executes it how much armor he has.
+<syntaxhighlight lang="lua">
+function showArmor ( )
+	local armor = getPedArmor ( localPlayer )
+	outputChatBox( "Your armor: " .. armor )
+end
+addCommandHandler ( "showarmor", showArmor )
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Ped functions}}
+
+[[hu:getPedArmor]]

@@ -1,0 +1,30 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0153|1.5.3|7446|
+This function retrieves the path of the given file.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+string fileGetPath ( file theFile )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''theFile:''' The file you want to get the path.
+
+===Returns===
+Returns a ''string'' representing the file path, ''false'' if invalid file was provided.
+
+==Example==
+<section name="Server Example 1" class="server" show="true">
+<syntaxhighlight lang="lua">
+local newFile = fileCreate("test.txt")                -- attempt to create a new file
+if (newFile) then                                       -- check if the creation succeeded
+    local path = fileGetPath(newFile)
+    outputChatBox("New file created at: "..path, root, 0, 255, 0)
+    fileClose(newFile)                                -- close the file once you're done with it
+end
+</syntaxhighlight></section>
+
+==See Also==
+{{File functions}}

@@ -1,0 +1,40 @@
+{{Server client function}}
+__NOTOC__
+This function returns the current health for the specified [[element]]. This can be a [[player]], a [[ped]], a [[vehicle]], or an [[object]].
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float getElementHealth ( element theElement )
+</syntaxhighlight>
+{{OOP||[[element]]:getHealth|health|setElementHealth}}
+
+===Required Arguments===
+*'''theElement:''' The [[player]] or [[vehicle]] whose health you want to check.
+
+===Returns===
+Returns a float indicating the element's health, or ''false'' if invalid arguments were passed.
+
+==Example==
+<section name="Clientside example" class="client" show="true">
+This example outputs the health of the player who enters the command 'showhealth', and their vehicle's health.
+<syntaxhighlight lang="lua">
+function showLocalHealth()
+	-- get the player's health and output it
+	local playerHealth = getElementHealth ( localPlayer )
+	outputChatBox ( "Your health: " .. playerHealth )
+
+	-- get the player's vehicle: if he is in one, output its health as well
+	local playerVehicle = getPedOccupiedVehicle ( localPlayer )
+	if playerVehicle then
+		local vehicleHealth = getElementHealth ( playerVehicle ) / 10  -- Divide this by 10, as default the denominator is 1000
+		outputChatBox ( "Your vehicle's health: " .. vehicleHealth )
+	end
+end
+addCommandHandler ( "showhealth", showLocalHealth )
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Element functions}}
+
+[[RU:getElementHealth]]

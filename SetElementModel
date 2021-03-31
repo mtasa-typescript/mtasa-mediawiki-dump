@@ -1,0 +1,99 @@
+__NOTOC__
+{{Server client function}}
+
+Sets the model of a given element. This allows you to change the model of a player (or ped), a vehicle or an object.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setElementModel ( element theElement, int model )
+</syntaxhighlight>
+{{OOP||[[element]]:setModel|model|getElementModel}}
+
+===Required Arguments===
+*'''theElement:''' the element you want to change.
+*'''model:''' the model ID to set.
+** For players/peds: A GTASA player model (skin) ID. See [[Character Skins]].
+** For vehicles: The [[Vehicle IDs|vehicle ID]] of the vehicle being changed.
+** For objects/projectiles/weapons: An [[int]] specifying the model id.
+
+===Returns===
+Returns ''true'' if successful, ''false'' otherwise.
+
+==Example==
+<section class="server" name="Example 1 (Server)" show="true">
+This example allows players to change their own skin with a command (/skin [ID])
+<syntaxhighlight lang="lua">
+local spam = {}
+
+function setSkin(player, cmd, skin)
+    if spam[player] and getTickCount() - spam[player] < 4000 then
+        return outputChatBox("You cannot change skin that often!", player, 255, 0, 0)
+    end
+
+    skin = skin and tonumber(skin)
+
+    if getElementModel(player) == skin or isPedDead(player) then
+        return
+    end
+
+    if skin and skin <= 99999 then -- what do we know about dynamic ped ID range?
+        setElementModel(player, skin)
+        spam[player] = getTickCount()
+    else
+        outputChatBox("Invalid skin ID!", player, 255, 0, 0)
+    end
+end
+addCommandHandler("skin", setSkin)
+
+function cleanUp()
+    if spam[source] then
+        spam[source] = nil
+    end
+end
+addEventHandler("onPlayerQuit", root, cleanUp)
+</syntaxhighlight>
+</section>
+<section class="server" name="Example 2 (Server)" show="true">
+This example allows players to transform their current vehicle into another vehicle model.
+<syntaxhighlight lang="lua">
+local spam = {}
+
+function changeMyVehicle(player, command, newModel)
+	if spam[player] and getTickCount() - spam[player] < 2500 then
+		return outputChatBox("Don't spam vehicle changes!", player, 255, 0, 0)
+	end
+
+	local theVehicle = getPedOccupiedVehicle(player)
+	
+	if not (theVehicle and getVehicleController(theVehicle) == player) then
+		return outputChatBox("You must be driving a vehicle in order to change it!", player, 255, 0, 0)
+	end
+
+	if isValidModel(newModel) and isElement(theVehicle) then
+		setElementModel(theVehicle, newModel)
+		spam[player] = getTickCount()
+	else
+		outputChatBox("Invalid vehicle ID!", player, 255, 0, 0)
+	end
+end
+addCommandHandler("changeveh", changeMyVehicle)
+
+function isValidModel(modelID)
+	modelID = tonumber(modelID)
+	if modelID and modelID >= 400 and modelID <= 611 then
+		return true
+	end
+	return false
+end
+
+function cleanUp()
+	if spam[source] then
+		spam[source] = nil
+	end
+end
+addEventHandler("onPlayerQuit", root, cleanUp)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Element functions}}

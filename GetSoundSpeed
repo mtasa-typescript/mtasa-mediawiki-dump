@@ -1,0 +1,31 @@
+__NOTOC__ 
+{{Client function}}
+This function is used to return the playback speed of the specified [[sound]] [[element]].
+
+==Syntax== 
+<syntaxhighlight lang="lua">float getSoundSpeed ( element theSound )</syntaxhighlight> 
+{{OOP||[[sound]]:getSpeed|speed|setSoundSpeed}}
+===Required Arguments=== 
+*'''theSound:''' the [[sound]] [[element]] which playback speed you want to return.
+
+===Returns===
+Returns an [[float]] value indicating the playback speed of the [[sound]] [[element]]. Default sound playback speed is '''1.0'''.
+
+==Example== 
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function outputSpeed(soundname) 
+	local sound = playSound("sounds/"..tostring(soundname)..".mp3") --Play the sound from the sounds folder
+	setSoundVolume(sound, 0.5) -- set the sound volume to 50%
+	outputChatBox("The sound speed : "..getSoundSpeed(sound)) -- output the sound speed
+end
+addCommandHandler("soundspeed",outputSpeed)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_audio_functions}}
+
+[[hu:getSoundSpeed]]
+[[ar:getSoundSpeed]]
+[[RO:getSoundSpeed]]

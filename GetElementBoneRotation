@@ -1,0 +1,27 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20704|Returns the orientation of a specific bone relative to the [[element]]. Currently the following element types are accepted:
+* [[Element/Player|Player]]
+* [[Element/Ped|Ped]]
+}}
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float, float, float getElementBoneRotation ( element theElement, int bone )
+</syntaxhighlight>
+
+[[Image:The-yaw-pitch-and-roll-angles-in-the-human-head-motion-11.png|thumb|Rotation axes]]
+
+===Required Arguments===
+*'''theElement:''' the element to get the bone rotation on.
+*'''bone:''' the ID of the bone to get the rotation of. See [[Bone IDs]]
+
+===Returns===
+Returns the yaw, pitch, roll rotation values.
+
+==Example==
+{{Needs Example}}
+
+==See Also==
+{{Client_element_functions}}

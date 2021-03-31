@@ -1,0 +1,33 @@
+__NOTOC__
+{{Client function}}
+This function checks whether an [[element]] is streamable as set by [[setElementStreamable]] or not.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isElementStreamable ( element theElement )
+</syntaxhighlight>
+{{New feature/item|3.0141|1.4.0|6987|{{OOP||[[element]]:isStreamable|streamable|setElementStreamable}}}}
+
+===Required Arguments===
+* '''theElement''': The [[element]] to check the streamability of.
+
+===Returns===
+Returns ''true'' if the passed element is streamable like normal, ''false'' if this element must always be streamed in.
+
+==Example==
+<section name="Client" class="client" show="true">
+Check if
+<syntaxhighlight lang="lua">
+function onClientColShapeHit(theElement, matchingDimension)
+	if(isElementStreamable(theElement)) then  -- Checks whether the element is streamable
+		outputChatBox( "Element is streamable")
+	else
+		outputChatBox( "Element not streamable")
+	end
+end
+addEventHandler("onClientColShapeHit", root, onClientColShapeHit)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client element functions}}

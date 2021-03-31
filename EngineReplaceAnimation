@@ -1,0 +1,55 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0156|1.5.5|12195|
+This function replaces a specific internal (default) animation with a custom one that has been loaded using [[EngineLoadIFP|engineLoadIFP]] function. This function only affects a specific [[player]] or [[ped]], the [[Animations|internal animation]] is not replaced for everyone, for instance, different players and peds are able to have completely different crouching, walking, and fighting etc., animations running simultaneously at the same time. Also, it's not synchronized, you'll need to execute this function on every client in Lua to synchronize it.
+
+Internal animations replaced using this function can still be played with [[SetPedAnimation|setPedAnimation]]. You can restore replaced animations back with [[EngineRestoreAnimation|engineRestoreAnimation]].
+
+It should be noted that partial animations are not supported, you can still replace them, but they won't work as intended, for example, "FightA_block" animation from "ped" block is a partial animation, you can't replace it properly, only a few animations are partial, rest of them are not, so it shouldn't be a problem.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool engineReplaceAnimation ( ped thePed, string InternalBlockName, string InternalAnimName, string CustomBlockName, string CustomAnimName )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''thePed:''' the [[player]] or [[ped]] you want to replace an animation for.
+*'''InternalBlockName:''' the [[Animations|internal block]] name.
+*'''InternalAnimName:''' the [[Animations|internal animation]] name inside InternalBlockName.
+*'''CustomBlockName:''' the custom block name of the loaded IFP file that you passed to [[EngineLoadIFP|engineLoadIFP]] as second parameter.
+*'''CustomAnimName:''' the custom animation name inside the loaded IFP file with CustomBlockName.
+===Returns===
+Returns ''true'' on success, ''false'' in case of failure.
+
+==Example==
+This example loads a custom IFP file ([https://drive.google.com/file/d/1XZNNCCn7xhBNbhaIbsBubky3BEj06zWp/view?usp=sharing parkour.ifp]), and replaces the internal crouch animation from ped block with a custom animation. If you press C on your keyboard, the custom animation will be played instead of crouch animation.
+
+<syntaxhighlight lang="lua">
+--[[
+credits to Paul_Cortez for the IFP file.
+parkour.ifp has following animations:
+
+BckHndSpingBTuck
+BckHndSping
+CartWheel
+FrntHndSpring
+HandPlant
+]]
+
+-- you can choose any name you want, do not choose a default GTA:SA block name
+local customBlockName = "myNewBlock"
+
+-- load the IFP file
+local IFP = engineLoadIFP( "parkour.ifp", customBlockName )
+
+-- let us know if IFP failed to load
+if not IFP then
+    outputChatBox( "Failed to load 'parkour.ifp'" )
+end
+
+-- replace the crouch animation
+engineReplaceAnimation( localPlayer, "ped", "weapon_crouch", customBlockName, "HandPlant" )
+</syntaxhighlight>
+
+==See Also==
+{{Engine_functions}}

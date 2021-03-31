@@ -1,0 +1,32 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0157|1.5.6|14489|This function returns the number of items in a combo box.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int guiComboBoxGetItemCount ( element comboBox )
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''comboBox:''' The combo box to get the number of items from.
+
+===Returns===
+Returns the number of items if the function is successful, ''false'' otherwise.
+
+==Example== 
+This example creates a gui combo box, fills it with the names of the connected players and prints the number of items (players) in the chatbox.
+<syntaxhighlight lang="lua">
+addEventHandler('onClientResourceStart',resourceRoot,function()
+	local playersList = guiCreateComboBox(0.35,0.40,0.31,0.20,'Players',true) -- create gui combo box
+
+	for key,player in ipairs(getElementsByType('player')) do -- get the connected players
+		guiComboBoxAddItem(playersList, getPlayerName(player)) -- add players name to the combo box
+	end
+	local playersCount = guiComboBoxGetItemCount(playersList) -- get the number of items 
+	outputChatBox('Number of connected players: '..playersCount) -- show info on chatbox
+end)
+</syntaxhighlight>
+
+==See Also==
+{{GUI functions}}
+{{GUI_events}}

@@ -1,0 +1,51 @@
+{{Client function}}
+__NOTOC__ 
+{{New feature/item|3.0157|1.5.6|16204|This function checks whether the gridlist sorting is enabled or disabled.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool guiGridListIsSortingEnabled ( element guiGridlist )
+</syntaxhighlight>
+{{OOP||[[Element/GUI/Gridlist|GuiGridList]]:isSortingEnabled|sortingEnabled}}
+
+===Required Arguments=== 
+*'''guiGridlist:''' The GUI gridlist you wish to check if sorting is enabled or not.
+
+===Returns===
+Returns ''true'' if sorting is enabled, ''false'' otherwise.
+
+==Example== 
+
+'''Example 1:''' This example creates a gridlist with all server players and adds a command that enables and disables the gridlist sorting.
+
+<syntaxhighlight lang="lua">
+addEventHandler( "onClientResourceStart", resourceRoot,
+	function()
+		--Create the grid list element
+		newGridlist = guiCreateGridList ( 0.50, 0.50, 0.20, 0.30, true )
+		--Create a new grid list
+		column = guiGridListAddColumn( newGridlist, "Players", 0.85 )
+		showCursor( true )
+
+		if ( column ) then --If the column has been created, fill it with players
+			for id, player in ipairs(getElementsByType("player")) do
+				local row = guiGridListAddRow ( newGridlist )
+				guiGridListSetItemText ( newGridlist, row, column, getPlayerName ( player ), false, false )
+			end
+		end
+	end
+)
+
+function toggleGridlistSortingState()
+
+	local newStatus = not guiGridListIsSortingEnabled( newGridlist )
+
+	outputChatBox( "The gridlist sorting is now ".. (newStatus and "Enabled" or "Disabled"), 230,230,230 )
+	guiGridListSetSortingEnabled( newGridlist, newStatus ) -- Toggles the sorting for the gridlist
+end
+addCommandHandler( "togglesorting", toggleGridlistSortingState )
+</syntaxhighlight>
+
+==See Also==
+{{GUI functions}}
+{{GUI_events}}

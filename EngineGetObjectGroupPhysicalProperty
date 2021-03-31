@@ -1,0 +1,30 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0157|1.5.7|19626|This function gets physical property of given properties group.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">var engineGetObjectGroupPhysicalProperty ( int groupID, objectgroup-modifiable property )</syntaxhighlight> 
+===Required Arguments===
+*'''groupID''': the id of physical properties group which you wish to get a property from.
+*'''objectgroup-modifiable''': the property which you wish to get, as per table below.
+
+===Returns===
+Returns the value contained in given property if everything went well, error is raised otherwise.
+
+===Properties===
+{{Physical_Properties}}
+
+==Example== 
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function getProperty(_, group, property)
+    var prop = {engineGetObjectGroupPhysicalProperty(tonumber(group), property)}
+    outputConsole(inspect(prop))
+end
+addCommandHandler ( "getProperty", getProperty )
+--getProperty(120, "special_col_response")
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_object_functions}}

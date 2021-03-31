@@ -1,0 +1,40 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0158|1.5.7|20416|This function allows you to get the textures of any model.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">table engineGetModelTextures( string/int modelName/modelID [, string/table textureNames ] )</syntaxhighlight> 
+===Required Arguments===
+*'''model''': either the model ID or model name.
+
+===Optional Arguments===
+*'''textureNames''': Only return textures with specified name(s). You can provide a single string or a table of strings. Wildcard matching e.g. "ro?ds*" can be used.
+
+===Returns===
+Returns a table of texture elements [textureName, texture], '''false''' otherwise.
+
+==Example== 
+<section name="Client" class="client" show="true">
+Get the textures for model ID 3722 and draw them with dxDrawImage.
+<syntaxhighlight lang="lua">
+function init()
+	textures = engineGetModelTextures(3722)
+	addEventHandler("onClientRender", root, render)
+end
+addEventHandler("onClientResourceStart", resourceRoot, init)
+
+function render()
+	local offset = 0
+	for name,texture in pairs(textures) do
+		local size = dxGetPixelsSize(dxGetTexturePixels(texture))
+		dxDrawImage(0+offset, 0, size, size, texture)
+		offset = offset + size
+	end
+end
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.20416|}}
+==See Also==
+{{Engine_functions}}

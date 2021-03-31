@@ -1,0 +1,26 @@
+__NOTOC__ 
+{{Client function}}
+This function returns whether the ingame console window is visible or not.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool isConsoleActive ()
+</syntaxhighlight> 
+{{OOP||[[GUI widgets|GuiElement]]:isConsoleActive|consoleActive|}}
+
+===Returns===
+Returns ''true'' if the console is visible, ''false'' if not.
+
+==Example== 
+This example does...
+<syntaxhighlight lang="lua">
+function consoleactiveCommand(arg)
+    local active = (isConsoleActive() and "active.") or "not active."
+    outputChatBox("Your console is " .. active)
+end
+addCommandHandler("consoleactive", consoleactiveCommand)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

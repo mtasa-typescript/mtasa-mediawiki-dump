@@ -1,0 +1,32 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0156|1.5.5|14165|Sets the angular velocity of a specified, supported element (Applies a spin to it).}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setElementAngularVelocity ( element theElement, float rx, float ry, float rz )           
+</syntaxhighlight> 
+{{OOP||[[element]]:setAngularVelocity|angularVelocity|getElementAngularVelocity}}
+===Required Arguments=== 
+*'''theElement:''' The [[element]] to apply the spin to. Can be either a [[player]], [[ped]], [[object]], [[vehicle]] or a [[Element/Weapon|custom weapon]].
+*'''rx:''' velocity around the X axis
+*'''ry:''' velocity around the Y axis
+*'''rz:''' velocity around the Z axis
+
+===Returns===
+Returns ''true'' if it was succesful, ''false'' otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">
+function onColShapeHit ( thePlayer, matchingDimension )
+    -- When a player hits the collision shape, give him a spin
+    setElementAngularVelocity ( thePlayer, 0, 0, 20 )
+end
+addEventHandler ( "onColShapeHit", root, onColShapeHit )
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.5-9.14060|1.5.5-9.14060|}}
+
+==See Also==
+{{Element functions}}

@@ -1,0 +1,29 @@
+{{Client function}}
+__NOTOC__
+This function enables or disables the debug window.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setDebugViewActive ( bool enabled )
+</syntaxhighlight>
+{{OOP||[[GUI widgets|GuiElement]].setDebugViewActive|debugViewActive|isDebugViewActive}}
+
+===Required Arguments===
+* '''enabled:''' true if debug window should be visible, false otherwise.
+
+===Returns===
+Returns ''true'', ''false'' if invalid parameters are passed.
+
+==Example== 
+This example enables or disables the debug window.
+<syntaxhighlight lang="lua">
+function enableDebug()
+	local state = not isDebugViewActive()
+	setDebugViewActive(state)
+end
+addCommandHandler("debug", enableDebug)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

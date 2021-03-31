@@ -1,0 +1,44 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20704|This function sets the position of a bone to the specified coordinates. Currently the following element types are accepted:
+* [[Element/Player|Player]]
+* [[Element/Ped|Ped]]
+}}
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+{{Note|You need to use this function together with [[onClientPedsProcessed]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setElementBonePosition ( element theElement, int bone, float x, float y, float z )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''theElement:''' the element to set the bone position on.
+*'''bone:''' the ID of the bone to set the position of. See [[Bone IDs]]
+*'''x:''' The x coordinate of the destination.
+*'''y:''' The y coordinate of the destination.
+*'''z:''' The z coordinate of the destination.
+
+===Returns===
+Returns ''true'' if the function was successful, ''false'' otherwise.
+
+==Example==
+This example is a command where the player should input the bone ID, x, y, z to set one of his bones' position.
+<syntaxhighlight lang="lua">
+function setBonePosition(cmd, ID, x, y, z)
+    if (not ID or not x or not y or not z) then
+        outputChatBox("Syntax: '/setbonepos ID x y z'", 255, 25, 25)
+        return false
+    end
+    if (not tonumber(ID) or not tonumber(x) or not tonumber(y) or not tonumber(z)) then
+        outputChatBox("Command arguments should be numbers", 255, 25, 25)
+        return false
+    end
+    setElementBonePosition(localPlayer, ID, x, y, z)
+    outputChatBox("Bone position set successfully", 0, 255, 0)
+end
+addCommandHandler("setbonepos", setBonePosition)
+</syntaxhighlight>
+
+==See Also==
+{{Client_element_functions}}

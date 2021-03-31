@@ -1,0 +1,27 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0157|1.5.7|19626|This function gets physical properties group id used by given model.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">int engineGetModelPhysicalPropertiesGroup ( int modelID )</syntaxhighlight> 
+===Required Arguments===
+*'''modelID''': the id of model which you wish to get physical properties group of.
+
+===Returns===
+Returns '''id''' of physical properties group that requested model uses, in range of ''0-160'', if the object doesn't have a group assigned, ''-1'' is returned. If passed arguments were wrong, error is triggered.
+
+==Example== 
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function checkID(_, id)
+    outputConsole(engineGetModelPhysicalPropertiesGroup(tonumber(id)))
+end
+addCommandHandler ( "checkID", checkID )
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.19626|}}
+
+==See Also==
+{{Client_object_functions}}

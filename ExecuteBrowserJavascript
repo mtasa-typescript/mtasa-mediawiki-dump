@@ -1,0 +1,41 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0150|1.5||
+This function executes a Javascript string to the specified [[Element/Browser|browser]]. Works only with local browsers.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool executeBrowserJavascript ( browser webBrowser, string jsCode )
+</syntaxhighlight>
+{{OOP||[[Element/Browser|browser]]:executeJavascript}}
+
+===Required Arguments===
+*'''webBrowser:''' The web browser which will execute the Javascript code
+*'''jsCode:''' The Javascript code string
+
+===Returns===
+Returns ''true'' if executing Javascript is allowed in the current context, ''false'' otherwise.
+
+==Example==
+This example shows how to display the name (nick) of the local player on the webpage.
+<syntaxhighlight lang="lua">
+local browser = guiGetBrowser(guiCreateBrowser(200, 200, 400, 200, true, false, false))
+
+addEventHandler("onClientBrowserCreated", browser,
+    function ()
+        loadBrowserURL(source, "http://mta/local/example.html") --Containing <span id="nick"></span> somewhere in the file
+    end)
+
+--The page has to load first
+addEventHandler("onClientBrowserDocumentReady", browser,
+    function ()
+        executeBrowserJavascript(source, "document.getElementById('nick').innerHTML = '" .. getPlayerName(localPlayer) .. "'");
+    end)
+</syntaxhighlight>
+
+==See Also==
+{{CEF_functions}}
+
+[[hu:executeBrowserJavascript]]
+[[RO:executeBrowserJavascript]]

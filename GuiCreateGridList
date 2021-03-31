@@ -1,0 +1,50 @@
+__NOTOC__ 
+{{Client function}}
+This function creates a grid list GUI element.  These are menu's which are designed in lists and can have multiple columns.  A good example of a gridlist element can be found in MTA's settings box, under ''Controls''.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+element guiCreateGridList ( float x, float y, float width, float height, bool relative, [ element parent = nil ] )
+</syntaxhighlight>
+{{OOP||[[Element/GUI/Gridlist|GuiGridList]]}}
+
+===Required Arguments=== 
+[[Image:Gui-gridlist.png|frame|Example GUI gridlist.]]
+*'''x:''' A float of the 2D x position of the GUI gridlist on a player's screen.  This is affected by the ''relative'' argument.
+*'''y:''' A float of the 2D y position of the GUI gridlist on a player's screen. This is affected by the ''relative'' argument.
+*'''width:''' A float of the width of the GUI gridlist. This is affected by the ''relative'' argument.
+*'''height:''' A float of the height of the GUI gridlist. This is affected by the ''relative'' argument.
+*'''relative:''' This is whether sizes and positioning are relative.  If this is ''true'', then all x,y,width,height floats must be between 0 and 1, representing sizes relative to the parent.
+
+===Optional Arguments=== 
+{{OptionalArg}} 
+*'''parent:''' This is the parent that the gui gridlist is attached to.  If the ''relative'' argument is true, sizes and positioning will be made relative to this parent. If the ''relative'' argument is false, positioning will be the number of offset pixels from the parent's origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning.
+
+===Returns===
+Returns an element of the created gridlist if it was successfully created, false otherwise.
+
+==Example==
+'''Example 1:''' This example creates a player list on the right of the screen with 1 column and fills it
+<syntaxhighlight lang="lua">
+local playerList = guiCreateGridList(0.80, 0.40, 0.15, 0.35, true)
+guiGridListAddColumn(playerList, "Player", 0.85)
+
+for _, player in ipairs(getElementsByType("player")) do
+	guiGridListAddRow(playerList, getPlayerName(player))
+end
+</syntaxhighlight>
+
+'''Example 2:''' Using [[OOP]] we can write shorter and cleaner code (Requires <oop>true<oop> in the meta file). This creates a player list with 2 columns.
+<syntaxhighlight lang="lua">
+local list = GuiGridList(0.80, 0.40, 0.15, 0.35, true)
+list:addColumn("#", 0.15)
+list:addColumn("name", 0.75)
+
+for index, player in ipairs(getElementsByType("player")) do
+	list:addRow(index, player.name)
+end
+</syntaxhighlight>
+
+==See Also==
+{{GUI functions}}
+{{GUI_events}}

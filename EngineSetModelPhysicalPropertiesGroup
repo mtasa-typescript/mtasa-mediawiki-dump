@@ -1,0 +1,28 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0157|1.5.7|19626|This function sets physical properties group id used by given model.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool engineSetModelPhysicalPropertiesGroup ( int modelID, int groupID )</syntaxhighlight> 
+===Required Arguments===
+*'''modelID''': the id of model which you wish to set physical properties group of.
+*'''groupID''': the id of new physical properties group to be used by given model.
+
+===Returns===
+Returns '''true''' if there were no issues with group change, otherwise an error is raised
+
+==Example== 
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function setID(_, id, group)
+    engineSetModelPhysicalPropertiesGroup(tonumber(id), tonumber(group))
+end
+addCommandHandler ( "setID", setID )
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.19626|}}
+
+==See Also==
+{{Client_object_functions}}

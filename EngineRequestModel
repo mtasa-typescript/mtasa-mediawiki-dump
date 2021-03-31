@@ -1,0 +1,61 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0158|1.5.7|20147|This function is used to assign the next available model ID to a certain element type. After release 1.5.8-20716 this function supports "vehicle" and "object" too.}}
+{{note|IMPORTANT:
+*before release 1.5.8-20716 this must be "ped".
+}}
+==Syntax==
+<syntaxhighlight lang="lua">
+int engineRequestModel ( str elementType [, int parentID ] )
+</syntaxhighlight>
+===Required Arguments===
+*'''elementType''': "ped", "vehicle" and "object".
+
+===Optional Arguments=== 
+*'''parentID''': The [[Vehicle IDs|vehicle ID]] of the vehicle being allocated. '''(By default this is: 1337 - objects, 400 - vehicles, 7 or PSYCHO for peds)'''
+
+===Returns===
+{{New feature/item|3.0158|1.5.7|20147| Returns an ''integer'' of the model ID that was available to be assigned to the element type, ''false'' if no free model ID available or invalid element type.}}
+Do not rely on the model numbers returned being consistent across multiple clients or multiple runs of resources. There is no guarantee for the order of the numbers or that the same numbers will always correspond to the same element type. Any patterns are coincidental
+
+==Example==
+This example creates a ped and then gives you the opportunity to change its model. If the resource stops, then the IDs allocated will be deallocated. Use ''/cap'' for creating the ped and ''/sap'' to skin the ped. You will need some skins added to a folder and to the meta.xml for ''/sap'' to work.
+<syntaxhighlight lang="lua">
+local peds = {}
+function createAllocatedPed()
+    local x, y, z = getElementPosition(localPlayer)
+    local id = engineRequestModel("ped")
+    peds[id] = createPed(id, x+0.5, y, z+0.5)
+    outputChatBox("New ped with ID "..id.." created.")
+end
+addCommandHandler("cap", createAllocatedPed, false, false)
+
+function skinAllocatedPeds()
+    local txd, dff;
+    for id,ped in pairs(peds) do
+        if fileExists("skins/" .. id .. ".txd") and fileExists("skins/" .. id .. ".dff") then
+            txd = engineLoadTXD("skins/" .. id .. ".txd")
+            engineImportTXD(txd, id)
+            dff = engineLoadDFF("skins/" .. id .. ".dff")
+            engineReplaceModel(dff, id)
+            outputChatBox("Model ID "..id.." changed correctly.")
+        else
+            outputChatBox("Model ID "..id.." couldn't change. REASON: skins/" .. id .. ".txd or skins/" .. id .. ".dff does not exist.")
+        end
+    end
+end
+addCommandHandler("sap", skinAllocatedPeds, false, false)
+
+function onStop()
+    for id,ped in pairs(peds) do
+        engineFreeModel(id)
+    end
+end
+addEventHandler("onClientResourceStop", resourceRoot, onStop)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.20147|}}
+
+==See Also==
+{{Engine functions}}

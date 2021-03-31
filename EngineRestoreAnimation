@@ -1,0 +1,43 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0156|1.5.5|12195|
+This function restores internal (default) animations that were replaced using [[EngineReplaceAnimation|engineReplaceAnimation]] function. This function only affects a specific [[player]] or [[ped]] just like [[EngineReplaceAnimation|engineReplaceAnimation]]. 
+
+If only 1st parameter ([[Ped|ped]]) is provided to this function, all replaced animations are restored. 
+If block name is also provided for 2nd parameter, then replaced animations within that block are restored.
+If 3rd parameter (animation name) is provided, then only that specific animation within that specific block is restored.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool engineRestoreAnimation ( ped thePed [, string InternalBlockName, string InternalAnimName ] )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''thePed:''' the [[player]] or [[ped]] you want to restore an animation(s) for.
+
+===Optional Arguments===
+{{OptionalArg}}
+*'''InternalBlockName:''' the [[Animations|internal block]] name.
+*'''InternalAnimName:''' the [[Animations|internal animation]] name inside InternalBlockName.
+
+===Returns===
+Returns ''true'' on success, ''false'' in case of failure.
+
+==Example==
+'''Example 1:''' This example restores all replaced animations within every block for the local player.
+<syntaxhighlight lang="lua">
+engineRestoreAnimation( localPlayer )
+</syntaxhighlight>
+
+'''Example 2:''' This example restores all replaced animations only within "ped" block for the local player.
+<syntaxhighlight lang="lua">
+engineRestoreAnimation( localPlayer, "ped" )
+</syntaxhighlight>
+
+'''Example 3:''' This example restores "weapon_crouch" animation within "ped" block for the local player.
+<syntaxhighlight lang="lua">
+engineRestoreAnimation( localPLayer, "ped", "weapon_crouch" )
+</syntaxhighlight>
+
+==See Also==
+{{Engine_functions}}

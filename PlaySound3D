@@ -1,0 +1,59 @@
+__NOTOC__ 
+{{Client function}}
+Creates a [[sound]] [[element]] in the GTA world and plays it immediately after creation for the local player. [[setElementPosition]] can be used to move the [[sound]] element around after it has been created. Remember to use [[setElementDimension]] after creating the sound to play it outside of dimension 0.<br />
+<br />
+{{Note|
+*The only supported audio formats are MP3, WAV, OGG, RIFF, MOD, XM, IT and S3M.
+*For performance reasons, when using playSound3D for effects that will be played lots (i.e. weapon fire), it is recommend that you convert your audio file to a one channel (mono) WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how often the effect can be played e.g. once every 50ms.}}
+==Syntax== 
+<syntaxhighlight lang="lua">element playSound3D ( string soundPath, float x, float y, float z, [ bool looped = false ] )</syntaxhighlight> 
+<syntaxhighlight lang="lua">element playSound3D ( string soundURL, float x, float y, float z, [ bool looped = false, bool throttled = true ] )</syntaxhighlight> 
+{{OOP||[[Sound|Sound3D]]}}
+===Required Arguments===
+*'''soundPath:''' the [[filepath]] to the sound file you want to play. ('''Note:''' Playing sound files from other resources requires the target resource to be in the running state)
+{{New items|5.0157|1.5.7|
+*'''soundPath:''' Can also be raw sound data.
+|20460}}
+*'''soundURL:''' the URL (http://, https:// or ftp://) of the sound file you want to play. (In this version the file does not have to be predefined in the [[meta.xml]])
+*'''x:''' a [[float]]ing point number representing the X coordinate on the map.
+*'''y:''' a [[float]]ing point number representing the Y coordinate on the map.
+*'''z:''' a [[float]]ing point number representing the Z coordinate on the map.
+
+===Optional Arguments=== 
+{{OptionalArg}} 
+*'''looped:''' a [[boolean]] representing whether the sound will be looped. To loop the sound, use ''true''.
+{{New feature/item|3.0150|1.5||
+*'''throttled:''' a [[boolean]] representing whether the sound will be throttled (i.e. given reduced download bandwidth). To throttle the sound, use ''true''.
+}}
+
+===Returns===
+Returns a [[sound]] [[element]] if the sound was successfully created, ''false'' otherwise.
+
+==Example== 
+This example creates a looping sound within a pizza shop. The pizza shop is in san fierro near pier 69
+<section name="Example" class="client" show="true">
+<syntaxhighlight lang="lua">
+function onResourceStart()
+	local sound = playSound3D("sounds/song.mp3", 373.14, -125.21, 1001, true) 
+end
+addEventHandler("onClientResourceStart", resourceRoot, onResourceStart)
+</syntaxhighlight>
+</section>
+This example play internet radio in groove street.
+<section name="Example 2" class="client" show="true" >
+<syntaxhighlight lang="lua">
+addEventHandler('onClientResourceStart', resourceRoot,
+	function()
+		local uSound = playSound3D('http://977music.com/itunes/80s.pls', 2498, -1659, 12) 
+		setSoundMaxDistance(uSound, 100)
+	end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_audio_functions}}
+[[HU:playSound3D]]
+[[AR:playSound3D]]
+[[DE:playSound3D]]
+[[RU:playSound3D]]

@@ -1,0 +1,37 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0150|1.5||
+This function sets a given property of a specified browser.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setBrowserProperty ( browser theBrowser, string key, string value )
+</syntaxhighlight>
+{{OOP||[[Element/Browser|browser]]:setProperty||getBrowserProperty}}
+
+===Required arguments===
+*'''theBrowser:''' The browser element you want to set a property of
+*'''key:''' The browser property key. It can be:
+**'''mobile:''' Surfing the web as mobile
+*'''value:''' A value indicating whether to enable ("1") the property or not ("0")
+
+===Returns===
+Returns ''true'' if the property was successfully set, ''false'' otherwise.
+
+==Example==
+This example will add a command handler for 'mobile' that will toggle mobile browsing for all browsers.
+<syntaxhighlight lang="lua">
+addCommandHandler("mobile",
+    function ()
+        for i, browser in pairs(getElementsByType("webbrowser")) do
+            setBrowserProperty(browser, "mobile", getBrowserProperty(browser, "mobile") == "1" and "0" or "1")
+        end
+    end)
+</syntaxhighlight>
+
+==See also==
+{{CEF_functions}}
+
+[[hu:setBrowserProperty]]
+[[RO:setBrowserProperty]]

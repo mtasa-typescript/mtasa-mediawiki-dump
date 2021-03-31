@@ -1,0 +1,25 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0160|1.5.8|20807|This function is used to get the height of an existing [[createColPolygon|colshape polygon]].
+By default, a colshape polygon is infinitely tall.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float, float getColPolygonHeight ( colshape shape )  
+</syntaxhighlight> 
+{{OOP||[[colshape]]:getHeight|}}
+
+===Required Arguments=== 
+*'''shape:''' The [[colshape]] polygon
+
+===Returns===
+Returns two [[float]]s, indicating the floor and ceiling of the colshape height, ''false'' if invalid arguments were passed.
+
+==Example==
+{{Needs_Example}}
+
+==Requirements==
+{{Requirements|1.5.8-9.20807|1.5.8-9.20807|}}
+
+==See Also==
+{{Collision_shape_functions}}

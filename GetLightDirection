@@ -1,0 +1,31 @@
+__NOTOC__
+{{Client function}}
+
+{{New feature/item|3.0150|1.5.0|7048|
+This function returns the direction for a [[Element/Light|light]] element.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float, float, float getLightDirection ( light theLight )
+</syntaxhighlight>
+{{OOP||[[light]]:getDirection|direction|setLightDirection}}
+
+===Required Arguments=== 
+*'''theLight:''' The [[Element/Light|light]] that you wish to retrieve the direction of.
+
+=== Returns ===
+Returns three [[int]]s corresponding to the x, y and z coordinates (respectively) of the light direction, ''false'' if invalid arguments were passed.
+
+===Example===
+<syntaxhighlight lang="lua">
+function lightDirection ()
+	local light = createLight(0, 1, 0, 4)
+	local lx, ly, lz = getLightDirection(light)
+	outputChatBox("light direction: " .. lx .. ", " .. ly .. ", " .. lz)
+end
+addCommandHandler("lightDirection", lightDirection) 
+</syntaxhighlight>
+
+==See also==
+{{Client_light_functions}}

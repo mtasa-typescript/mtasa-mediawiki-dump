@@ -1,0 +1,92 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20307|
+Gets informations of an [[FetchRemote|fetchRemote]] or [[CallRemote|callRemote]] request info.
+}}
+==Syntax==
+<syntaxhighlight lang="lua">
+table getRemoteRequestInfo ( request theRequest [, int postDataLength = 0 [, bool includeHeaders = false ] ] )
+</syntaxhighlight>
+
+===Required Arguments===
+* '''theRequest''': returned from [[FetchRemote|fetchRemote]], [[CallRemote|callRemote]] or [[GetRemoteRequests|getRemoteRequests]]
+
+==Returns==
+Returns a table when valid, false otherwise
+The table contains:
+*'''bytesReceived:''' A number specifying the amount of data received so far. Zero means the download is queued
+*'''bytesTotal:''' A number specifying the final download size. Will be zero if the remote HTTP server has not set the 'Content-Length' header
+*'''currentAttempt:''' A number specifying the current connection attempt
+*'''type:''' A string specifying either "fetch" or "call"
+*'''url:''' A string specifying the URL
+*'''resource:''' The resource which started the request, or false if the resource has since been stopped/restarted
+*'''queue:''' A string specifying the queue name
+*'''method:''' A string specifying the HTTP method. e.g. "GET" or "POST"
+*'''connectionAttempts:''' A number specifying max number connection attempts as declared in the fetchRemote call
+*'''connectionTimeout:''' A number specifying connection attempt timeout as declared in the fetchRemote call
+*'''postData:''' A string containing the request post data as declared in the fetchRemote call
+*'''headers:''' A table containing the request HTTP headers as declared in the fetchRemote call
+
+==Example==
+<section name="Server" class="server" show="true">
+This example gets infos about all pending requests and prints them in debugscript
+<syntaxhighlight lang="lua">
+function CMD_requestInfo(player, _, resourceName)
+    local res = resourceName and getResourceFromName(resourceName) or not resourceName and nil
+	
+    if(res == false) then
+        outputServerLog("There is no resource named '" .. resourceName .. "'")
+        return
+    elseif(res and getResourceState(res) ~= "running") then
+        outputServerLog("The provided resource '" .. resourceName .. "' is not running")
+        return
+    end
+	
+    local requests = getRemoteRequests(res)
+	
+    for _, request in ipairs(requests) do
+        local requestInfo = getRemoteRequestInfo(request)
+		
+        if(requestInfo) then
+            iprint(requestInfo)
+        end
+    end
+end
+
+addCommandHandler("requestinfo", CMD_requestInfo)
+</syntaxhighlight>
+</section>
+<section name="Client" class="client" show="true">
+This example gets infos about all pending requests and prints them in debugscript
+<syntaxhighlight lang="lua">
+function CMD_requestInfo(player, _, resourceName)
+    local res = resourceName and getResourceFromName(resourceName) or not resourceName and nil
+	
+    if(res == false) then
+        outputChatBox("There is no resource named '" .. resourceName .. "'")
+        return
+    elseif(res and getResourceState(res) ~= "running") then
+        outputChatBox("The provided resource '" .. resourceName .. "' is not running")
+        return
+    end
+	
+    local requests = getRemoteRequests(res)
+	
+    for _, request in ipairs(requests) do
+        local requestInfo = getRemoteRequestInfo(request)
+		
+        if(requestInfo) then
+            iprint(requestInfo)
+        end
+    end
+end
+
+addCommandHandler("requestinfo", CMD_requestInfo)
+</syntaxhighlight>
+</section>
+
+
+{{Requirements|1.5.7-9.20307|1.5.7-9.20307}}
+
+==See Also==
+{{Resource functions}}

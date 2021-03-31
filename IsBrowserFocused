@@ -1,0 +1,40 @@
+__NOTOC__
+{{Client function}}
+This function checks if a browser is focused.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isBrowserFocused ( browser webBrowser )
+</syntaxhighlight>
+{{OOP||[[Element/Browser|browser]]:isFocused}}
+
+===Required arguments===
+*'''webBrowser:''' The browser
+
+===Returns===
+Returns ''true'' if the browser is focused, ''false'' otherwise and ''nil'' if invalid arguments were passed.
+
+==Example==
+This example creates a browser. If you press left control it will output to chatbox if the browser is focused or not.
+<section name="Example" class="client" show="true">
+<syntaxhighlight lang="lua">
+local theBrowser = guiCreateBrowser ( 150, 150, 1280, 720, true, false, false)
+addEventHandler("onClientKey", localPlayer,
+	function(button, state)  -- adds the event handler.
+		if button == "lctrl" and state = "down" then -- if the pressed key is lctrl and the state is down then we will check is the browser focused or not. 
+			if isBrowserFocused(theBrowser) then
+				outputChatbox("the browser is focused.") -- if the browser is focused then we will write this to chatbox.
+			else
+				outputChatbox("the browser is not focused.")-- if the browser is not focused then we will write this to chatbox.
+			end
+ 		end
+	end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{CEF_functions}}
+
+[[hu:isBrowserFocused]]
+[[RO:isBrowserFocused]]

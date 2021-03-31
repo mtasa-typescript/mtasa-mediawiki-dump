@@ -1,0 +1,38 @@
+__NOTOC__
+{{Server client function}}
+This function changes the selected weapon slot of a [[ped]].
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setPedWeaponSlot ( ped thePed, int weaponSlot )
+</syntaxhighlight> 
+
+{{OOP||[[ped]]:setWeaponSlot|weaponSlot|getPedWeaponSlot}}
+
+===Required Arguments===
+*'''thePed:''' the [[ped]] whose weapon slot you want to set. In a clientside script, this cannot be used on remote players.
+*'''weaponSlot:''' the weapon slot to set.
+{{Weapon_Slots}}
+
+===Returns===
+Returns ''true'' if successful in setting the ped's equipped weapon slot, ''false'' otherwise.
+
+==Example==
+<section name="Server" class="server" show="true">
+This example allows the player to type the command 'giveweapons', which gives the player a weapon for every slot. Instead of equipping the last given weapon, the script randomly decides which weapon to equip after all the weapons are given.
+<syntaxhighlight lang="lua">local weaponIDs = {1,22,25,28,30,33,35,16,42,10,44,40} -- Weapon IDs
+
+function givePlayerWeapons ( thePlayer, commandName )
+   -- Give the player a weapon for each slot
+   for i = 1 , #weaponIDs do
+      giveWeapon (thePlayer,weaponIDs[i], 1 )
+   end
+   -- Randomly select which weapon to equip, slots 1 through 12
+   setPedWeaponSlot ( thePlayer, math.random ( 1, 12) )
+end
+addCommandHandler ( "giveweapons", givePlayerWeapons )</syntaxhighlight>
+</section>
+
+==See Also==
+{{Ped_functions}}
+[[ru:setPedWeaponSlot]]

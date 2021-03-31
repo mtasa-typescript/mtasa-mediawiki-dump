@@ -1,0 +1,84 @@
+{{Client function}}
+__NOTOC__
+This function sets a custom LOD distance for any object / model ID. This is the distance at which objects of that model ID are switched to their LOD model, or (if there is no LOD model) become invisible.
+
+'''Notes:'''
+The actual draw distance used is modified by the draw distance slider in the settings 'Video' tab of the MTA client.
+
+*When the 'Video' tab draw distance slider is 0%, the engineSetModelLODDistance setting approximately matches the draw distance used.
+:''e.g. engineSetModelLODDistance(1337,100) will mean model 1337 will be visible up to a distance of '''100''' units.''
+
+*When the 'Video' tab draw distance slider is 100%, the engineSetModelLODDistance setting is approximately doubled before use.
+:''e.g. engineSetModelLODDistance(1337,100) will mean model 1337 will be visible up to a distance of '''200''' units.''
+
+However, there is a general draw distance limit of 300 units. So engineSetModelLODDistance(1337,400) will mean model 1337 will be visible up to a distance of 300 units no matter what the 'Video' tab says.
+
+Therefore, unless it's really important, engineSetModelLODDistance should not be set to anything greater than 170.<br>
+170 will still give the maximum draw distance (of 300 units) on clients that have a 'Video' tab draw distance setting of 100%, and it will help reduce lag for players who chose a lower draw distance in their settings.
+
+{{New feature/item|3.0120|1.2||
+For low LOD elements, engineSetModelLODDistance still has a limit of 300 units, but the actual draw distance used is 5 times the setting value. Also, low LOD elements ignore the 'Video' tab draw distance slider. So a setting of 200 will mean a low LOD element will always have a draw distance of '''1000''' units.
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool engineSetModelLODDistance ( int model, float distance ) 
+</syntaxhighlight> 
+{{OOP||Engine.setModelLODDistance}}
+===Required Arguments=== 
+*'''model:''' The model / object ID number you want to change the LOD distance of.
+*'''distance:''' New LOD distance value in San Andreas units.
+
+===Returns===
+Returns ''true'' if the function executed succesfully, ''false'' otherwise.
+
+==Example== 
+<syntaxhighlight lang="lua">
+-- Cause massive lag by maxing out draw distance of all objects
+
+local objectsTable = getElementsByType("object")
+local objectElement = false
+local objectModel = false
+
+for i = 1, #objectsTable do
+	objectElement = objectsTable[i]
+	objectModel = getElementModel(objectElement)
+
+	engineSetModelLODDistance(objectModel, 300) -- Set maximum draw distance
+end
+</syntaxhighlight>
+
+This example will, besides replacing with custom map objects, also set the LOD distance accordingly, a neccesary step (otherwise the object could seem to fail loading and only show up 1 feet away)
+<syntaxhighlight lang="lua">
+function replaceObjects()
+
+	local col1 = engineLoadCOL("map1.col")
+	local col2 = engineLoadCOL("map2.col")
+
+	local txd = engineLoadTXD("map.txd")
+	engineImportTXD(txd, 2357)
+	engineImportTXD(txd, 2290)
+
+	local dff1 = engineLoadDFF("map1.dff")
+	local dff2 = engineLoadDFF("map2.dff")
+
+	engineReplaceCOL(col1, 2357)
+	engineReplaceCOL(col2, 2290)
+	engineReplaceModel(dff1, 2357)
+	engineReplaceModel(dff2, 2290)
+
+	engineSetModelLODDistance(2357, 2000)
+	engineSetModelLODDistance(2290, 2000)
+end
+</syntaxhighlight>
+
+===Issues===
+{{Issues|
+{{Issue|9139|Invalid model ID will crash when used with engine LOD distance functions.}}
+}}
+
+==See Also==
+* [[getVehiclesLODDistance]]
+* [[resetVehiclesLODDistance]]
+* [[setVehiclesLODDistance]]
+{{Engine_functions}}

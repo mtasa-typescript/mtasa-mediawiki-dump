@@ -1,0 +1,29 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20416|This function returns model visibility time, this is used for example for building lights being shown after 23:00.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">int, int engineGetModelVisibleTime( int modelID )</syntaxhighlight> 
+===Required Arguments===
+*'''modelID''': ID of the model
+
+===Returns===
+Returns '''timeOn''', '''timeOff'''
+
+==Example== 
+<section name="Client" class="client" show="true">
+Make Los Santos Tower visible only between 10 and 12 AM.
+<syntaxhighlight lang="lua">
+function init()
+	engineSetModelVisibleTime(4550, 10, 12)
+        local timeOn, timeOff = engineGetModelVisibleTime(4550)
+        outputChatBox('Los Santos Tower visible time is now between ' .. timeOn .. ' and ' .. timeOff)
+end
+addEventHandler("onClientResourceStart", resourceRoot, init)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20416|}}
+==See Also==
+{{Engine_functions}}

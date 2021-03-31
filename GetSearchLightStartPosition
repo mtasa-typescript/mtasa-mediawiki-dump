@@ -1,0 +1,25 @@
+__NOTOC__ 
+{{Client function}}
+{{Needs_Example}}
+
+This function gets the start position of a [[Element/Searchlight|searchlight]] element.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float, float, float getSearchLightStartPosition ( searchlight theSearchLight )
+</syntaxhighlight>
+{{OOP||[[Element/Searchlight|searchLight]]:getStartPosition|startPosition|setSearchLightStartPosition}}
+
+===Required Arguments===
+*'''theSearchLight''': the searchlight to get the position where the searchlight's light cone starts.
+
+===Returns===
+If the specified searchlight element is valid, this function will return three ''float'', which are the three coordinates of searchlight's start position. If not, it will return ''false'' plus an error message.
+
+==Example==
+<syntaxhighlight lang="lua">
+-- TODO
+</syntaxhighlight>
+
+==See also==
+{{Client_searchlight_functions}}

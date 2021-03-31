@@ -1,0 +1,44 @@
+{{Client function}}
+__NOTOC__
+Adds a row to a grid list, and optionally add simple text items with your rows.  Use [[guiGridListSetItemText]] to add row headers.
+
+{{Deprecated feature|3.0153|1.5.2|
+ATTENTION: Without [[guiGridListSetItemText]] there is no row added to the grid. 
+Look at the example, first you give the row a name with '''[[row =]]''' guiGridListAddRow ( playerList ), and then you use [[guiGridListSetItemText]]. }}
+
+==Syntax== 
+{{New feature/item|3.0153|1.5.3||
+<syntaxhighlight lang="lua">
+int guiGridListAddRow ( element gridList [, int/string itemText1, int/string itemText2, ... ] )
+</syntaxhighlight>
+}}
+
+{{OOP||[[Element/GUI/Gridlist|GuiGridList]]:addRow}}
+
+===Required Arguments=== 
+*'''gridList:''' The grid list you want to add a row to
+
+===Optional Arguments===
+{{New feature/item|3.0153|1.5.3||
+*'''itemText1:''' The text for the first column item in the row.  Either a string or a number can be passed (use numbers for sorting purposes).
+*'''itemText2:''' The text for the second column item in the row.  Either a string or a number can be passed (use numbers for sorting purposes).
+*'''...:''' Item text for any other columns
+}}
+
+===Returns===
+Returns the row id if it has been created, ''false'' otherwise.
+
+==Example== 
+This example creates a player list on the right side of the screen and fills it with the names of the connected players.
+<syntaxhighlight lang="lua">
+local playerList = guiCreateGridList(0.80, 0.40, 0.15, 0.35, true)
+guiGridListAddColumn(playerList, "Player", 0.85)
+
+for _, player in ipairs(getElementsByType("player")) do
+	guiGridListAddRow(playerList, getPlayerName(player))
+end
+</syntaxhighlight>
+
+==See Also==
+{{GUI functions}}
+{{GUI_events}}

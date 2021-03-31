@@ -1,0 +1,34 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20307|
+Aborts a [[FetchRemote|fetchRemote]] or [[CallRemote|callRemote]] request.
+}}
+==Syntax==
+<syntaxhighlight lang="lua">
+bool abortRemoteRequest( request theRequest )
+</syntaxhighlight>
+
+===Required Arguments===
+* '''theRequest''': returned from [[FetchRemote|fetchRemote]], [[CallRemote|callRemote]] or [[GetRemoteRequests|getRemoteRequests]]
+
+==Returns==
+Returns true on success, false when invalid request was provided
+
+==Example==
+This example aborts all requests.
+<syntaxhighlight lang="lua">
+function CMD_abortRequests()
+    local requests = getRemoteRequests()
+	
+    for _, request in ipairs(requests) do
+        abortRemoteRequest(request)
+    end
+end
+
+addCommandHandler("abortrequests", CMD_abortRequests)
+</syntaxhighlight>
+
+{{Requirements|1.5.7-9.20307|1.5.7-9.20307}}
+
+==See Also==
+{{Resource functions}}

@@ -1,0 +1,29 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20397|This function is used to get the size of a colshape. Valid types are [[createColRectangle|rectangle]], [[createColCuboid|cuboid]] and [[createColTube|tube]].}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float, float, float getColShapeSize ( colshape shape )  
+</syntaxhighlight> 
+{{OOP||[[colshape]]:getSize||setColShapeSize|}}
+
+===Required Arguments=== 
+*'''shape:''' The [[colshape]] you wish to get the size of.
+
+===Returns===
+Returns up to 3 [[float]]s depending on the colshape type (see below), ''false'' if invalid arguments were passed.
+*''cuboid:'' width, depth, height.
+*''rectangle:'' width, height.
+*''tube:'' height.
+
+==Example==
+<syntaxhighlight lang="lua">
+TODO
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.7-9.20397|1.5.7-9.20397|}}
+
+==See Also==
+{{Collision_shape_functions}}

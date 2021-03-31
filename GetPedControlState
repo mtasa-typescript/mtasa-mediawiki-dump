@@ -1,0 +1,52 @@
+__NOTOC__
+{{Client function}}
+Checks whether a ped or the localplayer has a certain control pressed.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool getPedControlState ( ped thePed, string control )
+</syntaxhighlight>
+{{OOP||[[Ped]]:getControlState}}
+
+===Required Arguments===
+*'''thePed:''' the ped you want to check.
+*'''control:''' the control to get the status of. See [[control names]] for a list of valid names.
+
+===Returns===
+Returns ''true'' if the ped is pressing the specified control, ''false'' if not or an invalid argument was passed.
+
+===Example===
+
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+local controlTable = {"forwards", "backwards", "left", "right", "jump", "crouch"}
+
+function invisibleOnSpawn()
+    setElementAlpha (localPlayer, 0)
+    checkControlState = setTimer(controlState, 50, 0)
+end
+addEventHandler ("onClientPlayerSpawn", localPlayer, invisibleOnSpawn)
+
+function controlState()
+    for i,control in ipairs(controlTable) do
+        local state = getPedControlState(localPlayer, control)
+	if (state) then
+	    setElementAlpha (localPlayer, 255)
+	    if (isTimer(checkControlState)) then
+		killTimer(checkControlState)
+		checkControlState = nil
+	    end 
+	end
+    end
+end
+</syntaxhighlight>
+</section>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.5.5-3.11427|Works with the [[getLocalPlayer|local player]] as well. Deprecated [[setControlState]] and [[getControlState]].}}
+
+==See Also==
+{{Client ped functions}}
+
+[[hu:getPedControlState]]

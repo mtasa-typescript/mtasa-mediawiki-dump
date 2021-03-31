@@ -1,0 +1,50 @@
+{{Server client function}}
+__NOTOC__
+{{New items|3.0153|1.5.3|
+This function intelligently outputs debug messages into the Debug Console.  It is similar to [[outputDebugString]], but outputs useful information for '''any''' variable type, and does not require use of Lua's tostring.  This includes information about element types, and table structures.  It is especially useful for quick debug tasks.
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool iprint ( mixed var1[, mixed var2, mixed var3...] )             
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''var1:''' A variable of any type to print intelligent information for.
+
+===Optional Arguments=== 
+{{OptionalArg}} 
+*'''var2+:''' Another variable to be output.  An unlimited number of arguments can be supplied
+
+===Returns===
+Always returns ''nil''.
+
+==Issues==
+If one of the arguments is nil, any arguments after it will not appear.
+
+==Example== 
+<section name="Server" class="server" show="true">
+This example prints some sample debug messages, assuming the server is running a typical freeroam/play environment:
+<syntaxhighlight lang="lua">
+function resourceStartNotify ( resourcename )
+	-- Example of outputting tables, and elements directly
+	iprint(getElementsByType("player"))
+	iprint(getElementsByType("vehicle"))
+	-- Example of outputting multiple items at once
+	iprint("this resource:",getThisResource(),"state:",getResourceState(getThisResource()),"resource root:",getResourceRootElement(getThisResource()))
+end
+addEventHandler( "onResourceStart", getRootElement(), resourceStartNotify )
+</syntaxhighlight>
+
+The output from the server might look like this:
+<pre>
+[2016-10-01 21:25:43] INFO: { elem:player[MrPlayer] }
+
+[2016-10-01 21:25:43] INFO: { elem:vehicle[Monster 3]2ED3EF60, elem:vehicle[Monster 3]2ED3F620, elem:vehicle[Banshee]2ED3F548, elem:vehicle[Banshee]2ED3F590, elem:vehicle[Bullet]2ED3F5D8, elem:vehicle[BMX]2ED3FA58, elem:vehicle[BMX]2ED3FE00, elem:vehicle[Sparrow]2ED3F788, elem:vehicle[Sanchez]2ED3F6B0, elem:vehicle[Sanchez]2ED3F8A8, elem:vehicle[Sanchez]2ED3FE48, elem:vehicle[Jetmax]2ED3FC98, elem:vehicle[Dinghy]2ED3FA10, elem:vehicle[Marquis]2ED3FB78, elem:vehicle[Bandito]2ED3FAA0, elem:vehicle[Beagle]2ED3F980, elem:vehicle[Buffalo]2ED3FDB8, elem:vehicle[Sabre]2ED3F6F8, elem:vehicle[Caddy]2ED3F7D0, elem:vehicle[Sparrow]2ED3F938, elem:vehicle[Sanchez]2ED3FED8, elem:vehicle[Sanchez]2ED3FCE0, elem:vehicle[Sanchez]2ED3F860, elem:vehicle[Monster 3]2ED3F8F0, elem:vehicle[Monster 3]2ED3FC08, elem:vehicle[Buffalo]2ED3F9C8, elem:vehicle[Bandito]2ED3FAE8, elem:vehicle[Caddy]2ED3FB30, elem:vehicle[Sabre]2ED3F668, elem:vehicle[Bullet]2ED3FBC0, elem:vehicle[Banshee]2ED3FF20, elem:vehicle[Banshee]2ED3F818, elem:vehicle[Monster 3]2ED3FC50, elem:vehicle[Monster 3]2ED3FD28, elem:vehicle[Buffalo]2ED3FD70, elem:vehicle[Bandito]2ED3FE90, elem:vehicle[Caddy]2ED3F740, elem:vehicle[Sabre]2ED405E0, elem:vehicle[Bullet]2ED406B8, elem:vehicle[Banshee]2ED40748, elem:vehicle[Banshee]2ED401F0, elem:vehicle[Sanchez]2ED40508, elem:vehicle[Sanchez]2ED401A8, elem:vehicle[Sanchez]2ED40040, elem:vehicle[Sparrow]2ED40118, elem:vehicle[Sanchez]2ED40238, elem:vehicle[Sanchez]2ED3FFB0, elem:vehicle[Sanchez]2ED40598, elem:vehicle[Monster 3]2ED40550, elem:vehicle[Monster 3]2ED40700, elem:vehicle[Buffalo]2ED40280, elem:vehicle[Bandito]2ED403A0, elem:vehicle[Caddy]2ED400D0, elem:vehicle[Sabre]2ED402C8, elem:vehicle[Bullet]2ED40160, elem:vehicle[Banshee]2ED40790, elem:vehicle[Banshee]2ED40628, elem:vehicle[Sparrow]2ED3FFF8 }
+
+[2016-10-01 21:25:43] INFO: "this resource:"    resource[runcode]    "state:"    "running"    "resource root:"    elem:resource2B696440
+</pre>
+</section>
+
+==See Also==
+{{Utility functions}}

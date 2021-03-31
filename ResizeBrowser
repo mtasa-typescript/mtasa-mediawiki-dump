@@ -1,0 +1,42 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0153|1.5.3|9912|
+Allows resizing of CEF browsers at runtime.
+}}
+
+{{Warning|Do '''not''' use this function with [[onClientRender]] as it re-creates the underlying texture internally (which is an expensive operation).|true}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool resizeBrowser ( browser webBrowser, float width, float height )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''webBrowser:''' The browser you want to resize.
+*'''width:''' The new width of the browser.
+*'''height:''' The new height of the browser.
+
+===Returns===
+Returns ''true'' if the browser is resized successfully, ''false'' if there's something wrong.
+
+==Example==
+Example for resize browser by command.
+<syntaxhighlight lang="lua">
+
+screenWidth, screenHeight = guiGetScreenSize()
+initBrowser = guiCreateBrowser(0, 0, screenWidth, screenHeight, true, true, false)
+addCommandHandler("resize",
+	function ( cmd, width, height )
+		local browser = guiGetBrowser(initBrowser)
+		local width, height = tonumber(width), tonumber(height)
+		resizeBrowser( browser, width, height )
+	end
+)
+
+</syntaxhighlight>
+
+==See Also==
+{{CEF_functions}}
+
+[[hu:resizeBrowser]]
+[[RO:resizeBrowser]]

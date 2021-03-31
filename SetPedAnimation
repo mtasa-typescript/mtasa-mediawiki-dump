@@ -1,0 +1,80 @@
+__NOTOC__
+{{Server client function}}
+
+Sets the current [[Animations|animation]] of a [[player]] or [[ped]]. Not specifying the type of animation will automatically cancel the current one.
+{{Warning|It is possible that an animation will be cancelled if you use setElementFrozen on the ped, but this does not happen all the time.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setPedAnimation ( ped thePed [, string block = nil, string anim = nil, int time = -1, bool loop = true, bool updatePosition = true,
+                       bool interruptable = true, bool freezeLastFrame = true, int blendTime = 250, bool retainPedState = false ] )
+</syntaxhighlight>
+{{OOP||[[ped]]:setAnimation||getPedAnimation}}
+
+===Required Arguments===
+*'''thePed:''' the [[player]] or [[ped]] you want to apply an [[Animations|animation]] to.
+
+===Optional Arguments===
+{{OptionalArg}}
+*'''block:''' the [[Animations|animation]] block's name.
+*'''anim:''' the name of the [[Animations|animation]] within the block.
+*'''time:''' how long the animation will run for in milliseconds.
+*'''loop:''' indicates whether or not the animation will loop.
+*'''updatePosition:''' will change the actual coordinates of the ped according to the animation. Use this for e.g. walking animations.
+*'''interruptable:''' if set to ''false'' other tasks wont be able to interupt the animation. Setting this to 'false' also gives this function more power to override other animations that are running. For example, squatting after a jump can be terminated.
+*'''freezeLastFrame:''' if set to ''true'' after animation the last frame will be frozen, otherwise the animation will end and controls will return.
+*'''blendTime:''' how long the animation will mixed with the previous one in milliseconds.
+{{New items|3.0157|1.5.7|
+*'''retainPedState:''' will restore the task which was playing before calling this function. Useful for restoring the crouch task after animation ends. This may be extended in the future to support other states/tasks.
+|16632}}
+
+===Returns===
+Returns ''true'' if succesful, ''false'' otherwise.
+
+==Examples==
+
+<section name="Server" class="server" show="true">
+This example creates a ped, rotates him, and makes him walk:
+<syntaxhighlight lang="lua">
+function makePed()
+	local thePed = createPed(56, 1, 1, 4, 315)
+	setPedAnimation(thePed, "ped", "WOMAN_walknorm")
+end
+addCommandHandler("makemyped", makePed)
+</syntaxhighlight>
+</section>
+
+<section name="Server" class="server" show="true">
+This example makes the player sit down and stand up using the command /sit.
+<syntaxhighlight lang="lua">
+function toggleSit(thePlayer)
+	if not getElementData(thePlayer, "sitting") then
+		setPedAnimation(thePlayer, "ped", "seat_down", -1, false, false, false, false)
+		setElementData(thePlayer, "sitting", true)
+	else
+		-- If you use again this command then your character stand up
+		setPedAnimation(thePlayer)
+		removeElementData(thePlayer, "sitting")
+	end
+end
+addCommandHandler("sit", toggleSit)
+</syntaxhighlight>
+</section>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.5.7-9.16632|Added retainPedState argument}}
+
+==Issues==
+{{Issues|
+{{GH_Issue|1110|retainPedState in setPedAnimation() does not work when latency reduction is set to 1}}
+{{GH_Issue|1090|A replaced "weapon_crouch" animation gets reset to default when using setPedAnimation()}}
+{{GH_Issue|953|setPedAnimation() "interrupt" and "time" has no effect in certain situations}}
+{{GH_Issue|512|setPedAnimation isn't synced properly on server side}}
+{{GH_Issue|467|Ped animations don't sync for new players}}
+}}
+
+==See Also==
+{{Ped_functions}}
+[[ru:setPedAnimation]]
+[[HU:setPedAnimation]]

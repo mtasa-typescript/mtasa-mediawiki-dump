@@ -1,0 +1,35 @@
+__NOTOC__
+{{Client function}}
+
+{{New feature/item|3.0140|1.3.3|5547|
+This function gets the current aspect ratio set by [[dxSetAspectRatioAdjustmentEnabled]].
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool, float dxIsAspectRatioAdjustmentEnabled ( )
+</syntaxhighlight>
+
+===Returns===
+*'''boolean:''' returns '''true''' when enabled by [[dxSetAspectRatioAdjustmentEnabled]], '''false''' otherwise.
+*'''float:''' aspect ratio set by [[dxSetAspectRatioAdjustmentEnabled]]
+
+==Requirements==
+{{Requirements|n/a|1.3.3-9.05547}}
+
+==Example==
+This example will draw the aspect ratio to screen if aspect ratio was enabled previously.
+<syntaxhighlight lang="lua">
+addEventHandler("onClientRender", root, function()
+    dxSetAspectRatioAdjustmentEnabled(true)
+
+    local enabled, ratio = dxIsAspectRatioAdjustmentEnabled()
+	
+    if(enabled) then
+        dxDrawText("Aspect ratio is: " .. ratio, 250, 250)
+    end
+end)
+</syntaxhighlight>
+
+==See Also==
+{{Drawing_functions}}

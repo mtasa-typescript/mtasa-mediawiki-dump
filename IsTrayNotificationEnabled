@@ -1,0 +1,28 @@
+__NOTOC__ 
+{{Client function}}
+This function returns a boolean value whether the client has enabled tray notifications in his settings or not.
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool isTrayNotificationEnabled ( )</syntaxhighlight> 
+
+===Returns===
+Returns ''true'' if the tray notifications are enabled in the settings, ''false'' otherwise.
+
+==Example== 
+This example shows a chatbox message if the client has enabled tray notifications in his settings.
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+addCommandHandler("traynotifs",
+    function ()
+        if isTrayNotificationEnabled( ) then
+            outputChatBox( "* Tray notifications are enabled" )
+        else
+            outputChatBox( "* Tray notifications are disabled" )
+        end
+    end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_utility_functions}}

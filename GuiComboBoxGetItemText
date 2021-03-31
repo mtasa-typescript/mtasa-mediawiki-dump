@@ -1,0 +1,34 @@
+{{Client function}}
+__NOTOC__
+This function retrieves the text from a specific combobox item.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+string guiComboBoxGetItemText ( element comboBox, int itemId )
+</syntaxhighlight>
+{{OOP||[[Element/GUI/Combobox|GuiComboBox]]:getItemText}}
+
+===Required Arguments=== 
+*'''comboBox:''' The combobox containing the item you're interested in
+*'''itemId:''' The index of the item
+
+===Returns===
+Returns the text of the item if the arguments are right, ''false'' otherwise.
+
+==Example== 
+This outputs selected item's text to the chatbox.
+<syntaxhighlight lang="lua">
+local x,y = guiGetScreenSize()
+local guiWindow = createWindow(x/2-500,y/2-500,500,500,"myWindow",false,nil)
+local comboBox = guiCreateComboBox(0.1,0,1,0.8,0.8,"Select a value please",true,guiWindow)
+guiComboBoxAddItem(comboBox,"value1")
+local item = guiComboBoxGetSelected(comboBox)
+local text = guiComboBoxGetItemText(comboBox, item)
+if text then
+    outputChatBox("You have selected: " .. text) 
+end
+</syntaxhighlight>
+
+==See Also==
+{{GUI functions}}
+{{GUI_events}}

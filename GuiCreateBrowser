@@ -1,0 +1,55 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0150|1.5||
+This function creates a new CEGUI web [[Element/Browser|browser]] element.
+The difference between this, and createBrowser is that, this handles inputs internally, and it can be attached to GUI windows. So this one is more suitable for custom dx based interfaces.
+You can learn more about the differences [https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=737334 here].
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">gui-browser guiCreateBrowser ( float x, float y, float width, float height, bool isLocal, bool isTransparent, bool isRelative [ , element parent = nil ] )</syntaxhighlight>
+{{OOP||[[Element/gui-browser|GuiBrowser]]}}
+
+===Required Arguments===
+*'''x:''' A float of the 2D x position of the browser on a player's screen.  This is affected by the ''relative'' argument.
+*'''y:''' A float of the 2D y position of the browser on a player's screen. This is affected by the ''relative'' argument.
+*'''width:''' The browser's native width. This should be greater than or equal to 1.
+*'''height:''' The browser's native height. This should be greater than or equal to 1.
+*'''isLocal:''' Sets whether the browser can only show local content or content from the internet (see examples over [[CreateBrowser|here]] for more information)
+*'''isTransparent:''' ''true'' if you want the browser to support transparency, ''false'' otherwise
+*'''isRelative:''' This is whether sizes and positioning are relative.  If this is ''true'', then all x,y,width,height floats must be between 0 and 1, representing sizes/positions as a fraction of the screen size. If ''false'', then the size and co-ordinates are based on client's resolution, accessible using [[guiGetScreenSize]].
+
+{{New feature/item|3.0160|1.6||Providing a size of (0,0) will be a hard error.}}
+
+===Optional Arguments===
+*'''parent:''' This is the parent that the radio button is attached to. If the relative argument is true, sizes and positioning will be made relative to this parent. If the relative argument is false, positioning will be the number of offset pixels from the parent's origin. If no parent is passed, the parent will become the screen - causing positioning and sizing according to screen positioning. 
+
+===Returns===
+Returns a [[gui-browser]] element if it was created successfully, ''false'' otherwise. Returns also ''false'', if the user disabled remote pages and ''isLocal'' was set to ''false''.
+
+==Example==
+This examples attaches a web browser to a CEGUI window.
+<syntaxhighlight lang="lua">
+-- In order to render the browser fullscreen, we need to get the dimensions of the screen
+local screenWidth, screenHeight = guiGetScreenSize( )
+
+-- Let's create a new browser in remote mode
+local window = guiCreateWindow( 0, 0, screenWidth, screenHeight, "Web Browser", false )
+local browser = guiCreateBrowser( 0, 28, screenWidth, screenHeight, false, false, false, window )
+local theBrowser = guiGetBrowser( browser ) -- Get the browser element from gui-browser
+
+-- The event onClientBrowserCreated will be triggered after the browser has been initialized
+-- After this event has been triggered we will be able to load our URL
+addEventHandler( "onClientBrowserCreated", theBrowser, 
+	function( )
+		-- After the browser has been initialized, we can load www.youtube.com
+		loadBrowserURL( source, "https://www.youtube.com/" )
+	end
+)
+</syntaxhighlight>
+
+==See Also==
+{{CEF_functions}}
+
+[[hu:guiCreateBrowser]]
+[[RO:guiCreateBrowser]]

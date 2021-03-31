@@ -1,0 +1,25 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20383|This function resets the LOD distance for an object / model ID.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool engineResetModelLODDistance ( int model ) 
+</syntaxhighlight> 
+{{OOP||Engine.resetModelLODDistance}}
+===Required Arguments=== 
+*'''model:''' The model / object ID number you want to reset the LOD distance of.
+
+===Returns===
+Returns ''true'' if the LOD distance was reset to default, or ''false'' if the model argument is incorrect, or the LOD distance hasn't been changed.
+
+==Example== 
+<syntaxhighlight lang="lua">
+TODO
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.20383|}}
+
+==See Also==
+{{Engine_functions}}

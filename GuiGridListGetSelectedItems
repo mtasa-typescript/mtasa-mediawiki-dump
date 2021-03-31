@@ -1,0 +1,60 @@
+{{Client function}}
+__NOTOC__
+This function returns the items selected in the specified [[Element/GUI/Gridlist|grid list]].
+
+Note that for some reason the column ID is 1 lower than it should be, for example 0 is returned but if you try and get the text for column 0 there is nothing, but column 1 has what you clicked on.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+table guiGridListGetSelectedItems ( element gridList )
+</syntaxhighlight>
+{{OOP||[[Element/GUI/Gridlist|GuiGridList]]:getSelectedItems|selectedItems}}
+
+===Required Arguments=== 
+*'''gridList:''' The [[Element/GUI/Gridlist|grid list]] which selected items you want to retrieve.
+
+===Returns===
+Returns a table over the selected items in the [[Element/GUI/Gridlist|grid list]] in this format:
+<syntaxhighlight lang="lua">
+table = {
+    [1] = {
+        ["column"], -- has the first selected item's column ID
+        ["row"] -- has the first selected item's row ID
+    },
+    [2] = {
+        ["column"],-- has the second selected item's column ID
+        ["row"] -- has the second selected item's row ID
+    },
+    ...
+}
+
+
+</syntaxhighlight>
+if everything was successful or ''false'' if invalid arguments were passed.
+
+==Example==
+==Example==
+<syntaxhighlight lang="lua">
+-- This example creates a grid list of all players, clicking "Selected" button will then use guiGridListGetSelectedItems to show all selected items.
+playerWindow = guiCreateWindow(526, 230, 291, 284, "", false)
+gridlistPlayers = guiCreateGridList(9, 23, 272, 201, false, playerWindow)
+guiGridListAddColumn(gridlistPlayers, "Players", 0.9)
+guiGridListSetSelectionMode(gridlistPlayers, 1) -- So can select many players
+for _, players in ipairs(getElementsByType("player")) do 
+	local row = guiGridListAddRow(gridlistPlayers)
+	guiGridListSetItemText(gridlistPlayers, row, 1, getPlayerName(players), false, false)
+end 
+buttonSelectedPlayer = guiCreateButton(9, 227, 272, 20, "Selected", false, playerWindow)
+
+function seeSelected()
+	local selected = guiGridListGetSelectedItems(gridlistPlayers)
+	for i, data in ipairs(selected) do -- Loops through all selected items
+		outputChatBox(guiGridListGetItemText(gridlistPlayers, data["row"], 1)) -- Shows player name of selected players
+	end
+end
+addEventHandler("onClientGUIClick", buttonSelectedPlayer, seeSelected, false)
+</syntaxhighlight>
+
+==See Also==
+{{GUI functions}}
+{{GUI_events}}

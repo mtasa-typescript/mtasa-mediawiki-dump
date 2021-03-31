@@ -1,0 +1,32 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20740|This function makes a [[ped]] exit a [[vehicle]], similar to the enter_exit control state.}}
+
+{{Note|For this function to work on peds, the server and all clients are required to be on version '''1.5.8 r20740''' or newer.}}
+{{Note|This function only works on synced peds and vehicles (ie. created serverside).}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setPedExitVehicle ( ped thePed )
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''thePed:''' The [[player]] or [[ped]] to exit the vehicle.
+
+===Returns===
+Returns ''true'' if the function was successful, ''false'' otherwise.
+
+When this function returns ''true'', the client will ask server for permission to exit a vehicle. Exiting can still fail in the following cases
+*The function is used on a ped, but another client is not on version '''1.5.8 r20740''' or newer.
+
+This function returns ''false'' in the following cases
+*Invalid arguments were parsed.
+*The function is used on a ped but the server is not on version '''1.5.8 r20740''' or newer.
+*Time passed since last enter/exit for this ped is less than 1500 ms.
+*The ped is getting jacked.
+
+==Example==
+{{Needs Example}}
+
+==See Also==
+{{Client ped functions}}

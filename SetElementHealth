@@ -1,0 +1,60 @@
+{{Server client function}}
+__NOTOC__
+This function sets the health for the specified [[element]]. This can be a [[ped]], [[object]] or a [[vehicle]].
+{{Note|In the case of the [[vehicle]] element, the following effects appear, depending on the health value:
+*'''650:''' white steam 0%, black smoke 0%
+*'''450:''' white steam 100%, black smoke 50%
+*'''250:''' white steam 0%, black smoke 100%
+*'''249:''' fire with big black smoke
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setElementHealth ( element theElement, float newHealth )
+</syntaxhighlight>
+{{OOP||[[element]]:setHealth|health|getElementHealth}}
+
+===Required Arguments===
+*'''theElement:''' The [[ped]], [[vehicle]] or [[object]] whose health you want to set.
+*'''newHealth:''' A float indicating the new health to set for the element.
+
+===Returns===
+Returns ''true'' if the new health was set successfully, or ''false'' if invalid arguments were passed.
+
+==Example==
+<section name="Server" class="server" show="true">
+This example adds a 'hpslap' console command that lets players "slap" others (doing 20 damage).
+<syntaxhighlight lang="lua">
+function hpSlap ( sourcePlayer, command, targetPlayerName )
+    -- check if the user has access to it first
+    if not hasObjectPermissionTo(sourcePlayer, "command.slap", false) then
+        outputChatBox ( "You cannot use this command.", sourcePlayer )
+        return false
+    end
+    -- look up the player to be slapped
+    local targetPlayer = getPlayerFromName ( targetPlayerName )
+    -- if there's a player with such name,
+    if targetPlayer then
+        -- subtract 20 from his health
+        setElementHealth ( targetPlayer, getElementHealth(targetPlayer) - 20 )
+    else
+        -- otherwise, output an error message
+        outputChatBox ( "There is no player named " .. targetPlayerName .. "!", sourcePlayer )
+    end
+end
+-- add our function as a handler for "hpslap"
+addCommandHandler ( "hpslap", hpSlap )
+</syntaxhighlight>
+</section>
+<section name="Example 1" class="server" show="true">
+This example setting health by a command.
+<syntaxhighlight lang="lua">
+function Health(player, command, amount)
+    setElementHealth(player, tonumber(amount))
+end
+addCommandHandler("set", Health)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Element functions}}

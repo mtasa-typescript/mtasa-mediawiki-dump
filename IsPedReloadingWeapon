@@ -1,0 +1,32 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0156|1.5.5|11856|
+This function is used to determine whether or not a ped is currently reloading their weapon. Useful to stop certain quick reload exploits.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isPedReloadingWeapon ( ped thePed )
+</syntaxhighlight>
+{{OOP||[[ped]]:isReloadingWeapon|reloadingWeapon}}
+
+===Required Arguments===
+*'''thePed:''' The [[ped]] you are checking.
+
+===Returns===
+Returns ''true'' if the ped is currently reloading a weapon, ''false'' otherwise.
+
+==Example==
+This example checks if the player who enters the ''/amireloading'' command is reloading and outputs a message.
+<syntaxhighlight lang="lua">
+function isHeReloading( )
+    if isPedReloadingWeapon( localPlayer ) then
+        outputChatBox( "You are reloading a weapon" )
+    else
+        outputChatBox( "No, you're not reloading a weapon" )
+    end
+end
+addCommandHandler( "amireloading", isHeReloading )
+</syntaxhighlight>
+
+==See Also==
+{{Client_ped_functions}}

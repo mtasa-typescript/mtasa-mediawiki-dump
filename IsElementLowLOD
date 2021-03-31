@@ -1,0 +1,51 @@
+__NOTOC__
+{{Server client function}}
+This function reveals if an element is low LOD.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isElementLowLOD ( element theElement )
+</syntaxhighlight> 
+{{OOP||[[element]]:isLowLOD||}}
+
+===Required Arguments=== 
+*'''theElement:''' The [[element]] whose low LOD status we want to get.
+
+===Returns===
+Returns ''true'' if the element is low LOD, ''false'' otherwise.
+
+==Example==
+<section name="Clientside" class="client" show="true">
+This example will show how many low lods objects is around you.
+<syntaxhighlight lang="lua">
+addCommandHandler("lowlod",function ()
+    local lowlods = 0
+    for i, obj in ipairs(getElementsByType("object",root,true)) do
+        if isElementLowLOD(obj) then
+            lowlods = lowlods + 1    
+        end
+    end
+    outputChatBox("Was found "..lowlods.." lowlod objects around you.",255,255,0)
+end)
+</syntaxhighlight>
+</section>
+
+<section name="Serverside" class="server" show="false">
+This example will show how many low lods objects is around all the world.
+<syntaxhighlight lang="lua">
+addCommandHandler("lowlod",function ()
+    local lowlods = 0
+    for i, obj in ipairs(getElementsByType("object")) do
+        if isElementLowLOD(obj) then
+            lowlods = lowlods + 1    
+        end
+    end
+    outputChatBox("Was found "..lowlods.." lowlod objects around you.",root,255,255,0)
+end)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.2|1.2}}
+==See Also==
+{{Element_functions}}

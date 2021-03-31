@@ -1,0 +1,34 @@
+__NOTOC__
+{{Server client function}}
+[[debugSleep]] freezes the client/server for the specified time. This means that all synchronization, rendering and script execution will stop except HTTP processing invoked by [[fetchRemote]]. This function only works, if development mode is enabled by [[setDevelopmentMode]] and can be utilised to build a debugger that communicates via HTTP requests with the editor/IDE.
+
+{{Warning|Only use this function if you know what you are doing!|true}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool debugSleep ( int sleep )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''sleep ''': An integer value in milliseconds.
+
+===Returns===
+Returns ''true'' if the development mode is enabled and arguments are correct, ''false'' otherwise.
+
+==Requirements==
+{{Requirements|1.5.4-9.11306|1.5.4-9.11306|}}
+
+==Example== 
+'''Example 1:''' This example would add the command to set the client's freeze time.
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua" side="client">
+addCommandHandler ( "zzz",
+    function ( command, sleep )
+        debugSleep ( sleep )
+    end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_utility_functions}}

@@ -1,0 +1,27 @@
+__NOTOC__ 
+{{Client function}}
+This function checks if player feets are bleeding.
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool isPedFootBloodEnabled(element thePlayer)</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''thePlayer:''' The player to give bloody foot prints to.
+
+===Returns===
+Returns ''true'' if feets are bleeding, '''false''' otherwise
+
+==Example== 
+This example prints whenever players feets are bleeding
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+addCommandHandler("bleeding", function()
+    local bleeding = isPedFootBloodEnabled(localPlayer)
+	
+    outputChatBox("I am " .. (not bleeding and "not" or '') .. " bleeding")
+end)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_ped_functions}}

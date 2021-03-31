@@ -1,0 +1,78 @@
+{{Server client function}}
+{{Needs_Checking|
+*Things like infinite run, fire proof CJ, 150 armor have special activation flags. They need a way to be triggered on/off.
+}}
+
+__NOTOC__
+This function allows you to set the value of a specific statistic for a [[ped]]. '''Visual stats (FAT and BODY_MUSCLE) can only be used on the CJ skin''', they have no effect on other skins.
+
+When this function is used client side, it can only be used on client side created peds.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setPedStat ( ped thePed, int stat, float value )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''thePed''': the [[ped]] whose statistic you want to modify.
+*'''stat''': the stat ID. 
+{{Stats}}
+
+*'''value''': the new value of the stat. It must be between 0 and 1000.
+
+===Returns===
+Returns ''true'' if the statistic was changed succesfully. Returns ''false'' if an invalid player is specified, if the stat-id/value is out of acceptable range or if the FAT or BODY_MUSCLE stats are used on non-CJ players.
+
+==Examples==
+This example allows a player to type the command 'beefcake' to change his player's BODY_MUSCLE stat (#23) to the maximum value of 1000. This will result in him looking really muscular.
+<syntaxhighlight lang="lua">function changeBodyStrength(thePlayer, commandName)
+    -- Output whether the setPlayerStat was successful in changing the BODY_MUSCLE STAT     
+    if setPedStat(thePlayer, 23, 1000) then
+    	outputChatBox("Your player looks really muscular")
+    else
+        outputChatBox("Failed to make your player look muscular.")
+    end
+end
+addCommandHandler("beefcake", changeBodyStrength)
+</syntaxhighlight>
+
+This example adds a ''/upgradeskills'' command to give the player who types it the maximum skill with every weapon and maximum health.
+<syntaxhighlight lang="lua">
+--[[
+
+Skills to upgrade:
+
+24 = Max Player Health
+69 = Weapon Type Pistol Skill
+70 = Weapon Type Pistol Silenced Skill
+71 = Weapon Type Desert Eagle Skill
+72 = Weapon Type Shotgun Skill
+73 = Weapon Type Sawn off Shotgun Skill
+74 = Weapon Type Spas 12 Shotgun Skill
+76 = Weapon Type MP5 Skill
+77 = Weapon Type AK47 Skill
+78 = Weapon Type M4 Skill
+79 = Weapon Type Sniper Rifle Skill
+
+--]]
+
+addCommandHandler("upgradeskills", function(thePlayer)
+   -- Set every stat to 1000 (the maximum value)
+   for _, stat in ipairs({ 24, 69, 70, 71, 72, 73, 74, 76, 77, 78, 79 }) do
+      setPedStat(thePlayer, stat, 1000)
+      outputChatBox("Your game stats upgraded to maximum!", thePlayer, 0, 255, 0, false)
+   end
+      -- Set player health to the maximum, as changing the stat keeps the current one
+      if (isPedDead (thePlayer) ~= true) then
+      setElementHealth(thePlayer, 100 + (getPedStat(ped, 24) - 569) / 4.31 return math.max(1, maxhealth))
+      -- Tell the player what we did
+      outputChatBox("And your health upgraded to maximum!", thePlayer, 0, 255, 0, false)
+      else
+      outputChatBox("Your health can't be restored because you are already dead!", thePlayer, 0, 255, 0, false)
+   end
+end)
+</syntaxhighlight>
+
+==See Also==
+{{Ped functions}}
+[[ru:setPedStat]]

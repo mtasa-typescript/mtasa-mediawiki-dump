@@ -1,0 +1,48 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20397|This function is used to add a new point to an existing [[createColPolygon|colshape polygon]].}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool addColPolygonPoint ( colshape shape, float fX, float fY [, int index = 0 ] )  
+</syntaxhighlight> 
+{{OOP||[[colshape]]:addPoint||removeColPolygonPoint|}}
+
+===Required Arguments=== 
+*'''shape:''' The [[colshape]] polygon you wish add a point to.
+*'''fX:''' The X position of the new bound point.
+*'''fY:''' The Y position of the new bound point.
+
+==Optional Arguments==
+{{OptionalArg}}
+*'''index:''' The index where the new point will be inserted in the polygon. The points are indexed in order, with 1 being the first bound point. Passing 0 will insert the point as the last one in the polygon.
+
+===Returns===
+Returns ''true'' if the polygon was changed, ''false'' if invalid arguments were passed.
+
+===Example===
+<section name="Server" class="server" show="true">
+This examples adds a point to an existing polygon shape by a command.
+<syntaxhighlight lang="lua">
+local shape = createColPolygon(2, 2, 5, 5, 6, 6, 8, 8) -- Somewhere in the map
+function addPointToPolygon(plr, cmd, fX, fY, index)
+    if (not fX or not fY) then
+        outputChatBox("Correct syntax: /addpoint <fX fY>", plr, 255, 25, 25)
+        return false
+    end
+    if (not index or index == 0) then
+        addColPolygonPoint(shape, fX, fY)
+    else
+        addColPolygonPoint(shape, fX, fY, index)
+    end
+    outputChatBox("Point added", plr, 0, 255, 0)
+end
+addCommandHandler("addpoint", addPointToPolygon)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.7-9.20397|1.5.7-9.20397|}}
+
+==See Also==
+{{Collision_shape_functions}}

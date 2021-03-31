@@ -1,0 +1,26 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20397|This function is used to get all bound points in a [[createColPolygon|colshape polygon]].}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+table getColPolygonPoints ( colshape shape )  
+</syntaxhighlight> 
+{{OOP||[[colshape]]:getPoints}}
+
+===Required Arguments=== 
+*'''shape:''' The [[colshape]] polygon you wish to get the points of.
+
+===Returns===
+Returns a [[table]] of coordinates, each coordinate being a [[table]] containing the x and y position of a bound point, ''false'' if invalid arguments were passed.
+
+==Example==
+<syntaxhighlight lang="lua">
+TODO
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.7-9.20397|1.5.7-9.20397|}}
+
+==See Also==
+{{Collision_shape_functions}}

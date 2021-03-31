@@ -1,0 +1,39 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0160|1.5.8|20807|This function is used to change the height of an existing [[createColPolygon|colshape polygon]].
+By default, a colshape polygon is infinitely tall.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setColPolygonHeight( colshape shape, float floor, float ceil )  
+</syntaxhighlight> 
+{{OOP||[[colshape]]:setHeight|}}
+
+===Required Arguments=== 
+*'''shape:''' The [[colshape]] polygon
+*'''floor:''' The polygon floor (lowest Z coordinate). Parse ''false'' to reset this value to 0.
+*'''ceil:''' The polygon ceiling (highest Z coordinate). Parse ''false'' to reset this value to infinitely tall.
+
+===Returns===
+Returns ''true'' if the polygon was changed, ''false'' if invalid arguments were passed.
+
+==Example==
+This example sets every polygon colshape's max heigh to 50 units once resource starts.
+<section name="Server side script" class="server" show="true">
+<syntaxhighlight lang="lua">
+function setPolygonsHeight()
+    for i, v in ipairs(getElementsByType("colshape")) do
+        if (getColShapeType(v) == 4) then -- if it's a polygon colshape do it otherwise don't
+            setColPolygonHeight(v, false, 50)
+        end
+    end
+end
+addEventHandler("onResourceStart", resourceRoot, setPolygonsHeight)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.8-9.20807|1.5.8-9.20807|}}
+
+==See Also==
+{{Collision_shape_functions}}

@@ -1,0 +1,30 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0160|1.5.8|20788|Determines whether or not the transferbox should appear to [[Player|players]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setTransferBoxVisible ( bool visible )
+</syntaxhighlight>
+
+===Required Arguments=== 
+*'''visible:''' The new visibility state.
+
+===Returns===
+Returns ''true'' if the visibility was set successfully, ''false'' otherwise.
+
+==Examples==
+
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+addEventHandler('onResourceStart', resourceRoot, function()
+    setTransferBoxVisible(false)
+end)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.8-9.20788|1.5.8-9.20788|}}
+
+==See Also==
+{{Shared_server_functions}}

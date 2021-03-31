@@ -1,0 +1,29 @@
+__NOTOC__
+{{Client function}}
+
+Gets the current voice of a ped.
+
+==Syntax==
+<syntaxhighlight lang="lua">string, string getPedVoice ( ped thePed )</syntaxhighlight>
+
+===Required Arguments===
+*'''thePed:''' the ped to get the voice of.
+
+===Returns===
+If successul, returns the current voice type name and the voice name of the ped (see [[ped voices]] for possible names). Returns ''false'' in case of failure.
+
+==Example== 
+This example creates a command (/getvoice) that prints to chatbox your ped voice type and name.
+<section name="Example" class="client" show="true">
+<syntaxhighlight lang="lua">
+addCommandHandler ( "getvoice",
+	function ()
+		local voicetype, voicename = getPedVoice(localPlayer)
+		outputChatBox ( "Your ped voice type is " .. tostring(voicetype) .. " and voice name is ".. tostring(voicename).."." )
+	end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client ped functions}}

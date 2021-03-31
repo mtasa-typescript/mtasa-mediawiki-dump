@@ -1,0 +1,29 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20397|This function is used to set the position of a bound point in a [[createColPolygon|colshape polygon]].}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setColPolygonPointPosition ( colshape shape, int index, float fX, float fY )  
+</syntaxhighlight> 
+{{OOP||[[colshape]]:setPointPosition||getColPolygonPointPosition|}}
+
+===Required Arguments=== 
+*'''shape:''' The [[colshape]] polygon you wish to change.
+*'''index:''' The index of the point you wish to change. The points are indexed in order, with 1 being the first bound point.
+*'''fX:''' The new X position of the bound point.
+*'''fY:''' The new Y position of the bound point.
+
+===Returns===
+Returns ''true'' if the polygon was changed, ''false'' if invalid arguments were passed.
+
+==Example==
+<syntaxhighlight lang="lua">
+TODO
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.7-9.20397|1.5.7-9.20397|}}
+
+==See Also==
+{{Collision_shape_functions}}

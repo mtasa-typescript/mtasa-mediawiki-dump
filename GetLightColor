@@ -1,0 +1,28 @@
+__NOTOC__
+{{Client function}}
+
+{{New feature/item|3.0150|1.5.0|7048|
+This function returns the color for a [[Element/Light|light]] element.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+int, int, int getLightColor ( light theLight )
+</syntaxhighlight>
+{{OOP||[[light]]:getColor|color|setLightColor}}
+
+===Required Arguments=== 
+*'''theLight:''' The [[Element/Light|light]] that you wish to retrieve the color of.
+
+=== Returns ===
+Returns three [[int]]s corresponding to the amount of red, green and blue (respectively) of the light, ''false'' if invalid arguments were passed.
+
+===Example===
+<syntaxhighlight lang="lua">
+local light = createLight(0, 0, 0, 4)
+local red, green, blue = getLightColor(light)
+outputChatBox(" light color is " .. red .. ", " .. green .. ", " .. blue)
+</syntaxhighlight>
+
+==See also==
+{{Client_light_functions}}

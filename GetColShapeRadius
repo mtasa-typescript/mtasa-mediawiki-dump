@@ -1,0 +1,26 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0158|1.5.7|20397|This function is used to get the radius of a colshape. Valid types are [[createColCircle|circle]], [[createColSphere|sphere]] and [[createColTube|tube]].}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float getColShapeRadius ( colshape shape )  
+</syntaxhighlight> 
+{{OOP||[[colshape]]:getRadius||setColShapeRadius|}}
+
+===Required Arguments=== 
+*'''shape:''' The [[colshape]] you wish to get the radius of.
+
+===Returns===
+Returns a [[float]] containing the radius of the colshape, ''false'' if an invalid colshape was passed.
+
+==Example==
+<syntaxhighlight lang="lua">
+TODO
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.7-9.20397|1.5.7-9.20397|}}
+
+==See Also==
+{{Collision_shape_functions}}

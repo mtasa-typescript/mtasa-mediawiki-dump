@@ -1,0 +1,29 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0156|1.5.5|13771|This function is used to extinguish all spreading fire, or spreading fire at specified coordinates.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">bool extinguishFire ( [ float x, float y, float z [, float radius = 1.0 ] ] )</syntaxhighlight>
+
+===Optional Arguments===
+*'''x, y, z:''' the coordinates at which any fire will be extinguished.
+*'''radius:''' a [[float]] value indicating the radius in which to extinguish fire.
+
+===Returns===
+Returns ''true'' if successful, ''false'' otherwise.
+
+==Example==
+This example creates 10 fires and then instantly extinguishes them.
+
+<syntaxhighlight lang="lua">
+local start = {0, 0, 4}
+
+for i = 1, 10 do
+    createFire(start[1] + i, start[2], start[3])
+end
+
+extinguishFire(start[1], start[2], start[3], 10)
+</syntaxhighlight>
+
+==See Also==
+{{Client fire functions}}

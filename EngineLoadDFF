@@ -1,0 +1,74 @@
+{{Client function}}
+__NOTOC__{{Note|Please note the loading order that is used in the examples as other orders can cause collisions, textures or the DFF not to load due to technical limitations.}}
+
+This function loads a RenderWare Model (DFF) file into GTA.
+
+To successfully load your model with textures, be sure to use [[engineLoadTXD]] and [[engineImportTXD]] before calling this function. If some error occurs while loading the DFF, MTA will output a message - check out [[DFF error messages]] to know what they mean.
+
+This is a client side function. Be sure to transfer your DFF file by including it in the meta file.
+
+The returned [[DFF]] element is an element in the element tree, just like vehicles and objects. When the dff is destroyed, ie on resource unload or using [[destroyElement]], any elements that use the DFF, such as vehicles or objects will be reset.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+dff engineLoadDFF ( string dff_file / string raw_data ) 
+</syntaxhighlight>
+{{OOP||[[DFF|EngineDFF]]}}
+===Required Arguments=== 
+*'''dff_file / raw_data:''' The [[filepath]] to the DFF file you want to load or whole data buffer of the DFF file.
+
+===Returns===
+Returns a [[DFF]] element if the dff file loaded, ''false'' otherwise.
+
+==Example== 
+'''Example 1:''' This example loads a combination of a custom DFF and TXD file to replace the Euros vehicle in-game. The collisions are embedded inside the DFF file.
+<syntaxhighlight lang="lua">
+outputChatBox ( "> replacing the euros vehicle" )
+
+txd = engineLoadTXD ( "data/euros.txd" )
+engineImportTXD ( txd, 587 )
+dff = engineLoadDFF ( "data/euros.dff" )
+engineReplaceModel ( dff, 587 )
+</syntaxhighlight>
+
+'''Example 2:''' This example replaces a standard SA skin (in this example ID '190) with a custom skin model (DFF & TXD)
+<syntaxhighlight lang="lua">
+addEventHandler ( "onClientResourceStart", resourceRoot,
+	function ()
+		txd = engineLoadTXD ( "skinmodel.txd" ); -- change 'skinmodel' to your mod's file name
+		engineImportTXD ( txd, 190 ); -- change the ID 190 into the GTA skin ID you with to replace with mod
+		dff = engineLoadDFF ( "skinmodel.dff" ); -- change 'skinmodel' to your mod's file name
+		engineReplaceModel ( dff, 190 ); -- change the ID 190 into the GTA skin ID you with to replace with mod
+	end
+);
+</syntaxhighlight>
+
+'''Example 3:''' This example replaces a default weapon with a custom weapon mod (TXD & DFF)
+<syntaxhighlight lang="lua">
+function replaceWeapon() 
+txd = engineLoadTXD ( "m4.txd" )
+engineImportTXD ( txd, 356)
+dff = engineLoadDFF ( "m4.dff") -- use weapon model ID, not GTA weapon ID (model ID from https://wiki.multitheftauto.com/wiki/Weapons)
+engineReplaceModel ( dff, 356) -- Likewise, model ID, for M4 as example it's 356
+
+end
+addEventHandler ( "onClientResourceStart", resourceRoot, replaceWeapon)
+</syntaxhighlight>
+
+'''Example 4:''' This example loads a combination of custom TXD, COL and DFF files to replace an in-game model of a set of floors.
+<syntaxhighlight lang="lua">
+outputChatBox ( "> loading floor objects" )
+col_floors = engineLoadCOL ( "models/office_floors.col" )
+engineReplaceCOL ( col_floors, 3781 )
+txd_floors = engineLoadTXD ( "models/office_floors.txd" )
+engineImportTXD ( txd_floors, 3781 )
+dff_floors = engineLoadDFF ( "models/office_floors.dff" )
+engineReplaceModel ( dff_floors, 3781 )
+</syntaxhighlight>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.4.1-9.07088|Added option to use raw data instead of a file name}}
+
+==See Also==
+{{Engine_functions}}

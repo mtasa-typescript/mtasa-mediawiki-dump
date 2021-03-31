@@ -1,0 +1,38 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0157|1.5.6|18866|This function gets the player's keyboard layout settings, which they are currently (keyboard layout can be changed at any moment) using at the time of invocation.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">table getKeyboardLayout ()</syntaxhighlight>
+
+===Returns===
+Returns a ''table'' with keyboard layout properties:
+
+{| class="wikitable" style="cellpadding: 10px;"
+|-
+! Property || Values and description
+|-
+| <code>readingLayout</code> ||
+    {| class="prettytable"
+    |-
+    | <code>"ltr"</code> || Left to right (English)
+    |-
+    | <code>"rtl"</code> || Right to left (Arabic, Hebrew)
+    |-
+    | <code>"ttb-rtl-ltr"</code> || Either read vertically from top to bottom with columns going from right to left, or read in horizontal rows from left to right, as for the Japanese (Japan) locale.
+    |-
+    | <code>"ttb-ltr"</code> || Read vertically from top to bottom with columns going from left to right, as for the Mongolian (Mongolian) locale.
+    |}
+|}
+
+==Example==
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+addCommandHandler("layout", function()
+    outputConsole( inspect( getKeyboardLayout() ) )--output keyboard layout in console (F8)
+end)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_utility_functions}}

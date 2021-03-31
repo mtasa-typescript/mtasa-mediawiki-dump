@@ -1,0 +1,107 @@
+__NOTOC__ 
+{{Client function}}
+This function gets the wave form data for an audio stream which is a table of floats representing the current audio frame as a wave.
+This allows things like visualisations.
+
+{{New feature/item|3.0132|1.3.2||
+If the element is a player, this function will use the players voice.
+}}
+==Syntax== 
+<syntaxhighlight lang="lua">table getSoundWaveData ( element sound, int iSamples )</syntaxhighlight> 
+{{OOP||[[sound]]:getWaveData}}
+===Required Arguments=== 
+*'''sound:''' a [[sound]] [[element]] that is created using [[playSound]] or [[playSound3D]]. Streams are also supported
+*'''iSamples:''' allowed samples are 256, 512, 1024, 2048, 4096, 8192 and 16384.
+
+===Returns===
+Returns a [[table]] of '''iSamples''' ''floats'' representing the current audio frame waveform.
+Returns ''false'' if the sound is not playing yet or hasn't buffered in the
+case of streams.
+
+==Example==
+This example creates a sound visualizer on the top left corner of the screen.
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+soundHandler = playSound ( "sound.wav" )
+
+function onSoundPlayRender ( )
+    if ( soundHandler ) then
+        local waveData = getSoundWaveData ( soundHandler, 256 )
+	if ( waveData ) then
+            for i=0,255 do
+                dxDrawRectangle ( i, 128, 1, waveData[i] * 128)
+            end
+        end
+    end
+end
+addEventHandler ( "onClientRender", getRootElement(), onSoundPlayRender )
+</syntaxhighlight>
+</section>
+This example creates a sound viewer, but only with bars down.
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+soundHandler = playSound ("audio.mp3")
+local samples = 256
+
+function renderWave ()
+    if (isElement (soundHandler)) then
+        local waveData = getSoundWaveData (soundHandler, samples)
+        for i=0, samples-1 do
+            if (waveData) then -- Avoid NaN values.
+                dxDrawRectangle (i, 128, 1, math.abs (waveData[i]) * 128)
+            end
+        end
+    end
+end
+addEventHandler ("onClientRender", root, renderWave)
+</syntaxhighlight>
+</section>
+This example creates a sound viewer, but only with bars up.
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+soundHandler = playSound ("audio.mp3")
+local samples = 256
+
+function renderWave ()
+    if (isElement (soundHandler)) then
+        local waveData = getSoundWaveData (soundHandler, samples)
+        for i=0, samples-1 do
+            if (waveData) then -- Avoid NaN values.
+                dxDrawRectangle (i, 128, 1, math.abs (waveData[i]) * -128)
+            end
+        end
+    end
+end
+addEventHandler ("onClientRender", root, renderWave)
+</syntaxhighlight>
+</section>
+This example creates a sound viewer on the bottom right corner of the screen.
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+soundHandler = playSound ("audio.mp3")
+local x, y = guiGetScreenSize ()
+local samples = 256
+
+function renderWave ()
+    if (isElement (soundHandler)) then
+        local waveData = getSoundWaveData (soundHandler, samples)
+        for i=0, samples-1 do
+            if (waveData) then -- Avoid NaN values.
+                dxDrawRectangle ((x-samples)+i, y-128, 1, waveData[i] * 128)
+            end
+        end
+    end
+end
+addEventHandler ("onClientRender", root, renderWave)
+</syntaxhighlight>
+</section>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.3.2|Added player element to use a players voice}}
+
+==See Also==
+{{Client_audio_functions}}
+
+[[hu:getSoundWaveData]]
+[[ar:getSoundWaveData]]

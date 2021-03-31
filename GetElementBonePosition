@@ -1,0 +1,36 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20704|Returns the 3D world coordinates of a specific bone of a given [[element]]. Currently the following element types are accepted:
+* [[Element/Player|Player]]
+* [[Element/Ped|Ped]]
+}}
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float, float, float getElementBonePosition ( element theElement, int bone )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''theElement:''' the element to get the bone position on.
+*'''bone:''' the ID of the bone to get the position of. See [[Bone IDs]]
+
+===Returns===
+Returns the x, y, z world position of the bone.
+
+==Example==
+This example outputs the x, y, z world position of the local player bone specified through a command.
+<syntaxhighlight lang="lua">
+function getBonePosition(cmd, ID)
+    if (not ID) then
+        outputChatBox("You didn't insert an ID", 255, 0, 0)
+        return false
+    end
+    local x, y, z = getElementBonePosition(localPlayer, ID)
+    outputChatBox("The bone position is: "..x..", "..y..", "..z)
+end
+addCommandHandler("getboneposition", getBonePosition)
+</syntaxhighlight>
+
+==See Also==
+{{Client_element_functions}}

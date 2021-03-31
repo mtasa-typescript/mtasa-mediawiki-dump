@@ -1,0 +1,32 @@
+{{Client function}}
+__NOTOC__
+This function is used to create columns in grid lists.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int guiGridListAddColumn ( element gridList, string title, float width )
+</syntaxhighlight>
+{{OOP||[[Element/GUI/Gridlist|GuiGridList]]:addColumn}}
+
+===Required Arguments=== 
+*'''gridList:''' The grid list you want to add a column to
+*'''title:''' Title of the column
+*'''width:''' Column width, relative to the grid list width
+
+===Returns===
+Returns the column id if it was created, ''false'' otherwise.
+
+==Example== 
+This example creates a player list on the right side of the screen and fills it with the currently connected players.
+<syntaxhighlight lang="lua">
+local playerList = guiCreateGridList(0.80, 0.40, 0.15, 0.35, true)
+guiGridListAddColumn(playerList, "Player", 0.85)
+
+for _, player in ipairs(getElementsByType("player")) do
+	guiGridListAddRow(playerList, getPlayerName(player))
+end
+</syntaxhighlight>
+
+==See Also==
+{{GUI functions}}
+{{GUI_events}}

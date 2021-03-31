@@ -1,0 +1,44 @@
+__NOTOC__ 
+{{Client function}}
+This function is used to change the seek position of the specified [[sound]] element.
+Use a player element to control a players voice with this function.
+
+{{Note|
+*To set position of a remote audio file you have to pause it first, then set the position and then unpause it.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool setSoundPosition ( element theSound, float pos )</syntaxhighlight> 
+{{OOP||[[sound]]:setPlaybackPosition|playbackPosition|getSoundPosition}}
+===Required Arguments=== 
+*'''theSound:''' the [[sound]] element which seek position you want to modify.
+*'''pos:''' a [[float]] value representing the new seek position of the [[sound]] element in seconds.
+
+===Returns===
+Returns ''true'' if the [[sound]] element's seek position was successfully changed, ''false'' otherwise.
+
+==Example== 
+This example allows the player to set how many milliseconds into the song he wants it to play from
+<syntaxhighlight lang="lua">
+theSound = playSound("music/song.mp3")
+function setSongPos(cmd, tm)
+    tm = tonumber(tm)
+    local ssp = setSoundPosition(theSound,tm)
+    if ssp then
+        outputChatBox("Sound is now playing from: "..tostring(tm))
+    else
+        outputChatBox("An error has occured.")
+    end
+end
+addCommandHandler("skipsong", setSongPos)
+</syntaxhighlight>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.3.2|Added player element for voice control}}
+
+==See Also==
+{{Client_audio_functions}}
+
+[[hu:setSoundPosition]]
+[[ar:setSoundPosition]]
+[[ro:setSoundPosition]]

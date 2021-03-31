@@ -1,0 +1,50 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20704|This function sets the rotation of a specific bone relative to the element. Currently the following element types are accepted:
+* [[Element/Player|Player]]
+* [[Element/Ped|Ped]]
+}}
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setElementBoneRotation ( element theElement, int bone, float yaw, float pitch, float roll )
+</syntaxhighlight>
+
+[[Image:The-yaw-pitch-and-roll-angles-in-the-human-head-motion-11.png|thumb|Rotation axes]]
+
+===Required Arguments===
+*'''theElement:''' the element to set the bone rotation on.
+*'''bone:''' the ID of the bone to set the rotation of. See [[Bone IDs]]
+*'''yaw:''' the 'yaw' rotation value.
+*'''pitch:''' the 'pitch' rotation value.
+*'''roll:''' the 'roll' rotation value.
+
+===Returns===
+Returns ''true'' if the function was successful, ''false'' otherwise.
+
+'''Note:''' [[updateElementRpHAnim]] must be called after this function to apply bone rotation.
+
+==Example==
+This example shows how you can turn a local player into a so-called 'Helicopter'.
+<syntaxhighlight lang="lua">local custom_yaw = 0
+
+setTimer(function()
+    custom_yaw = custom_yaw + 20
+end, 10, 0)
+
+local shoulders = {22, 32}
+
+function changeBoneRotation()
+    local yaw, pitch, roll = getElementBoneRotation(localPlayer, 2)
+    setElementBoneRotation(localPlayer, 2, custom_yaw, pitch, roll)
+    for key, value in pairs(shoulders) do
+       setElementBoneRotation(localPlayer, value, 0, 0, 0)
+    end
+    updateElementRpHAnim(localPlayer)
+end
+addEventHandler("onClientPedsProcessed", getRootElement(), changeBoneRotation)
+</syntaxhighlight>
+
+==See Also==
+{{Client_element_functions}}

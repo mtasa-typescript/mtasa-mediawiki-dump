@@ -1,0 +1,24 @@
+__NOTOC__
+{{Server client function}}
+This function returns the [https://en.wikipedia.org/wiki/Base64 base64] representation of the encoded block of data
+
+==Syntax==
+<syntaxhighlight lang="lua">
+string base64Encode ( string data )
+</syntaxhighlight>
+
+===Required arguments===
+*'''data:''' The block of data you want to encode
+
+===Returns===
+Returns the [https://en.wikipedia.org/wiki/Base64 base64] representation of the encoded data if the encoding process was successfully completed, ''false'' otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">
+local k = base64Encode("Hello, world!")
+outputConsole(k)
+--Output: SGVsbG8sIHdvcmxkIQ==
+</syntaxhighlight>
+
+==See Also==
+{{Utility_functions}}

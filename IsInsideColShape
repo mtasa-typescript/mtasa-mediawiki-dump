@@ -1,0 +1,31 @@
+__NOTOC__ 
+{{Server client function}}
+{{New feature/item|3.0156|1.5.5|12286|This function checks if a 3D position is inside a colshape or not.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool isInsideColShape ( colshape theShape, float posX, float posY, float posZ )
+</syntaxhighlight> 
+{{OOP||[[colshape]]:isInside}}
+
+===Required Arguments=== 
+*'''theShape:''' The colshape you're checking the position against.
+*'''posX:''' The X coordinate of the position you're checking.
+*'''posY:''' The Y coordinate of the position you're checking.
+*'''posZ:''' The Z coordinate of the position you're checking.
+
+===Returns===
+Returns ''true'' if the position is inside the colshape, ''false'' if it isn't or if any parameters are invalid.
+
+==Example== 
+This function checks if an element is within a colshape.
+<syntaxhighlight lang="lua">
+function isElementInsideColShape( theElement, theColShape )
+    return isInsideColShape( theColShape, getElementPosition( theElement ) )
+end
+</syntaxhighlight>
+
+==See Also==
+{{Collision shape functions}}
+
+[[hu:isInsideColShape]]

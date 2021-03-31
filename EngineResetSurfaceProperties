@@ -1,0 +1,22 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0157|1.5.6|16365|This function resets a surface property to its default value. If no ID is provided, it will reset all surfaces' properties to their original values.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+mixed engineResetSurfaceProperties ( [ int surfaceID ] )
+</syntaxhighlight> 
+===Required Arguments=== 
+*'''surfaceID:''' [[Material IDs|Material ID]] from 0 to 178
+
+===Returns===
+Returns ''true'' if the function executed succesfully, ''false'' otherwise.
+
+== Properties ==
+{{Material_Properties}}
+
+==Example== 
+{{Example}}
+
+==See Also==
+{{Engine_functions}}

@@ -1,0 +1,72 @@
+{{Client function}}
+__NOTOC__
+{{New items|3.0140|1.4|
+This function gets the player's localization setting as set in the MTA client.
+}}
+==Syntax== 
+<syntaxhighlight lang="lua">
+table getLocalization ( )
+</syntaxhighlight> 
+
+===Returns===
+Returns a [[table]] with the following entries:
+*'''code :''' The language code ''(eg. "en_US" for "English (United States)" or "ar" for "Arabic")''.
+*'''name :''' The name of the language ''(eg. "English (United States)" or "Arabic")''.
+
+==Example==
+This example outputs simple ''Welcome'' message at the resource start (also when player joins the game if the resource is already running).
+<syntaxhighlight lang="lua">
+local msg = {cs = "Vítejte", fr = "Accueil", de = "Willkommen", pl = "Powitanie", hu = "Üdv"}
+
+addEventHandler("onClientResourceStart", resourceRoot, 
+	function ()
+		local languageCode = getLocalization()["code"]
+		if msg[languageCode] then --Check if the message is avaible in client's language
+			outputChatBox(msg[languageCode] .. "!") --Output it
+		else
+			outputChatBox("Welcome!") --Output English for any other language
+		end
+	end)
+</syntaxhighlight>
+This is a list of all (probably all) the language codes used in MTA in a table with the full name of the language.
+<syntaxhighlight lang="lua">
+langTable = {
+	["ar"] = "Arabic",
+	["bg"] = "Bulgarian",
+	["cs"] = "Czech",
+	["da"] = "Danish",
+	["de"] = "German",
+	["en_US"] = "English",
+	["el"] = "Greek",
+	["es"] = "Spanish",
+	["et"] = "Estonian",
+	["fr"] = "French",
+	["hr"] = "Croatian",
+	["hu"] = "Hungarian",
+	["id"] = "Indonesian",
+	["it"] = "Italian",
+	["ja"] = "Japanese",
+	["lt"] = "Lithuanian",
+	["lv"] = "Latvian",
+	["mk"] = "Macedonian",
+	["nb"] = "Norwegian",
+	["nl"] = "Dutch",
+	["pt_BR"] = "Brazilian",
+	["pl"] = "Polish",
+	["ru"] = "Russian",
+	["ro"] = "Romanian",
+	["sl"] = "Slovenian",
+	["sv"] = "Swedish",
+	["sk"] = "Slovak",
+	["tr"] = "Turkish",
+	["uk"] = "Ukrainian",
+	["vi"] = "Vietnamese",
+	["zh_CN"] = "Chinese",
+	["zh_TW"] = "Taiwanese",
+
+}
+</syntaxhighlight>
+
+==See Also==
+{{Client_utility_functions}}
+[[ru:GetLocalization]]

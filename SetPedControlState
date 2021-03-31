@@ -1,0 +1,39 @@
+__NOTOC__
+{{Client function}}
+This function makes a [[ped]] or [[player]] press or release a certain control.
+{{Note|You can't use enter_exit or enter_passenger on a ped. Please use [[setPedEnterVehicle]] and [[setPedExitVehicle]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setPedControlState ( ped thePed, string control, bool state )
+</syntaxhighlight>
+{{OOP||[[Ped]]:setControlState}}
+
+===Required Arguments===
+*'''thePed:''' the ped you want to press or release a control.
+*'''control:''' the name of the control of which to change the state. See [[control names]] for a list of valid names.
+*'''state:''' the new control state. ''true'' means pressed, ''false'' is released.
+
+===Returns===
+Returns ''true'' if successful, ''false'' if otherwise.
+
+==Example==
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function newPed()
+    local x, y, z = getElementPosition(localPlayer)
+    local ped = createPed(0, x + 1, y, z)
+    if ped then 
+        setPedControlState(ped, "forwards", true)
+    end 
+end
+addCommandHandler("ped", newPed)
+</syntaxhighlight>
+</section>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.5.5-3.11427|Works with the [[getLocalPlayer|local player]] as well. Deprecated [[setControlState]] and [[getControlState]].}}
+
+==See Also==
+{{Client ped functions}}

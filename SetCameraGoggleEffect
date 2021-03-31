@@ -1,0 +1,38 @@
+__NOTOC__
+{{Client function}}
+This function allows you to set the camera's current goggle effect. This means you can activate nightvision or infrared effects by script
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setCameraGoggleEffect ( string goggleEffect [, bool noiseEnabled = true ] )
+</syntaxhighlight>
+{{OOP||Camera.setGoggleEffect|goggleEffect|getCameraGoggleEffect}}
+===Required Arguments===
+*'''goggleEffect''': the goggle effect you wish to set
+{{Camera goggle modes}}
+{{New feature/item|3.0156|1.5.5|13999|
+*'''noiseEnabled''': whether or not there should be a fuzzy noise effect
+}}
+
+===Returns===
+* ''true'' if the effect was set correctly.
+* ''false'' otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">
+function nightvision()
+   local effect = (getCameraGoggleEffect() == "normal") and "nightvision" or "normal"
+   setCameraGoggleEffect(effect)
+end
+addCommandHandler("nightvision", nightvision)
+</syntaxhighlight>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.5.5-9.13999|Added noiseEnabled argument}}
+
+==See Also==
+{{Client camera functions}}
+
+[[hu:setCameraGoggleEffect]]
+[[RO:setCameraGoggleEffect]]

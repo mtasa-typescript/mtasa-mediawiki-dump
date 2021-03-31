@@ -1,0 +1,53 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0156|1.5.5|13846|Checks whether or not a ped is currently wearing a jetpack.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isPedWearingJetpack ( ped thePed )
+</syntaxhighlight>
+
+{{OOP||[[ped]]:isWearingJetpack|jetpack}}
+
+===Required Arguments===
+*'''thePed:''' the ped you want to check
+
+===Returns===
+Returns ''true'' if the ped is carrying a jetpack, ''false'' if he is not or an invalid element was passed.
+
+==Example==
+<section name="Server" class="server" show="true">
+'''Example 1:''' This examples adds a "jetpack" console command, which toggles a jetpack for the player.
+<syntaxhighlight lang="lua">
+addCommandHandler ( "jetpack",
+    function ( player )
+        setPedWearingJetpack ( player, not isPedWearingJetpack ( player ) )
+    end
+)
+</syntaxhighlight>
+</section>
+
+<section name="Server" class="server" show="true">
+'''Example 2:''' This example provides a check to see if players have a jetpack when they enter a particular marker.
+<syntaxhighlight lang="lua">
+function onWarpMarkerHit ( player )
+   -- check whether the player has a jetpack
+   if ( not isPedWearingJetpack ( player ) ) then
+      -- warp the player to their destination
+      setElementPosition ( player, 1337, 1337, 50 )
+   else
+      -- tell the player to remove their jetpack
+      outputChatBox ( "You must remove your jetpack to use this marker!", player )
+   end
+end
+
+-- create a marker and add the function above to its onMarkerHit event
+addEventHandler ( "onMarkerHit", createMarker( 3180, 200, 27 ), onWarpMarkerHit )
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.5-9.13846|1.5.5-9.13846|}}
+
+==See Also==
+{{Ped functions}}

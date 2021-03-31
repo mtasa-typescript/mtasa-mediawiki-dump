@@ -1,0 +1,36 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0156|1.5.5|13814|This function checks if an edit box is masked.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool guiEditIsMasked ( gui-edit guiEdit )
+</syntaxhighlight>
+{{OOP|||masked|guiEditSetMasked}}
+
+===Required Arguments=== 
+*'''guiEdit:''' the edit box to check masked flag of.
+
+===Returns===
+Returns ''true'' if the edit box is masked, ''false'' if not, ''nil'' if an invalid edit box was provided.
+
+==Example== 
+{{Client function}}
+<syntaxhighlight lang="lua">
+function createPasswordEdit( )
+    local password = guiCreateEdit( 0.845, 0.94, 0.15, 0.05, "password", true ) -- create edit box for a password
+    if password then -- if it was successfully created
+        guiEditSetMasked( password, true ) -- make it masked
+    end
+    addCommandHandler( "isMasked",
+        function( )
+            local masked = guiEditIsMasked( password ) -- check the edit box masked flag
+            outputChatBox( "Edit field is " .. ( masked and "masked" or "not masked" ) ) -- show info about edit box
+        end
+    )
+end
+addEventHandler( "onClientResourceStart", resourceRoot, createPasswordEdit )</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

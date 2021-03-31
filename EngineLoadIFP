@@ -1,0 +1,60 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0156|1.5.5|12195|
+This function loads an animation library (IFP) file into GTA with a custom block name. All three IFP formats are supported ANPK, ANP2, and ANP3. Unfortunately, GTA 3 animations are not supported, however, you can load GTA:VC IFP files using this function. You don't have to replace any animation to play a custom one, to play a custom animation, load the IFP file using this function, then use [[SetPedAnimation|setPedAnimation]].
+
+If you wish to replace a GTA internal animation with a custom one, you can use [[EngineReplaceAnimation|engineReplaceAnimation]]. To unload the IFP file, use [[DestroyElement|destroyElement]], restarting or stopping the resource can also unload the IFP file automatically.}}
+==Syntax== 
+<syntaxhighlight lang="lua">
+ifp engineLoadIFP ( string ifp_file / string raw_data, string custom_block_name )
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''ifp_file / raw_data:''' the [[filepath|filepath]] to the IFP file you want to load or whole data buffer of the IFP file.
+*'''custom_block_name:''' the new block name for the IFP file. You cannot use the GTA default [[Animations|internal block]] names. '''You should namespace this name''' using a string like ''resource.blockname''
+
+===Returns===
+Returns an [[IFP]] element if the IFP file loaded, ''false'' otherwise.
+{{Tip|If you want to synchronize animations, you can check [[https://drive.google.com/open?id=1L2NkQYuLS0YdoHECvxVRMdPBbEgaYUfH ifp_demo]] resource}}
+
+==Example==
+This example loads a custom IFP file ([https://drive.google.com/file/d/1XZNNCCn7xhBNbhaIbsBubky3BEj06zWp/view?usp=sharing parkour.ifp]), adds a command "animation" that takes 1 parameter as animation name for playing animations within that IFP.
+
+<syntaxhighlight lang="lua">
+--[[
+credits to Paul_Cortez for the IFP file.
+parkour.ifp has following animations:
+
+BckHndSpingBTuck
+BckHndSping
+CartWheel
+FrntHndSpring
+HandPlant
+]]
+
+-- you can choose any name you want, do not choose a default GTA:SA block name
+-- Remember to namespace your block. That's why it starts with `test.`
+local customBlockName = "test.myNewBlock"
+
+-- load the IFP file
+local IFP = engineLoadIFP( "parkour.ifp", customBlockName )
+
+-- let us know if IFP failed to load
+if not IFP then
+    outputChatBox( "Failed to load 'parkour.ifp'" )
+end
+
+-- execute the command using /animation <NameOfCustomAnimation>
+-- for example, /animation CartWheel
+function setanimation( _, animationName )
+    -- check if IFP file has loaded
+    if IFP then
+        -- now play our custom animation
+        setPedAnimation( localPlayer, customBlockName, animationName )
+    end
+end
+addCommandHandler( "animation", setanimation )
+</syntaxhighlight>
+
+==See Also==
+{{Engine_functions}}

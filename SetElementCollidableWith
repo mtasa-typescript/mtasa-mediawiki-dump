@@ -1,0 +1,41 @@
+{{Client function}}
+__NOTOC__ 
+This function can be used to set an element to collide with another element. An element with collisions disabled does not interact physically with the other element.<br>
+'''Note:''' You can only use this function with the element types listed below.
+*[[Player]]
+*[[Ped]]
+*[[Vehicle]]
+*[[Object]]
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setElementCollidableWith ( element theElement, element withElement, bool enabled ) 
+</syntaxhighlight>
+{{OOP||[[element]]:setCollidableWith||isElementCollidableWith}}
+
+===Required Arguments=== 
+*'''theElement:''' The [[element]] which colliding you want to change
+*'''withElement:''' The other [[element]] you wish the first entity to collide with
+*'''enabled:''' A boolean to indicate whether elements should be able to collide with eachother (''true'') or not (''false'')
+
+===Returns===
+Returns ''true'' if the collisions were set succesfully, ''false'' otherwise.
+
+==Example== 
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function ghostmode_on()
+	local playerVehicle = getPedOccupiedVehicle(localPlayer) -- Get the players vehicle
+	if(playerVehicle) then -- Check the return value.
+		for i,v in pairs(getElementsByType("vehicle")) do --LOOP through all vehicles
+			setElementCollidableWith(v, playerVehicle, false) -- Set the collison off with the other vehicles.
+		end
+		outputChatBox("You are now a Ghost")
+	end
+end
+addCommandHandler("ghostmode", ghostmode_on) -- Add the /ghostmode Command.
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client element functions}}

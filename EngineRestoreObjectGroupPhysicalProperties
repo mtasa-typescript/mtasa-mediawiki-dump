@@ -1,0 +1,32 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0157|1.5.7|19626|This function restores physical property of given properties group.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool engineRestoreObjectGroupPhysicalProperties ( int groupID, objectgroup-modifiable property )</syntaxhighlight> 
+===Required Arguments===
+*'''groupID''': the id of physical properties group which you wish to restore a property of.
+*'''objectgroup-modifiable''': the property which you wish to restore, as per table below.
+
+===Returns===
+Returns '''true''' if everything went well, error is raised otherwise.
+
+===Properties===
+{{Physical_Properties}}
+
+==Example== 
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function restoreProperty(_, group, property)
+    engineRestoreObjectGroupPhysicalProperties(tonumber(group), property)
+end
+addCommandHandler ( "restoreProperty", restoreProperty )
+--restoreProperty(120, "special_col_response")
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.19626|}}
+
+==See Also==
+{{Client_object_functions}}

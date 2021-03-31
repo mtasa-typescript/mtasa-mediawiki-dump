@@ -1,0 +1,62 @@
+__NOTOC__ 
+{{Server client function}}
+Creates an [[object]] [[element]] at a given position and rotation.
+{{Note|Dynamic objects do not automatically have physics applied to them. Use [[setElementVelocity]](object, 0, 0, 0) to fix this.}}
+{{Note|Creating objects server-side can help for syncing the objects with all clients (for example, if you create a glass object client-side, it will break only for the client that broke the glass. Server-side, it will broke for all clients.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">object createObject ( int modelId, float x, float y, float z, [ float rx, float ry, float rz, bool isLowLOD = false ] )</syntaxhighlight> 
+{{OOP||[[Object]]||}}
+
+===Required Arguments===
+*'''modelId:''' A whole integer specifying the GTA:SA object model ID.
+*'''x:''' A floating point number representing the X coordinate on the map.
+*'''y:''' A floating point number representing the Y coordinate on the map.
+*'''z:''' A floating point number representing the Z coordinate on the map.
+
+===Optional Arguments===
+{{OptionalArg}} 
+*'''rx:''' A floating point number representing the rotation about the X axis in degrees.
+*'''ry:''' A floating point number representing the rotation about the Y axis in degrees.
+*'''rz:''' A floating point number representing the rotation about the Z axis in degrees.
+{{New items|3.0120|1.2|
+*'''isLowLOD:''' A bool value specifying if the object will be low LOD. A low LOD object has no collision and a longer draw distance.
+}}
+
+===Returns===
+* Returns the [[object]] element if the creation was successful, ''false'' otherwise.
+
+==Example==
+<section name="Server-only Example 1" class="server" show="true">
+This example creates an object when the resource starts:
+<syntaxhighlight lang="lua">
+function loadMapObjects()
+   -- create an object at a specified position with a specified rotation
+   createObject(1337, 5540.6654, 1020.55122, 1240.545, 90, 0, 0)
+end
+addEventHandler("onResourceStart", resourceRoot, loadMapObjects)
+</syntaxhighlight>
+</section>
+
+<section name="Server-only Example 2" class="server" show="true">
+This example creates an object near the player who write /createObject in the chat:
+<syntaxhighlight lang="lua">
+-- this function is called whenever someone types 'createObject' in the console:
+function createObjectCommand(thePlayer, commandName)
+   if (thePlayer) then
+      local x, y, z = getElementPosition(thePlayer)
+      -- create a object next to the player:
+      local theObject = createObject(980, x + 2, y + 2, z, 0, 0, 0)
+      if (theObject) then -- check if the object was created successfully
+         outputChatBox("Object created successfully.", thePlayer)
+      else
+         outputChatBox("Failed to create the object.", thePlayer)
+      end
+   end
+end
+addCommandHandler("createobject", createObjectCommand)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Object functions}}

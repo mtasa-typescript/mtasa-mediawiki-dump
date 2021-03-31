@@ -1,0 +1,44 @@
+{{Server client function}}
+__NOTOC__
+{{New feature/item|3.0156|1.5.5|12286|This function is used to retrieve the type of an colshape.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int getColShapeType ( colshape shape )  
+</syntaxhighlight> 
+{{OOP||[[colshape]]:getShapeType|shapeType|}}
+
+===Required Arguments=== 
+*'''shape:''' The [[colshape]] you wish to get the type of.
+
+===Returns===
+Returns ''false'' if invalid arguments were passed, or an [[int]]eger of the type of the colshape, which include:
+*'''0:''' circle
+*'''1:''' cuboid
+*'''2:''' sphere
+*'''3:''' rectangle
+*'''4:''' polygon
+*'''5:''' tube
+
+==Example==
+This example outputs the type of all colshapes.
+<syntaxhighlight lang="lua">
+local circle = createColCircle(0, 0, 1)
+local cubboid = createColCuboid(0, 0, 0, 0, 0, 0)
+local sphere = createColSphere(0, 0, 0, 0)
+local rectangle = createColRectangle(0, 0, 0, 0)
+local polygon = createColPolygon(0, 0, 0, 0, 0, 0, 0, 0)
+local tube = createColTube(0, 0, 0, 0, 0)
+
+iprint("circle", getColShapeType(circle), circle:getShapeType(), circle.shapeType)
+iprint("cubboid", getColShapeType(cubboid), cubboid:getShapeType(), cubboid.shapeType)
+iprint("sphere", getColShapeType(sphere), sphere:getShapeType(), sphere.shapeType)
+iprint("rectangle", getColShapeType(rectangle), rectangle:getShapeType(), rectangle.shapeType)
+iprint("polygon", getColShapeType(polygon), polygon:getShapeType(), polygon.shapeType)
+iprint("tube", getColShapeType(tube), tube:getShapeType(), tube.shapeType)
+</syntaxhighlight>
+
+==See Also==
+{{Collision_shape_functions}}
+
+[[hu:getColShapeType]]

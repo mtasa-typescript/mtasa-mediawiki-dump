@@ -1,0 +1,34 @@
+{{client function}}
+{{New feature/item|3.0156|1.5.5|13771|This function is used to get the vertical scroll position of a memo as a percentage.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float guiMemoGetVerticalScrollPosition ( gui-memo theMemo )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''theMemo''': the [[guiCreateMemo|memo]] you want to know the vertical scroll position of.
+
+===Returns===
+Returns a [[float]] ranging between 0 and 100, or '''false''' otherwise.
+
+==Example==
+This example gets the position of a memo called "theMemo" created with [[guiCreateMemo]], and outputs it to the chatbox.
+<syntaxhighlight lang="lua">
+local theMemo = guiCreateMemo( 0, 0, 200, 100, [[Insert
+some
+long
+text
+here]], false )
+
+if ( theMemo ) then
+    local position = guiMemoGetVerticalScrollPosition( theMemo )
+    outputChatBox( "Current scroll position of the memo: " .. position .. "%" )
+else
+    outputChatBox( "Memo not found!" )
+end
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

@@ -1,0 +1,48 @@
+__NOTOC__ 
+{{Client function}}
+This functions creates a notification ballon on the desktop.
+
+{{Note|MTA won't show any tray notifications if the MTA window is focused, because there is no reason to show tray notifications if you are ingame. If you want to test this function you should use a Timer and switch to your desktop.}}
+{{Note|You can only show a tray notification every 30 seconds.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">bool createTrayNotification ( string notificationText [, string iconType = "default", bool useSound = true ] )</syntaxhighlight>
+
+===Required Arguments===
+*'''notificationText:''' The text to send in the notification.
+
+===Optional Arguments===
+*'''iconType:''' The notification icon type. Possible values are: '''"default" (the MTA icon), "info", "warning", "error"'''
+*'''useSound:''' A boolean value indicating whether or not to play a sound when receiving the notification.
+
+===Returns===
+Returns ''true'' if the notification is correctly created, ''false'' otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">
+-- Note: You have to wait 30 seconds before showing another tray notification, there is no queuing
+
+-- Show a 'Hello World' notification
+createTrayNotification( "Hello World" )
+
+-- Show a notification with a warning symbol
+createTrayNotification( "Hello World", "warning" )
+
+-- Show a default notification without sound
+createTrayNotification( "Hello World", "default", false )
+</syntaxhighlight>
+
+==Example of notification on minimize MTA application==
+<syntaxhighlight lang="lua">
+function setTrayOnMinimize( )
+     createTrayNotification( "We are waiting for you again...", "warning" )
+end
+addEventHandler( "onClientMinimize", getRootElement( ), setTrayOnMinimize )
+</syntaxhighlight>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.5.6-9.16925|Added support for Windows 10}}
+
+==See Also==
+{{Client_utility_functions}}

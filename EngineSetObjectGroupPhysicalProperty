@@ -1,0 +1,34 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0157|1.5.7|19626|This function sets physical property of given properties group.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool engineSetObjectGroupPhysicalProperty ( int groupID, objectgroup-modifiable property, var newValue )</syntaxhighlight> 
+===Required Arguments===
+*'''groupID''': the id of physical properties group which you wish to set a property of.
+*'''objectgroup-modifiable''': the property which you wish to set, as per table below.
+*'''newValue''': new value of the property, with proper type as specified in table below
+
+===Returns===
+Returns '''true''' if everything went well, error is raised otherwise.
+
+===Properties===
+{{Physical_Properties}}
+
+==Requirements==
+{{Requirements|n/a|1.5.7-9.19626|}}
+
+==Example== 
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+function lamppostCollision()
+engineSetObjectGroupPhysicalProperty(111, "cause_explosion", true)
+end
+addEventHandler("onClientResourceStart", resourceRoot, lamppostCollision)
+
+--Every time you hit a lamppost, an explosion will be created
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client_object_functions}}

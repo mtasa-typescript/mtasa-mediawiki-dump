@@ -1,0 +1,37 @@
+__NOTOC__ 
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20811|This function checks if an object is moving.}}
+
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool isObjectMoving ( object theObject )</syntaxhighlight>
+===Required Arguments=== 
+*'''theObject:''' The [[object]]
+===Returns===
+* ''true'' if the object is moving.
+* ''false'' if the object is not moving.
+
+==Example==
+This example creates an object when the resource starts and checks if the object is moving.
+<syntaxhighlight lang="lua">
+addEventHandler("onClientResourceStart", resourceRoot,
+    function()
+        local x, y, z = getElementPosition(localPlayer)
+        object = createObject(1239, x, y, z)
+
+        moveObject(object, 5000, x, y, z + 5)
+    end
+)
+
+addCommandHandler("getmoving",
+    function(cmd)
+        outputChatBox("Is object "..(isObjectMoving(object) and "moving" or "not moving"))
+    end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20811|}}
+
+==See Also==
+{{Client_object_functions}}

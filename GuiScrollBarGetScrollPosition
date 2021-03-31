@@ -1,0 +1,27 @@
+{{client function}}
+This function gets the scroll amount of a scrollbar as a percentage.
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float guiScrollBarGetScrollPosition ( gui-scrollBar theScrollBar )
+</syntaxhighlight>
+
+===Required Arguments===
+*'''theScrollBar ''': The scrollbar you want to check.
+
+===Returns===
+Returns a [[float]] ranging between 0 and 100, representing the amount the scrollbar has been scrolled.
+
+==Example==
+This example outputs a message with the new scroll position when a scrollbar is scrolled.
+<syntaxhighlight lang="lua">
+function OnScroll( )
+	outputChatBox( "The new scroll position is " .. guiScrollBarGetScrollPosition( source ) )
+end
+addEventHandler( "onClientGUIScroll", root, OnScroll )
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}
+[[Catogory:Needs_Example]]

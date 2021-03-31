@@ -1,0 +1,32 @@
+__NOTOC__
+{{Server client function}}
+
+This function is used to get the development mode of the client. For more information see [[setDevelopmentMode]]
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool getDevelopmentMode ()
+</syntaxhighlight>
+
+===Returns===
+Returns ''true'' if the development mode is on, ''false'' if off.
+
+==Example==
+<section name="Client" class="client" show="true">
+This command enables / disables the development mode
+<syntaxhighlight lang="lua">
+addCommandHandler("dev",function()
+	local boolean = not getDevelopmentMode() -- true/false
+	setDevelopmentMode(boolean)
+	outputChatBox("DevelopmentMode: "..tostring(boolean))
+end)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.4-9.11305|1.1.1-9.03355|}}
+
+==See Also==
+{{Client_utility_functions}}
+
+[[pl:GetDevelopmentMode]]

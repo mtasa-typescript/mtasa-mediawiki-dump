@@ -1,0 +1,29 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0156|1.5.5|14165|Gets the current angular velocity of a specified, supported element.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+float, float, float getElementAngularVelocity ( element theElement )           
+</syntaxhighlight> 
+{{OOP||[[element]]:getAngularVelocity|angularVelocity|setElementAngularVelocity}}
+===Required Arguments=== 
+*'''theElement:''' The [[element]] to retrieve the angular velocity from. Can be either a [[player]], [[ped]], [[object]], [[vehicle]] or a [[Element/Weapon|custom weapon]]. '''Server side supports only vehicles currently.'''
+
+===Returns===
+Returns three floats describing the x, y and z rotation
+
+==Example==
+<syntaxhighlight lang="lua">
+addCommandHandler("getangularvelocity", function(player)
+    --retrieve angular velocity of the player
+    local avx, avy, avz = getElementAngularVelocity(player)
+    outputChatBox("Your current angular velocity is: X: "..avx.." Y: "..avy.." Z: "..avz, player, 0, 255, 0, false)
+end)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.5-9.14060|1.5.5-9.14060|}}
+
+==See Also==
+{{Element functions}}

@@ -1,0 +1,40 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0156|1.5.5|14219|
+Sets the speed of a currently running animation for a particular player or ped.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool setPedAnimationSpeed ( ped thePed [, string anim = "", float speed = 1.0 ] )
+</syntaxhighlight>
+{{OOP||[[ped]]:setAnimationSpeed}}
+
+===Required Arguments===
+*'''thePed:''' the [[player]] or [[ped]] you want to change animation speed of.
+
+===Optional Arguments===
+*'''anim:''' the animation name it will affect.
+*'''speed:''' a [[float]] containing the speed between 0.0–1.0 you want to apply to the animation. ''This limitation may be adjusted in the future, so do not provide speeds outside this boundary.'' {{New feature/item|3.0160|1.5.7|20395|The limit is now 0.0 to 10.0.}} {{Warning|Setting '''speed''' higher than '''1''' can cause issues with some animations.}}
+
+===Returns===
+Returns ''true'' if successful, ''false'' otherwise.
+
+==Example==
+<section name="Server" class="server" show="true">
+In this example we give the animation of dancing to the player and after 5 seconds it becomes 0.2s slower.
+<syntaxhighlight lang="lua">
+addCommandHandler('dance',
+  function( player, cmd )
+      setPedAnimation( player, 'DANCING', 'DAN_Down_A', -1 )
+      source = player
+      setTimer(function() 
+          setPedAnimationSpeed( source, 'DAN_Down_A', 0.2 )
+      end,5000,1)
+   end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Ped_functions}}

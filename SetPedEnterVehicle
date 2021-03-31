@@ -1,0 +1,62 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0160|1.5.8|20740|This function makes a [[ped]] enter a [[vehicle]], similar to the enter_exit control state.}}
+
+{{Note|For this function to work on peds, the server and all clients are required to be on version '''1.5.8 r20740''' or newer.}}
+{{Note|This function only works on synced peds and vehicles (ie. created serverside).}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setPedEnterVehicle ( ped thePed [, vehicle theVehicle = nil, bool passenger = false ] )
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''thePed:''' The [[player]] or [[ped]] to enter the vehicle.
+**''Note: The player must be the local player.''
+**''Note: The ped must be synced by the client. Use [[isElementSyncer]] clientside to check if the client is syncing. Use [[setElementSyncer]] serverside to change the syncer manually.''
+*'''vehicle:''' The [[vehicle]] to enter. If no vehicle is set, the ped will enter the nearest vehicle within 20 m.
+*'''passenger:''' If set to ''true'', the ped will enter as passenger in the nearest available seat, otherwise he will enter as driver.
+
+===Returns===
+Returns ''true'' if the function was successful, ''false'' otherwise.
+
+When this function returns ''true'', the client will ask server for permission to enter a vehicle. Actually entering can still fail in the following cases
+*The function is used on a ped, but another client is not on version '''1.5.8 r20740''' or newer.
+*Another player or ped is already entering, exiting or jacking the same vehicle and seat.
+*Movement input or damage can interrupt the task. Use [[getPedTask]] to monitor what the ped is doing.
+
+This function returns ''false'' in the following cases
+*Invalid arguments were parsed.
+*The function is used on a ped, but the server is not on version '''1.5.8 r20740''' or newer.
+*Time passed since last enter/exit for this ped is less than 1500 ms.
+*[[onClientVehicleStartEnter]] was cancelled by a script.
+*The ped has an active TASK_PRIMARY [[task]]. Use [[getPedTask]] to monitor what the ped is doing.
+
+==Example== 
+Make ped Sweet enter his car
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+local sweet = createPed(270, 0, 0, 3)
+setElementID(sweet , 'sweet')
+
+local sweets_car = createVehicle(492, 3, 0, 3)
+setElementID(sweets_car, 'sweets_car')
+</syntaxhighlight>
+</section>
+
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+-- Code works only if client is syncing ped Sweet
+addCommandHandler('sweet_enter_car',
+function()
+    local sweet = getElementByID('sweet')
+
+    if isElementSyncer(sweet) then
+        setPedEnterVehicle(sweet, getElementByID('sweets_car'), true)
+    end
+end)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Client ped functions}}

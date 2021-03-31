@@ -1,0 +1,24 @@
+__NOTOC__
+{{Server client function}}
+This function returns the decrypted data from [https://en.wikipedia.org/wiki/Base64 base64] representation of the encrypted block
+
+==Syntax==
+<syntaxhighlight lang="lua">
+string base64Decode(string data)
+</syntaxhighlight>
+
+===Required arguments===
+*'''data:''' The block of data you want to decrypt
+
+===Returns===
+Returns the decrypted data from [https://en.wikipedia.org/wiki/Base64 base64] representation of the encrypted block if the decryption process was successfully completed, ''false'' otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">
+local k = base64Decode("SGVsbG8sIHdvcmxkIQ==")
+outputConsole(k)
+--Output: Hello, world!
+</syntaxhighlight>
+
+==See Also==
+{{Utility_functions}}

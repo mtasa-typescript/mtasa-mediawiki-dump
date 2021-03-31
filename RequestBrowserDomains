@@ -1,0 +1,41 @@
+__NOTOC__
+{{Client function}}
+{{New feature/item|3.0150|1.5||
+This function opens a request window in order to accept the requested remote URLs.
+{{Note|You must use this function prior to calling [[loadBrowserURL]] because every domain, with exceptions in the whitelist [https://github.com/multitheftauto/mtasa-blue/blob/505467ec8c3ac1b3ad17fb0247dc15809e013968/Client/cefweb/CWebCore.cpp#L280-L283 here] and [https://github.com/multitheftauto/mtasa-blue/blob/505467ec8c3ac1b3ad17fb0247dc15809e013968/Client/cefweb/CWebCore.cpp#L205-L206 there], is blocked by default.}}
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">bool requestBrowserDomains ( table pages [, bool parseAsURL = false, function callback ] )</syntaxhighlight>
+{{OOP||[[Element/Browser|Browser]].requestDomains}}
+
+===Required Arguments===
+*'''pages:''' A table containing all domains
+
+===Optional Arguments===
+*'''parseAsURL:''' ''true'' if the passed addresses should be converted from URLs, ''false'' otherwise.
+*'''callback:''' A callback function that is called as soon as the result is available
+Syntax:
+<syntaxhighlight lang="lua">function(bool wasAccepted, table new_domains)</syntaxhighlight>
+
+===Returns===
+Returns '''true''', if the string was successfully read, '''false''' otherwise.
+
+==Example==
+<syntaxhighlight lang="lua">requestBrowserDomains({ "mtasa.com" }) -- request browser domain
+showCursor(true) -- show cursor
+addEventHandler("onClientBrowserWhitelistChange", root,
+   function(newDomains)
+     if newDomains[1] == "mtasa.com" then
+       local browser = createBrowser(1280, 720, false, false) -- create browser
+       loadBrowserURL(browser, "http://mtasa.com/") -- load browser url
+   end
+end
+)
+</syntaxhighlight>
+
+==See also==
+{{CEF_functions}}
+
+[[hu:requestBrowserDomains]]
+[[RO:requestBrowserDomains]]
