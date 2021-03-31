@@ -1,0 +1,39 @@
+{{Server function}}
+__NOTOC__
+{{New feature/item|3.0155|1.5.5|11747|
+This function sets the name of an [[account]].
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setAccountName ( account theAccount, string name [, bool allowCaseVariations = false] )
+</syntaxhighlight> 
+{{OOP||[[account]]:setName|name|getAccountName}}
+===Required Arguments=== 
+*'''theAccount:''' The account you wish to change the name.
+*'''name:''' The new name.
+
+===Optional Arguments===
+*'''allowCaseVariations:''' Whether the username is case sensitive (if this is set to true, usernames "Bob" and "bob" will refer to different accounts)
+
+===Returns===
+Returns a ''true'' if the account name was set, ''false'' if an invalid argument was specified.
+
+==Example== 
+Change the name of an account.
+<syntaxhighlight lang="lua">
+addCommandHandler("changeaccountname", function(player, _, oldname, newname)
+    if not oldname or not newname then
+        return
+    end
+    local account = getAccount(oldname)
+    if not account then
+        return 
+    end
+    setAccountName(account, newname)
+end)
+</syntaxhighlight>
+
+==See Also==
+{{Account_functions}}
+[[zh-cn:SetAccountName]]

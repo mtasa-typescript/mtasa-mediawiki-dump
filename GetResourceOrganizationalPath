@@ -1,0 +1,27 @@
+{{Server function}}
+__NOTOC__
+This function returns the organizational file path (e.g. ''[admin]'') of a resource.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+string getResourceOrganizationalPath ( resource theResource )
+</syntaxhighlight> 
+{{OOP||[[resource]]:getOrganizationalPath }}
+
+===Required Arguments=== 
+*'''theResource:''' the [[resource]] of which you want to know the organizational path
+
+===Returns===
+Returns the organizational folder name of the [[resource]]. It returns empty string if the resource is on root ''resources'' folder. It returns '''false''' if the resource could not be found.
+
+==Example==
+This example outputs the path of the current resource when it is started.
+<syntaxhighlight lang="lua">
+addEventHandler("onResourceStart", resourceRoot,
+    function ()
+        outputChatBox(getResourceName(resource) .. "'s path: " .. getResourceOrganizationalPath(resource))
+    end)
+</syntaxhighlight>
+
+==See Also==
+{{Resource_functions}}

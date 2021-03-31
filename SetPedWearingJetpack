@@ -1,0 +1,31 @@
+__NOTOC__
+{{Server function}}
+{{New feature/item|3.0156|1.5.5|13846|
+This function is used to give or take a jetpack from a ped, it won't work if the ped is in a vehicle.
+
+As such, you should either expect it to fail sometimes, or repeatedly try to give a jetpack every second or so until [[isPedWearingJetpack]] returns true. Alternatively, you can force the ped into a 'safe' position (e.g. standing on the ground) before giving the jetpack, or use a [[pickup]] to handle it.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">bool setPedWearingJetpack ( ped thePed, bool state )</syntaxhighlight>
+[[File:Mta-screen 2020-04-27 15-12-56.png|thumb|Player wearing a jetpack]]
+{{OOP||[[ped]]:setWearingJetpack|jetpack}}
+
+===Required Arguments===
+*'''thePed:''' The [[ped]] you want to give a jetpack to.
+*'''state:''' A [[boolean]] representing whether to give or take the jetpack.
+
+===Returns===
+Returns ''true'' if a jetpack was successfully set for the ped, ''false'' if setting it failed.
+
+==Example==
+This examples adds a "jetpack" console command, which toggles a jetpack for the player.
+<syntaxhighlight lang="lua">
+addCommandHandler ( "jetpack",
+    function ( player )
+        setPedWearingJetpack ( player, not isPedWearingJetpack ( player ) )
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+{{Ped functions}}

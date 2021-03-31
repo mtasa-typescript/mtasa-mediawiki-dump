@@ -1,0 +1,29 @@
+__NOTOC__
+{{Server function}}
+This function returns a [[string]] containing the IP address of the [[player]].
+
+==Syntax==
+<syntaxhighlight lang="lua">
+string getPlayerIP ( player thePlayer )
+</syntaxhighlight>
+{{OOP||[[player]]:getIP|ip|}}
+===Required Arguments===
+* '''thePlayer:''' The [[player]] element you want to get the IP of.
+
+===Returns===
+Returns a [[string]] containing the requested players's IP, or ''false'' if the player passed to the function is invalid.
+
+==Example==
+This example prints a player's IP to the chat.
+<syntaxhighlight lang="lua">
+function printIp ( thePlayer )
+	outputChatBox ( "IP: " .. getPlayerIP ( thePlayer ), thePlayer )
+end
+addCommandHandler ( "ip", printIp )
+</syntaxhighlight>
+
+==See Also==
+{{Player functions}}
+
+[[de:getPlayerIP]]
+[[ru:getPlayerIP]]

@@ -1,0 +1,50 @@
+__NOTOC__ 
+{{Server function}}
+<!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
+{{New feature/item|3.0158|1.5.7|20468|
+This will check if a resource is currently protected, as defined in [[Server_mtaserver.conf#resource|mtaserver.conf]].
+}}
+==Syntax== 
+<!-- NOTE: don't use 'special' names for variable names, e.g. you shouldn't be writing things like 'player player, vehicle vehicle', instead write something like 'player thePlayer, vehicle vehicleToGetInto'. This is less confusing and prevents the syntax highlighting being odd -->
+<syntaxhighlight lang="lua">
+bool isResourceProtected(resource theResource)
+</syntaxhighlight> 
+{{OOP||[[resource]]:isProtected|protected}}
+===Required Arguments=== 
+<!-- List each argument one per line. This should be the argument's name as in the argument list above, NOT the argument's data type -->
+*'''theResource:''' the resource to check
+
+===Returns===
+<!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
+Returns ''true'' if the resource is 'protected', ''false'' otherwise.
+
+==Example== 
+This example creates a command which allows you to check if the given resource with the name provided is protected. The command is "/isprotected [Resource Name]".
+
+<syntaxhighlight lang="lua">
+function resourceProtectedCommand(thePlayer, command, resourceName)
+    if resourceName then -- If the player provided a resource name.
+        local theResource = getResourceFromName(resourceName) -- Get the resource element.
+        if theResource then -- If we have an element, the resource must exist.
+            local protectedResource = isResourceProtected(theResource) -- Check to see if the resource is protected.
+            if protectedResource then -- if it is protected.
+                outputChatBox("This resource is a protected resource in the server config.", thePlayer, 0, 255, 0)
+            else -- If the resource is not protected.
+                outputChatBox("This resource is not a protected resource in the server config.", thePlayer, 0, 255, 0)
+            end
+        else -- A resource with the name didn't exist.
+            outputChatBox("A resource with the name '" .. resourceName .. "' does not exist!", thePlayer, 255, 0, 0)
+        end
+    else -- The player didn't provide a resource name.
+        outputChatBox("Please specify a resource name.", thePlayer, 255, 0, 0)
+    end
+end
+addCommandHandler("isprotected", resourceProtectedCommand)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.7-9.20468|n/a|}}
+
+==See Also==
+<!-- Change FunctionArea to the area that this function is in on the main function list page, e.g. Server, Player, Vehicle etc -->
+{{Resource_functions}}

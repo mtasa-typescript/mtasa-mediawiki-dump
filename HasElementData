@@ -1,0 +1,50 @@
+__NOTOC__
+{{Server client function}}
+{{New feature/item|3.0158|1.5.7|20447|
+This function checks if an element has [[element data]] available under a certain key.}}
+
+==Syntax==
+<syntaxhighlight lang="lua">bool hasElementData ( element theElement, string key [, bool inherit = true] )</syntaxhighlight>
+{{OOP||[[element]]:hasData}}
+
+===Required Arguments===
+*'''theElement:''' This is the element with data you want to check.
+*'''key:''' The name of the element data entry you want to check for. (Maximum 31 characters.)
+
+===Optional Arguments===
+*'''inherit:''' - toggles whether or not the function should go up the hierarchy to find the requested key in case the specified element doesn't have it.
+
+===Returns===
+This function returns ''true'' if the element contains element data for ''key'', or ''false'' if the element doesn't exist or there is no data associated with the ''key''.
+
+==Example==
+This example outputs a player's favorite animal using a console function 'favoriteAnimal' if they have one set.
+<section show="true" name="Server" class="server">
+<syntaxhighlight lang="lua">
+function favoriteAnimal ( source, commandName, playerName )
+    local thePlayer = source
+	if playerName then -- see if a player was specified
+        thePlayer = getPlayerFromName (playerName) -- get the player element for the specified player
+        if not thePlayer then -- if we still couldn't find a player with the specified name...
+            outputChatBox ( "Couldn't find '" .. playerName .. "'", source ) -- display an error
+            return
+        end
+    end
+
+    if hasElementData ( thePlayer, "favoriteAnimal" ) then -- check if the player has a favorite animal set
+        local favoriteAnimal = getElementData ( thePlayer, "favoriteAnimal" ) -- get the player's favorite animal
+        outputChatBox ( getPlayerName ( thePlayer ).."'s favorite animal is: "..favoriteAnimal, source ) -- output the player's favorite animal
+    else
+        outputChatBox ( getPlayerName ( thePlayer ).." does not have a favorite animal!", source ) -- output the player's lack of a favorite animal
+    end
+end
+-- Add a console command joinTime, that takes an optional parameter of a player's name
+addCommandHandler ( "favoriteAnimal", favoriteAnimal )
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.7-9.20447|1.5.7-9.20447|}}
+
+==See Also==
+{{Element functions}}

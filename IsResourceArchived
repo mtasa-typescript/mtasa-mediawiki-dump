@@ -1,0 +1,29 @@
+__NOTOC__
+{{Server function}}
+{{New feature/item|3.0155|1.5.5|11550|
+Checks whether a resource is currently archived (running from within a ZIP file).
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">bool isResourceArchived ( resource resourceElement )</syntaxhighlight>
+{{OOP||[[resource]]:isArchived|archived|}}
+===Required Arguments===
+*'''resource:''' the resource to check
+
+===Returns===
+Returns ''true'' if a resource is archived, ''false'' if it is not archived, or ''nil'' if there is problem with resource.
+
+==Example==
+
+This example stops the resource from loading if it's archived
+<syntaxhighlight lang="lua">
+function resourceLoading( res )
+    if res.archived then
+        cancelEvent()
+    end
+
+end
+addEventHandler('onResourcePreStart',root,resourceLoading,true,'high+10')
+</syntaxhighlight>
+==See Also==
+{{Resource functions}}

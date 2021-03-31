@@ -1,0 +1,39 @@
+__NOTOC__ 
+{{Server function}}
+<!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
+{{New feature/item|3.0158|1.5.7|19626|
+This will set player's debug level, equivalent to [[Debugging|debugscript <level>]].
+}}
+==Syntax== 
+<!-- NOTE: don't use 'special' names for variable names, e.g. you shouldn't be writing things like 'player player, vehicle vehicle', instead write something like 'player thePlayer, vehicle vehicleToGetInto'. This is less confusing and prevents the syntax highlighting being odd -->
+<syntaxhighlight lang="lua">
+bool setPlayerScriptDebugLevel ( player thePlayer, int level )
+</syntaxhighlight> 
+{{OOP||[[player]]:setScriptDebugLevel|scriptDebugLevel|getPlayerScriptDebugLevel}}
+===Required Arguments=== 
+<!-- List each argument one per line. This should be the argument's name as in the argument list above, NOT the argument's data type -->
+*'''thePlayer:''' The player whose debug level you wish to change
+*'''level:''' 0: close debug console, 1: only errors, 2: errors and warnings, 3: errors, warnings and info messages
+
+===Returns===
+<!-- Make this descriptive. Explain what cases will return false. If you're unsure, add a tag to it so we can check -->
+Returns ''true'' if successful, ''false'' otherwise.
+
+==Example== 
+<section name="Server" class="server" show="true">
+This code will set joining players debug level to (3), (It is no recommended to use it in production, specially if you have sensitive data in your logs).
+<syntaxhighlight lang="lua">
+function setPlayerDebug (player)
+    setPlayerScriptDebugLevel(player, 3)
+    outputChatBox("You set debug script level to 3", player)
+end 
+addCommandHandler("setdebug", setPlayerDebug) 
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.7-9.19626|n/a|}}
+
+==See Also==
+<!-- Change FunctionArea to the area that this function is in on the main function list page, e.g. Server, Player, Vehicle etc -->
+{{Player_functions}}

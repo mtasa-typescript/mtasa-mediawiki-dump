@@ -1,0 +1,37 @@
+__NOTOC__ 
+{{Useful Function}}
+This function converts the hexadecimal numbers of the specified colors
+
+==Syntax==
+<syntaxhighlight lang="lua">
+int fromColor ( color )
+</syntaxhighlight>
+
+===Required Arguments=== 
+* '''color:''' Values representing colors.
+
+===Returns===
+Returns an array containing colors (red, green, blue)
+
+==Example==
+<section name="Client" class="client" show="true">
+The following code inverts the tocolor function.
+<syntaxhighlight lang="lua">
+function fromColor(color)
+	if color then
+		local blue = bitExtract(color, 0, 8)
+		local green = bitExtract(color, 8, 8)
+		local red = bitExtract(color, 16, 8)
+		local alpha = bitExtract(color, 24, 8)
+		
+		return { red, green, blue, alpha }
+	end
+end
+
+local color = tocolor(255, 0, 0, 255)
+print(fromColor(color))
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Utility_functions}}

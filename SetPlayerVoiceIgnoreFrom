@@ -1,0 +1,48 @@
+{{Server function}}__NOTOC__ 
+This function allows you to mute voices for a player.
+{{Important Note|This function should only be used as a low-level function for advanced users.  For typical Voice scripting, please see the [[Resource:Voice|Voice Resource]]}}
+
+==Syntax== 
+
+<syntaxhighlight lang="lua">
+bool setPlayerVoiceIgnoreFrom ( element thePlayer, mixed ignoreFrom )
+</syntaxhighlight> 
+{{OOP||[[player]]:setVoiceIgnoreFrom|voiceIgnoreFrom|}}
+===Required Arguments=== 
+*'''thePlayer:''' The [[player]] you wish to change
+*'''ignoreFrom:''' Element or table of elements which the player should not hear voices from. Use ''nil'' if no one should be ignored.
+
+===Returns===
+Returns ''true'' if the value was set successfully, ''false'' otherwise.
+
+==Example== 
+By this example mute a player voice to yourself so you won't hear him
+( '''note:''' use setPlayerVoiceMuted function if you are using the voice resource more information at https://wiki.multitheftauto.com/wiki/Resource:Voice )
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+function voiceMuteFunction( Muter , cmd , MutedName , mutual)
+	if not MutedName then
+		return outputChatBox("Syntax: /".. cmd .." <player name> <mutual>", Muter)
+	end
+	local Muted = getPlayerFromName(MutedName)
+	if not Muted then
+		return outputChatBox('enter the correct player name' , Muter)
+	end
+	if Muted == Muter then
+		return outputChatBox("You cannot mute yourself!", Muter)
+	end
+	if mutual then --enter any string as the second arg for making this mute mutual or enter nothing to make it one-way
+		setPlayerVoiceIgnoreFrom(Muter,Muted)
+		setPlayerVoiceIgnoreFrom(Muted,Muter)
+	else
+		setPlayerVoiceIgnoreFrom(Muter,Muted)
+	end    
+end
+addCommandHandler('voiceMute' ,voiceMuteFunction )
+-- e.g. /voiceMute jacky y  (mutual)
+-- e.g. /voiceMute jacky  (one-way)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Player_functions}}

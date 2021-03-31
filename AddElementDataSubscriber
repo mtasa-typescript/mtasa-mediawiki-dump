@@ -1,0 +1,37 @@
+{{Server function}}
+__NOTOC__ 
+{{New items|3.0158|1.5.7-9.20477|This function subscribes a [[player]] to specific [[element data]].
+This function is used together with [[setElementData]] in ''"subscribe"'' mode.
+}}
+
+==Syntax== 
+
+<syntaxhighlight lang="lua">
+bool addElementDataSubscriber ( element theElement, string key, player thePlayer )
+</syntaxhighlight> 
+{{OOP||[[element]]:addDataSubscriber||removeElementDataSubscriber}}
+
+===Required Arguments=== 
+*'''theElement:''' The [[element]] you wish to subscribe the [[player]] to.
+*'''key:''' The key you wish to subscribe the player to.
+*'''thePlayer:''' The [[player]] you wish to subscribe.
+
+===Returns===
+Returns ''true'' if the player was subscribed, ''false'' otherwise.
+
+==Example== 
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+addEventHandler("onVehicleEnter", getRootElement(), function(thePlayer, seat)
+   if seat==0 then -- if the player is a driver
+      addElementDataSubscriber(source, "id", thePlayer) -- subscribe the player to element
+   end
+end)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.7-9.20477|n/a|}}
+
+==See Also==
+{{Element_functions}}

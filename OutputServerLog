@@ -1,0 +1,65 @@
+{{Server function}}
+__NOTOC__
+This outputs a line of text to the server's log. This could be useful for debugging.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool outputServerLog ( string text )              
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''text:''' The text to be output to the log.
+
+===Returns===
+Returns ''true'' if successful, ''false'' otherwise.
+
+==Example== 
+<section name="Server" class="server" show="true">
+'''Example 1:''' This example outputs client logins to the server log.
+<syntaxhighlight lang="lua">
+function logClientLogin ( previous_account, current_account )
+	outputServerLog ( "Client " .. getPlayerName ( source ) .. " logged in as " .. getAccountName ( current_account ) )
+end
+addEventHandler ( "onPlayerLogin", root, logClientLogin )
+</syntaxhighlight>
+
+'''Example 2:''' This example outputs the clients position to the server
+<syntaxhighlight lang="lua">
+function outputPosition(source)
+   outputServerLog( table.concat({getElementPosition(source)}, ", ") )
+end
+addCommandHandler("op", outputPosition)
+</syntaxhighlight>
+
+'''Example 3:''' This is an debugging example, to identify which resource/source is responsible for vehicles that get spawned/exist but aren't supposed to be (like forbidden, where they can still spawn it through creation vulnerability, or identify which resource is hooked into (that has spawnvehicle server event) by a LUA code injector/hacked client so you know which resource/calls you have to secure
+<syntaxhighlight lang="lua">
+local triggeredByModels = { [432]=true } 
+
+function detectVehicleCreation() 
+    if getElementType(source) == "vehicle" and triggeredByModels[getElementModel(source)] then 
+        outputServerLog ("** ILLEGAL VEHICLE DETECTED ** "..getVehicleName(source).." was found at "..toJSON({getElementPosition(source)}).. " dim: "..getElementDimension(source).. " & int: "..getElementInterior(source)) 
+        local x,y,z = getElementPosition(source) 
+        local sphere = createColSphere(x,y,z,40) 
+        setElementInterior(sphere, getElementInterior(source)) 
+        setElementDimension(sphere, getElementDimension(source)) 
+        attachElements(sphere, source) 
+        local players = {} 
+        local pc = getElementsWithinColShape(sphere, "player") 
+        for _,p in pairs (pc) do 
+            if p then 
+                table.insert (players, getPlayerName(p)) 
+            end 
+        end 
+        if players and #players ~= 0 then 
+            outputServerLog ("** Nearby players: (possibly driver/spawner) "..toJSON(players)) 
+        end 
+        outputServerLog ("** Responsible resource: "..tostring(getElementID(getElementParent(getElementParent(source))))) 
+        destroyElement(sphere) 
+    end 
+end 
+addEventHandler ("onElementStartSync", root, detectVehicleCreation)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Server functions}}

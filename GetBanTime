@@ -1,0 +1,31 @@
+__NOTOC__ 
+{{Server function}}
+This function will return the time the specified [[ban]] was created, in '''seconds'''.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int getBanTime ( ban theBan )
+</syntaxhighlight>
+
+{{OOP||[[ban]]:getTime|time}}
+
+===Required Arguments=== 
+*'''theBan:''' The [[ban]] of which you wish to retrieve the time of.
+
+===Returns===
+* Returns an integer of the banning time in the format of seconds from the year 1970.  Use in conjunction with [[getRealTime]] in order to retrieve detailed information.
+* Returns '''false''' if invalid arguments were specified or if there was no banning time specified for the [[ban]].
+
+==Example==
+<syntaxhighlight lang="lua">
+function retrieveBan(theBan)
+    local ban = getBanTime(theBan)
+    if ban then
+        outputChatBox("The time of the ban is: " .. ban, root, 255, 255, 255, false)
+    end
+end
+</syntaxhighlight>
+
+==See Also==
+{{Admin functions}}
+[[ru:getBanTime]]

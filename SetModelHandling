@@ -1,0 +1,86 @@
+{{Server function}} 
+__NOTOC__ 
+This function is used to change the handling data of all vehicles of a specified model.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setModelHandling ( int modelId, string property, var value ) 
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''modelId:''' The [[Vehicle_IDs|vehicle model]] you wish to set the handling of.
+*'''property:''' The property you wish to set the handling of the vehicle to, or ''nil'' if you want to reset the all the handling properties.
+*'''value:''' The value of the models's handling property you wish to set, or ''nil'' if you want to reset the handling property to its default value.
+
+===Returns===
+Returns ''true'' if the handling was set successfully, ''false'' otherwise.
+
+
+==Handling Properties==
+See below a list of valid properties and their required values:
+{{Handling Properties}}
+
+
+==Example== 
+<section name="Server" class="server" show="true">
+This example script changes the handling of all Bullet.
+<syntaxhighlight lang="lua">
+function handlingChange()
+	local modelId = 541
+	setModelHandling(modelId, "mass", 1890)
+	setModelHandling(modelId, "turnMass", 3780)
+	setModelHandling(modelId, "dragCoeff", 0.7)
+	setModelHandling(modelId, "centerOfMass", {0.0, 0.1, -0.2} )
+	setModelHandling(modelId, "percentSubmerged", 75)
+	setModelHandling(modelId, "tractionMultiplier", 0.70)
+	setModelHandling(modelId, "tractionLoss", 0.90)
+	setModelHandling(modelId, "tractionBias", 0.50)
+	setModelHandling(modelId, "numberOfGears", 5)
+	setModelHandling(modelId, "maxVelocity", 407)
+	setModelHandling(modelId, "engineAcceleration", 50)
+	setModelHandling(modelId, "engineInertia", 10)
+	setModelHandling(modelId, "driveType", "awd")
+	setModelHandling(modelId, "engineType", "petrol")
+	setModelHandling(modelId, "brakeDeceleration", 11)
+	setModelHandling(modelId, "brakeBias", 0.45)
+	setModelHandling(modelId, "ABS", false)
+	setModelHandling(modelId, "steeringLock", 30)
+	setModelHandling(modelId, "suspensionForceLevel", 0.80)
+	setModelHandling(modelId, "suspensionDamping", 0.20)
+	setModelHandling(modelId, "suspensionHighSpeedDamping", 0.0)
+	setModelHandling(modelId, "suspensionUpperLimit", 0.10)
+	setModelHandling(modelId, "suspensionLowerLimit", -0.09)
+	setModelHandling(modelId, "suspensionFrontRearBias", 0.5)
+	setModelHandling(modelId, "suspensionAntiDiveMultiplier", 0.6)
+	setModelHandling(modelId, "seatOffsetDistance", 0.3)
+	setModelHandling(modelId, "collisionDamageMultiplier", 0.50)
+	setModelHandling(modelId, "monetary", 1460000)
+	setModelHandling(modelId, "modelFlags", 0xC0222004)
+	setModelHandling(modelId, "handlingFlags", 0x1400000)
+	setModelHandling(modelId, "headLight", 1)
+	setModelHandling(modelId, "tailLight", 1)
+	setModelHandling(modelId, "animGroup", 0)
+end
+addEventHandler("onResourceStart", resourceRoot, handlingChange)
+</syntaxhighlight>
+
+
+This function will reset the handling of Bullet vehicles to its default state.
+<syntaxhighlight lang="lua">
+function resetHandling()
+	local modelId = 541
+	for k,_ in pairs(getModelHandling(modelId)) do
+		setModelHandling(modelId, k, nil)
+	end
+end
+addEventHandler("onResourceStop", resourceRoot, resetHandling)
+</syntaxhighlight>
+</section>
+
+== Issues ==
+{{Issues|
+{{Issue|7454|setModelHandling doesn't work with already created vehicles}}
+}}
+
+==See other vehicle functions==
+{{Vehicle functions}}

@@ -1,0 +1,35 @@
+__NOTOC__ 
+{{Server function}}
+{{New feature/item|3.0160|1.5.5|12217|
+This function returns the account with the specific ID.
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+account getAccountByID ( int id )
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''id:''' The ID to get account from
+
+===Returns===
+Returns ''[[account]]'' associated with specified ID. Returns ''false'' if invalid arguments were specified or there is no account with this ID.
+
+==Example== 
+This example adds command ''getAccount'' that outputs the account-name of the account with ID.
+<syntaxhighlight lang="lua">
+addCommandHandler("getAccount", 
+	function (player, cmd, id)
+                id = tonumber(id)
+		local account = getAccountByID(id)
+                if account then
+		   outputChatBox("The name of the account with that ID is: "..getAccountName(account), player)
+                else 
+                   outputChatBox("There is no account with this ID.", player)
+                end
+	end)
+</syntaxhighlight>
+
+==See Also==
+{{Account_functions}}
+[[zh-cn:GetAccountByID]]

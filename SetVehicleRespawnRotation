@@ -1,0 +1,29 @@
+__NOTOC__
+{{Server function}}
+{{New feature/item|3.0156|1.5.5|14280|
+This function sets the rotation the vehicle will respawn to.
+}}
+
+==Syntax==
+<syntaxhighlight lang="lua">bool setVehicleRespawnRotation ( vehicle theVehicle, float rx, float ry, float rz )</syntaxhighlight>
+{{OOP||[[vehicle]]:setRespawnRotation|respawnRotation}}
+===Required Arguments===
+*'''theVehicle''': The [[vehicle]] you wish to change the respawn position of.
+* '''rx''': A [[float]] representing the rotation about the X axis in degrees.
+* '''ry''': A [[float]] representing the rotation about the Y axis in degrees.
+* '''rz''': A [[float]] representing the rotation about the Z axis in degrees.
+
+==Returns==
+Returns ''true'' if the [[vehicle]] respawn rotation was set successfully, ''false'' otherwise.
+
+==Example==
+This example creates a vehicle and changes its respawn rotation.
+<syntaxhighlight lang="lua">
+local vehicle = createVehicle ( 400, 1, 1, 1 ) -- create us a new vehicle
+if ( vehicle ) then
+    setVehicleRespawnRotation ( vehicle, 10, 10, 10 ) -- tell the server to respawn the vehicle with rotation (10,10,10)
+end
+</syntaxhighlight>
+
+==See Also==
+{{Vehicle functions}}

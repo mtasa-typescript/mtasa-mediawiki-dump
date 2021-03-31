@@ -1,0 +1,33 @@
+{{Server function}}
+__NOTOC__ 
+{{New items|3.0158|1.5.7-9.20477|This function unsubscribes a [[player]] from specific [[element data]].
+This function is used together with [[setElementData]] in ''"subscribe"'' mode.
+}}
+
+==Syntax== 
+
+<syntaxhighlight lang="lua">
+bool removeElementDataSubscriber ( element theElement, string key, player thePlayer )
+</syntaxhighlight> 
+{{OOP||[[element]]:removeDataSubscriber||addElementDataSubscriber}}
+
+===Required Arguments=== 
+*'''theElement:''' The [[element]] you wish to unsubscribe the [[player]] from.
+*'''key:''' The key you wish to unsubscribe the player from.
+*'''thePlayer:''' The [[player]] you wish to unsubscribe.
+
+===Returns===
+Returns ''true'' if the player was unsubscribed, ''false'' otherwise.
+
+==Example== 
+<section name="Server" class="server" show="true">
+<syntaxhighlight>
+TODO
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.7-9.20477|n/a|}}
+
+==See Also==
+{{Element_functions}}

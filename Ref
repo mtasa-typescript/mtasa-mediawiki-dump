@@ -1,0 +1,17 @@
+__NOTOC__ 
+{{Server client function}} 
+This function will create a reference to the given argument.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int ref( mixed objectToReference )    
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''objectToReference :''' The Lua element, which you want to reference
+
+===Returns===
+Returns an ''int'' if the reference were successfully created. Returns ''false'' if the parameter were invalid.
+
+==See Also==
+{{Utility functions}}

@@ -1,0 +1,21 @@
+{{Server function}}
+__NOTOC__
+{{New feature/item|3.0156|1.5.5|14053|This function retrieves the respawn rotation of a [[vehicle]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float float float getVehicleRespawnRotation ( element theVehicle )
+</syntaxhighlight>
+{{OOP||[[vehicle]]:getRespawnRotation|respawnRotation}}
+
+===Required Arguments===
+*'''theVehicle:''' The [[vehicle]] which you'd like to retrieve the respawn rotation of.
+
+===Returns===
+Returns three [[float|floats]] indicating the respawn rotation of the [[vehicle]], ''x'', ''y'' and ''z'' respectively.
+
+==Example==
+{{Example}}
+
+==See Also==
+{{Vehicle_functions}}

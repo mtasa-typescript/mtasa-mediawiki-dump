@@ -1,0 +1,17 @@
+__NOTOC__ 
+{{Server client function}} 
+This function will take a reference and returns its Lua element.
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+mixed deref( int reference )    
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''reference:''' The valid reference, which you want to dereference
+
+===Returns===
+Returns ''mixed'' if the reference were valid. Returns ''false'' if the reference were invalid.
+
+==See Also==
+{{Utility functions}}

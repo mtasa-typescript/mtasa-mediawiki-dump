@@ -1,0 +1,29 @@
+{{Server function}}
+__NOTOC__
+{{New feature/item|3.0156|1.5.5|12217|
+This function retrieves the ID of an [[account]].
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int getAccountID ( account theAccount )
+</syntaxhighlight> 
+{{OOP||[[account]]:getID|id|}}
+===Required Arguments=== 
+*'''theAccount:''' The account you wish to get the ID of.
+
+===Returns===
+Returns a int containing the account's ID, ''false'' if the account does not exist or an invalid argument was passed to the function.
+
+==Example== 
+This example announces into the console when a player logs into his account.
+<syntaxhighlight lang="lua">
+function outputOnLogin(previous_account, current_account, auto_login) --when a player logs in
+	outputConsole("[" .. getAccountID(previous_account) .. "] " .. getAccountName(previous_account) .. " Logged into ["..getAccountID(current_account) .. "]" .. getAccountName(current_account)) -- announce it into the console
+end
+addEventHandler("onPlayerLogin", root, outputOnLogin) --add an event handler
+</syntaxhighlight>
+
+==See Also==
+{{Account_functions}}
+[[zh-cn:GetAccountID]]

@@ -1,0 +1,54 @@
+__NOTOC__
+{{Server function}}
+Gets the date and time at which a resource was last loaded in the server.
+
+==Syntax==
+{{New feature/item|3|1.0|840|
+<syntaxhighlight lang="lua">
+int getResourceLoadTime ( resource res )
+</syntaxhighlight>
+}}
+{{Deprecated_feature|3|1.0|
+<syntaxhighlight lang="lua">
+string getResourceLoadTime ( resource res )
+</syntaxhighlight>
+}}
+
+===Required Arguments===
+*'''res:''' the resource you want to know the load time of.
+
+===Returns===
+{{New feature|3|1.0 r840|
+If successful, returns the UNIX timestamp when the resource was loaded, otherwise false. Use in conjunction with [[getRealTime]] in order to retrieve detailed information. 
+}}
+{{Deprecated_feature|3|1.0|
+If successful, returns a string with the date and time that the resource was last loaded into memory (for example when the server started, or when the resource was changed and reloaded). Returns ''false'' on failure.
+
+An example string is "Fri Mar 28 13:51:04 2008".
+}}
+
+==Example==
+This code outputs the date and time at which the scoreboard resource was last loaded.
+<syntaxhighlight lang="lua" class="server">
+local res = getResourceFromName ( "scoreboard" )
+if res then
+    local time = getRealTime(getResourceLoadTime(res)) --Gets all the data we need from UNIX time format, see getRealTime() for more details
+    outputConsole ( "scoreboard was last loaded on: " ..  string.format("%i/%i/%i %i:%i:%i",time.monthday,time.month,time.year,time.hour,time.minute,time.second)) --this will be something like this: scoreboard was last loaded on: 10/07/2017 14:13:10
+end
+</syntaxhighlight>
+This code outputs the date and time at which the specified resource started.
+<syntaxhighlight lang="lua" class="server">
+function getLoadTime(p,c,res)
+	local resource = getResourceFromName(tostring(res))
+	if not res or not resource then
+		outputChatBox("Syntax: /" .. c .. " [Resource Name]")
+	else
+		local time = getRealTime(getRealTime().timestamp-getResourceLoadTime(resource))
+		outputChatBox("The resource " .. res .. " started at " .. string.format("%i/%i/%i %i:%i:%i",time.monthday,time.month,time.year,time.hour,time.minute,time.second))
+	end
+end
+addCommandHandler("getResourceLoadTime", getLoadTime, false,false) --adds the command handler
+</syntaxhighlight>
+
+==See Also==
+{{Resource functions}}

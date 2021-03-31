@@ -1,0 +1,33 @@
+{{Server function}}
+__NOTOC__ 
+{{New items|3.0158|1.5.7-9.20477|This function returns whether a [[player]] is subscribed to specific [[element data]].
+This function is used together with [[setElementData]] in ''"subscribe"'' mode.
+}}
+
+==Syntax== 
+
+<syntaxhighlight lang="lua">
+bool hasElementDataSubscriber ( element theElement, string key, player thePlayer )
+</syntaxhighlight> 
+{{OOP||[[element]]:hasDataSubscriber}}
+
+===Required Arguments=== 
+*'''theElement:''' The [[element]] you wish to check whether the [[player]] is subscribed to.
+*'''key:''' The key you wish to check whether the player is subscribed to.
+*'''thePlayer:''' The [[player]] you wish to check.
+
+===Returns===
+Returns ''true'' if the player is subscribed, ''false'' otherwise.
+
+==Example== 
+<section name="Server" class="server" show="true">
+<syntaxhighlight>
+TODO
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|1.5.7-9.20477|n/a|}}
+
+==See Also==
+{{Element_functions}}
