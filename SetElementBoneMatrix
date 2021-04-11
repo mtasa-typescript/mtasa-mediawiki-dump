@@ -1,6 +1,6 @@
 {{Client function}}
 __NOTOC__ 
-{{New feature/item|3.0160|1.5.8|20704|This function sets the transformation matrix of a specific bone. Currently the following element types are accepted:
+{{New feature/item|3.0159|1.5.8|20704|This function sets the transformation matrix of a specific bone. Currently the following element types are accepted:
 * [[Element/Player|Player]]
 * [[Element/Ped|Ped]]
 }}

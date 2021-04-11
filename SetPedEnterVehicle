@@ -1,6 +1,6 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20740|This function makes a [[ped]] enter a [[vehicle]], similar to the enter_exit control state.}}
+{{New feature/item|3.0159|1.5.8|20740|This function makes a [[ped]] enter a [[vehicle]], similar to the enter_exit control state.}}
 
 {{Note|For this function to work on peds, the server and all clients are required to be on version '''1.5.8 r20740''' or newer.}}
 {{Note|This function only works on synced peds and vehicles (ie. created serverside).}}

@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20718|This function is used to reset the color filtering to its default values.}}
+{{New feature/item|3.0159|1.5.8|20718|This function is used to reset the color filtering to its default values.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">

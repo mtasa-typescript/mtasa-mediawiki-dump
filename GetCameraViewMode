@@ -1,30 +1,32 @@
 __NOTOC__
 {{Client function}}
-This function allows you to get the camera's view mode. This indicates at what distance the camera will follow the player.
-{{Note|It currently only returns vehicle view modes.}}
+This function allows you to get the active camera view modes. This indicates at what distance the camera will follow the player or vehicle.
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-int getCameraViewMode (  )
+int, int getCameraViewMode ( )
 </syntaxhighlight>
 {{OOP||Camera.getCameraViewMode|viewMode|setCameraViewMode}}
 
 ===Returns===
-Returns an [[int]] indicating the current camera view mode. Their meanings can be seen below.
+{{Deprecated items|3.0159|1.5.8|Returns an [[int]] indicating the current vehicle camera view mode. Their meanings can be seen below.|20851}}
+
+{{New feature/item|3.0159|1.5.8|20851|Returns two [[int|ints]] indicating the current vehicle and ped camera view mode respectively. Their meanings can be seen below.}}
 
 {{Camera view modes}}
 
 ==Example==
 This example tells the player their current camera view when they change it
 <syntaxhighlight lang="lua">
-function onPlayerSpawn ( theSpawnpoint )
+function onPlayerSpawn(theSpawnpoint)
     currentCam("fire") -- start a repeating check
 end
-addEventHandler ( "onClientPlayerSpawn", root, onPlayerSpawn )
+addEventHandler("onClientPlayerSpawn", root, onPlayerSpawn)
 
 function currentCam(key)
    if (getControlState(key)) then
-      outputChatBox("Your current cam view is: "..getCameraViewMode()..".")
+      local vehicleMode, pedMode = getCameraViewMode()
+      outputChatBox("Your current cam view is: " .. vehicleMode .. ".")
    end
 end
 </syntaxhighlight>

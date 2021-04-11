@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20718|This function is used to override the default color filtering values.}}
+{{New feature/item|3.0159|1.5.8|20718|This function is used to override the default color filtering values.}}
 {{Tip|Normally the game is adding these colors to a screen to simulate weather effects. Sometimes it can be important to disable these effects. You can get rid of the effects by calling this function with zero values.}} 
 
 ==Syntax== 

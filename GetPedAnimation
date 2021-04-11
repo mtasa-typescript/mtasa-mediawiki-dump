@@ -5,24 +5,20 @@ Gets the animation of a player or ped that was set using [[setPedAnimation]].
 {{Note|Use [[getPedTask]] to monitor what movements the player is currently doing.''}}
 
 ==Syntax==
-<syntaxhighlight lang="lua">
-string, string getPedAnimation ( ped thePed )
-</syntaxhighlight>
+{{Deprecated items|3.0158|1.5.7|<syntaxhighlight lang="lua">string, string getPedAnimation ( ped thePed )</syntaxhighlight>|20450}}
+{{New feature/item|3.0158|1.5.7|20450|<syntaxhighlight lang="lua"> string, string, int, int, bool, bool, bool, int, bool getPedAnimation ( ped thePed )</syntaxhighlight>}}
+
 {{OOP||[[ped]]:getAnimation||setPedAnimation}}
 
 ===Required Arguments===
 *'''thePed:''' the [[player]] or [[ped]] you want to get the [[animations|animation]] of.
 
 ===Returns===
-Returns two [[string|strings]]: the first is the name of the block, the second is the name of the animation. Returns ''false'' if there was an error or if the ped is not doing an animation.
+{{Deprecated items|3.0158|1.5.7|Returns two [[string|strings]]: the first is the name of the block, the second is the name of the animation. Returns ''false'' if there was an error or if the ped is not doing an animation.|20450}}
 
-
-{{New feature/item|3.0160|1.5.7|20450|<syntaxhighlight lang="lua"> string, string, int, int, bool, bool, bool, int, bool getPedAnimation ( ped thePed )</syntaxhighlight>
-
-'''The function now returns 9 values in the same order as required by setPedAnimation:'''
+{{New feature/item|3.0158|1.5.7|20450|The function returns 9 values in the same order as required by [[setPedAnimation]]:
 <syntaxhighlight lang="lua">string anim, string block, int time, bool loop, bool updatePosition, bool interruptable, bool freezeLastFrame, int blendTime, bool restoreTaskOnAnimEnd</syntaxhighlight>
 }}
-
 
 ==Example==
 This example adds a command that allows you to copy the animation being used by another player using /copyanim theirName

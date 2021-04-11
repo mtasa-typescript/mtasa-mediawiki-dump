@@ -15,7 +15,7 @@ bool setPedAnimationSpeed ( ped thePed [, string anim = "", float speed = 1.0 ] 
 
 ===Optional Arguments===
 *'''anim:''' the animation name it will affect.
-*'''speed:''' a [[float]] containing the speed between 0.0–1.0 you want to apply to the animation. ''This limitation may be adjusted in the future, so do not provide speeds outside this boundary.'' {{New feature/item|3.0160|1.5.7|20395|The limit is now 0.0 to 10.0.}} {{Warning|Setting '''speed''' higher than '''1''' can cause issues with some animations.}}
+*'''speed:''' a [[float]] containing the speed between 0.0–1.0 you want to apply to the animation. ''This limitation may be adjusted in the future, so do not provide speeds outside this boundary.'' {{New feature/item|3.0158|1.5.7|20395|The limit is now 0.0 to 10.0.}} {{Warning|Setting '''speed''' higher than '''1''' can cause issues with some animations.}}
 
 ===Returns===
 Returns ''true'' if successful, ''false'' otherwise.

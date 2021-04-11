@@ -1,7 +1,6 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20811|This function checks if an object is moving.}}
-
+{{New feature/item|3.0159|1.5.8|20811|This function checks if an object is moving.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">bool isObjectMoving ( object theObject )</syntaxhighlight>

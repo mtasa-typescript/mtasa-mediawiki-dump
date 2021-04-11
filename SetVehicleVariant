@@ -1,7 +1,7 @@
 {{Shared function}}
 __NOTOC__
 This function sets the variant of a specified vehicle. In GTA SA some vehicles are different for example the labelling on trucks or the contents of a pick-up truck and the varying types of a motor bike. For the default GTA SA variant list see: [[Vehicle variants]]
-{{New feature/item|3.0160|1.5.8|20693|Function also added client-side.}}
+{{New feature/item|3.0159|1.5.8|20693|Function also added client-side.}}
 
  {{Tip|Both variant arguments need to be supplied, otherwise random ones will be picked.}} 
  {{Tip|If you only want one variant, set ''''variant2'''' to ''255''. If you want no variants, then set both ''''variant1'''' and ''''variant2'''' to ''255''}} 

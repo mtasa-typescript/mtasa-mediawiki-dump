@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20416|This function returns model visibility time, this is used for example for building lights being shown after 23:00.}}
+{{New feature/item|3.0159|1.5.8|20416|This function returns model visibility time, this is used for example for building lights being shown after 23:00.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">int, int engineGetModelVisibleTime( int modelID )</syntaxhighlight> 

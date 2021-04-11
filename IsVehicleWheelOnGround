@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0160|1.5.5|11854|
+{{New feature/item|3.0156|1.5.5|11854|
 This function returns a [[boolean]] whether the [[vehicle]]'s wheel is on ground (true) or in air (false).
 }}
 {{Note|In vehicles with 3 wheels, the wheels are combined 2 in 1, in motorbikes only the left - <code>"front_left"</code> and <code>"rear_left"</code>}}

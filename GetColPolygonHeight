@@ -1,6 +1,6 @@
 {{Server client function}}
 __NOTOC__
-{{New feature/item|3.0160|1.5.8|20807|This function is used to get the height of an existing [[createColPolygon|colshape polygon]].
+{{New feature/item|3.0159|1.5.8|20807|This function is used to get the height of an existing [[createColPolygon|colshape polygon]].
 By default, a colshape polygon is infinitely tall.}}
 
 ==Syntax== 

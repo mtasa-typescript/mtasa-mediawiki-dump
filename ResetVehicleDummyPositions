@@ -1,7 +1,7 @@
 {{Client function}}
 __NOTOC__
 
-{{New feature/item|3.0160|1.5.8|20797|
+{{New feature/item|3.0159|1.5.8|20797|
 This function resets the vehicle dependent dummy positions to the vehicle's current model dummy positions.}}
 
 ==Syntax==

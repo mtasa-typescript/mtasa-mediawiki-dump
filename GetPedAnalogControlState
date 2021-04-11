@@ -11,7 +11,7 @@ This function retrieves the analog control state of a ped, as set by [[setPedAna
 *'''controlName:''' The control. See [[control names]] for a list of possible controls.
 
 ===Optional Arguments===
-{{New feature/item|3.0160|1.5.7|20383|
+{{New feature/item|3.0158|1.5.7|20383|
 *'''rawValue:''' A bool indicating if it should return the raw player input value (will always return script value for non-player peds).
 }}
 

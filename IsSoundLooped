@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20785|This function is used to return the current loop option of the [[sound]] [[element]].}}
+{{New feature/item|3.0159|1.5.8|20785|This function is used to return the current loop option of the [[sound]] [[element]].}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">bool isSoundLooped(element theSound)</syntaxhighlight> 

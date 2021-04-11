@@ -1,8 +1,9 @@
 __NOTOC__
 {{Server client function}}
 
-Checks whether or not a given ped is currently in a vehicle. This also returns true if they're trying to enter a vehicle.
-{{Note|1=Client side [[IsPedInVehicle]] can be unreliable. Solution is to use: <code>[[getPedOccupiedVehicle]](ped) ~= false</code> }} 
+Checks whether or not a given ped is currently in a vehicle.
+{{Note|1=Client side [[IsPedInVehicle]] only returns ''true'' if the ped is physically inside a vehicle. To check if the ped is entering or exiting a vehicle, use: <code>[[getPedOccupiedVehicle]](ped) ~= false</code> }} 
+{{Note|1=Server side [[IsPedInVehicle]] returns whether the ped is entering, inside or exiting a vehicle. }} 
 
 ==Syntax==
 <syntaxhighlight lang="lua">

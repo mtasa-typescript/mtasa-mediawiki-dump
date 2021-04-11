@@ -1,7 +1,6 @@
 {{Client function}}
 __NOTOC__
-
-{{New feature/item|3.0160|1.5.8|20797|
+{{New feature/item|3.0159|1.5.8|20797|
 This function sets the position of the dummy for the given vehicle.}}
 
 ==Syntax==

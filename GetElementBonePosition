@@ -1,6 +1,6 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20704|Returns the 3D world coordinates of a specific bone of a given [[element]]. Currently the following element types are accepted:
+{{New feature/item|3.0159|1.5.8|20704|Returns the 3D world coordinates of a specific bone of a given [[element]]. Currently the following element types are accepted:
 * [[Element/Player|Player]]
 * [[Element/Ped|Ped]]
 }}

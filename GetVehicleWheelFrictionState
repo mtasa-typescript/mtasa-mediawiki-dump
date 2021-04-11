@@ -1,6 +1,6 @@
 {{Client function}}
 __NOTOC__
-{{New feature/item|3.0160|1.5.8|20726|This function returns the current wheel friction state of the [[vehicle]].}}
+{{New feature/item|3.0159|1.5.8|20726|This function returns the current wheel friction state of the [[vehicle]].}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">

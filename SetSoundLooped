@@ -1,10 +1,10 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20785|This function is used to change the loop option of the [[sound]] [[element]].}}
+{{New feature/item|3.0159|1.5.8|20785|This function is used to change the loop option of the [[sound]] [[element]].}}
 {{Note|If the [[sound]] [[element]] is destroyed by [[destroyElement]] the loop will not happen.}}
 
 ==Syntax== 
-<syntaxhighlight lang="lua">bool setSoundLooped(element theSound, bool loop)</syntaxhighlight> 
+<syntaxhighlight lang="lua">bool setSoundLooped ( element theSound, bool loop )</syntaxhighlight> 
 {{OOP||[[sound]]:setLooped||isSoundLooped}}
 ===Required Arguments=== 
 *'''theSound:''' The [[sound]] [[element]] to set the loop.

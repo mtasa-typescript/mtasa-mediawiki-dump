@@ -1,6 +1,6 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0160|1.5.8|20675|
+{{New feature/item|3.0159|1.5.8|20675|
 This function gets the Z level of the lowest roof above a point.
 It is required that the point is near enough to the local player so that it's within the area where collision data is loaded.}}
 

@@ -8,7 +8,7 @@ __NOTOC__
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-table getElementsWithinRange ( float x, float y, float z, float range [, string elemType = "" ] )
+table getElementsWithinRange ( float x, float y, float z, float range [, string elemType = "", int interior, int dimension ] )
 </syntaxhighlight>
 {{OOP| |[[Element]].getWithinRange}}
 ===Required Arguments===
@@ -25,26 +25,7 @@ table getElementsWithinRange ( float x, float y, float z, float range [, string 
 **'''"object":''' An object
 **'''"pickup":''' A pickup
 **'''"marker":''' A marker
-
-{{New feature/item|3.0160|1.5.8|20797|
-<syntaxhighlight lang="lua">
-table getElementsWithinRange ( float x, float y, float z, float range [, string elemType = "", int interior = nil, int dimension = nil ] )
-</syntaxhighlight>
-{{OOP| |[[Element]].getWithinRange}}
-===Required Arguments===
-*'''x:''' the x coordinate at which to retrieve elements
-*'''y:''' the y coordinate at which to retrieve elements
-*'''z:''' the z coordinate at which to retrieve elements
-*'''range:''' the range at the coordinates in which to retrieve elements
-
-===Optional Arguments===
-*'''elemType:''' The type of element you want a list of. This can be any element type, such as:
-**'''"player":''' A player connected to the server
-**'''"ped":''' A ped
-**'''"vehicle":''' A vehicle
-**'''"object":''' An object
-**'''"pickup":''' A pickup
-**'''"marker":''' A marker
+{{New feature/item|3.0159|1.5.8|20797|
 *'''interior:''' The [[interior]] you want to limit the search to. If not specified, it can return elements in any interior.
 *'''dimension:''' The [[dimension]] you want to limit the search to. If not specified, it can return elements in any dimension.
 }}

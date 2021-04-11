@@ -36,7 +36,7 @@ Returns a table with the following entries:
 {{New feature/item|3.0154|1.5.3|11199|
 *'''SettingHighDetailVehicles:''' High detail vehicles setting (true/false).
 }}
-{{New feature/item|3.0160|1.5.8||
+{{New feature/item|3.0159|1.5.8|20508|
 *'''SettingHighDetailPeds:''' High detail peds setting (true/false).
 }}
 *'''AllowScreenUpload :''' The allows screen uploads setting. (true/false)

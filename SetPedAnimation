@@ -47,14 +47,17 @@ addCommandHandler("makemyped", makePed)
 <section name="Server" class="server" show="true">
 This example makes the player sit down and stand up using the command /sit.
 <syntaxhighlight lang="lua">
+local sitting = {}
 function toggleSit(thePlayer)
-	if not getElementData(thePlayer, "sitting") then
+	if not sitting[thePlayer] then
 		setPedAnimation(thePlayer, "ped", "seat_down", -1, false, false, false, false)
-		setElementData(thePlayer, "sitting", true)
+		-- Store the player state in the table
+                sitting[thePlayer] = true
 	else
 		-- If you use again this command then your character stand up
 		setPedAnimation(thePlayer)
-		removeElementData(thePlayer, "sitting")
+                -- Delete player from table
+		sitting[thePlayer] = nil
 	end
 end
 addCommandHandler("sit", toggleSit)

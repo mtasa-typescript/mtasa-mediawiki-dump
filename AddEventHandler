@@ -2,7 +2,7 @@ __NOTOC__
 {{Server client function}} 
 {{Important Note|Do '''NOT''' use the same name for your handler function as the event name, as this can lead to confusion if multiple handler functions are used}}
 This function will add an [[event]] handler. An event handler is a function that will be called when the event it's attached to is triggered. See [[event system]] for more information on how the event system works.
-{{Important Note|Adding handler functions to the same event and element as the handler function isn't supported. (The handler won't be called until the next time the event is triggered). On the other hand, removing events works as expected. See code piece below. }}
+{{Important Note|See code for this note below}}
 
 Event handlers are functions that are called when a particular event happens. Each event specifies a specific set of variables that are passed to the event handler and can be read by your function. The following global variables are available for use in handler functions:
 *'''source''': the element that triggered the event

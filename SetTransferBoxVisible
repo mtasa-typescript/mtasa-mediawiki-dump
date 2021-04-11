@@ -1,6 +1,6 @@
 __NOTOC__
 {{Server client function}}
-{{New feature/item|3.0160|1.5.8|20788|Determines whether or not the transferbox should appear to [[Player|players]].}}
+{{New feature/item|3.0159|1.5.8|20788|Determines whether or not the transferbox should appear to [[Player|players]].}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
