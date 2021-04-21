@@ -45,4 +45,6 @@ addCommandHandler( "toggle",
 {{GUI_functions}}
 {{GUI_events}}
 
+[[en:guiCreateFont]]
+[[ru:guiCreateFont]]
 [[hu:guiCreateFont]]

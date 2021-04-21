@@ -62,3 +62,6 @@ addCommandHandler("clear",
 ==See Also==
 {{GUI_functions}}
 {{GUI_events}}
+
+[[en:getChatboxLayout]]
+[[ru:getChatboxLayout]]

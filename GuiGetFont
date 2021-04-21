@@ -34,6 +34,8 @@ outputChatBox ( "Font used in the GUI label: " .. guiGetFont ( dummyGuiElement )
 ==See Also==
 <!-- Change FunctionArea to the area that this function is in on the main function list page, e.g. Server, Player, Vehicle etc -->
 {{GUI_functions}}
-[[pl:guiGetFont]]
-[[ru:guiGetFont]]
 {{GUI_events}}
+
+[[en:guiGetFont]]
+[[ru:guiGetFont]]
+[[pl:guiGetFont]]

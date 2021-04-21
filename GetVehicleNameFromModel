@@ -11,7 +11,7 @@ string getVehicleNameFromModel ( int model )
 *'''model:''' This is the vehicle model ID. See [[vehicle IDs]] to see what values will return names.
 
 ===Returns===
-Returns the name of the vehicle if the model ID was valid, empty string otherwise<ref>https://bugs.multitheftauto.com/view.php?id=8523</ref>.
+Returns the name of the vehicle if the model ID was valid, ''false'' otherwise.
 
 ==Example== 
 This will retrieve the name of a car so its name can be displayed when the player chooses to spawn a car by model ID.
@@ -37,9 +37,6 @@ function createVehicleCommand ( thePlayer, commandName, carModel )
 end
 addCommandHandler ( "spawnvehicle", createVehicleCommand )
 </syntaxhighlight>
-
-== References ==
-<references />
 
 ==See Also==
 {{Vehicle functions}}

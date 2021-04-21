@@ -27,5 +27,5 @@ addCommandHandler( "accountcount", printAmountOfAccounts ) -- add a command hand
 {{Account functions}}
 
 [[ru:getAccounts]]
-
+[[en:getAccounts]]
 [[zh-cn:getAccounts]]

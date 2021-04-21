@@ -32,6 +32,7 @@ addEventHandler ( "onResourceStart", getResourceRootElement(), logoutAll )</synt
 ==See Also==
 {{Account_functions}}
 
+[[en:logOut]]
 [[ru:logOut]]
 [[es:logOut]]
 [[zh-cn:logOut]]

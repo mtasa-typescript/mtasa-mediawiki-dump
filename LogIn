@@ -32,6 +32,7 @@ addCommandHandler ( "log-in", loginPlayer ) -- Make it trigger for "/log-in", NO
 ==See Also==
 {{Account_functions}}
 
+[[en:logIn]]
 [[ru:logIn]]
 [[ar:logIn]]
 [[zh-cn:logIn]]

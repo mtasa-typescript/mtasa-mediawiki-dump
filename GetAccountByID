@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Server function}}
-{{New feature/item|3.0160|1.5.5|12217|
+{{New feature/item|3.156|1.5.5|12217|
 This function returns the account with the specific ID.
 }}
 
@@ -32,4 +32,7 @@ addCommandHandler("getAccount",
 
 ==See Also==
 {{Account_functions}}
+
+[[en:GetAccountByID]]
+[[ru:GetAccountByID]]
 [[zh-cn:GetAccountByID]]

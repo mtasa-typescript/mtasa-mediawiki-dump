@@ -36,4 +36,7 @@ addCommandHandler( "getall", printAllData ) -- add a command handler for command
 
 ==See Also==
 {{Account functions}}
+
+[[en:getAllAccountData]]
+[[ru:getAllAccountData]]
 [[zh-cn:GetAllAccountData]]

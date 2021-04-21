@@ -56,7 +56,7 @@ setAccountData(account, "myKey", tostring(0.123))
 ==See Also==
 {{Account_functions}}
 
+[[en:setAccountData]]
+[[ru:setAccountData]]
 [[ar:setAccountData]]
 [[es:setAccountData]]
-[[ru:setAccountData]]
-[[zh-cn:setAccountData]]

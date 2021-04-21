@@ -1,6 +1,6 @@
 {{Server function}}
 __NOTOC__
-{{New feature/item|3.0155|1.5.5|11747|
+{{New feature/item|3.155|1.5.5|11747|
 This function sets the name of an [[account]].
 }}
 
@@ -36,4 +36,6 @@ end)
 
 ==See Also==
 {{Account_functions}}
+[[en:SetAccountName]]
+[[ru:setAccountName]]
 [[zh-cn:SetAccountName]]

@@ -33,5 +33,7 @@ addCommandHandler ( "call_admin", callAdmin )
 
 ==See Also==
 {{Account_functions}}
+[[en:isGuestAccount]]
+[[ru:isGuestAccount]]
 [[ar:isGuestAccount]]
 [[zh-cn:isGuestAccount]]

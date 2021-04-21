@@ -1,6 +1,6 @@
 {{Server function}}
 __NOTOC__
-{{New feature/item|3.0156|1.5.5|12217|
+{{New feature/item|3.156|1.5.5|12217|
 This function retrieves the ID of an [[account]].
 }}
 
@@ -26,4 +26,7 @@ addEventHandler("onPlayerLogin", root, outputOnLogin) --add an event handler
 
 ==See Also==
 {{Account_functions}}
+
+[[en:GetAccountID]]
+[[ru:GetAccountID]]
 [[zh-cn:GetAccountID]]

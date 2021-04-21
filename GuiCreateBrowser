@@ -1,9 +1,9 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0150|1.5||
+{{New feature/item|150|1.5.0|7172|
 This function creates a new CEGUI web [[Element/Browser|browser]] element.
-The difference between this, and createBrowser is that, this handles inputs internally, and it can be attached to GUI windows. So this one is more suitable for custom dx based interfaces.
-You can learn more about the differences [https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=737334 here].
+<br>The difference between this, and createBrowser is that, this handles inputs internally, and it can be attached to GUI windows. So this one is more suitable for custom dx based interfaces.
+You can learn more about the differences [[https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=737334 here]].
 }}
 
 ==Syntax==
@@ -51,5 +51,7 @@ addEventHandler( "onClientBrowserCreated", theBrowser,
 ==See Also==
 {{CEF_functions}}
 
+[[en:guiCreateBrowser]]
+[[ru:guiCreateBrowser]]
 [[hu:guiCreateBrowser]]
 [[RO:guiCreateBrowser]]

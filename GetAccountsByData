@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Server function}}
-{{New feature/item|3.0160|1.5.5|11747|
+{{New feature/item|3.156|1.5.5|11747|
 This function returns a [[table]] containing all accounts with specified dataName and value (set with setAccountData).
 }}
 
@@ -29,4 +29,7 @@ end)
 
 ==See Also==
 {{Account_functions}}
+
+[[en:GetAccountsByData]]
+[[ru:getAccountsByData]]
 [[zh-cn:GetAccountsByData]]

@@ -1,6 +1,6 @@
 {{Server function}}
 __NOTOC__
-{{New feature/item|3.0160|1.5.5|11747|
+{{New feature/item|3.156|1.5.5|11747|
 This function retrieves the IP address of an [[account]].
 }}
 
@@ -26,4 +26,7 @@ addEventHandler("onPlayerLogin", getRootElement(), outputOnLogin) --add an event
 
 ==See Also==
 {{Account_functions}}
+
+[[en:GetAccountIP]]
+[[ru:getAccountIP]]
 [[zh-cn:GetAccountIP]]

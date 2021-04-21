@@ -27,6 +27,8 @@ addEventHandler ( "onPlayerLogin", getRootElement(), copyDataOnLogin )
 
 ==See Also==
 {{Account_functions}}
+
+[[en:copyAccountData]]
 [[ru:copyAccountData]]
 [[ar:copyAccountData]]
 [[pl:copyAccountData]]

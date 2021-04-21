@@ -32,3 +32,6 @@ addCommandHandler ( "sha", -- Create a command
 
 ==See Also==
 {{Utility functions}}
+
+[[en:sha256]]
+[[ru:sha256]]

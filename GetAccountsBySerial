@@ -30,6 +30,7 @@ addCommandHandler("getAccounts",
 ==See Also==
 {{Account_functions}}
 
+[[en:getAccountsBySerial]]
 [[ru:getAccountsBySerial]]
 [[pl:getAccountsBySerial]]
 [[zh-cn:getAccountsBySerial]]

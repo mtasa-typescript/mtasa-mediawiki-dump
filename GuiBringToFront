@@ -27,3 +27,6 @@ guiBringToFront ( window )
 ==See Also==
 {{GUI_functions}}
 {{GUI_events}}
+
+[[en:guiBringToFront]]
+[[ru:guiBringToFront]]

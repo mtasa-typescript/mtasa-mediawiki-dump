@@ -29,7 +29,8 @@ addCommandHandler("setmoney",setMoney)
 ==See Also==
 {{Account_functions}}
 
+[[en:getPlayerAccount]]
+[[ru:getPlayerAccount]]
 [[hu:getPlayerAccount]]
 [[ar:getPlayerAccount]]
-[[ru:getPlayerAccount]]
 [[zh-cn:getPlayerAccount]]

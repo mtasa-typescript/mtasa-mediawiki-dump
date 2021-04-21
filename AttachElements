@@ -85,3 +85,6 @@ addCommandHandler( "hat", tankHat )
 
 ==See Also==
 {{Element functions}}
+
+[[en:attachElements]]
+[[ru:attachElements]]

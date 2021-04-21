@@ -40,6 +40,7 @@ addEventHandler("onPlayerLogin", root, onPlayerLogin) -- add an event handler
 ==See Also==
 {{Account_functions}}
 
+[[en:getAccountData]]
 [[ru:getAccountData]]
 [[ar:getAccountData]]
 [[pl:getAccountData]]
