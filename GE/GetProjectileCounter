@@ -7,7 +7,7 @@ Get the time left before a projectile detonates.
 {{OOP||[[projectile]]:getCounter|counter|setProjectileCounter}}
 
 ===Required Arguments===
-* projectile: the projectile to get the timer of.
+* '''projectile''': the projectile to get the timer of.
 
 ===Returns===
 Returns the the time in milliseconds to detonation which depending on the projectile type will do different things:
