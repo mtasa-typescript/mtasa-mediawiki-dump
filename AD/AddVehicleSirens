@@ -6,7 +6,7 @@ This function adds sirens to a vehicle.
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
-bool addVehicleSirens ( vehicle theVehicle, int sirenCount, int sirenType [, bool flag360 = false, bool checkLosFlag = true, bool useRandomiser flag = true, bool silentFlag = false ] )
+bool addVehicleSirens ( vehicle theVehicle, int sirenCount, int sirenType [, bool flag360 = false, bool checkLosFlag = true, bool useRandomiser = true, bool silentFlag = false ] )
 </syntaxhighlight> 
 {{OOP||[[vehicle]]:addSirens}}
 ===Required Arguments=== 

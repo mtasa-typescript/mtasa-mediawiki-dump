@@ -6,7 +6,7 @@ This function returns a [[boolean]] whether the [[vehicle]]'s wheel is on ground
 {{Note|In vehicles with 3 wheels, the wheels are combined 2 in 1, in motorbikes only the left - <code>"front_left"</code> and <code>"rear_left"</code>}}
 
 ==Syntax== 
-<syntaxhighlight lang="lua">bool isVehicleWheelOnGround ( vehicle theVehicle, string|int wheel )</syntaxhighlight> 
+<syntaxhighlight lang="lua">bool isVehicleWheelOnGround ( vehicle theVehicle, string/int wheel )</syntaxhighlight>
 {{OOP||[[vehicle]]:isWheelOnGround}}
 ===Required Arguments=== 
 *'''theVehicle''' The [[vehicle]], which you want to check.
