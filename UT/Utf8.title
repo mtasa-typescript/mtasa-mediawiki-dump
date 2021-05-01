@@ -5,8 +5,10 @@ Converts a UTF-8 string to title case (uppercase). If ''input'' is an integer, i
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-string utf8.title ( string|int input )</syntaxhighlight>
-<syntaxhighlight lang="lua">string utf8.upper ( string|int input )
+string utf8.title ( string|int input )
+</syntaxhighlight>
+<syntaxhighlight lang="lua">
+string utf8.upper ( string|int input )
 </syntaxhighlight>
 
 ===Required Arguments===

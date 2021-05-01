@@ -30,3 +30,5 @@ addEventHandler ( "onPlayerTarget", root, onPlayerTarget )    -- add above funct
 
 ==See Also==
 {{Element functions}}
+
+[[pt-br:getElementType]]

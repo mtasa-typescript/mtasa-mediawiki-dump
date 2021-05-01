@@ -4,6 +4,21 @@ __NOTOC__
 
 {{Note|For this function to work on peds, the server and all clients are required to be on version '''1.5.8 r20740''' or newer.}}
 {{Note|This function only works on synced peds and vehicles (ie. created serverside).}}
+{{Note|This function only works within the following limits:
+* If forced to enter as a passenger, it doesn't work if all passenger seats are occupied.
+* If forced to enter as a driver, the ped can take off the vehicle's current driver.
+** If the driver's door is blocked by something, the ped can use the oposite front door to reach the driver's seat, taking off the passenger which is using the oposite front seat.
+* If the vehicle is not specified:
+** The ped will search a vehicle's door within 20 m that can be used to enter the vehicle.
+** If the vehicle have a driver, the limit becomes 10 m.
+* If the vehicle is specified:
+** The ped will search the vehicle within 50 m that can be entered. The doors aren't taken into account. It means that it doesn't work if the vehicle's door is in range but the vehicle itself is not.
+** If the vehicle have a driver, the limit becomes 10 m.
+* The limit becomes 50 m after the ped found the vehicle and started to run toward it.
+* The ped stops the animation if the distance from vehicle reaches 50 m while the ped is running towards it.
+* The ped reserves the seat he is trying to use. It means nobody can use the respective seat while the ped is running toward it.
+** Exception: If the ped is forced to enter as a passenger and is going to use the front door, the ped can wait if someone is using it to go the driver' seat.
+}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">

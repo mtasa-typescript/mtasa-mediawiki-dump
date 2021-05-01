@@ -5,8 +5,10 @@ Converts a UTF-8 string to folded case (lowercase), which can be used to compare
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-string|int utf8.fold ( string|int input )</syntaxhighlight>
-<syntaxhighlight lang="lua">string|int utf8.lower ( string|int input )
+string|int utf8.fold ( string|int input )
+</syntaxhighlight>
+<syntaxhighlight lang="lua">
+string|int utf8.lower ( string|int input )
 </syntaxhighlight>
 
 ===Required Arguments===

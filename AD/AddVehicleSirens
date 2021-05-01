@@ -21,7 +21,7 @@ bool addVehicleSirens ( vehicle theVehicle, int sirenCount, int sirenType [, boo
 *'''silentFlag:''' If you want the siren to be silent set this to true
 
 ===Returns===
-Returns ''true'' if sirens were successfully added to the vehicle, ''false'' otherwise. 
+Returns ''true'' if sirens were successfully added to the vehicle, ''false'' otherwise.
 
 ==Example==
 This example adds a vehicle siren on entering a vehicle and removes a vehicle siren on exiting. (TESTED!)

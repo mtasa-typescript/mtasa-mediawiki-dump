@@ -12,7 +12,7 @@ float, float, float, float, float, float getElementBoundingBox ( element theElem
 {{OOP||[[element]]:getBoundingBox}}
 
 ===Required Arguments===
-*'''theElement:''' the element whose bounding box we want to get.
+* '''theElement:''' the element whose bounding box we want to get.
 
 ===Returns===
 *Returns ''min x, min y, min z, max x, max y, max z'' if the passed element is valid and streamed in, ''false'' otherwise.

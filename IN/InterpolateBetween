@@ -24,8 +24,9 @@ float float float interpolateBetween ( float x1, float y1, float z1, float x2, f
 Returns ''x, y, z'' the interpolated 3D vector/value if successful, ''false'' otherwise (error in parameters).
 As mentioned before, interpolateBetween can be used on 2D vectors or scalars in which case only some (x, y or just x) of the returned values are to be used (cf. alpha interpolation in marker example or size interpolation in window example).
 
-== Examples ==
+==Example==
 The examples below are only clientside examples even though the function can be used on both sides. Indeed it makes more sense to use it with onClientRender/onClientPreRender but the freedom is given to use it in any other context.
+'''Example 1''':
 <section name="Client" class="client" show="true">
 This clientside example uses interpolateBetween to create position and color interpolation(with effect) on a marker.
 The command to test it is "/marker".
@@ -94,6 +95,7 @@ end
 </syntaxhighlight>
 </section>
 
+'''Example 2''':
 <section name="Client" class="client" show="true">
 This clientside example uses interpolateBetween to create size and position interpolation (with effect) on a gui-window.
 The command to test it is "/window".
@@ -223,6 +225,7 @@ end
 </syntaxhighlight>
 </section>
 
+'''Example 3''':
 <section name="Client" class="client" show="true">
 This clientside example uses interpolateBetween to create and position interpolation (with effect) on a camera.
 The command to test it is "/ccam".

@@ -39,7 +39,9 @@ bool dxDrawImageSection ( float posX, float posY, float width, float height,
 ===Returns===
 Returns ''true'' if successful, ''false'' otherwise.
 
-==Example 1== 
+==Example==
+<section name="Client" class="client" show="true">
+'''Example 1'''
 The example draws a section of an image. (You can use [https://i.imgur.com/rMaiEpp.png this] image to test.)
 <syntaxhighlight lang="lua">
 addEventHandler("onClientRender", root, function()
@@ -50,8 +52,7 @@ addEventHandler("onClientRender", root, function()
 end)
 </syntaxhighlight>
 
-
-==Example 2== 
+'''Example 2'''
 The example draws a section of an image. (You can use [http://i1325.photobucket.com/albums/u630/Tourmalinelisa2/128x128.jpg this] image to test.)
 <syntaxhighlight lang="lua">
 addEventHandler('onClientRender', root, function()
@@ -59,6 +60,7 @@ addEventHandler('onClientRender', root, function()
   dxDrawImage(400, 300, 128, 128, 'img.jpg') -- Draw the whole image to be able to identify the difference
 end)
 </syntaxhighlight>
+</section>
 
 ==See Also==
 {{Drawing_functions}}
