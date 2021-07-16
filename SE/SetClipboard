@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Client function}}
-This function sets the players clipboard text (what appears when you paste with CTRL + V) Note that there is no getClipBoard function for safety reasons.
+This function sets the players clipboard text (what appears when you paste with CTRL + V)
 
 ==Syntax==
 <syntaxhighlight lang="lua">

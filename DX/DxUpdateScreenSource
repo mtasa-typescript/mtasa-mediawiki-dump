@@ -6,7 +6,7 @@ This function updates the contents of a screen source [[texture]] with the scree
 <syntaxhighlight lang="lua">
 bool dxUpdateScreenSource ( element screenSource [, bool resampleNow = false ] )
 </syntaxhighlight> 
-{{OOP||[[texture|screensource]]:update}}
+{{OOP||[[DxScreenSource]]:update}}
 ===Required Arguments=== 
 *'''screenSource:''' The screen source element whose pixels we want to fill with the screen capture
 

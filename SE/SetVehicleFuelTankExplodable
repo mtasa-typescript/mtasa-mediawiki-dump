@@ -6,6 +6,7 @@ This function changes the 'explodable state' of a vehicle's fuel tank, which tog
 <syntaxhighlight lang="lua">
 bool setVehicleFuelTankExplodable ( vehicle theVehicle, bool explodable )
 </syntaxhighlight>
+{{OOP||[[vehicle]]:setFuelTankExplodable}}
 
 ===Required Arguments===
 *'''theVehicle''': The [[vehicle]] you wish to change the fuel tank explodable state of.

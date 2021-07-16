@@ -19,11 +19,39 @@ Returns a float containing the distance between the two points as a [[float]]. R
 
 ==Example==
 This example gets the distance between two vehicles and outputs it to the chat box.
+<section name="Server" class="server" show="true">
 <syntaxhighlight lang="lua">
-vehicle1x, vehicle1y, vehicle1z = getElementPosition ( vehicle1 )
-vehicle2x, vehicle2y, vehicle2z = getElementPosition ( vehicle2 )
-outputChatBox ( "The distance between vehicle1 and vehicle2 is "..tostring(getDistanceBetweenPoints3D ( vehicle1x, vehicle1y, vehicle1z, vehicle2x,
- vehicle2y, vehicle2z )) )</syntaxhighlight>
+-- create the vehicles which we're going to measure distance between of
+vehicle1 = createVehicle(445, -2629.79248, 1370.82996, 7.10079)
+vehicle2 = createVehicle(560, -2629.71899, 1350.18188, 7.10897)
+
+-- get position of both created vehicles
+vehicle1x, vehicle1y, vehicle1z = getElementPosition(vehicle1)
+vehicle2x, vehicle2y, vehicle2z = getElementPosition(vehicle2)
+
+-- measure the distance
+outputChatBox("The distance between vehicle1 and vehicle2 is " ..tostring(getDistanceBetweenPoints3D(vehicle1x, vehicle1y, vehicle1z, vehicle2x, vehicle2y, vehicle2z)))
+</syntaxhighlight>
+</section>
+
+This example checks whether or not the player is close enough (5 meters from a location of SF Bridge)
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+function checkIfClose(p, cmd)
+    -- player x, y, z
+    local x1, y1, z1 = getElementPosition(p)
+    -- location x, y, z (to check if player is close enough to)
+    local x2, y2, z2 = -2629.79248, 1370.82996, 7.10079
+
+    if getDistanceBetweenPoints3D(x1, y1, z1, x2, y2, z2) <= 5 then
+        return outputChatBox("You are close enough (within 5 meters)!")
+    else
+        return outputChatBox("You are NOT close enough!")
+    end
+end
+addCommandHandler("closeornot", checkIfClose)
+</syntaxhighlight>
+</section>
 
 
 ''getDistanceBetweenPoints3D'' can also be used to measure the length of 3 dimensional vectors. This example calculates the speed of a vehicle by measuring the size of the it's velocity vector:

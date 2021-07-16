@@ -1,7 +1,7 @@
 {{Server client function}}
 __NOTOC__
 This function sets the maximum [http://en.wikipedia.org/wiki/Frame_rate FPS (Frames per second)] that players on the server can run their game at.  
-{{Note|When set client side, the actual limit used is the lowest of both the server and client set values}}
+{{Note|When set client side, the actual limit used is the lowest of both the server and client set values.}}
 ==Syntax== 
 <syntaxhighlight lang="lua">
 bool setFPSLimit ( int fpsLimit )         
@@ -28,6 +28,8 @@ As the most common issue, you should know that the breaking point for this bug i
 * At very high FPS, climbing over certain objects will result in instant death. Example at: 2520.108, -1681.407, 19.406, 266
 * The higher your FPS, the more of a penalty in satchel throwing distance (up to ~10% at very high FPS) will apply.
 
+For a full list of FPS-related GTA bugs (that are much less likely to impact gameplay in a meaningful way) and MTA developers' progress in tackling them, see the [https://github.com/multitheftauto/mtasa-blue/projects/14 Framerate issues tracker] github project.
+
 ==Example== 
 This example allows players to limit their own FPS using a command.
 <section name="Client" class="client" show="true">
@@ -50,7 +52,7 @@ addCommandHandler("fpslimit", fpsFunction)
 
 
 This example lets servers that have chosen to use FPS above 70 (even 100 FPS), fix the "walking sideways while aiming" (strafing) bug for all of their players.
-<section name="Server" class="server" show="true">
+<section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
 local previousTask = false
 local defaultFpsLimit

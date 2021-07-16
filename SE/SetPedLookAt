@@ -17,7 +17,7 @@ bool setPedLookAt ( ped thePed, float x, float y, float z [, int time = 3000 [, 
 ===Optional Arguments===
 *'''time:''' the time, in milliseconds, during which the ped will look at the target. Once this time has elapsed, he will look ahead again like before the function was applied. A time of 0 will immediately stop any lookat. A negative time will make the ped look at the target indefinitely.
 *'''blend:''' the time, in milliseconds, during which the look will blend.
-*'''target:''' if this argument is specified, the position arguments will be ignored and the ped's gaze will follow the specified element instead. Can be a player, a vehicle, another ped etc.
+*'''target:''' if this argument is specified, the position arguments will be mean offsets relative to the target and the ped's gaze will follow the specified element instead. Can be a player, a vehicle, another ped etc.
 
 ==Example==
 This example makes the local player look at where the camera points at. If you want to sync this effect with other players you can use [[triggerLatentServerEvent]] and [[triggerLatentClientEvent]] functions.

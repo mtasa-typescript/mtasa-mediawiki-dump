@@ -3,7 +3,7 @@ __NOTOC__
 {{New feature/item|3.0131|1.3.1|4993|
 This function sets the nitro level of the [[vehicle]].
 }}
-{{Warning|Only works if the vehicle is steamed in}}
+{{Warning|Only works if the vehicle is streamed in.}}
 ==Syntax== 
 <syntaxhighlight lang="lua">bool setVehicleNitroLevel ( vehicle theVehicle, float level )</syntaxhighlight> 
 

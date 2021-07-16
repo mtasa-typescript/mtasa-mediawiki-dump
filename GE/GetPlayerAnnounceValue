@@ -1,6 +1,6 @@
 __NOTOC__
 {{Server function}}
-{{New feature/item|3.0104|1.0.4||This function retrieves a players ASE announce value under a certain key.}}
+{{New feature/item|3.0104|1.0.4||This function retrieves a players ASE announce value under a certain key.|}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">string getPlayerAnnounceValue ( element thePlayer, string key )</syntaxhighlight>
@@ -26,4 +26,3 @@ addCommandHandler ( "getscore", getScore )
 
 ==See Also==
 {{Player functions}}
-[[Category:Changes_in_1.0]]

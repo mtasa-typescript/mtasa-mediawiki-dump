@@ -9,7 +9,7 @@ This function sets the rendering state of a browser.
 <syntaxhighlight lang="lua">
 bool setBrowserRenderingPaused ( browser webBrowser, bool paused )
 </syntaxhighlight>
-{{OOP|As of MTA: SA {{Current Version|master}} the counterpart is not implemented yet.|[[browser]]:setRenderingPaused|renderingPaused|isBrowserRenderingPaused}}
+{{OOP||[[browser]]:setRenderingPaused|renderingPaused|isBrowserRenderingPaused}}
 
 ===Required Arguments===
 *'''webBrowser:''' The browser

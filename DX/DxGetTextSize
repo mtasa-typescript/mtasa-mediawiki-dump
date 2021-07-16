@@ -6,7 +6,7 @@ __NOTOC__
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-float, float dxGetTextSize ( string text [, float width = 0, float scaleX = 1.0, float scaleY = 1.0, mixed font = "default", bool wordBreak = false, bool colorCoded = false] )
+float, float dxGetTextSize ( string text [, float width = 0, float scaleXY = 1.0 [, float scaleY = 1.0 ], mixed font = "default", bool wordBreak = false, bool colorCoded = false] )
 </syntaxhighlight>
 {{OOP|This syntax requires you to ignore the font argument above| [[Element/DX font|font]]:getSize}}
 ===Required Arguments=== 

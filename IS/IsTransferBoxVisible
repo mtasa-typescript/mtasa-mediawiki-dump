@@ -13,7 +13,18 @@ On '''server''' this returns a boolean, whether the transfer box should be visib
 On '''client''' this returns a boolean, whether the transfer box should be visible or not at the time of invocation.
 
 ==Examples==
-{{Needs Example}}
+<section name="Client" class="client" show="true">
+This example defines a command to remove the player's transfer box.
+<syntaxhighlight lang="lua">
+function isVisible()
+    if isTransferBoxVisible() then 
+        setTransferBoxVisible(false)
+        outputChatBox("* "..getPlayerName(localPlayer).." you are downloading the server!", 255, 255, 255, true)      
+    end
+end
+addCommandHandler("download2", isVisible)
+</syntaxhighlight>
+</section>
 
 ==Requirements==
 {{Requirements|1.5.8-9.20788|1.5.8-9.20788|}}

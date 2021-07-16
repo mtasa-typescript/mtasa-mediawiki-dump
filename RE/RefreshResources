@@ -1,6 +1,7 @@
 {{Server function}}
 __NOTOC__
 This function finds new resources and checks for changes to the current ones.
+{{Note|The resource using this function needs access to ''function.refreshResources'' in order for this function to work. You can give it the access by including an [[Server_Commands#aclrequest|aclrequest]] command in its [[meta.xml]] file or by adding it to the admin [[ACL]] group.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
