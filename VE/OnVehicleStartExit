@@ -1,0 +1,36 @@
+__NOTOC__ 
+{{Server event}}
+This event is triggered when a player or ped starts to exit a vehicle. This event can be used to cancel exit, if necessary.
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+ped exitingPed, int seat, ped jacked, int door
+</syntaxhighlight> 
+
+*'''exitingPed''': a [[player]] or [[ped]] element who is starting to exit a vehicle.
+*'''seat''': an [[int]] representing the seat in which the ped is exiting from.
+*'''jacked''': a [[player]] or [[ped]] element representing who is jacking.
+*'''door''': an [[int]] representing the door that the ped is using to leave.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[vehicle]] in which a ped began to exit.
+
+===Canceling===
+If this event is [[Event system #Canceling|canceled]], the ped will not exit the vehicle.
+
+==Example== 
+This example locks a player inside a police vehicle if he is a policeman.
+<syntaxhighlight lang="lua">
+local policeVehicles = {[598] = true,[596] = true,[597] = true,[599] = true } -- Police vehicle IDs
+local policeSkins = {[280] = true,[281] = true,[282] = true,[283] = true,[284] = true,[285] = true,[286] = true } -- Police Skins
+ 
+function exitVehicle ( thePlayer, seat, jacked ) 
+   if (policeVehicles[getElementModel (source)]) and (policeSkins[getElementModel(thePlayer)]) then 
+      outputChatBox ( "You're the cop! Don't exit the car!", thePlayer )  
+      cancelEvent()
+   end
+end
+addEventHandler ( "onVehicleStartExit", getRootElement(), exitVehicle)
+</syntaxhighlight>
+
+{{See also/Server event|Vehicle events}}

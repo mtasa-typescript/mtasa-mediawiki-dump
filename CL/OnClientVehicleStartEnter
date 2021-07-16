@@ -1,0 +1,32 @@
+{{Client event}}
+__NOTOC__
+This event is triggered when a [[ped]] or [[player]] starts entering a vehicle. Once the entering animation completes, [[onClientVehicleEnter]] is triggered.
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+ped thePed, int seat, int door
+</syntaxhighlight>
+*'''thePed:''' the ped that just started entering a vehicle.
+*'''seat:''' the number of the seat he is going to sit on.
+*'''door:''' An integer of which door the ped used (0-3). 0 is driver side door, 1 is front passenger, 2 is back left, 3 is back right.
+
+==Source==
+The source of this event is the vehicle the ped is entering.
+
+==Cancel effect==
+This event can be [[Event system#Canceling|canceled]], but only for the local player or peds synced by the client. If cancelled, they will not begin to the enter the vehicle.
+
+==Example==
+This example outputs if the local player is about to enter the drivers seat.
+<syntaxhighlight lang="lua">addEventHandler("onClientVehicleStartEnter", root, function(player,seat,door)
+	if (player == localPlayer and seat == 0)then
+		outputChatBox("You are going to sit in the drivers seat.")
+	end
+end)</syntaxhighlight>
+
+==See Also==
+===Client vehicle events===
+{{Client_vehicle_events}}
+===Client event functions===
+{{Client_event_functions}}
+[[es:onClientVehicleStartEnter]]

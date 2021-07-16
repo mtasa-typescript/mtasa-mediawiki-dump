@@ -1,0 +1,55 @@
+__NOTOC__ 
+{{Client event}}
+This event is triggered when client-side debug messages (for instance errors or warnings) would appear in the debug window. This event doesn't require the debug window to be enabled to trigger, however.
+
+'''Note:''' To prevent infinite loops, debug messages that occur inside the function that handles this event won't trigger this event, so you won't be able to rely on debug info to fix faulty code that is inside this function. Since build [https://buildinfo.mtasa.com/index.php?Revision=14683 r14683] debug messages from [[outputDebugString]] and [[iprint]] will show up.
+
+==Parameters==
+{{New feature/item|3.0158|1.5.7|11412|
+<syntaxhighlight lang="lua">
+string message, int level, string file, int line, int r, int g, int b
+</syntaxhighlight>
+}}
+
+*'''message''': The message which was outputted in the server console, without details like file, line etc
+*'''level''': The type of debug message which was outputted
+**'''0:''' "Custom" message
+**'''1:''' Error message
+**'''2:''' Warning message
+**'''3:''' Information message
+*'''file''': The file from which the debug message was outputted
+**'''Note:''' May return [[nil]] when the source could not be found
+*'''line''': The line in file '''file''' where the debug message was outputted
+**'''Note:''' May return [[nil]] when the source could not be found
+{{New feature/item|3.0158|1.5.7|11412|
+*'''r''': Amount of red color (0-255)
+*'''g''': Amount of green color (0-255)
+*'''b''': Amount of blue color (0-255)
+}}
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[root element]].
+
+==Examples== 
+This example outputs the debug message in the console.
+<syntaxhighlight lang="lua">
+function onClientDebugMessage(message, level, file, line)
+	outputConsole(message)
+end
+addEventHandler("onClientDebugMessage", root, onClientDebugMessage)
+</syntaxhighlight>
+This example tells players that they missed a debug message, if they don't have debugscript enabled.
+<syntaxhighlight lang="lua">
+function newDebug()
+	if not isDebugViewActive() then -- If their debug view is not active
+		outputChatBox("* You just missed a debug message. Use the \'/debugscript\' command to view it.", 255, 0, 0) -- Output to them that they missed a debug message
+	end
+end
+addEventHandler("onClientDebugMessage", root, newDebug) -- When we get a new client debug message, call the newDebug function
+</syntaxhighlight>
+
+==See Also==
+===Other client events===
+{{Client_other_events}}
+===Client event functions===
+{{Client_event_functions}}

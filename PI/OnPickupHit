@@ -1,0 +1,29 @@
+__NOTOC__
+{{Server event}} 
+This event is triggered when a [[player]] hits a [[pickup]].
+
+==Parameters==
+<syntaxhighlight lang="lua">
+player thePlayer
+</syntaxhighlight> 
+
+*'''thePlayer''': a [[player]] element referring to the player who moved over the [[pickup]].
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[pickup]] that was hit by the player.
+
+==Cancel effect==
+If this event is [[Event system#Canceling|canceled]], the pickup does not disappear and the player does not receive its bonus.
+
+==Example== 
+This example creates a pickup and outputs a message to the chat box when a player walks over it.
+<syntaxhighlight lang="lua">
+local thePickup = createPickup( 10, 10, 10, 2, 31, 3000, 50 ) -- Create a M4 weapon pickup when the script starts
+
+function pickedUpWeaponCheck( player )
+    outputChatBox( "You have picked up a M4.", player ) -- Output a message to the chatbox
+end
+addEventHandler( "onPickupHit", thePickup, pickedUpWeaponCheck )
+</syntaxhighlight>
+
+{{See also/Server event|Pickup events}}

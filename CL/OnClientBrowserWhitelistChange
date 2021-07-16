@@ -1,0 +1,34 @@
+__NOTOC__
+{{Client event}}
+{{New feature/item|3.0150|1.5||
+The event is triggered when the whitelist has changed. Note that this event is only triggered if the request window was confirmed by accepting.
+}}
+{{Note|Attaching the event to a webbrowser won't work. Attach it to the root element instead.}}
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+table changedDomains
+</syntaxhighlight>
+*'''changedDomains:''' a [[table]] of changed domains.
+
+==Source==
+The [[Element_tree#Tree_elements|root]] element.
+
+==Example== 
+<syntaxhighlight lang="lua">
+requestBrowserDomains({ "mtasa.com" }) -- request browser domain
+showCursor(true) -- show cursor
+addEventHandler("onClientBrowserWhitelistChange", root,
+   function(newDomains)
+     if newDomains[1] == "mtasa.com" then
+       local browser = createBrowser(1280, 720, false, false) -- create browser
+       loadBrowserURL(browser, "http://mtasa.com/") -- load browser url
+   end
+end
+)
+</syntaxhighlight>
+
+[[pl:onClientBrowserWhitelistChange]]
+
+==See Also==
+{{CEF_events}}

@@ -1,0 +1,32 @@
+__NOTOC__
+{{Client event}}
+{{New feature/item|3.0159|1.5.9|20837|This event is triggered when the interior of an [[element]] is changed using [[setElementInterior]].}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+int oldInterior, int newInterior
+</syntaxhighlight>
+*'''oldInterior''': an [[int]] representing the interior the [[element]] was in before.
+*'''newInterior''': an [[int]] representing the interior the [[element]] is in now.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[element]] that changed its interior.
+
+==Example==
+<syntaxhighlight lang="lua">
+local vehicle = createVehicle(411, 0, 0, 3)
+setTimer(setElementInterior, 1000, 1, vehicle, 10)
+
+addEventHandler("onClientElementInteriorChange", vehicle, function(oldInterior, newInterior)
+    outputChatBox(inspect(source).."'s interior changed from "..oldInterior.." to "..newInterior)
+end)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20837|}}
+
+==See Also==
+===Client element events===
+{{Client_element_events}}
+===Client event functions===
+{{Client_event_functions}}

@@ -1,0 +1,30 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a [[player]] hits a [[pickup]].
+
+==Parameters==
+<syntaxhighlight lang="lua">
+pickup pickupHit
+</syntaxhighlight> 
+
+*'''pickupHit''': the [[pickup]] the [[player]] hit.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that hit the pickup.
+
+==Cancel effect==
+If this event is [[Event system#Canceling|canceled]], the player will not be able to pick up this pickup.
+
+==Example== 
+This example disables the use of armour pickups.
+<syntaxhighlight lang="lua">
+function armourBlock(pickup)
+	if (getPickupType(pickup) == 1) then -- If it's an armour pickup
+		cancelEvent() -- Cancel the event
+		outputChatBox("Armour pickups are disabled.", source, 255, 0, 0)
+	end
+end
+addEventHandler("onPlayerPickupHit", root, armourBlock)
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

@@ -1,0 +1,90 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player issues a command.
+{{Note|This event triggers regardless of whether the command exists in a script or is hardcoded. Also, typing anything in chat will execute the internal command "say", so this event will be triggered on every chat message as well. Therefore you should avoid excessive use of this function on busy servers, out of performance considerations.}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+string command
+</syntaxhighlight>
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] who tried to execute a command.
+
+==Result of cancelling this event==
+The command will not be executed. (Only server-side commands can be canceled.)
+
+==Example== 
+<section name="Server" class="server" show="true">
+This example implements an anti-flood protection timer for commands.
+'''Be sure to give the resource a function.kickPlayer right.
+Also, note, that if the server freezes for a frame and a player executes a command 2x he/she'll get kicked, because those 2 commands will be processed after each other, with very little delay'''
+<syntaxhighlight lang="lua">
+local CMD_INTERVAL        = 200 --// The interval that needs to pass before the player can execute another cmd
+local KICK_AFTER_INTERVAL = 50  --// Kick the player if they execute more than 20 cmds/sec
+
+local executions = setmetatable({}, { --// Metatable for non-existing indexes
+    __index = function(t, player)
+        return getTickCount()-CMD_INTERVAL
+    end
+})
+
+addEventHandler("onPlayerCommand", root,
+    function()
+        if (executions[source]-getTickCount()<=CMD_INTERVAL) then
+            if (executions[source]-getTickCount()<=KICK_AFTER_INTERVAL) then 
+                kickPlayer(source, "Anti-Flood", "Don't flood")
+            end 
+            cancelEvent()
+        end
+        executions[source] = getTickCount()
+    end
+)
+</syntaxhighlight>
+
+This example disables the hardcoded command 'whois'
+<syntaxhighlight lang="lua">
+addEventHandler("onPlayerCommand",root,
+    function(command)
+	if (command == "whois") then
+	    cancelEvent()
+	end
+end)
+</syntaxhighlight>
+</section>
+
+
+<section name="Server" class="server" show="true">
+Time limit specific commands.
+<syntaxhighlight lang="lua">
+local LIMITED_COMMANDS = {
+    -- ["COMMAND_NAME"] = TIME_LIMIT_IN_SEC
+    ["something"] = 5,  -- Can use this command only once in every 5 sec
+    ["spam"]      = 10, -- Can use this command only once in every 10 sec
+}
+
+local EXEC = {}
+
+addEventHandler("onPlayerCommand", root, function(cmd)
+    local limit_sec = LIMITED_COMMANDS[cmd]
+    if not limit_sec then return end
+
+    local tick = getTickCount()
+
+    if not EXEC[source]      then EXEC[source] = {}     end
+    if not EXEC[source][cmd] then EXEC[source][cmd] = 0 end
+
+    if EXEC[source][cmd] + (limit_sec * 1000) > tick then
+        cancelEvent()
+        return outputChatBox("#FF0000[ANTISPAM]#FFFFFF You can use this command once, in every "..limit_sec.." sec.", source, 255, 255, 255, true)
+    end
+    EXEC[source][cmd] = tick
+end)
+
+addEventHandler("onPlayerQuit", root, function()
+    EXEC[source] = nil
+end)
+</syntaxhighlight>
+</section>
+
+{{See also/Server event|Player events}}

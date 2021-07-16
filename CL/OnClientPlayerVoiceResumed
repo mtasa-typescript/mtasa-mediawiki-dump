@@ -1,0 +1,29 @@
+{{Client event}}
+__NOTOC__ 
+This event is triggered when a player's voice sound is resumed using [[setSoundPaused]].
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+string reason
+</syntaxhighlight> 
+
+*'''reason''': the reason for the pause, this can be only "resumed".
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[Element/Player|player]] whose voice got resumed.
+
+==Example== 
+This example outputs nick of whoever's voice is resumed.
+<syntaxhighlight lang="lua">
+addEventHandler("onClientPlayerVoiceResumed", root,
+    function ()
+        outputChatBox(getPlayerName(source) .. "'s voice got resumed.")
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+===Client player events===
+{{Client_player_events}}
+===Client event functions===
+{{Client_event_functions}}

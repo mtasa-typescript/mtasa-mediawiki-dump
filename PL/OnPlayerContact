@@ -1,0 +1,27 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player stands on a different element than before.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+element previousElement, element currentElement
+</syntaxhighlight> 
+
+*'''previousElement''': the [[element]] [[player]] was standing on before. ''nil'' if none.
+*'''currentElement''': the new [[element]] that the [[player]] is standing on now. ''nil'' if none.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] who hit an element.
+
+==Example== 
+This example outputs the element type of an element you have hit
+<syntaxhighlight lang="lua">
+function outputElementType ( prev, current )
+	if ( current ) then
+		outputChatBox ( "You have hit an "..getElementType ( current ) )
+	end
+end
+addEventHandler ( "onPlayerContact", getRootElement(), outputElementType )
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

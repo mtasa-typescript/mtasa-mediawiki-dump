@@ -1,0 +1,33 @@
+__NOTOC__
+{{Client event}}
+This event is triggered every time an explosion is created on the current '''clients scene''' (inside the streamer).
+==Parameters==
+<syntaxhighlight lang="lua">
+float x, float y, float z, int theType
+</syntaxhighlight>
+*'''x:''' the X Coordinate of where the explosion was created
+*'''y:''' the Y Coordinate of where the explosion was created
+*'''z:''' the z Coordinate of where the explosion was created
+*'''theType:''' the type of explosion created, Values are:
+{{Explosions}}
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] who created the explosion.
+If the explosion is from a [[vehicle]] the source is the [[player]] who syncs the vehicle.
+
+===Canceling===
+If this event is [[Event system #Canceling|canceled]], the explosion will not occur. 
+
+==Example==
+This example outputs the type of element that created the explosion into the chatbox.
+<syntaxhighlight lang="lua">
+function onClientExplosion(x, y, z, theType)
+	outputChatBox("Explosion created by a "..getElementType(source))
+end
+addEventHandler("onClientExplosion", root, onClientExplosion)
+</syntaxhighlight>
+
+==See Also==
+===Other client events===
+{{Client_other_events}}
+===Client event functions===
+{{Client_event_functions}}

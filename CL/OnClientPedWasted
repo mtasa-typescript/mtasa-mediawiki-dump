@@ -1,0 +1,42 @@
+__NOTOC__
+{{Client event}}
+
+This event is triggered whenever a ped dies.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+element killer, int weapon, int bodypart, float loss / bool stealth
+</syntaxhighlight> 
+
+*'''killer''': A [[player]] [[element]] representing the killer.
+*'''weapon''': An [[int|integer]] representing the [[Weapons|killer weapon]] or the [[Damage Types|damage types]].
+*'''bodypart''': An [[int|integer]] representing the bodypart the player was damaged.
+{{BodyParts}}
+*'''loss''': A [[float]] representing the percentage of health the ped lost in the final "hit". ''Note: Only for client-side created peds.''
+'''OR'''
+*'''stealth''': A [[boolean]] representing whether or not this was a stealth kill.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[ped]] that died.
+
+==Example==
+<section name="Client" class="client" show="true">
+This example outputs a message every time a player kills another player.
+<syntaxhighlight lang="lua">
+-- define the event handler function
+function onWasted(killer, weapon, bodypart)
+    if ( killer and getElementType(killer) == "player" and getElementType(source) == "player" ) then
+        outputChatBox(getPlayerName(killer).." has killed ".. getPlayerName(source) ..".") -- output the kill message to the chatbox.
+    end
+end
+
+-- add the event handler
+addEventHandler("onClientPedWasted", getRootElement(), onWasted)
+</syntaxhighlight>
+</section>
+
+==See Also==
+===Client ped events===
+{{Client_ped_events}}
+===Client event functions===
+{{Client_event_functions}}

@@ -1,0 +1,57 @@
+{{Server event}}
+__NOTOC__ 
+This event is triggered when a player changes his nickname.
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+string oldNick, string newNick, bool changedByUser
+</syntaxhighlight>
+*'''oldNick:''' the nickname the [[player]] had before.
+*'''newNick:''' the new nickname of the player.
+{{New items|3.0154|1.5.3|
+*'''changedByUser:''' a [[boolean]] representing whether the name was changed using [[setPlayerName]] or by the user.
+|9765}}
+
+==Source==
+The [[event system#Event source|source]] of this event is the player that changed his nick
+
+==Cancel effect==
+Cancelling this event depends on how it is called, if it is called by the scripting event then it is NOT cancelable. If it is called from the /nick command it IS cancelable. If this event is cancelled and can be cancelled then the name will not change.
+
+==Example== 
+<section name="Server Example 1" class="server" show="true">
+<syntaxhighlight lang="lua">
+function nickChangeHandler(oldNick, newNick)
+    -- check if there's account with newNick as username
+    if getAccount(newNick) then
+        outputChatBox("Sorry, there already exists an account with your new nickname as username.", source, 0, 255, 0)
+        outputChatBox("Please choose another one.", source, 0, 255, 0)
+        -- cancel the event to prevent the nick from being changed
+        cancelEvent()
+    end
+end
+-- add an event handler
+addEventHandler("onPlayerChangeNick", root, nickChangeHandler)
+</syntaxhighlight></section>
+
+{{New items|3.0154|1.5.3|
+<section name="Server Example 2" class="server" show="true">
+This function checks if the nickname of a player was changed by a script, if so, a message is shown in the server logs.
+<syntaxhighlight lang="lua">
+function wasNickChangedByUser(oldNick, newNick, changedByUser)
+	if (changedByUser == false) then -- check if the nickname was not changed by the user
+		outputServerLog("Player "..oldNick.."'s name was changed to "..newNick.." by a script") -- output to the server's logs
+	end	
+end
+addEventHandler("onPlayerChangeNick", root, wasNickChangedByUser) -- add an event handler
+</syntaxhighlight></section>|9765}}
+
+==Issues==
+{{Issues|
+{{Issue|7362|onPlayerChangeNick triggered when nick doesn't changed}}
+{{GH_Issue|52|Add 'manuallyChanged' parameter to onPlayerChangeNick}}
+}}
+
+{{See also/Server event|Player events}}
+
+[[ru:onPlayerChangeNick]]

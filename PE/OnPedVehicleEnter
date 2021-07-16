@@ -1,0 +1,31 @@
+__NOTOC__ 
+{{Server event}}
+{{New feature/item|3.0159|1.5.8|20740|This event is triggered when a ped enters a vehicle.}}
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+vehicle theVehicle, int seat, ped jacked
+</syntaxhighlight> 
+
+*'''theVehicle''': a [[vehicle]] element representing the vehicle that was entered.
+*'''seat''': an [[int]] representing the seat in which the ped is entering.
+*'''jacked''': a [[player]] or [[ped]] element representing who has been jacked.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[ped]] that entered the vehicle.
+
+<section name="Example 1" class="server" show="true">
+Sending a message to every player when ped has entered to a vehicle
+<syntaxhighlight lang="lua">
+function sendMessage(theVehicle, seat)
+   local vehicleName = getVehicleName(theVehicle) -- Get name of the vehicle
+   if seat==0 then -- if the ped is a driver
+      outputChatBox("Ped is now a driver of "..vehicleName, root)
+   else -- if not
+      outputChatBox("Ped has entered to "..vehicleName, root)
+   end
+end
+addEventHandler("onPedVehicleEnter", root, sendMessage)
+</syntaxhighlight>
+</section>
+{{See also/Server event|Ped events}}

@@ -1,0 +1,28 @@
+__NOTOC__ 
+{{Server event}}
+This event is triggered when a [[player]] stands on a [[pickup]] while not in a [[vehicle]].
+{{Tip|Pickups use [[colshape]]s, you can get the [[colshape]] of the [[pickup]] with [[getElementColShape]] and use [[colshape]] [[event]]s to it.}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+player playerWhoUsed
+</syntaxhighlight> 
+
+*'''playerWhoUsed''': a [[player]] element referring to the player who used the [[pickup]].
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[pickup]] that is getting used by the player.
+
+===Canceling===
+If this event is [[Event system #Canceling|canceled]], the player will not be given the item they picked up.
+
+==Example== 
+This example outputs a message to the chatbox when a player uses a pickup.
+<syntaxhighlight lang="lua">
+function pickupUse( thePlayer )
+    outputChatBox( getPlayerName( thePlayer ) .. " used a pickup!" )
+end
+addEventHandler( "onPickupUse", root, pickupUse )
+</syntaxhighlight>
+
+{{See also/Server event|Pickup events}}

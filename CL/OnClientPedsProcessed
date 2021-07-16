@@ -1,0 +1,24 @@
+__NOTOC__
+{{Client event}} 
+{{New feature/item|3.0159|1.5.8|20704|This event is triggered after GTA updates bone transformations for all peds. This event can be used for updating bones.}}
+
+==Parameters==
+''None''
+
+==Source==
+The [[event system#Event source|source]] of this event is the client's [[root element]].
+
+==Example==
+{{Needs_Example}}
+
+==Warning==
+This event will trigger whatever function it is attached to with every frame. Depending on the server's maximum FPS and what your computer might handle - you might end up triggering the function 30-60 times '''per second'''.
+
+As a result, this event may cause severe lag and/or even crashes if not used cautiously.
+
+==See Also==
+===[[Game_Processing_Order|Game Processing Order]]===
+===Other client events===
+{{Client_other_events}}
+===Client event functions===
+{{Client_event_functions}}

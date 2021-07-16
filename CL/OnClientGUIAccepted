@@ -1,0 +1,30 @@
+{{Client event}}
+__NOTOC__ 
+This event is triggered when enter is pressed on an editbox.
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+element editBox
+</syntaxhighlight>
+* '''editBox''': the [[Element/GUI/Edit_field|editbox]] which had focus.
+
+==Source==
+The [[event system#Event source|source]] of this event is the editbox which enter was pressed on.
+
+==Example== 
+This example creates an editbox and prints a message when enter is pressed.
+<syntaxhighlight lang="lua">
+editBox = guiCreateEdit ( 0.3, 0.1, 0.4, 0.1, "", true )
+addEventHandler( "onClientGUIAccepted", editBox,
+    function( theElement ) 
+        outputChatBox( guiGetText( theElement ) )
+    end
+)
+</syntaxhighlight>
+
+[[pl:onClientGUIAccepted]]
+
+==See Also==
+{{GUI_events}}
+===Client event functions===
+{{Client_event_functions}}

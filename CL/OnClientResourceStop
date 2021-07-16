@@ -1,0 +1,29 @@
+{{Client event}}
+__NOTOC__ 
+This event is triggered when a [[resource]] is being stopped.
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+resource stoppedResource
+</syntaxhighlight>
+
+*'''stoppedResource''': the [[resource]] that is about to get stopped.
+
+==Source==
+The [[event system#Event source|source]] of this event is the stopped resource [[root element]].
+
+==Example== 
+This example outputs name of resource that was stopped.
+<syntaxhighlight lang="lua">
+addEventHandler( "onClientResourceStop", getRootElement( ),
+    function ( stoppedRes )
+        outputChatBox( "Resource stopped: " .. getResourceName( stoppedRes ) );
+    end
+);
+</syntaxhighlight>
+
+==See Also==
+===Client resource events===
+{{Client_resource_events}}
+===Client event functions===
+{{Client_event_functions}}

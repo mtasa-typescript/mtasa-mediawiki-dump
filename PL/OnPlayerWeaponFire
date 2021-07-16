@@ -1,0 +1,29 @@
+{{Server event}}
+__NOTOC__ 
+{{New feature/item|3.0153|1.5.3|9921|
+This event is called when a player fires a weapon.  This does not trigger for projectiles, melee weapons, or camera.
+}}
+{{Note|This event works only with weapons which have enabled bullet sync.}}
+==Parameters==
+<syntaxhighlight lang="lua">
+int weapon, float endX, float endY, float endZ, element hitElement, float startX, float startY, float startZ
+</syntaxhighlight> 
+*'''weapon''':  an [[int]] representing [[weapons|weapon]] used for making a shot.
+*'''endX''', '''endY''', '''endZ''': [[float]] world coordinates representing an end point.
+*'''hitElement''': an [[element]] which was hit by a shot. Currently this can be only another [[player]]. '''Note: hitElement could be incorrect and should not be relied upon.'''
+*'''startX''', '''startY''', '''startZ''': [[float]] world coordinates representing the start of the bullet. '''Note: This is not the gun muzzle.'''
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] who fired the weapon.
+
+==Example==
+This code creates explosions when the source players shoots.
+<syntaxhighlight lang="lua">
+addEventHandler ("onPlayerWeaponFire", root, 
+   function (weapon, endX, endY, endZ, hitElement, startX, startY, startZ)
+       createExplosion(endX, endY, endZ, 2, source);
+   end
+)
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

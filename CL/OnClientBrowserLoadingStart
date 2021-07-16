@@ -1,0 +1,43 @@
+__NOTOC__
+{{Client event}}
+{{New feature/item|3.0150|1.5||
+The event is triggered when a [[Browser|webbrowser]] starts loading a page.
+}}
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+string URL, boolean isMain
+</syntaxhighlight>
+*'''URL:''' [[string]] containing the URL that will be loaded.
+* {{New feature/item|3.0160|1.6|7888|'''isMainFrame:''' a [[boolean]] representing whether the entire page (main frame) was loaded or an ''<iframe>'' inside the page was loaded.
+** '''true''': If the URL is loaded in the main frame.
+** '''false''': If the URL is loaded in a ''<iframe>''.}}
+
+
+
+==Source==
+The [[Browser|webbrowser]] element.
+
+==Example==
+<syntaxhighlight lang="lua">
+local browser = guiCreateBrowser(0, 0, 800, 600, false, false, false)
+local theBrowser = guiGetBrowser(browser)
+showCursor(true)
+
+
+addEventHandler("onClientBrowserLoadingStart", theBrowser, function(url, isMainFrame)
+  if (isMainFrame) then
+    outputChatBox("Loading "..url.." in the main frame...")
+  else
+    outputChatBox("Loading "..url.." in a iframe...")
+  end
+end)
+
+addEventHandler("onClientBrowserCreated", theBrowser, function()
+  loadBrowserURL(source, "https://www.w3schools.com/html/html_iframe.asp")
+end)
+</syntaxhighlight>
+
+
+==See Also==
+{{CEF_events}}

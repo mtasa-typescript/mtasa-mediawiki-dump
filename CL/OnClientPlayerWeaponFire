@@ -1,0 +1,88 @@
+{{Client event}}
+__NOTOC__ 
+This event is called when a player fires a weapon.  This does not trigger for projectiles, melee weapons, or camera.
+{{Note|This event is only triggered for players that are streamed in}}
+{{Note|This does not trigger for projectiles, melee weapons, or camera.}}
+==Parameters==
+<syntaxhighlight lang="lua">
+int weapon, int ammo, int ammoInClip, float hitX, float hitY, float hitZ, element hitElement, float startX, float startY, float startZ
+</syntaxhighlight> 
+*'''weapon''':  an [[int]] representing [[weapons|weapon]] used for firing a shot.
+*'''ammo''': an [[int]] amount of ammo left for this weapon type.
+*'''ammoInClip''': an [[int]] amount of ammo left for this weapon type in clip.
+*'''hitX''', '''hitY''', '''hitZ''': [[float]] world coordinates representing a hit point.
+*'''hitElement''': an [[element]] which was hit by a shot.
+{{New feature/item|3.0131|1.3.1|4311|
+*'''startX''', '''startY''', '''startZ''': [[float]] world coordinates representing the start of the bullet. Note: This is not the gun muzzle.
+}}
+
+==Source==
+The [[event system#Event source|source]] of this event is the streamed in [[player]] who fired the weapon.
+
+==Example== 
+This example implements custom gunshot sounds.
+<syntaxhighlight lang="lua">
+function playGunfireSound(weaponID)
+	local muzzleX, muzzleY, muzzleZ = getPedWeaponMuzzlePosition(source)
+	local dim = getElementDimension(source)
+	local int = getElementInterior(source)
+	setAmbientSoundEnabled ("gunfire", false)
+
+	local weaponSounds = {
+		[22] = "sounds/weap/colt45.ogg",
+		[23] = "sounds/weap/silenced.ogg",
+		[24] = "sounds/weap/deagle.ogg",
+		[25] = "sounds/weap/shotgun.ogg",
+		[26] = "sounds/weap/sawed-off.ogg",
+		[27] = "sounds/weap/combat shotgun.ogg",
+		[28] = "sounds/weap/uzi.ogg",
+		[30] = "sounds/weap/ak-47.ogg",
+		[31] = "sounds/weap/m4.ogg",
+		[32] = "sounds/weap/tec9.ogg",
+		[34] = "sounds/weap/sniper.ogg",
+	}
+
+	if weaponSounds[weaponID] then
+		sound = playSound3D(weaponSounds[weaponID], muzzleX, muzzleY, muzzleZ)
+		setSoundMaxDistance(sound, 90)
+		setElementDimension(sound, dim)
+		setElementInterior(sound, int)
+		setSoundVolume(sound, 0.6)
+	end
+end
+addEventHandler("onClientPlayerWeaponFire", root, playGunfireSound)
+</syntaxhighlight>
+
+This example sends a warning to the local player if they shoot another player with a minigun.
+<syntaxhighlight lang="lua">
+--First, we create a function for the event handler to use.
+function onClientPlayerWeaponFireFunc(weapon, ammo, ammoInClip, hitX, hitY, hitZ, hitElement )
+    if weapon == 38 and getElementType(hitElement)=="player" then -- If the player shoots with a minigun, and hits another player...
+         outputChatBox ( "Don't kill people with minigun, it's lame!", 255, 0, 0 ) -- We output a warning to him.
+    end
+end
+-- Add this as a handler so that the function will be triggered every time the local player fires.
+addEventHandler ( "onClientPlayerWeaponFire", getLocalPlayer(), onClientPlayerWeaponFireFunc )
+</syntaxhighlight>
+
+This example makes the Shotgun fire explosive rounds.
+<syntaxhighlight lang="lua">
+function onClientPlayerWeaponFireFunc(weapon, ammo, ammoInClip, hitX, hitY, hitZ, hitElement)
+    if (weapon == 25) then -- If the player shoots with a shotgun
+        createExplosion(hitX, hitY, hitZ, 12, true, 0, true) -- Creates a tiny explosion where the bullet hit.
+    end
+end
+-- Add this as a handler so that the function will be triggered every time a player fires.
+addEventHandler("onClientPlayerWeaponFire", root, onClientPlayerWeaponFireFunc)
+</syntaxhighlight>
+
+==Issues==
+{{Issues|
+{{Issue|7459|[Fixed in 1.3.1-4916] onClientPlayerWeaponFire hitElement being nil sometimes with shotgun}}
+}}
+
+==See Also==
+===Client player events===
+{{Client_player_events}}
+===Client event functions===
+{{Client_event_functions}}

@@ -1,0 +1,27 @@
+__NOTOC__
+{{Client event}}
+{{New feature/item|3.0159|1.5.8|20811|This event is triggered when an object starts moving.}}
+
+==Source==
+The source of this event is the object which was moved.
+
+==Example==
+<syntaxhighlight lang="lua">
+local obj = createObject(5239, -2417.22339, -606.70374, 132.56250)
+moveObject(obj, 3000, -2417.22339, -606.70374, 137.56250)
+
+addEventHandler("onClientObjectMoveStart", obj,
+    function()
+        outputChatBox("started moving object")
+    end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-rc20811|}}
+
+==See Also==
+===Client object events===
+{{Client_object_events}}
+===Client event functions===
+{{Client_event_functions}}

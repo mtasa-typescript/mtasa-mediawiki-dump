@@ -1,0 +1,22 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player has been muted by [[setPlayerMuted]].
+
+==Parameters==
+No parameters.
+
+==Source==
+The source of this event is the player who got muted.
+
+==Cancel effect==
+If this event is [[Event system#Canceling|canceled]], the player will not be muted.
+
+==Example== 
+<syntaxhighlight lang="lua">
+function muted()
+    outputChatBox(getPlayerName(source) .. " has been muted.", root, 255, 0, 0)
+end
+addEventHandler("onPlayerMute", root, muted)
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

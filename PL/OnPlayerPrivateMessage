@@ -1,0 +1,32 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player sends a private message with ''msg'' command.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+string message, player recipient
+</syntaxhighlight> 
+*'''message''': a [[string]] representing the private message to be sent.
+*'''recipient''': the [[player]] to whom the message is being sent.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] who sent the private message.
+
+==Cancel effect==
+If this event is [[Event system#Canceling|canceled]], the game's chat system won't deliver the message. You may use [[outputChatBox]] to send the messages then.
+
+==Example== 
+This example blocks players sending a PM to a player named "Bob".
+<syntaxhighlight lang="lua">
+function blockPM(msg,r)
+	if (getPlayerName(r) == "Bob") then -- If they sent a PM to "Bob"
+		cancelEvent() -- Then cancel it
+		outputChatBox("Bob is not accepting PM's at this time.",source,255,0,0) -- And output it was cancelled.
+	end
+end
+addEventHandler("onPlayerPrivateMessage",root,blockPM)
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}
+
+[[ru:onPlayerPrivateMessage]]

@@ -1,0 +1,42 @@
+__NOTOC__
+{{Client event}}
+This event is triggered when the local player stealth kills another player.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+element targetPlayer
+</syntaxhighlight> 
+
+*'''targetPlayer''': The [[player]] or [[ped]] that is being stealth killed.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that initiated the stealth kill. (Local player only)
+
+==Cancel effect==
+If this event is [[Event system#Canceling|canceled]], then the stealth kill is aborted.
+
+==Example== 
+This example disables stealth kills.
+<syntaxhighlight lang="lua">
+function abortAllStealthKills(targetPlayer)
+    cancelEvent()
+end
+addEventHandler("onClientPlayerStealthKill", getLocalPlayer(), abortAllStealthKills)
+</syntaxhighlight>
+This example disables stealth kills on a specific Ped.
+<syntaxhighlight lang="lua">
+local myNPC = createPed (187, 1481.265, -1752.25, 15.446, 0)
+
+function antiKnife (target)
+    if target == myNPC then
+        cancelEvent()
+    end
+end
+addEventHandler("onClientPlayerStealthKill", getLocalPlayer(), antiKnife)
+</syntaxhighlight>
+
+==See Also==
+===Client player events===
+{{Client_player_events}}
+===Client event functions===
+{{Client_event_functions}}

@@ -1,0 +1,67 @@
+{{Client event}}
+__NOTOC__
+{{New feature/item|3.0157|1.5.6|14652|This event triggers whenever a GTA sound starts playing.}}
+{{Note|Use [[setWorldSoundEnabled]] if you want to disable certain sounds conditionless.
+For example, you should only cancel player emitted sounds in this event, because when you cancel certain vehicle sounds, the game will try to play the same sound on the next frame.}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+int group, int index, float x, float y, float z
+</syntaxhighlight>
+*'''group:''' An [[int|integer]] representing the [[World sound groups|world sound group]]
+*'''index:''' An [[int|integer]] representing an individual sound within the group
+*'''x:''' a [[float]]ing point number representing the X coordinate on the map.
+*'''y:''' a [[float]]ing point number representing the Y coordinate on the map.
+*'''z:''' a [[float]]ing point number representing the Z coordinate on the map.
+
+==Source==
+The source of this event is the element, which emitted the sound.
+
+==Cancel effect==
+If this event is [[Event system#Canceling|canceled]], the sound won't play at all.
+
+==Example==
+'''Example 1:''' This example will cancel every vehicle sound.
+<syntaxhighlight lang="lua">
+addEventHandler("onClientWorldSound", root, function()
+    if getElementType(source) == "vehicle" then
+        cancelEvent()
+    end
+end)
+</syntaxhighlight>
+
+'''Example 2:''' This example lets you see how many times each sound that gets played has been played using '/seesoundlist'.
+<syntaxhighlight lang="lua">
+local sounds = {}
+
+addEventHandler("onClientWorldSound", root, function(group, index)
+	sounds[group.." | "..index] = (sounds[group.." | "..index] or 0) + 1
+end)
+
+function cmdSeeSoundList()
+	-- Put the non iterated table into an interated table so we can sort them
+	local tbl = {}
+	for sound, count in pairs(sounds) do
+		tbl[#tbl + 1] = {sound, count}
+	end
+	table.sort(tbl, function(a, b) return a[2] > b[2] end)
+	-- Output the table to clipboard
+	local str = "Group | Index: Times played\n"
+	for i, dat in ipairs(tbl) do
+		str = str..dat[1]..": "..dat[2].."\n"
+	end
+	setClipboard(str)
+	outputChatBox("Use CTRL + V in notepad to view the table.")
+end
+addCommandHandler("seesoundlist", cmdSeeSoundList)
+</syntaxhighlight>
+
+==See Also==
+===World sound functions===
+* [[setWorldSoundEnabled]]
+* [[isWorldSoundEnabled]]
+* [[resetWorldSounds]]
+===Client other events===
+{{Client_other_events}}
+===Client event functions===
+{{Client_event_functions}}

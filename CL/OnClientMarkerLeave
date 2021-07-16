@@ -1,0 +1,30 @@
+__NOTOC__
+{{Client event}}
+This event is triggered when a player leaves the area of a marker created using [[createMarker]].
+
+==Parameters==
+<syntaxhighlight lang="lua">
+player leftPlayer, bool matchingDimension
+</syntaxhighlight> 
+
+*'''leftPlayer''': the [[player]] that left the [[marker|marker's]] area.
+*'''matchingDimension''': ''true'' if the [[player]] is in the same [[dimension]] as the [[marker]].
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[marker]] that the player left.
+
+==Example== 
+This example shows a message in the chatbox whenever a player leaves any marker.
+<syntaxhighlight lang="lua">
+function markerLeave ( leavingPlayer, matchingDimension )
+    outputChatBox ( getPlayerName(leavingPlayer) .. " left a marker" )
+end
+
+addEventHandler ( "onClientMarkerLeave", getRootElement(), markerLeave )
+</syntaxhighlight>
+
+==See Also==
+===Client marker events===
+{{Client marker events}}
+===Client marker functions===
+{{Client_marker_functions}}

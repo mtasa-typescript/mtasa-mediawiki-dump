@@ -1,0 +1,19 @@
+{{Server event}}
+__NOTOC__ 
+This event is triggered when a player stops talking through voice chat.
+{{Important Note|This event should only be used as a low-level function for advanced users.  For typical Voice scripting, please see the [[Resource:Voice|Voice Resource]]}}
+
+==Parameters==
+No parameters.
+
+==Source==
+The [[event system#Event source|source]] of this event is the player [[element]] that just stopped talking through voice chat.
+
+==Example== 
+This example outputs to the world that the player stopped talking.
+<syntaxhighlight lang="lua">addEventHandler("onPlayerVoiceStop",root,function()
+	outputChatBox(getPlayerName(source).." has stopped talking.",root)
+end)
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

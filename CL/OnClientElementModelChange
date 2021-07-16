@@ -1,0 +1,34 @@
+__NOTOC__
+{{Client event}}
+{{New feature/item|3.0157|1.5.6|16404|This event is triggered when the model of an [[element]] is changed using [[setElementModel]].}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+int oldModel, int newModel
+</syntaxhighlight> 
+
+* '''oldModel:''' an [[int]] representing the model of the [[element]] before the change occurred.
+* '''newModel:''' an [[int]] representing the new model of the [[element]].
+
+==Source==
+The source of this event is the element that changed its model.
+
+==Cancel effect==
+This event doesn't support [[Event system#Canceling|cancellation]]. Use [[setElementModel]] with the old value to reverse.
+
+==Example== 
+This example sends a message to players when their model changes telling them what the model ID is and was.
+<syntaxhighlight lang="lua">
+function informPlayerOnModelChange(oldModel, newModel)
+    if ( getElementType(source) == "player" ) then -- Make sure the element is a player
+        outputChatBox("Model ID changing from: "..oldModel.." to: ".. newModel, 0, 255, 0) -- Message for player
+    end
+end
+addEventHandler("onClientElementModelChange", root, informPlayerOnModelChange) -- Bind the event to every element
+</syntaxhighlight>
+
+==See Also==
+===Client element events===
+{{Client_element_events}}
+===Client event functions===
+{{Client_event_functions}}

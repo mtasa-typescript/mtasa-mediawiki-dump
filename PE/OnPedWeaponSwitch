@@ -1,0 +1,28 @@
+__NOTOC__ 
+{{Server event}}
+This event is triggered when a ped switches weapons.
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+int previousWeaponID, int currentWeaponID
+</syntaxhighlight> 
+
+*'''previousWeaponID''': an [[int]] representing the [[weapon]] that was switched from.
+*'''currentWeaponID''': an [[int]] representing the [[weapon]] that was switched to.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[ped]] that switched his weapon.
+
+==Example== 
+This example outputs a line to the chat box whenever a ped changes weapons.
+<syntaxhighlight lang="lua">
+function weaponSwitch ( previousWeaponID, currentWeaponID )
+
+outputChatBox("A ped switched weapons from " .. previousWeaponID .. " to " .. currentWeaponID .. "!")
+
+end
+
+addEventHandler ( "onPedWeaponSwitch", getRootElement(), weaponSwitch )
+</syntaxhighlight>
+
+{{See also/Server event|Ped events}}

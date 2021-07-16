@@ -1,0 +1,30 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player targets an element with his crosshair while aiming, or simply facing it while standing close. It's triggered again when the player no longer targets anything.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+element targettedElement
+</syntaxhighlight> 
+
+*'''targettedElement''': the [[element]] the [[player]] is targetting. ''false'' if no element is being targetted anymore.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that is targetting the element.
+
+==Example== 
+<section class="server" name="Example 1 (Server)" show="true">
+This example destroys a haystack when a player targets it.''' It only works with elements created by MTA. '''
+<syntaxhighlight lang="lua">
+
+addEventHandler ("onPlayerTarget", root, 
+    function(targetElem)
+        if (isElement(targetElem)) and (getElementType(targetElem)=="object") and (getElementModel(targetElem)==3374) then
+            destroyElement (targetElem)
+        end
+    end
+)
+</syntaxhighlight>
+</section>
+
+{{See also/Server event|Player events}}

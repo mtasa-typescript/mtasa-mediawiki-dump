@@ -1,0 +1,28 @@
+{{Server event}}
+__NOTOC__ 
+This event is triggered when a user logs out of their account in-game.
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+account thePreviousAccount, account theCurrentAccount
+</syntaxhighlight> 
+
+*'''thePreviousAccount''': the [[account]] the client was logged in as.
+*'''theCurrentAccount''': the [[account]] the client is a part of now (usually a guest account).
+
+==Source==
+The [[event system#Event source|source]] of this event is the player that logged out.
+
+==Cancel effect==
+If you cancel this event the player will not be logged out.
+
+==Example== 
+This example displays a message if the player logs out.
+<syntaxhighlight lang="lua">
+function loggedOut()
+	outputChatBox( "You have successfully logged out!", source )
+end
+addEventHandler("onPlayerLogout",getRootElement(),loggedOut)
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

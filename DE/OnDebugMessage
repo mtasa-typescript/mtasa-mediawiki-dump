@@ -1,0 +1,56 @@
+__NOTOC__ 
+{{Server event}}
+This event is triggered when debug messages (for instance errors or warnings) appear in the server console.
+
+'''Note:''' To prevent infinite loops, debug messages that occur inside the function that handles this event won't trigger this event, so you won't be able to rely on debug info to fix faulty code that is inside this function. Since build [https://buildinfo.mtasa.com/index.php?Revision=14683 r14683] debug messages from [[outputDebugString]] and [[iprint]] will show up.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+string message, int level, string file, int line
+</syntaxhighlight>
+
+{{New items|5.0154|1.5.4-9.11412|
+<syntaxhighlight lang="lua">
+string message, int level, string file, int line, int r, int g, int b
+</syntaxhighlight>
+}}
+
+*'''message''': the message which was outputted in the server console, without details like file, line etc.
+*'''level''': the type of debug message which was outputted.
+**'''0:''' ''"Custom"'' message.
+**'''1:''' ''Error'' message.
+**'''2:''' ''Warning'' message.
+**'''3:''' ''Information'' message.
+*'''file''': the file from which the debug message was outputted.
+**'''Note:''' may return [[nil]] when the source could not be found.
+*'''line''': the line in file '''file''' where the debug message was outputted.
+**'''Note:''' may return [[nil]] when the source could not be found.
+{{New items|5.0154|1.5.4-9.11412|
+*'''r''': an [[int]] representing the amount of red color (0-255).
+*'''g''': an [[int]] representing the amount of green color (0-255).
+*'''b''': an [[int]] representing the amount of blue color (0-255).
+}}
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[root element]].
+
+==Example== 
+This example outputs all debug messages to the chat box with the same colouring.
+<syntaxhighlight lang="lua">
+addEventHandler("onDebugMessage", getRootElement(), 
+
+function(message, level, file, line)
+
+if level == 1 then
+	outputChatBox("ERROR: " .. file .. ":" .. tostring(line) .. ", " .. message, getRootElement(), 255,0,0)
+elseif level == 2 then
+	outputChatBox("WARNING: " .. file .. ":" .. tostring(line) .. ", " .. message, getRootElement(), 255,165,0)
+else
+	outputChatBox("INFO: " .. file .. ":" .. tostring(line) .. ", " .. message, getRootElement(), 0,0,255)
+end
+
+
+end)
+</syntaxhighlight>
+
+{{See also/Server event|Server events}}

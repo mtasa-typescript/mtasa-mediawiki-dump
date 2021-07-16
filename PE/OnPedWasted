@@ -1,0 +1,29 @@
+__NOTOC__ 
+{{Server event}}
+This event is triggered when a ped is killed or dies. It is not triggered for players.
+
+==Parameters==
+<syntaxhighlight lang="lua">int totalAmmo, element killer, int killerWeapon, int bodypart, bool stealth
+</syntaxhighlight>
+
+*'''totalAmmo''': an [[int]] representing the total ammo the victim had when he died.
+*'''killer''': an [[element]] representing the player or vehicle who was the killer.  If there was no killer this is ''false''.
+*'''killerWeapon''': an [[int]] representing the [[Weapons|killer weapon]] or the [[Damage Types|damage types]].
+*'''bodypart''': an [[int]] representing the bodypart ID the victim was hit on when he died.
+{{BodyParts}}
+*'''stealth''': a [[boolean]] representing whether or not this was a stealth kill.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[ped]] that died or got killed.
+
+==Example==
+This example outputs to the console that the ped is now dead.
+<syntaxhighlight lang="lua">
+ped1 = createPed(112, 0, 0, 0) --Create our Ped
+function died()
+    outputConsole("Your Ped is dead now!")
+end
+addEventHandler("onPedWasted", ped1, died) --Add the Event when ped1 dies
+</syntaxhighlight>
+
+{{See also/Server event|Ped events}}

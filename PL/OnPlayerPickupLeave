@@ -1,0 +1,27 @@
+__NOTOC__
+{{Server event}}
+{{New feature/item|3.0156|1.5.5|11783|
+This event is triggered when a [[player]] leaves a [[pickup]].
+}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+pickup pickupLeft
+</syntaxhighlight> 
+
+*'''pickupLeft''': the [[pickup]] the [[player]] left.
+
+==Source==
+This example creates a pickup and outputs a message to the chat box when a player leaves it.
+<syntaxhighlight lang="lua">
+local aPickup = createPickup ( 10.0, 10.0, 10.0, 2, 31, 3000, 50 ) --Create an M4 weapon pickup when script starts
+
+function leftWeaponPickup( pickup )
+   if pickup == aPickup then
+      outputChatBox ( "You have left the M4 weapon pickup.", source ) --Display this message in the chat box
+   end
+end
+addEventHandler ( "onPlayerPickupLeave", root, pickedUpWeaponCheck )
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

@@ -1,0 +1,45 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when the resource is stopped. This can occur for a number of reasons:
+* The ''stop'' console command was used
+* The ''restart'' console command was used
+* The resource was modified (the resource will automatically restart)
+* Another resource stopped it using [[stopResource]].
+
+'''Note:''' If you wish to just detect a single resource being stopped, you should attach handlers for this event to the resource's root element. You can access this using [[getResourceRootElement]]. 
+
+==Parameters==
+<syntaxhighlight lang="lua">
+resource stoppedResource, boolean wasDeleted
+</syntaxhighlight> 
+
+*'''stoppedResource''': the [[resource]] that is being stopped.
+*'''wasDeleted''': a [[boolean]] representing whether the resource folder was deleted, moved or renamed.
+
+==Source==
+The [[event system#Event source|source]] of this event is the root [[element]] of the resource that is being stopped.
+
+==Example==
+This example displays a message in the chatbox when a resource is stopped.
+<syntaxhighlight lang="lua">
+addEventHandler( "onResourceStop", root,
+    function( resource )
+        outputChatBox( "The resource " .. getResourceName( resource ) .. " was stopped!", root )
+    end
+)
+</syntaxhighlight>
+
+This example only outputs message if the stopped resource is the same resource where the eventHandler is. 
+<syntaxhighlight lang="lua">
+addEventHandler( "onResourceStop", resourceRoot,
+    function( resource )
+        outputChatBox( "This resource has stopped!", root )
+   end
+)
+</syntaxhighlight>
+
+==Changelog==
+{{ChangelogHeader}}
+{{ChangelogItem|1.5.5-9.11854|Added wasDeleted parameter}}
+
+{{See also/Server event|Resource events}}

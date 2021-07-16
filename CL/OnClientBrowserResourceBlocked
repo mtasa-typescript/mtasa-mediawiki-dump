@@ -1,0 +1,63 @@
+__NOTOC__
+{{Client_event}}
+{{New feature/item|3.0150|1.5||
+This event is executed when a resource (images, sounds etc.) has been blocked.
+}}
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+string url, string domain, int reason
+</syntaxhighlight>
+*'''url''': the blocked URL.
+*'''domain''': the blocked domain (part of the URL).
+*'''reason''': the reason why the resource was blocked. Possibles values:
+** '''0''': not allowed yet
+** '''1''': blacklisted
+** '''2''': blocked protocol scheme
+
+==Source==
+The [[Element/Browser|browser]] element.
+
+==Example==
+This example asks the user to accept a blocked resource and reloads the browser if accepted.
+<syntaxhighlight lang="lua">
+local browser = guiCreateBrowser(0, 0, 800, 600, false, false, false)
+local theBrowser = guiGetBrowser(browser)
+showCursor(true)
+
+addEventHandler("onClientBrowserCreated", theBrowser, function()
+  loadBrowserURL(source, "https://www.multitheftauto.com/")
+end)
+
+local lastBrowser = nil
+addEventHandler("onClientBrowserResourceBlocked", theBrowser, function(url, domain, reason)
+  if (reason == 0) then
+    
+    lastBrowser = source
+    requestBrowserDomains({domain}, false, function(accepted, newDomains)
+      if (accepted == true) then
+        reloadBrowserPage(lastBrowser)
+      end
+      lastBrowser = nil
+    end)
+  
+  end
+end)
+</syntaxhighlight>
+
+This example sends whitelist requests on demand, which means whenever a blocked domain is detected/queried by the user.
+It's also a good alternative to requesting CEF domains on server join, because this is less intrusive and requests will only be sent as soon the player starts interacting with a browser script.
+<syntaxhighlight lang="lua">
+function resourceBlocked(url,domain,reason)
+    if reason == 0 then
+        requestBrowserDomains({domain})
+    end
+end
+addEventHandler("onClientBrowserResourceBlocked",browserElement,resourceBlocked)
+</syntaxhighlight>
+
+
+[[pl:onClientBrowserResourceBlocked]]
+
+==See Also==
+{{CEF_events}}

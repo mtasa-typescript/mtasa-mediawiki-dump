@@ -1,0 +1,35 @@
+{{Client event}}
+__NOTOC__ 
+This event is fired when a [[Element/GUI/Memo|memo]] or an [[Element/GUI/Edit_field|editbox]] has changed (either by the user or by [[guiSetText]]).
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+element theElement
+</syntaxhighlight> 
+* '''theElement''': The GUI [[element]] which was changed.
+
+==Source==
+The [[event system#Event source|source]] of this event is the element which was changed.
+
+==Example== 
+This example creates an editbox and prints a message when it has changed
+<syntaxhighlight lang="lua">
+editBox = guiCreateEdit(0.3,0.1,0.4,0.1,"",true)
+addEventHandler("onClientGUIChanged", editBox, function(element) 
+   outputChatBox("The box now reads: " .. guiGetText(element))
+end)
+</syntaxhighlight>
+Or
+<syntaxhighlight lang="lua">
+editBox = guiCreateEdit(0.3,0.1,0.4,0.1,"",true)
+addEventHandler("onClientGUIChanged", editBox, function() 
+   outputChatBox("The box now reads: " .. guiGetText(source))
+end)
+</syntaxhighlight>
+
+[[pl:onClientGUIChanged]]
+
+==See Also==
+{{GUI_events}}
+===Client event functions===
+{{Client_event_functions}}

@@ -1,0 +1,31 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player clicks using the mouse cursor.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+string mouseButton, string buttonState, element clickedElement, float worldPosX, float worldPosY, float worldPosZ, float screenPosX, float screenPosY
+</syntaxhighlight> 
+
+*'''mouseButton''': a [[string]] representing the mouse button that was pressed. Value can be ''left'', ''middle'' or ''right''.
+*'''buttonState''': a [[string]] representing the button state. Value can be ''up'' or ''down''.
+*'''clickedElement''': the [[element]] the [[player]] clicked on. This value is ''nil'' if none.
+*'''worldPosX''': the X position in the world the [[player]] clicked on.
+*'''worldPosY''': the Y position in the world the [[player]] clicked on.
+*'''worldPosZ''': the Z position in the world the [[player]] clicked on.
+*'''screenPosX''': the X position on the screen the [[player]] clicked on.
+*'''screenPosY''': the Y position on the screen the [[player]] clicked on.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that clicked.
+
+==Example== 
+This example outputs the state of the button they just pressed.
+<syntaxhighlight lang="lua">
+function outputClick(mouseButton,buttonState)
+	outputChatBox("Your "..mouseButton.." mouse button is now "..buttonState,source,255,255,0) -- output the state of the button they just pressed.
+end
+addEventHandler("onPlayerClick",getRootElement(),outputClick) -- When a player clicks trigger the outputClick function
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

@@ -1,0 +1,32 @@
+{{Client event}}
+__NOTOC__ 
+This event is called when a [[Element/GUI/Combobox|combobox]] gets accepted.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+element theElement
+</syntaxhighlight>
+*'''theElement:''' the [[Element/GUI/Combobox|combobox]] that got accepted.
+
+==Example==
+This example will set the memo text to the selected combobox item text.
+<syntaxhighlight lang="lua">
+Combo = guiCreateComboBox ( 0.20, 0.03, 0.25, 0.30, "Example", true )
+Memo = guiCreateMemo( 10, 50, 500, 150, "", false)
+addEventHandler ( "onClientGUIComboBoxAccepted", guiRoot,
+    function ( comboBox )
+        if ( comboBox == Combo ) then
+            local item = guiComboBoxGetSelected ( Combo )
+            local text = tostring ( guiComboBoxGetItemText ( Combo , item ) )
+            if ( text ~= "" ) then
+                 guiSetText ( Memo , text )
+            end
+        end
+    end
+)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_events}}
+===Client event functions===
+{{Client_event_functions}}

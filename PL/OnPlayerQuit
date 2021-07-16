@@ -1,0 +1,36 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player disconnects from the server.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+string quitType, string reason, element responsibleElement
+</syntaxhighlight> 
+
+*'''quitType''': How the player left. Possible values:
+**''"Unknown"''
+**''"Quit"''
+**''"Kicked"''
+**''"Banned"''
+**''"Bad Connection"''
+**''"Timed out"''
+
+*'''reason''': If the player was kicked or banned, the reason given goes here. If the player was '''not''' kicked or banned, this will be false.
+*'''responsibleElement''': The element that was responsible for kicking or banning the player. This is commonly another player, but can also be the console element.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that left the server.
+
+==Example==
+This example gets a quitting player's name and outputs that they left the server.
+
+<syntaxhighlight lang="lua">
+-- we register quitPlayer as a handler for the event
+function quitPlayer ( quitType )
+	-- send the message to the server telling players that the player has left.
+	outputChatBox ( getPlayerName(source).. " has left the server (" .. quitType .. ")" )
+end
+addEventHandler ( "onPlayerQuit", root, quitPlayer )
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

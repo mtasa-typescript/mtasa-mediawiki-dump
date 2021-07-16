@@ -1,0 +1,34 @@
+{{Client event}}
+__NOTOC__
+This event is fired when a player has entered a vehicle.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+vehicle theVehicle, int seat
+</syntaxhighlight>
+*'''theVehicle:''' the [[vehicle]] that the player entered
+*'''seat:''' the seat that the player now is on. Driver's seat = 0, higher numbers are passenger seats.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that entered the vehicle.
+
+==Example==
+This example will tell you the name of the vehicle you enter.
+<syntaxhighlight lang="lua">
+function checkVehicles(theVehicle)
+	outputChatBox("You entered a "..getVehicleName(theVehicle).."!")
+end
+addEventHandler("onClientPlayerVehicleEnter", localPlayer, checkVehicles)
+</syntaxhighlight>
+
+==See Also==
+'''<big>Related</big>'''
+</br>
+[[onClientVehicleStartEnter]]
+</br>
+[[onClientVehicleExit]]
+
+===Client player events===
+{{Client_player_events}}
+===Client event functions===
+{{Client_event_functions}}

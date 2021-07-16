@@ -1,0 +1,23 @@
+{{Client event}}
+__NOTOC__ 
+This event triggers when user paste whatever ('''CTRL + V'''). '''This event isn't triggers if menu or console is visible or if any browser is focused, or if cursor is invisible.'''
+
+==Parameters==
+<syntaxhighlight lang="lua">string clipboardText
+</syntaxhighlight>
+* '''clipboardText''': a [[string]] representing the pasted value from clipboard.
+
+==Source==
+The [[event system#Event source|source]] of this event is the client's [[root element]].
+
+==Example== 
+Example show what player paste from clipboard.
+<syntaxhighlight lang="lua">
+addEventHandler("onClientPaste", root, function(text)
+    outputChatBox("Clipboard value: "..text, 255,255,255)
+end)
+</syntaxhighlight>
+
+==See Also==
+===Client event functions===
+{{Client_event_functions}}

@@ -1,0 +1,32 @@
+{{Client event}}
+__NOTOC__ 
+{{New feature/item|3.0159|1.5.8|20740|This event is fired when a [[ped]] has exited a [[vehicle]].}}
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+vehicle theVehicle, int seat
+</syntaxhighlight>
+*'''theVehicle:''' the vehicle that the ped exited.
+*'''seat:''' the number of the seat that the ped was sitting on.
+
+==Source==
+The source of this event is the [[ped]] that exited the vehicle.
+
+==Example== 
+This example will immediately delete any vehicle a ped exits if the vehicle's health is below 500.
+<syntaxhighlight lang="lua">
+function deleteVehicleOnExit(theVehicle, seat)
+    local vehHealth = getElementHealth(theVehicle)
+    if (vehHealth < 500) then
+        destroyElement(theVehicle)
+    end
+end
+addEventHandler("onClientPedVehicleExit", root, deleteVehicleOnExit)
+</syntaxhighlight>
+
+==See Also==
+
+===Client ped events===
+{{Client_ped_events}}
+===Client ped functions===
+{{Client_ped_functions}}

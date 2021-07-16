@@ -1,0 +1,30 @@
+__NOTOC__
+{{Server event}}
+{{New feature/item|3.0159|1.5.8|20724|This event is triggered when the dimension of an [[element]] is changed using [[setElementDimension]].}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+int oldDimension, int newDimension
+</syntaxhighlight>
+*'''oldDimension''': an [[int]] representing the dimension the [[element]] was in before.
+*'''newDimension''': an [[int]] representing the dimension the [[element]] is in now.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[element]] that changed its dimension.
+
+==Example==
+<syntaxhighlight lang="lua">
+local vehicle = createVehicle ( 411, 0, 0, 3 )
+setTimer ( setElementDimension, 1000, 1, vehicle, 10 )
+
+addEventHandler ( "onElementDimensionChange", vehicle,
+	function ( oldDimension, newDimension )
+		outputChatBox ( inspect ( source ) .. "'s dimension changed from " .. oldDimension .. " to " .. newDimension )
+	end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.8-9.20724|n/a|}}
+
+{{See also/Server event|Element events}}

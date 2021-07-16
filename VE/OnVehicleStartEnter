@@ -1,0 +1,42 @@
+__NOTOC__ 
+{{Server event}}
+This event is triggered when a player or ped starts to enter a vehicle. This event can be used to cancel entry, if necessary.
+
+==Parameters==
+{{Deprecated feature|3|1.0|
+<syntaxhighlight lang="lua">
+ped enteringPed, int seat, ped jacked
+</syntaxhighlight> 
+}}
+{{New feature/item|3|1.0||
+<syntaxhighlight lang="lua">
+ped enteringPed, int seat, ped jacked, int door
+</syntaxhighlight>}}
+
+*'''enteringPed''': a [[player]] or [[ped]] element who is starting to enter a vehicle.
+*'''seat''': an [[int]] representing the seat in which the ped is entering.
+*'''jacked''': a [[player]] or [[ped]] element representing who is going to be jacked.
+*'''door''': an [[int]] of which door is being used (0-3). 0 is driver side door, 1 is front passenger, 2 is back left, 3 is back right.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[vehicle]] in which a ped began to enter.
+
+===Canceling===
+If this event is [[Event system #Canceling|canceled]], the ped will not enter the vehicle.
+
+==Example== 
+This example blocks a player out of a police vehicle if he is not a policeman.
+<syntaxhighlight lang="lua">
+policeVehicles = { [598]=true,[596]=true,[597]=true,[599]=true }
+policeSkins = { [280]=true,[281]=true,[282]=true,[283]=true,[284]=true,[285]=true,[286]=true }
+
+function enterVehicle ( player, seat, jacked ) --when a player enters a vehicle
+    if ( policeVehicles[getElementModel(source)] ) and ( not policeSkins[getElementModel(player)] ) then --if the vehicle is one of 4 police cars, and the skin is not a police skin
+        cancelEvent()
+        outputChatBox ( "Only policeman can enter police cars!", player ) --and tell the player why
+    end
+end
+addEventHandler ( "onVehicleStartEnter", getRootElement(), enterVehicle ) --add an event handler for onVehicleStartEnter
+</syntaxhighlight>
+
+{{See also/Server event|Vehicle events}}

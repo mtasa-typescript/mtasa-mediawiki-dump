@@ -1,0 +1,47 @@
+{{Client event}}
+__NOTOC__
+This event is triggered when a physical [[element]] hits a [[colshape]].
+{{Note|The hit won't be detected if the [[element]] that entered the colshape is a colshape or projectile.}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+element theElement, bool matchingDimension
+</syntaxhighlight>
+*'''theElement:''' the [[element]] that entered the [[colshape]].
+*'''matchingDimension:''' a [[boolean]] referring to whether the hit collision shape was in the same [[dimension]] as the element.
+
+==Source==
+The source of this event is the colshape that was hit.
+
+==Example== 
+This example outputs "In." to the chatbox whenever the local user enters a collision shape.
+<syntaxhighlight lang="lua">
+function onClientColShapeHit( theElement, matchingDimension )
+    if ( theElement == localPlayer ) then  -- Checks whether the entering element is the local player
+        outputChatBox( "In." )  --Outputs.
+    end
+end
+addEventHandler("onClientColShapeHit", root, onClientColShapeHit)
+</syntaxhighlight>
+
+This example outputs to the chatbox if the local user is in the same dimension as the collision shape or not.
+<syntaxhighlight lang="lua">
+myZone = createColSphere (2490, -1668, 12.5, 25) -- Creates a collision sphere.
+
+function dimensionChecker (theElement, matchingDimension)
+    if matchingDimension then -- Checks whether the entering element is in the same dimension as the collision shape.
+        outputChatBox ("The element is in the same dimension.")
+    else
+        outputChatBox ("The element is not in the same dimension.")
+    end
+end
+addEventHandler ("onClientColShapeHit", myZone, dimensionChecker)
+</syntaxhighlight>
+
+[[pl:onClientColShapeHit]]
+
+==See Also==
+===Client colshape events===
+{{Client_colshape_events}}
+===Client event functions===
+{{Client_event_functions}}

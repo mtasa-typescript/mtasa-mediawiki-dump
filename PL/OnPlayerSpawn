@@ -1,0 +1,44 @@
+__NOTOC__ 
+{{Server event}}
+This event is called when a player spawns.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+float posX, float posY, float posZ, float spawnRotation, team theTeam, int theSkin, int theInterior, int theDimension
+</syntaxhighlight>
+
+*'''posX''': the X position the [[player]] spawned at.
+*'''posY''': the Y position the [[player]] spawned at.
+*'''posZ''': the Z position the [[player]] spawned at.
+*'''spawnRotation''': the rotation the [[player]] spawned with.
+*'''theTeam''': the [[team]] the [[player]] spawned with.
+*'''theSkin''': the [[Character_Skins|skin/model]] the [[player]] spawned with.
+*'''theInterior''': the [[interior]] the [[player]] spawned in.
+*'''theDimension''': the [[dimension]] the [[player]] spawned in.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that just spawned.
+
+==Example==  
+This example plays a sound when a player spawns.
+<syntaxhighlight lang="lua">
+-- when a player spawns,
+function player_Spawn ( posX, posY, posZ, spawnRotation, theTeam, theSkin, theInterior, theDimension )
+	-- play a frontend sound for him
+	playSoundFrontEnd ( source, 16 )
+end
+-- add the player_Spawn function as a handler for onPlayerSpawn
+addEventHandler ( "onPlayerSpawn", getRootElement(), player_Spawn )
+</syntaxhighlight>
+
+<section name="Example 1" class="server" show="true">
+This example gives the player a weapon whenever he spawns
+<syntaxhighlight lang="lua">
+function Spawn()
+    giveWeapon(source, 31, 500, true) -- Gives the weapon Ak-47, with 500 ammo and on the hand
+end
+addEventHandler("onPlayerSpawn", root, Spawn) -- This will exec every time a Player spawn
+</syntaxhighlight>
+</section>
+
+{{See also/Server event|Player events}}

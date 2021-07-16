@@ -1,0 +1,32 @@
+{{Client event}}
+__NOTOC__ 
+This event is triggered when a [[ped]] or [[player]] starts exiting a vehicle. Once the exiting animation completes, [[onClientVehicleExit]] is triggered.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+ped thePed, int seat, int door
+</syntaxhighlight>
+*'''thePed:''' the ped who started exiting the vehicle.
+*'''seat:''' the number of the seat that the ped was sitting on.
+{{New feature/item|3.0110|1.1||
+*'''door:''' the number of the door that the ped is using to leave.
+}}
+
+==Source==
+The source of this event is the vehicle that the ped started to exit.
+
+==Example==
+This example outputs to the player that he's leaving the drivers seat.
+<syntaxhighlight lang="lua">function exitingVehicle(player, seat, door)
+	if (seat==0) and (door==0) then
+		outputChatBox("You are leaving the drivers seat.")
+	end
+end
+addEventHandler("onClientVehicleStartExit", getRootElement(), exitingVehicle)</syntaxhighlight>
+
+==See Also==
+===Client vehicle events===
+{{Client_vehicle_events}}
+===Client event functions===
+{{Client_event_functions}}
+[[es:onClientVehicleStartExit]]

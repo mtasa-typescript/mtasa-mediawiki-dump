@@ -1,0 +1,36 @@
+{{Client event}}
+__NOTOC__
+{{New feature/item|3.0157|1.5.6|14735|
+This event is called when a peds foot has come on to the ground after jumping or taking a full step.
+}}
+{{Note|This event is only triggered for peds that are streamed in}}
+==Parameters==
+<syntaxhighlight lang="lua">
+ bool leftFoot
+</syntaxhighlight> 
+*'''leftFoot''':  a [[bool]] representing if it was the left foot that moved.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[ped]] who stepped.
+
+==Requirements==
+{{Requirements|n/a|1.5.6.14735|}}
+
+==Example==
+<syntaxhighlight lang="lua">
+addEventHandler("onClientPedStep", localPlayer,
+     function(leftFoot)
+          if (leftFoot) then
+               outputChatBox("Your left foot hit the ground.", 0, 255, 0)
+          else
+               outputChatBox("Your right foot hit the ground.", 0, 255, 0)
+          end
+     end
+)
+</syntaxhighlight>
+
+==See Also==
+===Client ped events===
+{{Client_ped_events}}
+===Client event functions===
+{{Client_event_functions}}

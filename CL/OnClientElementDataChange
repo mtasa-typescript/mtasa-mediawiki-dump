@@ -1,0 +1,34 @@
+{{Client event}}
+__NOTOC__ 
+This event is triggered ''after'' an element's [[element data|data]] entry is changed. Such changes can be made on the client or the server using [[setElementData]].
+
+==Parameters==
+<syntaxhighlight lang="lua">
+string theKey, var oldValue, var newValue
+</syntaxhighlight> 
+
+*'''theKey''': The name of the element data entry that has changed.
+*'''oldValue''': The old value of this entry before it changed. See [[element data]] for a list of possible datatypes.
+*'''newValue''': the new value of this entry after it changed. This will be equivalent to [[getElementData]](source, theKey).
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[element]] whose [[element data]] changed.
+
+==Example== 
+This example tells the client whenever a player's "score" element data is changed.
+<syntaxhighlight lang="lua">
+function scoreChangeTracker(theKey, oldValue, newValue)
+    if (getElementType(source) == "player") and (theKey == "score") then
+        outputChatBox(getPlayerName(source).."'s new score is "..newValue.."!")
+    end
+end
+addEventHandler("onClientElementDataChange", root, scoreChangeTracker)
+</syntaxhighlight>
+
+[[pl:onClientElementDataChange]]
+
+==See Also==
+===Client element events===
+{{Client_element_events}}
+===Client event functions===
+{{Client_event_functions}}

@@ -1,0 +1,57 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player stealth kills another player.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+element targetPlayer
+</syntaxhighlight> 
+
+*'''targetPlayer''': the [[player]] or [[ped]] that is being stealth killed.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that initiated the stealth kill.
+
+==Cancel effect==
+If this event is [[Event system#Canceling|canceled]], then the stealth kill is aborted.
+
+==Example== 
+<section name="Server" class="server" show="true">
+
+<syntaxhighlight lang="lua">
+function onStealthKill(targetPlayer)
+     outputChatBox("Stealth kill!", source) -- Tell the player he/she has done a stealth kill.
+     outputChatBox("" .. getPlayerName(targetPlayer) .. " has been stealth-killed by " .. getPlayerName(source) .. ".")
+end
+addEventHandler("onPlayerStealthKill", getRootElement(), onStealthKill) -- Adds a handler for the stealth kill event.
+</syntaxhighlight>
+</section>
+
+
+<section name="Server" class="server" show="true">
+
+<syntaxhighlight lang="lua">
+function onStealthKill(targetPlayer)
+     cancelEvent(true, "No more stealth kills.") -- Aborts the stealth-kill.
+end
+addEventHandler("onPlayerStealthKill", getRootElement(), onStealthKill) -- Adds a handler for the stealth kill event.
+</syntaxhighlight>
+</section>
+
+<section name="Server" class="server" show="true">
+This example will prevent the stealthkill animation of the attacker as it occurs, something which is tricky to achieve (hence this example is extra useful).
+Note: you won't get this to work properly without timer and 'fake' animation. Lots of scripters have broken their backs over this.
+<syntaxhighlight lang="lua">
+addEventHandler( "onPlayerStealthKill", getRootElement(),
+    function(targetPlayer)
+            setTimer(
+                function(thePlayer)
+                    setPedAnimation(thePlayer, "ped", "0", -1, true, true, true, true, 350)
+                end, 50, 1, source
+            )
+    end
+)
+</syntaxhighlight>
+</section>
+
+{{See also/Server event|Player events}}

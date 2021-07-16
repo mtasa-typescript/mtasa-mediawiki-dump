@@ -1,0 +1,25 @@
+__NOTOC__
+{{Client event}}
+{{Needs Example}}
+{{New feature/item|3.0150|1.5||
+TODO
+}}
+
+==Parameters== 
+<syntaxhighlight lang="lua">
+string targetURL, string openerURL, bool isPopup
+</syntaxhighlight>
+*'''targetURL:''' 
+*'''openerURL:''' 
+*'''isPopup:''' 
+
+==Source==
+TODO
+
+==Example== 
+<syntaxhighlight lang="lua">
+TODO
+</syntaxhighlight>
+
+==See Also==
+{{CEF_events}}

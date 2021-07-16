@@ -1,0 +1,46 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when an element becomes synced by a player.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+player newSyncer
+</syntaxhighlight> 
+
+*'''newSyncer''': a [[player]] element representing the player who is now syncing the [[element]].
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[element]] that got synced by a player.
+
+==Example== 
+<section name="Server" class="server" show="true">
+This example matches the model of the element to the player, when an element receives a new syncer.
+<syntaxhighlight lang="lua">
+function elementStartSync( newSyncer )
+    local strElementType = getElementType( source )
+    local playerVehicle = getPedOccupiedVehicle( newSyncer )
+    if ( strElementType == 'vehicle' ) then
+        if ( not playerVehicle ) then return false end
+        
+        setElementModel( source, getElementModel(playerVehicle) )
+    elseif ( strElementType == 'ped' ) then
+        setElementModel( source, getElementModel(newSyncer) )
+    end
+end
+addEventHandler ('onElementStartSync', root, elementStartSync)
+</syntaxhighlight>
+
+This example will prevent vehicles from entering a certain area by destroying them upon entrance
+<syntaxhighlight lang="lua">
+local myColShape = createColCuboid(1000, -800, 900, 1000, 1000, 1000)
+
+function checkSyncOfVehicles()
+	if isElement(source) and getElementType (source) == "vehicle" and isElementWithinColShape(source, myColShape) then
+		destroyElement (source)
+	end
+end
+addEventHandler ("onElementStartSync", root, checkSyncOfVehicles)
+</syntaxhighlight>
+</section>
+
+{{See also/Server event|Element events}}

@@ -1,0 +1,28 @@
+{{Server event}}
+__NOTOC__
+Analogous to [[onResourceStart]], but triggered before script files are initialised.
+{{Note|This event isn't triggered within the resource starting.}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+resource startingResource
+</syntaxhighlight> 
+
+*'''startingResource''': the [[resource]] that is starting.
+
+==Source==
+The [[event system#Event source|source]] of this event is the root [[element]].
+
+==Cancel effect==
+If this event is cancelled, the resource won't begin starting.
+
+==Example==
+This code will output the name of any resource that is starting.
+<syntaxhighlight lang="lua">
+function displayStartingRes ( res )
+	outputChatBox ( "Resource " .. getResourceName(res) .. " is going to start", getRootElement(), 255, 255, 255 )
+end
+addEventHandler ( "onResourcePreStart", getRootElement(), displayStartingRes )
+</syntaxhighlight>
+
+{{See also/Server event|Resource events}}

@@ -1,0 +1,30 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when a player is standing on a pickup while not being in a vehicle.
+
+==Parameters==
+<syntaxhighlight lang="lua">
+pickup thePickupToUse
+</syntaxhighlight> 
+
+*'''thePickupToUse''': the [[pickup]] the [[player]] is standing on and is about to pick up.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] that is standing on a pickup.
+
+<!-- Only include this section below if cancelling the event has any effect. If you don't know if it does, ask a dev! -->
+==Cancel effect==
+If this event is [[Event system#Canceling|canceled]], the player will not be able to pick up this pickup.
+
+==Example== 
+This example outputs to the player that's using the pick that the pickup is either available/unavailable.
+<syntaxhighlight lang="lua">addEventHandler("onPlayerPickupUse",root,function(pickup)
+	if(isPickupSpawned(pickup))then
+		outputChatBox("The pickup your using is now available to use pick up again.",source)
+	else
+		outputChatBox("This pickup might be the last pickup to use ever again.",source)
+	end
+end)
+</syntaxhighlight>
+
+{{See also/Server event|Player events}}

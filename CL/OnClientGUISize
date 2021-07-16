@@ -1,0 +1,21 @@
+{{Client event}}
+__NOTOC__ 
+This event is triggered when the local client resizes a GUI element.
+
+==Parameters== 
+No parameters.
+
+==Source==
+The [[event system#Event source|source]] of this event is the GUI element that was resized.
+
+==Example== 
+This example will output the type of GUI element that the client has resized, to the chatbox.
+<syntaxhighlight lang="lua">addEventHandler("onClientGUISize",guiRoot,function()
+	outputChatBox("You have resized a "..getElementType(source)..".",255,255,0)
+end)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_events}}
+===Client event functions===
+{{Client_event_functions}}

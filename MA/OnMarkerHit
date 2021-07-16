@@ -1,0 +1,36 @@
+__NOTOC__
+{{Server event}}
+This event is triggered when an element enters a marker created using [[createMarker]].
+
+==Parameters==
+<syntaxhighlight lang="lua">
+element hitElement, bool matchingDimension
+</syntaxhighlight> 
+
+*'''hitElement''': the [[element]] that hit the [[marker]].
+*'''matchingDimension''': a [[boolean]] representing whether the [[element]] is in the same dimension as the [[marker]].
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[marker]] that got hit by the element.
+
+==Example== 
+<!-- Explain what the example is in a single sentance -->
+This example will output a message what type of element has entered a marker.
+<!-- Add the code below, an emphasis should be on making it clear, not optimized. You could provide two versions if you wish, one clear and well commented, the other optimized -->
+<syntaxhighlight lang="lua">
+local playerMarker = createMarker(0, 0, 2, "cylinder", 5, 10, 244, 23, 200, root)
+
+function handlePlayerMarker(hitElement)
+	local elementType = getElementType(hitElement)
+
+	outputChatBox("Element ("..elementType..") has entered marker.")
+end
+addEventHandler("onMarkerHit", playerMarker, handlePlayerMarker)
+</syntaxhighlight>
+
+==Issues==
+{{Issues|
+{{Issue|6098|If a marker was attached to another element, onMarkerHit won't be triggered}}
+}}
+
+{{See also/Server event|Marker events}}

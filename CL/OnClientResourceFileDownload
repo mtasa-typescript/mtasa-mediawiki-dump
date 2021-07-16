@@ -1,0 +1,35 @@
+__NOTOC__
+{{Client event}} 
+{{New feature/item|3.0159|1.5.8|20788|This event is triggered every time a resource file download is queued, finished or has failed.}}
+
+{{Warning|This event is '''NOT''' related to [[downloadFile]] and [[onClientFileDownloadComplete]]!|true}}
+
+==Parameters==
+<syntaxhighlight lang="lua">
+resource fileResource, string fileName, number fileSize, string state
+</syntaxhighlight>
+*'''fileResource:''' resource the file belongs to
+*'''fileName:''' relative resource file path
+*'''fileSize:''' size of the file in bytes
+*'''state:''' possible values: <code>"queued"</code> or <code>"finished"</code> or <code>"failed"</code>
+
+==Source==
+The [[event system#Event source|source]] of this event is the resource's root element.
+
+==Example==
+This example will output the file's resource name/file name/size/state when downloading
+<syntaxhighlight lang="lua">
+function writeMsg(resourceName, fileName, fileSize, fileState)
+    outputChatBox("Resource name: "..resourceName..", file name: "..fileName..", size: "..fileSize..", state: "..fileState)
+end
+addEventHandler("onClientResourceFileDownload", root, writeMsg)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements||1.5.8-9.20788|}}
+
+==See Also==
+===Client resource events===
+{{Client_resource_events}}
+===Client event functions===
+{{Client_event_functions}}
