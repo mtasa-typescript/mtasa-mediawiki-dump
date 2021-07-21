@@ -2,6 +2,9 @@ __NOTOC__
 {{Client event}}
 {{New feature/item|3.0159|1.5.8|20811|This event is triggered when an object's movement stop.}}
 
+==Parameters==
+No parameters.
+
 ==Source==
 The source of this event is the object which was moved.
 

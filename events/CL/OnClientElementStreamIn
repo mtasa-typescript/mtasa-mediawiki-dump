@@ -2,6 +2,9 @@
 __NOTOC__ 
 This event is triggered whenever a physical element is streamed in. This is triggered for all elements that are streamable, such as players, peds, vehicles, objects and markers. When this event is triggered, that element is guaranteed to be physically created as a GTA object.
 
+==Parameters== 
+No parameters.
+
 ==Source==
 The [[event system#Event source|source]] of this event is the [[element]] that streamed in.
 

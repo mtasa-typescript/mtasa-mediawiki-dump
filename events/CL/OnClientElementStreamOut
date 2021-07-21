@@ -2,6 +2,9 @@
 __NOTOC__ 
 This event is triggered whenever a physical element is streamed out. This is triggered for all elements that are streamable, such as players, peds, vehicles, objects and markers when the local player is leaving the element. When this event is triggered, that element is no longer physical and is now virtualized by MTA.
 
+==Parameters==
+No parameters.
+
 ==Source==
 The [[event system#Event source|source]] of this event is the [[element]] that streamed out.
 
