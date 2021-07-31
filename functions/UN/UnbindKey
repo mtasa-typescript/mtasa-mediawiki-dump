@@ -3,6 +3,7 @@ __NOTOC__
 Removes an existing key bind from the specified player.
 {{Note|unbindKey will only work on binds that were added by the same resource}}
 {{Note|unbindKey on the server may return ''true'' on failure}}
+{{Note|If you call unbindKey twice, it will break other scripts: [https://github.com/multitheftauto/mtasa-blue/issues/497 Issue 497]}}
 ==Syntax== 
 <section name="Server" class="server" show="true">
 <syntaxhighlight lang="lua">

@@ -5,23 +5,32 @@ This function is used to show or hide the player's chat.
 ==Syntax==
 <section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
-bool showChat ( bool show )
+bool showChat ( bool show [, bool inputBlocked ] )
 </syntaxhighlight>
 
 ===Required Arguments=== 
 *'''show:''' A boolean value determining whether to show (''true'') or hide (''false'') the chat.
 
+===Optional Arguments===
+{{New feature/item|3.0159|1.5.8|20898|
+*'''inputBlocked:''' A boolean value determining whether chat input is blocked/hidden, regardless of chat visibility. If unset, this will keep the default behaviour prior to r20898 (''true'' when chat is hidden, ''false'' when chat is visible).
+}}
 ===Returns===
 Returns ''true'' if the player's chat was shown or hidden successfully, ''false'' otherwise.
 </section>
 <section name="Server" class="server" show="true">
 <syntaxhighlight lang="lua">
-bool showChat ( player thePlayer, bool show )
+bool showChat ( player thePlayer, bool show [, bool inputBlocked ] )
 </syntaxhighlight>
 
 ===Required Arguments=== 
 *'''thePlayer:''' The [[player]] whose chat is to be hidden or shown.
 *'''show:''' A boolean value determining whether to show (''true'') or hide (''false'') the chat.
+
+===Optional Arguments===
+{{New feature/item|3.0159|1.5.8|20898|
+*'''inputBlocked:''' A boolean value determining whether chat input is blocked/hidden, regardless of chat visibility. If unset, this will keep the default behaviour prior to r20898 (''true'' when chat is hidden, ''false'' when chat is visible).
+}}
 
 ===Returns===
 Returns ''true'' if the player's chat was shown or hidden successfully, ''false'' otherwise.

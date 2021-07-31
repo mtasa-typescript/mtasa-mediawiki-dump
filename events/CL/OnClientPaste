@@ -1,6 +1,6 @@
 {{Client event}}
 __NOTOC__ 
-This event triggers when user paste whatever ('''CTRL + V'''). '''This event isn't triggers if menu or console is visible or if any browser is focused, or if cursor is invisible.'''
+This event triggers when user paste whatever ('''CTRL + V'''). '''This event isn't triggered if menu or console is visible or if any browser is focused, or if cursor is invisible.'''
 
 ==Parameters==
 <syntaxhighlight lang="lua">string clipboardText
