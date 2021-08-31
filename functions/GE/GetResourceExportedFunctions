@@ -6,6 +6,7 @@ Returns a table containing the names of the functions that a resource exports. I
 <syntaxhighlight lang="lua">
 table getResourceExportedFunctions ( [ resource theResource = getThisResource( ) ] )
 </syntaxhighlight>
+{{OOP||[[resource]]:getExportedFunctions|exportedFunctions}}
 
 ===Optional Arguments===
 *'''theResource:''' the [[resource]] of which you want to know the [[call|exported functions]].

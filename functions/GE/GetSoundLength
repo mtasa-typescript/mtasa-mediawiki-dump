@@ -31,3 +31,4 @@ outputChatBox("This sound is " .. soundLength .. " seconds long.")
 [[hu:getSoundLength]]
 [[ar:getSoundLength]]
 [[ro:getSoundLength]]
+[[pt-br:getSoundLength]]

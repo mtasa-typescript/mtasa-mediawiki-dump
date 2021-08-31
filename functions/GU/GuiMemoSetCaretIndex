@@ -6,6 +6,7 @@ This function sets the current position of the caret (the text cursor) within th
 <syntaxhighlight lang="lua">
 bool guiMemoSetCaretIndex ( gui-memo theMemo, int index )
 </syntaxhighlight> 
+{{OOP||[[GuiMemo]]:setCaretIndex|caretIndex|guiMemoGetCaretIndex}}
 
 ===Required Arguments=== 
 *'''theMemo:''' The memo edit box where the caret position is to be changed.

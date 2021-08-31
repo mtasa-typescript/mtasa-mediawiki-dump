@@ -40,3 +40,4 @@ addEventHandler("onClientPlayerWasted", localPlayer, wasted) --add the event han
 [[AR:playSound]]
 [[DE:playSound]]
 [[RO:playSound]]
+[[PT-BR:playSound]]

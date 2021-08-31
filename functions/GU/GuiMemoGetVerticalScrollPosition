@@ -5,6 +5,7 @@
 <syntaxhighlight lang="lua">
 float guiMemoGetVerticalScrollPosition ( gui-memo theMemo )
 </syntaxhighlight>
+{{OOP||[[GuiMemo]]:getVerticalScrollPosition|verticalScrollPosition|guiMemoSetVerticalScrollPosition}}
 
 ===Required Arguments===
 *'''theMemo''': the [[guiCreateMemo|memo]] you want to know the vertical scroll position of.

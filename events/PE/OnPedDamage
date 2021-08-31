@@ -1,0 +1,29 @@
+__NOTOC__ 
+{{Server event}}
+{{Needs Checking|Event is not triggered. There might be more parameters to this event. The cancel effect hasn't been tested.}}
+This event is triggered when a ped is damaged. For player damage, use [[onPlayerDamage]] instead.
+
+==Parameters==
+<syntaxhighlight lang="lua">float loss</syntaxhighlight>
+
+*'''loss''': an [[int]] representing the percentage of health the ped lost.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[ped]] that got damaged.
+
+==Cancel Effect==
+Canceling this event has no effect. Cancel the client-side event [[onClientPedDamage]] instead.
+
+==Example==
+This example outputs a message to the console when a specific ped is damaged.
+<syntaxhighlight lang="lua">
+local ped1 = createPed(112, 0, 0, 0) -- create our ped
+
+function pedDamaged(loss)
+    outputConsole("ped1 damaged! loss: " .. tostring(loss))
+end
+
+addEventHandler("onPedDamage", ped1, pedDamaged) -- triggered only when ped1 gets damaged
+</syntaxhighlight>
+
+{{See also/Server event|Ped events}}

@@ -1,0 +1,21 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0159|1.5.8|20935|This function gets the state of a [[player|player's]] or [[ped|ped's]] bleeding effect.}}
+==Syntax== 
+<syntaxhighlight lang="lua">bool isPedBleeding( ped thePed ) </syntaxhighlight> 
+{{OOP||[[ped]]:isBleeding|bleeding|setPedBleeding}}
+
+===Required Arguments===
+*'''thePed:''' the player or ped whose bleeding effect state you want to get.
+
+===Returns===
+Returns ''true'' if the player or ped is bleeding, ''false'' otherwise.
+
+==Example==
+{{Example}}
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20935|}}
+
+==See Also==
+{{Client ped functions}}

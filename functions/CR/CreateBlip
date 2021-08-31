@@ -22,7 +22,7 @@ blip createBlip ( float x, float y, float z [, int icon = 0, int size = 2, int r
 
 ===Optional Arguments=== 
 {{OptionalArg}} 
-*'''icon:''' The icon that the radar blips should be. Valid values can be seen at [[Radar Blips]]
+*'''icon:''' The icon that the radar blips should be. Default is 0. Valid values can be seen at [[Radar Blips]]
 *'''size:''' The size of the radar blip. Only applicable to the ''Marker'' icon. Default is 2. Maximum is 25.
 *'''r:''' The amount of red in the blip's color (0–255). Only applicable to the ''Marker'' icon. Default is 255. 
 *'''g:''' The amount of green in the blip's color (0–255). Only applicable to the ''Marker'' icon. Default is 0.

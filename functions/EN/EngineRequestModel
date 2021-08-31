@@ -6,7 +6,7 @@ __NOTOC__
 }}
 ==Syntax==
 <syntaxhighlight lang="lua">
-int engineRequestModel ( str elementType [, int parentID ] )
+int engineRequestModel ( string elementType [, int parentID ] )
 </syntaxhighlight>
 ===Required Arguments===
 *'''elementType''': "ped", "vehicle" and "object".

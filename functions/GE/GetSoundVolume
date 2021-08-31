@@ -31,4 +31,5 @@ addEventHandler("onClientPlayerWasted", localPlayer, wasted) --add the event han
 {{Client_audio_functions}}
 
 [[hu:getSoundVolume]]
-[[ar:getSoundVolume]]
+[[ar:getSoundVolume]]´
+[[pt-br:getSoundVolume]]

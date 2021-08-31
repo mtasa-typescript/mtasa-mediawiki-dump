@@ -6,7 +6,7 @@ This function returns the organizational file path (e.g. ''[admin]'') of a resou
 <syntaxhighlight lang="lua">
 string getResourceOrganizationalPath ( resource theResource )
 </syntaxhighlight> 
-{{OOP||[[resource]]:getOrganizationalPath }}
+{{OOP||[[resource]]:getOrganizationalPath|organizationalPath }}
 
 ===Required Arguments=== 
 *'''theResource:''' the [[resource]] of which you want to know the organizational path

@@ -16,7 +16,7 @@ Returns ''float'' value with range from ''-1.0 (left)'' to ''1.0 (right)'', ''fa
 <syntaxhighlight lang="lua">
 function playMusic()
     local song = playSound("song.mp3")
-    setSoundPan(song, 0.3)
+    setSoundPan(song, -1)
     outputChatBox("Current pan is " .. getSoundPan(song))
 end
 addCommandHandler("music", playMusic)
@@ -28,3 +28,4 @@ addCommandHandler("music", playMusic)
 
 [[AR:getSoundPan]]
 [[HU:getSoundPan]]
+[[PT-BR:getSoundPan]]

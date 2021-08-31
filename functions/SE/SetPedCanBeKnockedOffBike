@@ -18,17 +18,14 @@ bool setPedCanBeKnockedOffBike ( ped thePed, bool canBeKnockedOffBike )
 This example adds a console command with which the local player can toggle if he can fall off bikes.
 
 <syntaxhighlight lang="lua">
-function changeCanBeKnockedOff ( command )
-    -- The player should enter /knock
-    if canPedBeKnockedOffBike ( getLocalPlayer() ) then
-        setPedCanBeKnockedOffBike ( getLocalPlayer(), false )
-        outputChatBox ( "Now you can't be knocked off your bike." )
-    else
-        setPedCanBeKnockedOffBike ( getLocalPlayer(), true )
-        outputChatBox ( "Now you can be knocked off your bike." )
-    end
+function changeCanBeKnockedOff()
+    local canBeKnocked = canPedBeKnockedOffBike(localPlayer)
+    local knockedText = canBeKnocked and "Now you can't be knocked off your bike." or "Now you can be knocked off your bike."
+
+    setPedCanBeKnockedOffBike(localPlayer, not canBeKnocked)
+    outputChatBox(knockedText)
 end
-addCommandHandler ( "knock", changeCanBeKnockedOff )
+addCommandHandler("knock", changeCanBeKnockedOff)
 </syntaxhighlight>
 
 ==See Also==

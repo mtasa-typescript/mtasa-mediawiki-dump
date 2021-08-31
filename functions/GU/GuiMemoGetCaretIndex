@@ -8,6 +8,7 @@ This function returns the caret (the text cursor) position within the memo box.
 <syntaxhighlight lang="lua">
 int guiMemoGetCaretIndex ( element theElement )
 </syntaxhighlight> 
+{{OOP||[[GuiMemo]]:getCaretIndex|caretIndex|guiMemoSetCaretIndex}}
 
 ===Required Arguments=== 
 *'''theElement:''' The memo box you want to get the caret position from

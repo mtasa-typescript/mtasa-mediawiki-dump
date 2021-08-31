@@ -28,8 +28,10 @@ addCommandHandler("getradio",
 ==See Also==
 
 {{Client_audio_functions}}
+[[EN:GetRadioChannelName]]
 [[HU:GetRadioChannelName]]
 [[AR:getRadioChannelName]]
 [[RU:GetRadioChannelName]]
 [[PL:GetRadioChannelName]]
 [[RO:GetRadioChannelName]]
+[[PT-BR:GetRadioChannelName]]

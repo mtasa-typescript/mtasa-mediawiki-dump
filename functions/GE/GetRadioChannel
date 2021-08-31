@@ -24,8 +24,10 @@ addCommandHandler ( "getradio",
 ==See Also==
 
 {{Client_audio_functions}}
+[[EN:GetRadioChannel]]
 [[HU:GetRadioChannel]]
 [[AR:getRadioChannel]]
 [[RU:GetRadioChannel]]
 [[PL:GetRadioChannel]]
 [[RO:GetRadioChannel]]
+[[PT-BR:GetRadioChannel]]

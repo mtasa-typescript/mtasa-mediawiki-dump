@@ -40,3 +40,4 @@ addEventHandler("onClientResourceStart", resourceRoot, testPanning)
 
 [[hu:isSoundPanningEnabled]]
 [[ar:isSoundPanningEnabled]]
+[[pt-br:isSoundPanningEnabled]]

@@ -9,7 +9,7 @@ This function is used to toggle if an object should respawn after it got destroy
 <syntaxhighlight lang="lua">
 bool toggleObjectRespawn ( object theObject, bool respawn )
 </syntaxhighlight>
-{{OOP||[[object]]:toggleObjectRespawn}}
+{{OOP||[[object]]:toggleRespawn}}
 ===Required Arguments===
 *'''theObject''': the object you want to toggle the respawn from
 *'''respawn ''': a bool denoting whether we want to enable (''true'') or disable (''false'') respawning

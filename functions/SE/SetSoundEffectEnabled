@@ -18,14 +18,15 @@ Returns ''true'' if the effect was set successfully, ''false'' otherwise.
 
 ==Example== 
 This example creates a sound and set's the flanger sound effect enabled.
-<syntaxhighlight lang="lua">addCommandHandler("flanger",function(cmd,enabled)
-	if(isElement(waterSplashes))then
-		setSoundEffectEnabled(waterSplashes,cmd,enabled)
+<syntaxhighlight lang="lua">
+addCommandHandler("flanger", function(cmd, enabled)
+	if isElement(waterSplashes) then
+		setSoundEffectEnabled(waterSplashes, cmd, enabled)
 	else
-		waterSplashes = playSound("splashes.mp3",true)
-		setSoundEffectEnabled(waterSplashes,cmd,enabled)
+		waterSplashes = playSound("splashes.mp3", true)
+		setSoundEffectEnabled(waterSplashes, cmd, enabled)
 	end
-end,true) --set it case sensitive as we are going to get the command name and use it in the setSoundEffectEnabled
+end, true) --set it case sensitive as we are going to get the command name and use it in the setSoundEffectEnabled
 </syntaxhighlight>
 
 ==Changelog==
@@ -38,3 +39,4 @@ end,true) --set it case sensitive as we are going to get the command name and us
 [[hu:setSoundEffectEnabled]]
 [[ar:setSoundEffectEnabled]]
 [[RO:setSoundEffectEnabled]]
+[[pt-br:setSoundEffectEnabled]]

@@ -42,3 +42,4 @@ addEventHandler ( "onClientRender", root, onSoundPlayRender )
 [[hu:getSoundLevelData]]
 [[ar:getSoundLevelData]]
 [[ro:getSoundLevelData]]
+[[pt-br:getSoundLevelData]]

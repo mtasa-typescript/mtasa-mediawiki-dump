@@ -1,6 +1,5 @@
 {{Client function}}
 __NOTOC__
-<!-- Describe in plain english what this function does. Don't go into details, just give an overview -->
 This function is used to get the text of GUI elements like edit boxes, labels, buttons etc.
 
 ==Syntax== 

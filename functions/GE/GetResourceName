@@ -6,7 +6,7 @@ This function gets the name of the specified resource.
 <syntaxhighlight lang="lua">
 string getResourceName ( resource res )
 </syntaxhighlight>
-{{OOP||[[resource]]:getName|name}}
+{{OOP||[[resource]]:getName|name|renameResource}}
 
 ===Required Arguments=== 
 *'''res:''' The resource you wish to get the name of.

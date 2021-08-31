@@ -56,7 +56,7 @@ addEventHandler( "onClientRender",root,
    function( )
       local px, py, pz, tx, ty, tz, dist
       px, py, pz = getCameraMatrix( )
-      for _, v in ipairs( getElementsByType 'player' ) do
+       for _, v in ipairs( getElementsByType ( 'player' ) ) do
          tx, ty, tz = getElementPosition( v )
          dist = math.sqrt( ( px - tx ) ^ 2 + ( py - ty ) ^ 2 + ( pz - tz ) ^ 2 )
          if dist < 30.0 then

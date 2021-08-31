@@ -26,5 +26,6 @@ addCommandHandler("setdistance", distanceFunc)
 ==See Also==
 {{Client_audio_functions}}
 
+[[PT-BR:setSoundMinDistance]]
 [[HU:setSoundMinDistance]]
 [[AR:setSoundMinDistance]]

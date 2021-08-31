@@ -6,11 +6,19 @@ Make sure your server ACL setup has function.shutdown object protected.
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
-bool shutdown ( string reason )         
+bool shutdown ( [ string reason = "No reason specified" ] )         
 </syntaxhighlight> 
+{{New items|3.0159|1.5.8|
+<syntaxhighlight lang="lua">
+bool shutdown ( [ string reason = "No reason specified", number exitCode = 0 ] )         
+</syntaxhighlight> 
+|20915}}
 
-===Required Arguments=== 
-*'''reason:''' the reason why the server has been shut down.
+===Optional Arguments===
+*'''reason:''' the reason why the server has been shutdown.
+{{New items|3.0159|1.5.8|
+*'''exitCode:''' the server application exit code to be returned on shutdown.
+|20915}}
 
 ===Returns===
 Returns ''false'' if it was not possible to shut down the server.

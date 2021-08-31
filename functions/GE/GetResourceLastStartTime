@@ -13,6 +13,7 @@ int getResourceLastStartTime ( resource theResource )
 string/number getResourceLastStartTime ( resource theResource )
 </syntaxhighlight>
 }} 
+{{OOP||[[resource]]:getLastStartTime|lastStartTime}}
 
 ===Required Arguments=== 
 *'''theResource:''' The resource of which you'd like to check the last starting time.

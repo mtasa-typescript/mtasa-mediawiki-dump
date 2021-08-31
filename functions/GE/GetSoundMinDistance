@@ -29,3 +29,4 @@ addCommandHandler("getdistance", distanceFunc)
 [[HU:getSoundMinDistance]]
 [[AR:getSoundMinDistance]]
 [[RO:getSoundMinDistance]]
+[[PT-BR:getSoundMinDistance]]

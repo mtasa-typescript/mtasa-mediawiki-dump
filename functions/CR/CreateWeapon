@@ -26,7 +26,7 @@ This example adds a ''/createminigun'' command to create a weapon that is always
 <syntaxhighlight lang="lua">
 function createMinigunWeapon()
     -- Create the weapon 1 meter above the player
-    local x, y, z = getElementPosition(getLocalPlayer())
+    local x, y, z = getElementPosition(localPlayer)
     local weapon = createWeapon("minigun", x, y, z + 1)
     -- Give it some ammo and fire it
     setWeaponClipAmmo(weapon, 99999)

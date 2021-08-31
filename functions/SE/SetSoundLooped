@@ -13,12 +13,16 @@ __NOTOC__
 ===Returns===
 Returns ''true'' if the [[sound]] [[element]] loop was successfully changed, ''false'' otherwise.
 
+===Example===
+This example creates a sound element and turn on its looping
+<section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
-addEventHandler('onClientResourceStart', resourceRoot, function()
-    local mySound = playSound('sound.mp3')
-    setSoundLooped(mySound, true)
-end)
+local mySound = playSound('sound.mp3')
+setSoundLooped(mySound, true)
 </syntaxhighlight>
+</section>
 
 ==See Also==
 {{Client_audio_functions}}
+
+[[PT-BR:setSoundLooped]]

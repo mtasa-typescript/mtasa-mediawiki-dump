@@ -6,6 +6,7 @@ This function retrieves the reason why a resource failed to start.
 <syntaxhighlight lang="lua">
 string getResourceLoadFailureReason ( resource theResource )
 </syntaxhighlight> 
+{{OOP||[[resource]]:getLoadFailureReason|loadFailureReason}}
 
 ===Required Arguments=== 
 *'''theResource:''' The resource you wish to check.

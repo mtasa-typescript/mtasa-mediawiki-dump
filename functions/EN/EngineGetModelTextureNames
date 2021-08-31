@@ -4,10 +4,12 @@ This function returns a table of the world textures which are applied to the spe
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
-table engineGetModelTextureNames( string modelId = "" )
+table engineGetModelTextureNames([string modelId = ""])
 </syntaxhighlight> 
 {{OOP||Engine.getModelTextureNames}}
-===Required Arguments=== 
+
+===Optional Arguments=== 
+{{OptionalArg}} 
 *'''modelId :''' You can either use the model id or the model name.
 
 ===Returns===

@@ -57,3 +57,4 @@ addEventHandler('onClientResourceStart', resourceRoot,
 [[AR:playSound3D]]
 [[DE:playSound3D]]
 [[RU:playSound3D]]
+[[PT-BR:playSound3D]]

@@ -6,7 +6,7 @@ This function renames a resource.
 <syntaxhighlight lang="lua">
 bool renameResource ( string/resource theResource, string newResourceName, [ string organizationalPath ] )
 </syntaxhighlight> 
-{{OOP||[[resource]]:rename}}
+{{OOP||[[resource]]:rename|name|getResourceName}}
 ===Required Arguments=== 
 *'''theResource:''' The name of resource or the resource you want to rename.
 *'''newResourceName:''' The name of what the resource should be renamed to.

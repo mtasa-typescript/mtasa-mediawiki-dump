@@ -5,11 +5,14 @@ Sets the distance of vehicles LOD.
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-bool setVehiclesLODDistance ( float vehiclesDistance, float trainsAndPlanesDistance = vehiclesDistance * 2.14 )
+bool setVehiclesLODDistance(float vehiclesDistance [, float trainsAndPlanesDistance = vehiclesDistance * 2.14])
 </syntaxhighlight>
+
 ===Required Arguments=== 
 *'''vehiclesDistance:''' general distance used for most vehicles, this value is clamped to 0 – 500
-===Optional Arguments===
+
+===Optional Arguments=== 
+{{OptionalArg}} 
 *'''trainsAndPlanesDistance:''' distance used for trains and planes, this value is clamped to 0 – 500
 
 ==Example==

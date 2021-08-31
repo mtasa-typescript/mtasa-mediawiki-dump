@@ -4,7 +4,7 @@ This function is used to change the seek position of the specified [[sound]] ele
 Use a player element to control a players voice with this function.
 
 {{Note|
-*To set position of a remote audio file you have to pause it first, then set the position and then unpause it.}}
+*To set position of a remote audio file, you must pause the sound within an [[onClientSoundStream]] event after creation, set the sound position and then unpause it again. The sound can also not be throttled (see [[playSound]] arguments)}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">bool setSoundPosition ( element theSound, float pos )</syntaxhighlight> 

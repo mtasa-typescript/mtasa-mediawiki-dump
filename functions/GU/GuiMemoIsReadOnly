@@ -6,6 +6,7 @@ __NOTOC__
 <syntaxhighlight lang="lua">
 bool guiMemoIsReadOnly ( gui-memo theMemo )
 </syntaxhighlight> 
+{{OOP||[[GuiMemo]]:isReadOnly|readOnly|guiMemoSetReadOnly}}
 
 ===Required Arguments=== 
 *'''theMemo:''' The memo to check read-only status of.

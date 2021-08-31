@@ -5,6 +5,7 @@
 <syntaxhighlight lang="lua">
 bool guiMemoSetVerticalScrollPosition ( gui-memo theMemo, float position )
 </syntaxhighlight>
+{{OOP||[[GuiMemo]]:setVerticalScrollPosition|verticalScrollPosition|guiMemoGetVerticalScrollPosition}}
 
 ===Required Arguments===
 *'''theMemo''': the [[guiCreateMemo|memo]] you want to change the vertical scroll position of.

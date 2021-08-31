@@ -15,14 +15,14 @@ Returns ''true'' if the player is currently doing the task, ''false'' otherwise.
 ==Example==
 This example checks if the player who entered the 'doingdriveby' command is doing a drive-by (clientside).
 <syntaxhighlight lang="lua">
-function amIDoingADriveby ()
-    if ( isPedDoingTask ( getLocalPlayer(), "TASK_SIMPLE_GANG_DRIVEBY" ) ) then
-        outputChatBox ( getPlayerName ( getLocalPlayer() ) .. " is doing a driveby!" )
-    else
-        outputChatBox ( getPlayerName ( getLocalPlayer() ) .. " is not doing a driveby" )
-    end
+function checkDriveBy()
+    local playerName = getPlayerName(localPlayer)
+    local doingDriveBy = isPedDoingTask(localPlayer, "TASK_SIMPLE_GANG_DRIVEBY")
+    local driveByStatus = doingDriveBy and "is doing a driveby!" or "is not doing a driveby."
+
+    outputChatBox(playerName.." "..driveByStatus)
 end
-addCommandHandler ( "doingdriveby", amIDoingADriveby )
+addCommandHandler("doingdriveby", checkDriveBy)
 </syntaxhighlight>
 
 ==See Also==

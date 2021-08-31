@@ -5,7 +5,7 @@ This function allows you to retrieve the water level from a certain location. Th
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
-float getWaterLevel ( float posX, float posY, float posZ [ , bool bCheckWaves = false ] )
+float getWaterLevel ( float posX, float posY, float posZ [ , bool ignoreDistanceToWaterThreshold = false ] )
 </syntaxhighlight>
 <syntaxhighlight lang="lua">
 float getWaterLevel ( water theWater )
@@ -20,7 +20,7 @@ float getWaterLevel ( water theWater )
 *'''theWater:''' the water element
 
 ===Optional Arguments=== 
-*'''bCheckWaves''' Include the water levels of waves in the ocean, lakes and ...
+*'''ignoreDistanceToWaterThreshold:''' If set to false, this function returns false, if the difference between water level (without waves) and posZ is greater than 3.0
 
 ===Returns===
 Returns an ''integer'' of the water level if the [[localPlayer]]/position is near the water (-3 to 20 on the Z coordinate) else ''false'' if there's no water near the [[localPlayer]]/position.

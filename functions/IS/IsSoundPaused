@@ -40,3 +40,4 @@ addCommandHandler("checkpause", checkSongPause)
 
 [[hu:isSoundPaused]]
 [[ar:isSoundPaused]]
+[[pt-br:isSoundPaused]]

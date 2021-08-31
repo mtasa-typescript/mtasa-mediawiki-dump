@@ -19,15 +19,18 @@ Returns ''true'' if successful, ''false'' otherwise
 This script will set player on fire when they fall into water.
 <section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
-addEventHandler("onClientResourceStart", resourceRoot,
-    function ()
-        setTimer(   function()
-                        if isElementInWater(getLocalPlayer()) then
-                            setPedOnFire ( getLocalPlayer(), true )
-                        end
-                    end, 1000, 0)
+function setLocalPlayerOnFire()
+    local inWater = isElementInWater(localPlayer)
+
+    if inWater then
+        local notOnFire = not isPedOnFire(localPlayer)
+
+        if notOnFire then
+            setPedOnFire(localPlayer, true)
+        end
     end
-    )    
+end
+setTimer(setLocalPlayerOnFire, 1000, 0)
 </syntaxhighlight></section>
 
 ==See Also==

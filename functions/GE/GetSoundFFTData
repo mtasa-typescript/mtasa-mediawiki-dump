@@ -1,11 +1,11 @@
 __NOTOC__ 
 {{Client function}}
 This function gets the fast fourier transform data for an audio stream which is a table of floats representing the current audio frame. This allows things like visualisations.
-A fast fourier transform generates a table of all the frequencies of the current audio frame which starts at the bass end of the spectrum to mids to highs in that order
-Should you have any problems there is an example resource located on the resource svn here:
+A fast fourier transform generates a table of all the frequencies of the current audio frame which starts at the bass end of the spectrum to mids to highs in that order.
+Should you have any problems there is an example resource located on the resources repository:
 [https://github.com/multitheftauto/mtasa-resources/tree/master/%5Bgameplay%5D/visualiser Visualiser]
 
-just type "startmusic mystreamurl" in your console and it will play on the cinema billboard near A51 If the element is a player, this function will use the players voice.
+Just type "startmusic mystreamurl" in your console and it will play on the cinema billboard near A51. If the element is a player, this function will use the players voice.
 
 ==Syntax== 
 <syntaxhighlight lang="lua">table getSoundFFTData ( element sound, int iSamples [, int iBands = 0 ] )</syntaxhighlight> 
@@ -50,3 +50,4 @@ addEventHandler ( "onClientRender", getRootElement(), onSoundPlayRender )
 [[HU:getSoundFFTData]]
 [[ES:getSoundFFTData]]
 [[AR:getSoundFFTData]]
+[[PT-BR:getSoundFFTData]]

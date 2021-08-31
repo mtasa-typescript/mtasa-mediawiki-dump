@@ -1,0 +1,47 @@
+{{Client event}}
+__NOTOC__
+{{New feature/item|3.0157|1.5.6|16074|
+This event is called when a vehicle weapon hits an element or the world.
+}}
+{{Note|This event is only triggered for elements that are streamed in}}
+==Parameters==
+<syntaxhighlight lang="lua">
+ int weaponType, element hitElement, float hitX, float hitY, float hitZ, int model, int materialID
+</syntaxhighlight> 
+*'''weaponType''': The type of vehicle weapon. (See the list below)
+*'''hitElement''': The [[vehicle]], [[ped]] or [[player]] that was hit by the weapon sometimes ''false''.
+*'''hitX''': The X world co-ordinate of where the hit occured.
+*'''hitY''': The Y world co-ordinate of where the hit occured.
+*'''hitZ''': The Z world co-ordinate of where the hit occured.
+*'''model''': The model ID of the element that was hit.
+*'''materialID''': The material ID of the element that was hit.
+
+==Weapon types==
+*'''0''': Invalid
+*'''1''': Water Canon
+*'''2''': Tank Gun - Not yet implemented.
+*'''3''': Rocket - Not yet implemented.
+*'''4''': Heat Seeking Rocket - Not yet implemented.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[vehicle]] that fired the weapon.
+
+==Requirements==
+{{Requirements|n/a|1.5.6.16074|}}
+
+==Example==
+<section name="Client" class="client" show="true">
+<syntaxhighlight lang="lua">
+addEventHandler("onClientVehicleWeaponHit", root,
+     function(weaponType, hitElement, hitX, hitY, hitZ, model, materialID)
+          outputChatBox(tostring(weaponType).." "..tostring(hitElement).." "..tostring(hitX).." "..tostring(hitY).." "..tostring(hitZ).." "..tostring(model).." "..tostring(materialID))
+     end
+)
+</syntaxhighlight>
+</section>
+
+==See Also==
+===Client vehicle events===
+{{Client_vehicle_events}}
+===Client event functions===
+{{Client_event_functions}}

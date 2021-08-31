@@ -2,7 +2,9 @@ __NOTOC__
 {{Server client function}}
 With this function, you can check if a ped has a head or not.
 ==Syntax==
-<syntaxhighlight lang="lua">bool isPedHeadless  ( ped thePed )</syntaxhighlight>
+<syntaxhighlight lang="lua">
+bool isPedHeadless(ped thePed)
+</syntaxhighlight>
 
 ===Required Arguments===
 *'''thePed''': The [[ped]] to check.

@@ -4,6 +4,7 @@ __NOTOC__
 
 ==Syntax== 
 <syntaxhighlight lang="lua">bool isObjectMoving ( object theObject )</syntaxhighlight>
+{{OOP||[[object]]:isMoving|moving}}
 ===Required Arguments=== 
 *'''theObject:''' The [[object]]
 ===Returns===

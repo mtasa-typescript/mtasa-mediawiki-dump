@@ -84,6 +84,7 @@ addEventHandler ( "onClientResourceStart", getResourceRootElement(getThisResourc
 
 ==See Also==
 {{GUI_functions}}
+[[tr:guiCreateWindow]]
 [[ru:guiCreateWindow]]
 [[pl:guiCreateWindow]]
 [[zh-cn:guiCreateWindow]]

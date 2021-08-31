@@ -1,0 +1,22 @@
+{{Client function}}
+__NOTOC__
+{{New feature/item|3.0159|1.5.8|20935|This function allows you to set [[player|player's]] or [[ped|ped's]] bleeding effect.}}
+==Syntax== 
+<syntaxhighlight lang="lua">bool setPedBleeding( ped thePed, bool bleeding ) </syntaxhighlight> 
+{{OOP||[[ped]]:setBleeding|bleeding|isPedBleeding}}
+
+===Required Arguments===
+*'''thePed:''' the player or ped whose bleeding effect you want to set of.
+*'''bleeding:''' boolean specifying whether the player or ped is bleeding or not.
+
+===Returns===
+Returns ''true'' if the bleeding state was successfully set, ''error'' is raised otherwise.
+
+==Example==
+{{Example}}
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20935|}}
+
+==See Also==
+{{Client ped functions}}

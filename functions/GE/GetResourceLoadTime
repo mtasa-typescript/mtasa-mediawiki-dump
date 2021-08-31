@@ -13,6 +13,7 @@ int getResourceLoadTime ( resource res )
 string getResourceLoadTime ( resource res )
 </syntaxhighlight>
 }}
+{{OOP||[[resource]]:getLoadTime|loadTime}}
 
 ===Required Arguments===
 *'''res:''' the resource you want to know the load time of.

@@ -21,18 +21,18 @@ This example disables stealth kills.
 function abortAllStealthKills(targetPlayer)
     cancelEvent()
 end
-addEventHandler("onClientPlayerStealthKill", getLocalPlayer(), abortAllStealthKills)
+addEventHandler("onClientPlayerStealthKill", localPlayer, abortAllStealthKills)
 </syntaxhighlight>
 This example disables stealth kills on a specific Ped.
 <syntaxhighlight lang="lua">
-local myNPC = createPed (187, 1481.265, -1752.25, 15.446, 0)
+local myNPC = createPed(187, 1481.265, -1752.25, 15.446, 0)
 
-function antiKnife (target)
-    if target == myNPC then
+function antiKnife(targetPlayer)
+    if targetPlayer == myNPC then
         cancelEvent()
     end
 end
-addEventHandler("onClientPlayerStealthKill", getLocalPlayer(), antiKnife)
+addEventHandler("onClientPlayerStealthKill", localPlayer, antiKnife)
 </syntaxhighlight>
 
 ==See Also==

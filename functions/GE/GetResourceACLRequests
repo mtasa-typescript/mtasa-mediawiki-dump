@@ -5,6 +5,7 @@ This function retrieves the ACL request section from the meta.xml file of the gi
 <syntaxhighlight lang="lua">
 table getResourceACLRequests ( resource theResource ) 
 </syntaxhighlight> 
+{{OOP||[[resource]]:getACLRequests|aclRequests}}
 
 ===Required Arguments=== 
 *'''theResource:''' the resource to get the ACL requests for.

@@ -56,3 +56,4 @@ addCommandHandler("sound", onSoundEvent)
 [[hu:playSoundFrontEnd]]
 [[de:playSoundFrontEnd]]
 [[ar:playSoundFrontEnd]]
+[[pt-br:playSoundFrontEnd]]

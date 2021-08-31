@@ -15,13 +15,15 @@ string getPedSimplestTask ( ped thePed )
 Returns a string representing the name of the ped's simplest, active [[task]].
 
 ==Example==
-This example prints the name of a player's simplest task to the chat, when they use the "sTask" command.
+This example prints the name of a player's simplest task to the chat, when they use the "simplestTask" command.
 <syntaxhighlight lang="lua">
-function showSTask ()
-  local thetask = getPedSimplestTask ( getLocalPlayer() )
-  outputChatBox ( getPlayerName ( getLocalPlayer() ) .. "'s simplest task is: " .. thetask )
+function showSimplestTask()
+    local taskName = getPedSimplestTask(localPlayer)
+    local playerName = getPlayerName(localPlayer)
+
+    outputChatBox(playerName.."'s simplest task is: "..taskName)
 end
-addCommandHandler ( "sTask", showSTask )
+addCommandHandler("simplestTask", showSimplestTask)
 </syntaxhighlight>
 
 ==See Also==

@@ -28,3 +28,4 @@ addCommandHandler("setmaxdistance", maxdistanceFunc)
 
 [[hu:setSoundMaxDistance]]
 [[ar:setSoundMaxDistance]]
+[[pt-br:setSoundMaxDistance]]

@@ -6,6 +6,7 @@ This function creates a new GUI memo.  This is a multiline edit box in which the
 <syntaxhighlight lang="lua">
 gui-memo guiCreateMemo ( float x, float y, float width, float height, string text, bool relative [, element parent = nil ] )
 </syntaxhighlight> 
+{{OOP||[[GuiMemo]]}}
 
 ===Required Arguments=== 
 [[Image:Gui-memo.png|frame|Example GUI memo.]]

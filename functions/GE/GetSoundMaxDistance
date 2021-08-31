@@ -29,3 +29,4 @@ addCommandHandler("getmaxdistance", getmaxdistanceFunc)
 [[HU:getSoundMaxDistance]]
 [[AR:getSoundMaxDistance]]
 [[RO:getSoundMaxDistance]]
+[[PT-BR:getSoundMaxDistance]]

@@ -2,8 +2,7 @@ __NOTOC__
 {{Client function}}
 {{New feature/item|3.0131|1.3.0|4145|
 This function gets the beats per minute of a specific [[sound]] element.
-{{Warning|This function is expensive to call and will freeze the client about 1-3 seconds. Also, trying to get the BPM from a sound directly after creation will not work. You need a
-[[setTimer]] to do this.}}
+{{Warning|This function is expensive to call and will freeze the client about 1-3 seconds. Also, trying to get the BPM from a sound directly after its creation will make the sound start only after the client freeze. You can use a [[setTimer]] to call this function after song creation so it can play normally.}}
 }}
 
 ==Syntax== 
@@ -37,3 +36,4 @@ addCommandHandler ( "bpm", bpm )
 [[ru:getSoundBPM]]
 [[ar:getSoundBPM]]
 [[RO:getSoundBPM]]
+[[PT-BR:getSoundBPM]]

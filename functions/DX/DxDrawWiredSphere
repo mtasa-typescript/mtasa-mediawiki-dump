@@ -4,7 +4,7 @@ This function drawn same sphere as /showcol. It provides 4 levels of iterations 
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
-bool dxDrawWiredSphere( float x, float y, float z, float radius, color theColor, float fLineWidth, uint iterations )
+bool dxDrawWiredSphere( float x, float y, float z, float radius, int theColor, float fLineWidth, uint iterations )
 </syntaxhighlight>
 
 ===Required Arguments=== 

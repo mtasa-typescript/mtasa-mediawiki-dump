@@ -6,10 +6,11 @@ This function retrieves the ''dynamic element root'' of a specified [[resource]]
 <syntaxhighlight lang="lua">
 element getResourceDynamicElementRoot ( resource theResource ) 
 </syntaxhighlight> 
+{{OOP||[[resource]]:getDynamicElementRoot|dynamicElementRoot}}
 
 ===Required Arguments=== 
 *'''theResource:''' the resource of which dynamic element root we want.
-{{OOP||[[resource]]:getDynamicElementRoot}}
+
 ===Returns===
 Returns an [[element]] of the resource's dynamic element root if the resource specified was valid and active (currently running), ''false'' otherwise.
 

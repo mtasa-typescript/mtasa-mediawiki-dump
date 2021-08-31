@@ -30,3 +30,4 @@ outputChatBox("The current seek position of the sound is: " .. soundPosition .. 
 [[hu:getSoundPosition]]
 [[AR:getSoundPosition]]
 [[RO:getSoundPosition]]
+[[pt-br:getSoundPosition]]

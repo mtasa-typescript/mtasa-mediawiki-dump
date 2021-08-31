@@ -2,7 +2,9 @@ __NOTOC__
 {{Server client function}}
 With this function, you can set if a ped has a head or not.
 ==Syntax==
-<syntaxhighlight lang="lua">bool setPedHeadless  ( ped thePed, bool headState )</syntaxhighlight>
+<syntaxhighlight lang="lua">
+bool setPedHeadless(ped thePed, bool headState)
+</syntaxhighlight>
 [[File:Headless.png|thumb|exmaple]]
 {{OOP||[[ped]]:setHeadless|headless}}
 
@@ -15,19 +17,20 @@ Returns ''true'' if successful, ''false'' otherwise
 
 ==Example==
 <section name="Server" class="server" show="true">
-This example enables a player to behead themselves, and give them their head back.
+This example enables a player to behead themselves (or give themselves their head back)
 <syntaxhighlight lang="lua">
-function removeMyHead(thePlayer)
-	setPedHeadless(thePlayer, true) -- Removes the players head
-	outputChatBox("You have been beheaded!", thePlayer, 255, 0, 0) -- A confirmation message for the player
-end
-addCommandHandler("beheadme", removeMyHead)
+function beheadMe(p, cmd)
+	local hasHead = not isPedHeadless(p)
 
-function giveBackHead(thePlayer)
-	setPedHeadless(thePlayer, false) -- Gives the player a head
-	outputChatBox("You have been given a head!", thePlayer, 255, 0, 0) -- A confirmation message for the player
+	if hasHead then
+		setPedHeadless(p, true) -- Remove head
+		outputChatBox("You have been beheaded!", p, 255, 0, 0) -- A confirmation message for the player
+	else
+		setPedHeadless(p, false) -- Restore head
+		outputChatBox("You have been given a head!", p, 255, 0, 0) -- A confirmation message for the player
+	end
 end
-addCommandHandler("headmeup", giveBackHead)
+addCommandHandler("togglehead", beheadMe)
 </syntaxhighlight>
 </section>
 
