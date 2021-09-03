@@ -5,11 +5,11 @@ This function is used to determine if an object is in a group.
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
-bool isObjectInACLGroup ( string theObject, aclgroup theGroup )
+bool isObjectInACLGroup ( string theObjectName, aclgroup theGroup )
 </syntaxhighlight> 
 {{New feature/item|3.0141|1.4.0|6994|{{OOP||[[aclgroup]]:doesContainObject||}}}}
 ===Required Arguments=== 
-*'''theObject:''' the name of the object to check. Examples: "resource.ctf", "user.Jim".
+*'''theObjectName:''' the name of the object to check. Examples: "resource.ctf", "user.Jim".
 *'''theGroup:''' the [[ACL group]] pointer of the group from which the object should be found.
 
 ===Returns===

@@ -12,7 +12,16 @@ __NOTOC__
 Returns ''true'' if the player or ped is bleeding, ''false'' otherwise.
 
 ==Example==
-{{Example}}
+<syntaxhighlight lang="lua">
+function checkBleeding()
+   if isPedBleeding(localPlayer) then
+      outputChatBox("The ped is bleeding")
+   else
+      outputChatBox("The ped is not bleeding")
+   end
+end
+addCommandHandler("cBleed", checkBleeding)
+</syntaxhighlight>
 
 ==Requirements==
 {{Requirements|n/a|1.5.8-9.20935|}}

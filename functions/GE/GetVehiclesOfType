@@ -4,7 +4,7 @@ This function scans through all the current vehicles and returns the ones matchi
 
 ==Syntax==
 <syntaxhighlight lang="lua">table getVehiclesOfType ( int model )</syntaxhighlight>
-{{OOP||[[vehicle]]:getAllOfType}}
+{{OOP|This function is a static function underneath the Vehicle class.|[[Vehicle]].getAllOfType||}}
 ===Required Arguments===
 *'''model''': The model of vehicles you want.
 
