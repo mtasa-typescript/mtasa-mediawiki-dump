@@ -72,11 +72,6 @@ function replaceObjects()
 end
 </syntaxhighlight>
 
-===Issues===
-{{Issues|
-{{Issue|9139|Invalid model ID will crash when used with engine LOD distance functions.}}
-}}
-
 ==See Also==
 * [[getVehiclesLODDistance]]
 * [[resetVehiclesLODDistance]]

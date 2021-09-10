@@ -6,6 +6,7 @@ This function gets a radio button's selection state.
 <syntaxhighlight lang="lua">
 bool guiRadioButtonGetSelected( element guiRadioButton )
 </syntaxhighlight> 
+{{OOP||[[Element/GUI/Radio button|GuiRadioButton]]:getSelected|selected|guiRadioButtonSetSelected}}
 
 ===Required Arguments=== 
 *'''guiRadioButton:''' The radio button you wish to retrieve the selection state of.

@@ -6,6 +6,7 @@ This function selects or unselects a radio button.
 <syntaxhighlight lang="lua">
 bool guiRadioButtonSetSelected ( element guiRadioButton, bool state )
 </syntaxhighlight> 
+{{OOP||[[Element/GUI/Radio button|GuiRadioButton]]:setSelected|selected|guiRadioButtonGetSelected}}
 
 ===Required Arguments=== 
 *'''guiRadioButton:''' The GUI radio button in which you wish to change the selection state of

@@ -6,6 +6,7 @@ This function creates a [[Element/GUI/Radio button|radio button]].
 <syntaxhighlight lang="lua">
 element guiCreateRadioButton ( float x, float y, float width, float height, string text, bool relative, [element parent = nil] )
 </syntaxhighlight> 
+{{OOP||[[Element/GUI/Radio button|GuiRadioButton]]}}
 
 ===Required Arguments=== 
 [[Image:gui-radiobutton.png|frame|Example GUI radio buttons.]]
