@@ -1,0 +1,29 @@
+__NOTOC__ 
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20844|Shows collision previews for developers ([[colshape]]s in wireframe, useful when writing scripts).}}
+{{Note|This function only works in development mode.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool showCol ( bool state )</syntaxhighlight>
+===Required Arguments=== 
+*'''state:''' A [[boolean]] indicating if the collision previews should be enabled or disabled.
+===Returns===
+* Returns ''true'' if the function is successful, ''false'' otherwise.
+
+==Example==
+You can refer to the example below:
+<syntaxhighlight lang="lua">
+setDevelopmentMode (true)
+
+addCommandHandler ("devdebug",
+    function ()
+        showCol (not isShowCollisionsEnabled())
+    end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20844|}}
+
+==See Also==
+{{Client_utility_functions}}

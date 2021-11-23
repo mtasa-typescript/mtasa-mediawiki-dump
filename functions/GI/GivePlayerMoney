@@ -21,6 +21,9 @@ This function adds money to a [[player]]'s current money amount.  To set absolut
 ===Returns===
 Returns ''true'' if the money was added, or ''false'' if invalid parameters were passed.
 
+==Remarks==
+As of MTA SA version 1.5.9, despite the documentation claiming that '''amount''' should be a positive integer, this function does work with negative values or zero. In that case the function does still add the number to the game money value, in the negative case resulting in a decreased value.
+
 ==Example==  
 <section show="true" name="Example 1 - Client and Server" class="server">
 This example gives a player money when using "givecash" command.

@@ -1,0 +1,19 @@
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20979|Gets the underlying XML document from an SVG element.}}
+==Syntax== 
+<syntaxhighlight lang="lua">xmlnode svgGetDocumentXML ( svg svgElement )</syntaxhighlight>
+
+===Required Arguments===
+*'''svgElement:''' The [[svg]] element you want to get the XML document of.
+
+===Returns===
+* Returns an [[xmlnode]] if successful, false otherwise
+
+==Example==
+See the example for [[svgSetDocumentXML]]
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20979|}}
+
+==See Also==
+{{SVG_functions}}

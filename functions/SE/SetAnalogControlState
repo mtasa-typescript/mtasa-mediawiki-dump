@@ -1,8 +1,6 @@
 __NOTOC__
 {{Client function}}
-This sets the analog control state of a control for the local player.
-
-To change the analog controls for a [[ped]], please use [[setPedAnalogControlState]].
+This sets the analog control state of a control for the local player. To change the analog controls for a [[ped]], please use [[setPedAnalogControlState]].
 
 ==Syntax==
 <syntaxhighlight lang="lua">bool setAnalogControlState ( string control [, float state, bool forceOverrideNextFrame = false ] ) </syntaxhighlight>
@@ -11,10 +9,9 @@ To change the analog controls for a [[ped]], please use [[setPedAnalogControlSta
 
 ===Optional Arguments===
 *'''state:''' A [[float]] between 0 and 1 indicating the amount the control is pressed. If no value is provided, the analog control is removed.
-<noinclude>{{New feature/item|3.0300|1.5.8|20756|
+{{Added feature/item|1.5.9|1.5.8|20756|
 *'''forceOverrideNextFrame: ''' A [[bool]] indicating if the player input should force fully overriden for the next frame.
-}}</noinclude>
-
+}}
 
 ===Returns===
 Returns ''true'' if the control state was successfully set, ''false'' otherwise.

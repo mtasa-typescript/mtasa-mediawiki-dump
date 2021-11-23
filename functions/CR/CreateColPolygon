@@ -7,7 +7,8 @@ This function creates a collision polygon. See [http://en.wikipedia.org/wiki/Pol
 ==Syntax== 
 <syntaxhighlight lang="lua">
 colshape createColPolygon ( float fCenterX, float fCenterY, float fX1, float fY1, float fX2, float fY2, float fX3, float fY3, ... )
-</syntaxhighlight> 
+</syntaxhighlight>
+[[File:colpolygon_example.png|thumb|example]]
 {{OOP| |ColShape.Polygon||}}
 ===Required Arguments=== 
 *'''fCenterX:''' The X position of the collision polygon's position - the position that will be returned from [[getElementPosition]].

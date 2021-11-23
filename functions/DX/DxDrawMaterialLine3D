@@ -20,20 +20,18 @@ bool dxDrawMaterialLine3D ( float startX, float startY, float startZ, float endX
 
 ==Optional Arguments==
 {{OptionalArg}}
-{{New items|3.0159|1.5.8|
+{{Added feature/item|1.5.9|1.5.8|20862|
 * '''flipUV''': A bool representing whether a UV orientation should be flipped.
-|20862}}
+}}
 * '''color:''' An [[int|integer]] of the hex color, produced using [[tocolor]] or 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
-{{New items|3.0156|1.5.5|
 * '''postGUI''': A bool representing whether the line should be drawn on top of or behind any ingame GUI.
-|11998}}
 * '''faceTowardX/Y/Z:''' The position the front of the line should face towards. If this is not set, the camera position is used, so the front of the line faces toward the camera.
 
 ===Returns===
 Returns a ''true'' if the operation was successful, ''false'' otherwise.
 
 ==Example== 
-Draws [[:File:DxDrawMaterialLine3D-example.png|an image]] in coordiantes -2422.68555, -608.78986, 132.56250
+Draws [[:File:DxDrawMaterialLine3D-example.png|an image]] in coordiantes -2422.68555, -608.78986, 132.56250:
 <syntaxhighlight lang="lua">
 local redcircle = dxCreateTexture("red.png")
 
@@ -51,9 +49,8 @@ end)
 
 ==Changelog==
 {{ChangelogHeader}}
-{{ChangelogItem|1.5.5-9.11998|Added postGUI argument}}
+{{ChangelogItem|1.5.5-9.11998|Added ''postGUI'' argument}}
+{{ChangelogItem|1.5.8-9.20862|Added ''flipUV'' argument}}
 
 ==See Also==
 {{Drawing_functions}}
-
-[[hu:dxDrawMaterialLine3D]]

@@ -1,0 +1,30 @@
+{{Server event}}
+{{Added feature/item|1.5.9|1.5.8|20957|This event is triggered when a [[resource]] has loaded client-side for a [[player]].}}
+__NOTOC__
+==Parameters==
+<syntaxhighlight lang="lua">
+resource loadedResource
+</syntaxhighlight> 
+
+*'''loadedResource''': The [[resource]] that was loaded on the client.
+
+==Source==
+The [[event system#Event source|source]] of this event is the [[player]] who loaded the resource.
+
+==Example==
+This example shows how you can trigger a custom event client-side defined in the same resource as soon as the player is ready (resource loaded on client):
+<syntaxhighlight lang="lua">
+addEventHandler("onPlayerResourceStart", root, function(loadedResource)
+	outputChatBox(getResourceName(loadedResource) .. " started for " .. getPlayerName(source))
+
+	-- Trigger a custom clientside event defined in this resource
+	if (getResourceRootElement(loadedResource) == resourceRoot) then
+		triggerClientEvent(source, "onClientCustomEvent", resourceRoot) 
+	end
+end)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|1.5.8-9.20957|n/a|}}
+
+{{See also/Server event|Resource events}}

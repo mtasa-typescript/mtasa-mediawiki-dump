@@ -16,18 +16,17 @@ Returns ''true'' if the rain level was set, ''false'' otherwise.
 
 ==Example== 
 <section name="Client" class="client" show="true">
-This example will make it rain when you enter a vehicle and stop it when you leave the vehicle. 
+This example will make it rain when player or ped enters a vehicle, and stop once it leaves. 
 <syntaxhighlight lang="lua">
 function startRaining()
          setRainLevel(5)
 end
-addEventHandler("onClientVehicleEnter", getRootElement(), startRaining)
+addEventHandler("onClientVehicleEnter", root, startRaining)
 
 function stopRaining()
          resetRainLevel()
 end
-addEventHandler("onClientVehicleExit", getRootElement(), stopRaining)
-
+addEventHandler("onClientVehicleExit", root, stopRaining)
 </syntaxhighlight>
 </section>
 

@@ -1,0 +1,27 @@
+__NOTOC__ 
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20844|This function indicates if world [[sound]] IDs should be printed in the debug window or not.}}
+{{Note|This function only works in development mode.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool isShowSoundEnabled ( )</syntaxhighlight>
+===Returns===
+* Returns ''true'' if world [[sound]] IDs should be printed in the debug window, ''false'' otherwise.
+
+==Example==
+You can refer to the example below:
+<syntaxhighlight lang="lua">
+setDevelopmentMode (true)
+
+addCommandHandler ("devdebug",
+    function ()
+        showSound (not isShowSoundEnabled())
+    end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20844|}}
+
+==See Also==
+{{Client_utility_functions}}

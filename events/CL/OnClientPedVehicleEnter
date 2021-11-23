@@ -1,30 +1,33 @@
 {{Client event}}
 __NOTOC__
-{{New feature/item|3.0159|1.5.8|20740|This event is fired when a [[ped]] has entered a [[vehicle]].}}
+{{Added feature/item|1.5.9|1.5.8|20740|This event is fired when a [[ped]] has entered a [[vehicle]].}}
 
 ==Parameters==
 <syntaxhighlight lang="lua">
 vehicle theVehicle, int seat
 </syntaxhighlight>
-*'''theVehicle:''' the [[vehicle]] that the ped entered
-*'''seat:''' the seat that the ped now is on. Driver's seat = 0, higher numbers are passenger seats.
+*'''theVehicle:''' The [[vehicle]] that the [[ped]] entered.
+*'''seat:''' The seat that the ped now is on. Driver's seat = 0, higher numbers are passenger seats.
 
 ==Source==
-The [[event system#Event source|source]] of this event is the [[ped]] that entered the vehicle.
+The [[event system#Event source|source]] of this event is the [[ped]] that entered the [[vehicle]].
 
 ==Example==
-This example outputs a text when a ped enters a bike as a driver.
+This example outputs a text when a ped enters a bike as a driver:
 <syntaxhighlight lang="lua">
-function detectVehicleEnterByPed(theVehicle, seat)
-    if (getVehicleType(theVehicle) == "Bike" and seat == 0) then
-        outputChatBox("A ped has entered a bike as a driver!", 0, 255, 0)
+function detectVehicleEnterByPed (theVehicle, seat)
+    if (getVehicleType (theVehicle) == "Bike" and seat == 0) then
+        outputChatBox ("A ped has entered a bike as a driver!", 0, 255, 0)
     end
 end
-addEventHandler("onClientPedVehicleEnter", root, detectVehicleEnterByPed)
+
+addEventHandler ("onClientPedVehicleEnter", root, detectVehicleEnterByPed)
 </syntaxhighlight>
 
-==See Also==
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20740}}
 
+==See Also==
 ===Client ped events===
 {{Client_ped_events}}
 ===Client ped functions===

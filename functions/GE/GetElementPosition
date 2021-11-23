@@ -25,14 +25,14 @@ Returns three ''float''s indicating the position of the element, ''x'', ''y'' an
 ==Example==
 This example attaches a samsite on the player's vehicle.
 <syntaxhighlight lang="lua">
--- create the elegy;
-myElegy = createVehicle ( 562, 1591.596680, -2495.323242, 18.098244 ) 
--- get the vehicle's position;
-local x,y,z = getElementPosition( myElegy )
--- create the samsite;
-samsite = createObject ( 3267, x, y, z + 3 )
--- attach the samsite to the elegy;
-attachElementToElement ( samsite, myElegy, 0, 0, 0 )
+-- Create the elegy
+local myElegy = createVehicle(562, 1591.596680, -2495.323242, 18.098244) 
+-- Get the vehicle's position
+local x, y, z = getElementPosition(myElegy)
+-- Create the samsite
+local samsite = createObject(3267, x, y, z + 3)
+-- Attach the samsite to the elegy
+attachElementToElement(samsite, myElegy, 0, 0, 0)
 </syntaxhighlight>
 
 ==See Also==

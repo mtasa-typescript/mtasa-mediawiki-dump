@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20718|This function is used to override the default color filtering values.}}
+{{Added feature/item|1.5.9|1.5.8|20718|This function is used to override the default color filtering values.}}
 {{Tip|Normally the game is adding these colors to a screen to simulate weather effects. Sometimes it can be important to disable these effects. You can get rid of the effects by calling this function with zero values.}} 
 
 ==Syntax== 
@@ -19,16 +19,20 @@ bool setColorFilter ( int aRed, int aGreen, int aBlue, int aAlpha, int bRed, int
 *'''bAlpha:''' The amount of alpha (0-255).
 
 ===Returns===
-Returns true if the color filter was set, false otherwise.
+Returns ''true'' if the color filter was set, ''false'' otherwise.
 
 ==Example==
-This example lets any player disable the default color filtering
+This example lets any player disable the default color filtering:
 <syntaxhighlight lang="lua">
-function disableFilter()
-   setColorFilter(0, 0, 0, 0, 0, 0, 0, 0)
+function disableFilter ()
+   setColorFilter (0, 0, 0, 0, 0, 0, 0, 0)
 end
-addCommandHandler("disable_filter", disableFilter) -- Add the command
+
+addCommandHandler ("disablecolorfilter", disableFilter) -- Add the command
 </syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20718|}}
 
 ==See Also==
 {{World functions}}

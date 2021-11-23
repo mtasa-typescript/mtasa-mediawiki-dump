@@ -1,30 +1,27 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20914|This function gets the parameters of a sound effect.}}
+{{Added feature/item|1.5.9|1.5.8|20914|This function gets the parameters of a [[sound]] effect.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">table getSoundEffectParameters ( element sound, string effectName )</syntaxhighlight>
 {{OOP||[[sound]]:getEffectParameters}}
 ===Required Arguments===
-*'''sound''': the [[sound]] element.
-*'''effectName''': the name of the effect whose parameters you want to retrieve.
+*'''sound''': The [[sound]] [[element]] to get the sound effect parameters of.
+*'''effectName''': The name of the effect whose parameters you want to retrieve:
 {{Sound_Effects}}
 ===Returns===
-Returns a [[table]] with the parameter names as the keys, and their values. If the specified effect name is not valid, an error is raised.
+Returns a [[table]] with the parameter names as the keys, and their values. If the specified effect name is not valid, ''false'' is returned.
 ===Effects Parameters===
 {{Sound_Effects_Parameters}}
 
-==Requirements==
-{{Requirements|n/a|1.5.8-9.20914|}}
-
 ==Example== 
-<section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
-local sound = playSound("music.mp3")
-setSoundEffectEnabled(sound, "echo", true)
-local echoParams = getSoundEffectParameters(sound, "echo")
-print(echoParams.feedback) -- 50
-iprint(echoParams)
+local sound = playSound ("music.mp3")
+setSoundEffectEnabled (sound, "echo", true)
+
+local echoParams = getSoundEffectParameters (sound, "echo")
+print (echoParams.feedback) -- 50
+iprint (echoParams)
 --[[
 {
   feedback = 50,
@@ -35,9 +32,9 @@ iprint(echoParams)
 }
 ]]
 </syntaxhighlight>
-</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20914|}}
 
 ==See Also==
 {{Client_audio_functions}}
-
-[[PT-BR:getSoundEffectParameters]]

@@ -1,0 +1,27 @@
+__NOTOC__ 
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20901|This function frees up the streaming RAM memory.}}
+{{Note|This function isn't accurate. The function works more like ''try to free up at least this amount of bytes''. It usually ends up freeing everything that isn't currently needed (which, depending on the scenery might be 1-200 megabytes).}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool engineStreamingFreeUpMemory ( int bytes )</syntaxhighlight>
+===Required Arguments=== 
+*'''bytes:''' The amount of RAM to be freed up in bytes.
+===Returns===
+* Returns ''true'' if the function has succeeded, ''false'' otherwise.
+
+==Example==
+This example frees up the streaming memory when the resource starts:
+<syntaxhighlight lang="lua">
+addEventHandler ("onClientResourceStart", resourceRoot,
+    function ()
+        engineStreamingFreeUpMemory (104857600) -- 100 megabytes
+    end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20901|}}
+
+==See Also==
+{{Engine_functions}}

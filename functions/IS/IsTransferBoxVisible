@@ -1,10 +1,10 @@
 __NOTOC__
 {{Server client function}}
-{{New feature/item|3.0159|1.5.8|20788|Determines if the transfer box should be visible.}}
+{{Added feature/item|1.5.9|1.5.8|20788|Determines if the transfer box is visible.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-bool isTransferBoxVisible()
+bool isTransferBoxVisible ( )
 </syntaxhighlight>
 
 ===Returns===
@@ -12,17 +12,17 @@ On '''server''' this returns a boolean, whether the transfer box should be visib
 
 On '''client''' this returns a boolean, whether the transfer box should be visible or not at the time of invocation.
 
-==Examples==
+==Example==
 <section name="Client" class="client" show="true">
 This example defines a command to remove the player's transfer box.
 <syntaxhighlight lang="lua">
-function isVisible()
-    if isTransferBoxVisible() then 
-        setTransferBoxVisible(false)
-        outputChatBox("* "..getPlayerName(localPlayer).." you are downloading the server!", 255, 255, 255, true)      
+function isVisible ()
+    if isTransferBoxVisible () then 
+        setTransferBoxVisible (false)
+        outputChatBox ("* "..getPlayerName (localPlayer).." you are downloading the server!", 255, 255, 255, true)      
     end
 end
-addCommandHandler("download2", isVisible)
+addCommandHandler ("download2", isVisible)
 </syntaxhighlight>
 </section>
 
@@ -30,4 +30,4 @@ addCommandHandler("download2", isVisible)
 {{Requirements|1.5.8-9.20788|1.5.8-9.20788|}}
 
 ==See Also==
-{{Shared_server_functions}}
+{{Server_functions}}

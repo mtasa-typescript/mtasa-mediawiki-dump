@@ -1,7 +1,7 @@
 __NOTOC__
 {{Server event}}
 This event is triggered when a vehicle explodes.
-{{Note|Remember, this event can not be canceled.}}
+{{Note|This event can not be canceled.}}
 
 ==Parameters==
 No parameters.

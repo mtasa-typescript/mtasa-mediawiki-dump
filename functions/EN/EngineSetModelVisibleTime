@@ -1,29 +1,29 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20416|This function changes model visibility time, this is used for example for building lights being shown after 23:00.}}
+{{Added feature/item|1.5.9|1.5.8|20704|This function changes model visibility time, this is used for example for building lights being shown after 23:00.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">bool engineSetModelVisibleTime ( int modelID, int timeOn, int timeOff )</syntaxhighlight> 
 ===Required Arguments===
-*'''modelID''': ID of the model
-*'''timeOn''': value between 0 and 24 that states when the model should appear
-*'''timeOff''': value between 0 and 24 that states when the model should disappear
+*'''modelID''': The ID of the model.
+*'''timeOn''': Value between 0 and 24 that states when the model should appear.
+*'''timeOff''': Value between 0 and 24 that states when the model should disappear.
 
 ===Returns===
-Returns '''true''' if the change was successful, '''false''' otherwise.
+Returns ''true'' if the change was successful, ''false'' otherwise.
 
 ==Example== 
-<section name="Client" class="client" show="true">
-Make Los Santos Tower visible only between 10 and 12 AM. Please keep in mind that this function does not affect collision - the building is still there, it's just invisible.
+Make Los Santos Tower visible only between 10 and 12 AM. Please keep in mind that this function does not affect collision - the building is still there, it's just invisible:
 <syntaxhighlight lang="lua">
-function init()
-	engineSetModelVisibleTime(4550, 10, 12)
+function init ()
+    engineSetModelVisibleTime (4550, 10, 12)
 end
-addEventHandler("onClientResourceStart", resourceRoot, init)
+
+addEventHandler ("onClientResourceStart", resourceRoot, init)
 </syntaxhighlight>
-</section>
 
 ==Requirements==
-{{Requirements|n/a|1.5.8-9.20416|}}
+{{Requirements|n/a|1.5.8-9.20704|}}
+
 ==See Also==
 {{Engine_functions}}

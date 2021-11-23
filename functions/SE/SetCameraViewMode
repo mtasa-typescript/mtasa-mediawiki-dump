@@ -10,7 +10,7 @@ bool setCameraViewMode ( int vehicleCameraMode [, int pedCameraMode ] )
 ===Required Arguments===
 *'''vehicleCameraMode''': The view mode you wish to use when inside vehicles.
 
-{{New feature/item|3.0159|1.5.8|20851|
+{{Added feature/item|1.5.9|1.5.8|20851|
 ===Optional Arguments===
 *'''pedCameraMode''': The view mode you wish to use when you are not inside vehicles.
 }}

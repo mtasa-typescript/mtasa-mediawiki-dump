@@ -1,36 +1,38 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20704|Returns the 3D world coordinates of a specific bone of a given [[element]]. Currently the following element types are accepted:
-* [[Element/Player|Player]]
-* [[Element/Ped|Ped]]
-}}
-{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+{{Added feature/item|1.5.9|1.5.8|20704|Returns the 3D world coordinates of a specific bone of a given [[element]]. Currently the [[Element/Player|Player]] and [[Element/Ped|Ped]] element types are accepted.}}
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]].}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-float, float, float getElementBonePosition ( element theElement, int bone )
+float, float, float getElementBonePosition ( element theElement, int boneId )
 </syntaxhighlight>
 
 ===Required Arguments===
-*'''theElement:''' the element to get the bone position on.
-*'''bone:''' the ID of the bone to get the position of. See [[Bone IDs]]
+*'''theElement:''' the [[element]] to get the bone position on.
+*'''boneId:''' the ID of the bone to get the position of. See [[Bone IDs]].
 
 ===Returns===
-Returns the x, y, z world position of the bone.
+Returns 3 [[Float|floats]], representing the X, Y, Z world position of the bone.
 
 ==Example==
-This example outputs the x, y, z world position of the local player bone specified through a command.
+This example outputs the X, Y, Z world position of the local player bone specified through a command:
 <syntaxhighlight lang="lua">
-function getBonePosition(cmd, ID)
-    if (not ID) then
-        outputChatBox("You didn't insert an ID", 255, 0, 0)
+function getBonePosition (commandName, boneId)
+    if not tonumber (boneId) then
+        outputChatBox ("You didn't insert an bone ID!", 255, 0, 0)
         return false
     end
-    local x, y, z = getElementBonePosition(localPlayer, ID)
-    outputChatBox("The bone position is: "..x..", "..y..", "..z)
+
+    local x, y, z = getElementBonePosition (localPlayer, boneId)
+    outputChatBox ("The bone position is: "..x..", "..y..", "..z)
 end
-addCommandHandler("getboneposition", getBonePosition)
+
+addCommandHandler ("getboneposition", getBonePosition)
 </syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20704|}}
 
 ==See Also==
 {{Client_element_functions}}

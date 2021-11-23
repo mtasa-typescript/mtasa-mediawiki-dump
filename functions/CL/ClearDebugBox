@@ -1,6 +1,6 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20854|This function clears the debug box.}}
+{{Added feature/item|1.5.9|1.5.8|20854|This function clears the debug box.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
@@ -11,14 +11,16 @@ bool clearDebugBox ( )
 Always returns ''true''.
 
 ==Example==
-This example clears the debug window when any new debug message is displayed.
+<section name="Client" class="client" show="true">
+This example clears the debug window when any new debug message is displayed:
 <syntaxhighlight lang="lua">
-addEventHandler ( "onClientDebugMessage", root,
-	function ( )
-		clearDebugBox ( )
-	end
+addEventHandler ("onClientDebugMessage", root,
+    function ()
+         clearDebugBox ()
+    end
 )
 </syntaxhighlight>
+</section>
 
 ==Requirements==
 {{Requirements|n/a|1.5.8-9.20854|}}

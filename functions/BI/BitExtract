@@ -1,4 +1,4 @@
-{{Server client function}}
+{{Shared function}}
 __NOTOC__
 {{New feature/item|3.0132|1.3.2|5340|
 This function returns the unsigned number formed by the bits field to field + width - 1 (range: 0-31).

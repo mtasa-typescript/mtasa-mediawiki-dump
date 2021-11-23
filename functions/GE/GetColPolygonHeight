@@ -1,6 +1,6 @@
 {{Server client function}}
 __NOTOC__
-{{New feature/item|3.0159|1.5.8|20807|This function is used to get the height of an existing [[createColPolygon|colshape polygon]].
+{{Added feature/item|1.5.9|1.5.8|20807|This function is used to get the height of an existing [[createColPolygon|colshape polygon]].
 By default, a colshape polygon is infinitely tall.}}
 
 ==Syntax== 
@@ -10,7 +10,7 @@ float, float getColPolygonHeight ( colshape shape )
 {{OOP||[[colshape]]:getHeight|}}
 
 ===Required Arguments=== 
-*'''shape:''' The [[colshape]] polygon
+*'''shape:''' The [[colshape]] polygon.
 
 ===Returns===
 Returns two [[float]]s, indicating the floor and ceiling of the colshape height, ''false'' if invalid arguments were passed.

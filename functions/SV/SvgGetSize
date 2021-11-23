@@ -1,0 +1,19 @@
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20979|Gets the underlying XML document from an SVG element.}}
+==Syntax== 
+<syntaxhighlight lang="lua">int, int svgGetSize( svg svgElement )</syntaxhighlight>
+
+===Required Arguments===
+*'''svgElement:''' The [[svg]] you want to get the size of.
+
+===Returns===
+* Returns two [[int]]s, representing '''width''' and '''height'''
+
+==Example==
+See the example for [[svgSetSize]].
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20979|}}
+
+==See Also==
+{{SVG_functions}}

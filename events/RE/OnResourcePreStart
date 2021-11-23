@@ -19,10 +19,10 @@ If this event is cancelled, the resource won't begin starting.
 ==Example==
 This code will output the name of any resource that is starting.
 <syntaxhighlight lang="lua">
-function displayStartingRes ( res )
-	outputChatBox ( "Resource " .. getResourceName(res) .. " is going to start", getRootElement(), 255, 255, 255 )
+function displayStartingRes(res)
+	outputChatBox("Resource "..getResourceName(res).." is going to start.", root, 255, 255, 255)
 end
-addEventHandler ( "onResourcePreStart", getRootElement(), displayStartingRes )
+addEventHandler("onResourcePreStart", root, displayStartingRes)
 </syntaxhighlight>
 
 {{See also/Server event|Resource events}}

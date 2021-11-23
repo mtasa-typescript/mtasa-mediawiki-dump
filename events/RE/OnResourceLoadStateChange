@@ -1,27 +1,29 @@
 {{Server event}}
-{{New feature/item|3.0159|1.5.8|20809|This event is triggered when a [[resource]] load state is changed.}}
+{{Added feature/item|1.5.9|1.5.8|20809|This event is triggered when a [[resource]] load state is changed.}}
 __NOTOC__
 ==Parameters==
 <syntaxhighlight lang="lua">
 resource changedResource, string oldState, string newState
 </syntaxhighlight> 
 
-*'''changedResource''': the [[resource]] that was either loaded, reloaded or is unloading.
-*'''oldState''': the state the [[resource]] was in before it changed.
-*'''newState''': the state the [[resource]] has changed to.
+*'''changedResource''': The [[resource]] that was either loaded, reloaded or is unloading.
+*'''oldState''': The state the [[resource]] was in before it changed.
+*'''newState''': The state the [[resource]] has changed to.
 
 ==Source==
 The [[event system#Event source|source]] of this event is the root [[element]].
 
 ==Example==
-<section name="Example 1" class="server" show="true">
-This code will output the state of resource when it's state will be changed.
+This code will output the state of resource when it's state will be changed:
 <syntaxhighlight lang="lua">
-function onResourceLoadStateChange(resource, oldState, newState)
-	print("Resource "..getResourceName(resource).." has changed it's state from "..tostring(oldState).." to "..tostring(newState))
+function onResourceLoadStateChange (resource, oldState, newState)
+    print ("Resource "..getResourceName (resource).." has changed it's state from "..tostring (oldState).." to "..tostring (newState))
 end
-addEventHandler("onResourceLoadStateChange", root, onResourceLoadStateChange)
+
+addEventHandler ("onResourceLoadStateChange", root, onResourceLoadStateChange)
 </syntaxhighlight>
-</section>
+
+==Requirements==
+{{Requirements|1.5.8-9.20809|n/a|}}
 
 {{See also/Server event|Resource events}}

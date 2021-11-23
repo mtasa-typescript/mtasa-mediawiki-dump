@@ -1,6 +1,6 @@
 __NOTOC__
 {{Server event}}
-{{New feature/item|3.0159|1.5.9|20837|This event is triggered when the interior of an [[element]] is changed using [[setElementInterior]].}}
+{{Added feature/item|1.5.9|1.5.8|20837|This event is triggered when the interior of an [[element]] is changed using [[setElementInterior]].}}
 
 ==Parameters==
 <syntaxhighlight lang="lua">

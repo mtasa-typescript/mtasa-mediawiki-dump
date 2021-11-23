@@ -1,12 +1,10 @@
-{{Server client function}}
+{{Shared function}}
 {{Needs_Checking|
 *Things like infinite run, fire proof CJ, 150 armor have special activation flags. They need a way to be triggered on/off.
 }}
 
 __NOTOC__
-This function allows you to set the value of a specific statistic for a [[ped]]. '''Visual stats (FAT and BODY_MUSCLE) can only be used on the CJ skin''', they have no effect on other skins.
-
-When this function is used client side, it can only be used on client side created peds.
+This function allows you to set the value of a specific statistic for a [[ped]]. '''Visual stats (FAT and BODY_MUSCLE) can only be used on the CJ skin''', they have no effect on other skins. When this function is used client-side, it can only be used on client-side created peds.
 
 ==Syntax==
 <syntaxhighlight lang="lua">
@@ -21,7 +19,7 @@ bool setPedStat ( ped thePed, int stat, float value )
 *'''value''': the new value of the stat. It must be between 0 and 1000.
 
 ===Returns===
-Returns ''true'' if the statistic was changed succesfully. Returns ''false'' if an invalid player is specified, if the stat-id/value is out of acceptable range or if the FAT or BODY_MUSCLE stats are used on non-CJ players.
+Returns ''true'' if the statistic was changed succesfully. Returns ''false'' if an invalid player is specified, if the stat ID/value is out of acceptable range or if the FAT or BODY_MUSCLE stats are used on non-CJ players.
 
 ==Examples==
 This example allows a player to type the command 'beefcake' to change his player's BODY_MUSCLE stat (#23) to the maximum value of 1000. This will result in him looking really muscular.

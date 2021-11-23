@@ -1,6 +1,6 @@
 {{Client function}}
 __NOTOC__
-This function creates a [[shader]] element that can be used in the dxDraw functions. Successful shader creation is not guaranteed unless the [[shader|Effect File]] contains a fallback technique which will work on every PC in the universe.
+This function creates a [[shader]] element that can be used in the dxDraw functions. Successful shader creation is not guaranteed unless the [[shader|Effect File]] contains a fallback technique which will work on every existing PC.
 {{Note|It is highly recommended that [[dxSetTestMode]] is used when writing and testing scripts using dxCreateShader.}}
 
 {{Deprecated items|3.0159|1.5.8|
@@ -28,10 +28,9 @@ element, string dxCreateShader ( string filepath / string raw_data [, float prio
 ===Returns===
 *'''element:''' A [[shader]] element if successful, ''false'' if invalid arguments were passed to the function. '''You should always check to see if this function has returned false.'''
 *'''string:''' The name of the technique that will be used.
-
 |20688}}
 
-{{New items|3.0159|1.5.8|
+{{Updated feature/item|1.5.9|1.5.8|20688|
 ==Syntax== 
 <syntaxhighlight lang="lua">
 element, string dxCreateShader ( string filepath / string raw_data [ [, table macros = {} ], float priority = 0, float maxDistance = 0, bool layered = false, string elementTypes = "world,vehicle,object,other" ] )
@@ -57,8 +56,7 @@ element, string dxCreateShader ( string filepath / string raw_data [ [, table ma
 ===Returns===
 *'''element:''' A [[shader]] element if successful, ''false'' if invalid arguments were passed to the function. '''You should always check to see if this function has returned false.'''
 *'''string:''' The name of the technique that will be used.
-
-|20688}}
+}}
 
 ==Example== 
 <syntaxhighlight lang="lua">
@@ -113,9 +111,8 @@ end)
 </syntaxhighlight>
 You can pass raw data (shader code) directly into the function (example uses variable ''myShader_raw_data'').
 }}
-
-{{New items|3.0159|1.5.8|
-This example creates a basic shader using macros to change shader's behaviour
+{{Updated feature/item|1.5.9|1.5.8|20688|
+This example creates a basic shader using macros to change shader's behaviour:
 <syntaxhighlight lang="lua">
 local shaderRawStr = [[
     texture MACRO_TEX_NAME;
@@ -167,7 +164,7 @@ addEventHandler( "onClientResourceStart", resourceRoot,
 , false )
 </syntaxhighlight>
 You can also pass macros in key-value pairs when the order is important.
-|20688}}
+}}
 
 ==Changelog==
 {{ChangelogHeader}}

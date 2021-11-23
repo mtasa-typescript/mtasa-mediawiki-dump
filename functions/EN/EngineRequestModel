@@ -1,8 +1,8 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0158|1.5.7|20147|This function is used to assign the next available model ID to a certain element type. After release 1.5.8-20716 this function supports "vehicle" and "object" too.}}
+{{New feature/item|3.0158|1.5.7|20147|This function is used to assign the next available model ID to a certain element type. After release '''1.5.8 r20716''' this function supports "vehicle" and "object" too.}}
 {{note|IMPORTANT:
-*before release 1.5.8-20716 this must be "ped".
+*Before release '''1.5.8 r20716''' this must be "ped".
 }}
 ==Syntax==
 <syntaxhighlight lang="lua">
@@ -12,14 +12,14 @@ int engineRequestModel ( string elementType [, int parentID ] )
 *'''elementType''': "ped", "vehicle" and "object".
 
 ===Optional Arguments=== 
-*'''parentID''': The [[Vehicle IDs|vehicle ID]] of the vehicle being allocated. '''(By default this is: 1337 - objects, 400 - vehicles, 7 or PSYCHO for peds)'''
+*'''parentID''': The model ID of the model being allocated. '''(By default this is: 1337 - objects, 400 - vehicles, 7 - peds)'''
 
 ===Returns===
 {{New feature/item|3.0158|1.5.7|20147| Returns an ''integer'' of the model ID that was available to be assigned to the element type, ''false'' if no free model ID available or invalid element type.}}
-Do not rely on the model numbers returned being consistent across multiple clients or multiple runs of resources. There is no guarantee for the order of the numbers or that the same numbers will always correspond to the same element type. Any patterns are coincidental
+Do not rely on the model numbers returned being consistent across multiple clients or multiple runs of resources. There is no guarantee for the order of the numbers or that the same numbers will always correspond to the same element type. Any patterns are coincidental.
 
 ==Example==
-This example creates a ped and then gives you the opportunity to change its model. If the resource stops, then the IDs allocated will be deallocated. Use ''/cap'' for creating the ped and ''/sap'' to skin the ped. You will need some skins added to a folder and to the meta.xml for ''/sap'' to work.
+This example creates a ped and then gives you the opportunity to change its model. If the resource stops, then the IDs allocated will be deallocated. Use ''/cap'' for creating the ped and ''/sap'' to skin the ped. You will need some skins added to a folder and to the meta.xml for ''/sap'' to work:
 <syntaxhighlight lang="lua">
 local peds = {}
 function createAllocatedPed()

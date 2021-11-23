@@ -10,11 +10,10 @@ string text, int r, int g, int b, int messageType
 *'''r:''' The amount of red in the color of the text.
 *'''g:''' The amount of green in the color of the text.
 *'''b:''' The amount of blue in the color of the text.
-{{New items|3.0159|1.5.8|
+{{Added feature/item|1.5.9|1.5.8|20912|
 *'''messageType:''' The type of message as a number.
 {{Message Types}}
-|20912}}
-This function is used to change the loop option of the [[sound]] [[element]].
+}}
 
 ==Source==
 The [[event system#Event source|source]] of this event is either a [[player]] element or the [[root]] element.

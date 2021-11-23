@@ -1,6 +1,6 @@
 __NOTOC__
 {{Server client function}}
-This function returns the ping of a specified [[player]]. The ping is the number of milliseconds that data takes to travel from the player's client to the server or vice versa.
+This function returns the ping of a specified [[player]]. The ping is the number of milliseconds that data takes to travel from the player's client to the server or vice versa. If a player is using a VPN their ping will still be returned correctly.
 
 ==Syntax==
 <syntaxhighlight lang="lua">int getPlayerPing ( player thePlayer )</syntaxhighlight>

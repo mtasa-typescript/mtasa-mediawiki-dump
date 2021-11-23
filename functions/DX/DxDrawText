@@ -7,7 +7,7 @@ Draws a string of text on the screen for one frame. In order for the text to sta
 bool dxDrawText ( string text, float leftX, float topY [, float rightX = leftX, float bottomY = topY, int color = white, float scaleXY = 1.0 [, float scaleY = 1.0 ],
                   mixed font = "default", string alignX = "left", string alignY = "top", bool clip = false, bool wordBreak = false,
                   bool postGUI = false, bool colorCoded = false, bool subPixelPositioning = false,
-                  float fRotation = 0.0, float fRotationCenterX = 0.0, float fRotationCenterY = 0.0 ] )
+                  float fRotation = 0.0, float fRotationCenterX = 0.0, float fRotationCenterY = 0.0, float fLineSpacing = 0.0] )
 </syntaxhighlight>
 
 ===Required Arguments=== 
@@ -36,15 +36,20 @@ bool dxDrawText ( string text, float leftX, float topY [, float rightX = leftX, 
 *'''fRotationCenterX:''' Rotation Origin X'''
 *'''fRotationCenterY:''' Rotation Origin Y'''
 }}
+{{Added feature/item|1.5.9|1.5.8|20957|
+*'''fLineSpacing:''' Distance in pixels between the lines of text, this can be a negative number, works only when '''colorCoded''' is set to true''
+}}
 
 ===Returns===
 Returns ''true'' if successful, ''false'' otherwise.
+
+==Remarks==
+The function is known to ''optimize'' certain drawing scenarios related to scaling and opacity (so called '''text on raster optimisation'''). You can find out more about it [https://forum.mtasa.com/topic/132881-scaling-dx-elements-for-all-resolution/?do=findComment&comment=1002485 here].
 
 ==Example== 
 This example code will add the current zone name in the lower left corner of the players' screens.
 <syntaxhighlight lang="lua">
 local screenWidth, screenHeight = guiGetScreenSize ( ) -- Get the screen resolution (width and height)
-
 
 function createText ( )
     local playerX, playerY, playerZ = getElementPosition ( localPlayer )       -- Get our player's coordinates.
@@ -76,8 +81,9 @@ addEventHandler ( "onClientRender", root, createText )
 
 ==Changelog==
 {{ChangelogHeader}}
-{{ChangelogItem|1.3.0-9.03986|Added colorCoded and subPixelPositioning arguments}}
-{{ChangelogItem|1.3.5-9.06054|Added fRotation, fRotationCenterX and fRotationCenterY arguments}}
+{{ChangelogItem|1.3.0-9.03986|Added ''colorCoded'' and ''subPixelPositioning'' arguments}}
+{{ChangelogItem|1.3.5-9.06054|Added ''fRotation'', ''fRotationCenterX'' and ''fRotationCenterY'' arguments}}
+{{ChangelogItem|1.5.8-9.20957|Added ''fLineSpacing'' argument}}
 
 ==See Also==
 {{Drawing_functions}}

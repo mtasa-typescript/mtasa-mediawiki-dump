@@ -30,4 +30,3 @@ addCommandHandler("pos",scroll_bar_setPos)
 ==See Also==
 {{GUI_functions}}
 {{GUI_events}}
-[[Catogory:Needs_Example]]

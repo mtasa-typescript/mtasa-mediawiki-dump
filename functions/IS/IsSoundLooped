@@ -1,38 +1,42 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20785|This function is used to return the current loop option of the [[sound]] [[element]].}}
+{{Added feature/item|1.5.9|1.5.8|20785|This function is used to return the current loop state of the [[sound]] [[element]].}}
 
 ==Syntax== 
-<syntaxhighlight lang="lua">bool isSoundLooped(element theSound)</syntaxhighlight> 
+<syntaxhighlight lang="lua">bool isSoundLooped ( element theSound )</syntaxhighlight> 
 {{OOP||[[sound]]:isLooped||setSoundLooped}}
 ===Required Arguments=== 
 *'''theSound:''' The [[sound]] [[element]] which you want to get the loop state.
 
 ===Returns===
-Returns ''true'' if the [[sound]] [[element]] is seted to loop, ''false'' otherwise.
+Returns ''true'' if the [[sound]] [[element]] is looped, ''false'' otherwise.
 
 ==Example==
+This will create a [[sound]] [[element]] and change its state to looped, with a command to switch the loop state and output its state:
 <syntaxhighlight lang="lua">
 local mySound
-addEventHandler('onClientResourceStart', resourceRoot, function()
-    mySound = playSound('sound.mp3')
-    setSoundLooped(mySound, true)
+
+addEventHandler ("onClientResourceStart", resourceRoot, function ()
+    mySound = playSound ("sound.mp3")
+    setSoundLooped (mySound, true)
 end)
 
-addCommandHandler('loop', function()
-    if isElement(mySound) then
-        local newState = not isSoundLooped(mySound)
-        setSoundLooped(mySound, newState)
+addCommandHandler ("loop", function ()
+    if isElement (mySound) then
+        local newState = not isSoundLooped (mySound)
+        setSoundLooped (mySound, newState)
+
         if newState then
-            outputChatBox('The sound will loop...')
+            outputChatBox ("The sound will loop!")
         else
-            outputChatBox('The sound will not loop anymore...')
+            outputChatBox ("The sound will not loop anymore!")
         end
     end
 end)
 </syntaxhighlight>
 
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20785}}
+
 ==See Also==
 {{Client_audio_functions}}
-
-[[PT-BR:isSoundLooped]]

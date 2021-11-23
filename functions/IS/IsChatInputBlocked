@@ -1,0 +1,28 @@
+{{Client function}}
+__NOTOC__
+{{Added feature/item|1.5.9|1.5.8|20898|This function checks if the player's chat input is blocked.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool isChatInputBlocked ( )
+</syntaxhighlight> 
+
+===Returns===
+Returns ''true'' if the chat input is blocked, ''false'' otherwise.
+
+==Example==
+This example shows how to block and unblock the chat input:
+<syntaxhighlight lang="lua">
+function toggleInputBlocked ()
+    local visible = isChatVisible () -- check if the chat is visible
+    showChat (visible, not isChatInputBlocked ()) -- toggle inputBlocked
+end
+
+addCommandHandler("blockchat", toggleInputBlocked)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20898}}
+
+==See Also==
+{{Client_output_functions}}

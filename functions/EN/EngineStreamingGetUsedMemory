@@ -1,0 +1,25 @@
+__NOTOC__ 
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20901|This function gets the amount of memory (in bytes) used by the GTA streamer.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">int engineStreamingGetUsedMemory ( )</syntaxhighlight>
+
+===Returns===
+* Returns a [[int]] containing the amount of memory in bytes.
+
+==Example==
+This example gets the amount of memory used by the streamer when the resource starts:
+<syntaxhighlight lang="lua">
+addEventHandler ("onClientResourceStart", resourceRoot,
+    function ()
+        outputChatBox ("Used memory by the GTA streamer: "..engineStreamingGetUsedMemory ()..".")
+    end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20901|}}
+
+==See Also==
+{{Engine_functions}}

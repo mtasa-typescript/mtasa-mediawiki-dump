@@ -11,7 +11,7 @@ int, int getCameraViewMode ( )
 ===Returns===
 {{Deprecated items|3.0159|1.5.8|Returns an [[int]] indicating the current vehicle camera view mode. Their meanings can be seen below.|20851}}
 
-{{New feature/item|3.0159|1.5.8|20851|Returns two [[int|ints]] indicating the current vehicle and ped camera view mode respectively. Their meanings can be seen below.}}
+{{Added feature/item|1.5.9|1.5.8|20851|Returns two [[int|ints]] indicating the current vehicle and ped camera view mode respectively. Their meanings can be seen below.}}
 
 {{Camera view modes}}
 

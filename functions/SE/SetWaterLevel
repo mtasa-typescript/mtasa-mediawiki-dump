@@ -13,7 +13,7 @@ bool setWaterLevel ( [ water theWater, ] float level )
 bool setWaterLevel ( float level [, bool includeWaterFeatures = true, bool includeWaterElements = true ] )
 </syntaxhighlight>
 |20716}}
-{{New feature/item|3.0159|1.5.8|20716|
+{{Added feature/item|1.5.9|1.5.8|20716|
 <syntaxhighlight lang="lua">
 bool setWaterLevel ( float level [, bool includeWaterFeatures = true, bool includeWaterElements = true, bool includeWorldSea = true, bool includeOutsideWorldSea = false ] )
 </syntaxhighlight>
@@ -31,7 +31,7 @@ bool setWaterLevel ( float level [, bool includeWaterFeatures = true, bool inclu
 {{New feature/item|3.0120|1.2||
 *'''includeWaterFeatures :''' a boolean indicating whether to also set the level of water features such as ponds and pools.
 *'''includeWaterElements :''' a boolean indicating whether to also set the level of all water elements.
-{{New feature/item|3.0159|1.5.8|20716|
+{{Added feature/item|1.5.9|1.5.8|20716|
 *'''includeWorldSea :''' a boolean indicating whether to set the level of the sea water
 *'''includeOutsideWorldSea:''' a boolean indicating whether to also set the level of sea water outside the world area, ie. outside -3000, 3000.
 }}

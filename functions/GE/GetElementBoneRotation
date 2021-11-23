@@ -1,27 +1,40 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20704|Returns the orientation of a specific bone relative to the [[element]]. Currently the following element types are accepted:
-* [[Element/Player|Player]]
-* [[Element/Ped|Ped]]
-}}
-{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+{{Added feature/item|1.5.9|1.5.8|20704|Returns the orientation of a specific bone relative to the [[element]]. Currently the [[Element/Player|Player]] and [[Element/Ped|Ped]] element types are accepted.}}
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]].}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-float, float, float getElementBoneRotation ( element theElement, int bone )
+float, float, float getElementBoneRotation ( element theElement, int boneId )
 </syntaxhighlight>
 
 [[Image:The-yaw-pitch-and-roll-angles-in-the-human-head-motion-11.png|thumb|Rotation axes]]
 
 ===Required Arguments===
-*'''theElement:''' the element to get the bone rotation on.
-*'''bone:''' the ID of the bone to get the rotation of. See [[Bone IDs]]
+*'''theElement:''' the [[element]] to get the bone rotation on.
+*'''boneId:''' the ID of the bone to get the rotation of. See [[Bone IDs]].
 
 ===Returns===
-Returns the yaw, pitch, roll rotation values.
+Returns 3 [[Float|floats]], representing the yaw, pitch, roll rotation values.
 
 ==Example==
-{{Needs Example}}
+This example outputs the yaw, pitch and roll orientation of a specific bone relative to the local player bone specified through a command:
+<syntaxhighlight lang="lua">
+function getBoneRotation (commandName, boneId)
+    if not tonumber (boneId) then
+        outputChatBox ("You didn't insert an bone ID!", 255, 0, 0)
+        return false
+    end
+
+    local x, y, z = getElementBoneRotation (localPlayer, boneId)
+    outputChatBox ("The bone rotation is: "..x..", "..y..", "..z)
+end
+
+addCommandHandler ("getbonerotation", getBoneRotation)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20704|}}
 
 ==See Also==
 {{Client_element_functions}}

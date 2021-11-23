@@ -1,48 +1,50 @@
 {{Shared function}}
 __NOTOC__
-This function sets the variant of a specified vehicle. In GTA SA some vehicles are different for example the labelling on trucks or the contents of a pick-up truck and the varying types of a motor bike. For the default GTA SA variant list see: [[Vehicle variants]]
-{{New feature/item|3.0159|1.5.8|20693|Function also added client-side.}}
-
- {{Tip|Both variant arguments need to be supplied, otherwise random ones will be picked.}} 
- {{Tip|If you only want one variant, set ''''variant2'''' to ''255''. If you want no variants, then set both ''''variant1'''' and ''''variant2'''' to ''255''}} 
- {{Note|The fairings on the NRG-500 and BF-400 are both variants, so unless you explicitly ask for 3 or 4, your bike will have no fairings which some people may find offensive.
+This function sets the variant of a specified vehicle. In GTA: San Andreas some vehicles are different; for example the labelling on trucks or the contents of a pick-up truck and the varying types of a motor bike. For the default variant list see: [[Vehicle variants]].
+{{Updated feature/item|1.5.9|1.5.8|20693|Function is also available client-side (previously available server-side only).}}
+{{Tip|Both variant arguments need to be supplied, otherwise random ones will be picked.}} 
+{{Tip|If you only want one variant, set ''''variant2'''' to ''255''. If you want no variants, then set both ''''variant1'''' and ''''variant2'''' to ''255''.}} 
+{{Note|The fairings on the NRG-500 and BF-400 are both variants, so unless you explicitly ask for 3 or 4, your bike will have no fairings which some people may find offensive.
 }} 
+
 ==Syntax==
 <syntaxhighlight lang="lua">bool setVehicleVariant ( vehicle theVehicle [, int variant1, int variant2 ] )</syntaxhighlight>
 {{OOP||[[vehicle]]:setVariant||getVehicleVariant}}
-==Required Arguments==
-*'''theVehicle:''' A handle to the [[vehicle]] that you want to get the variant of.
 
-==Optional Arguments==
+===Required Arguments===
+*'''theVehicle:''' The [[vehicle]] that you want to set the variant.
+
+===Optional Arguments===
 Both arguments need to be supplied, otherwise random variants will be picked.
-* '''variant1''': An integer for the first variant see [[Vehicle variants]]
-* '''variant2''': An integer for the second variant see [[Vehicle variants]]
+* '''variant1''': An integer for the first variant. See [[Vehicle variants]].
+* '''variant2''': An integer for the second variant. See [[Vehicle variants]].
 
 ==Returns==
-On success:
-* '''bool''': Returns true as the vehicle variants were successfully set.
-On failure:
-* '''bool''': False because the specified vehicle didn't exist or specified variants were invalid.
+Returns ''true'' if the vehicle variants were successfully set, ''false'' otherwise (the specified vehicle doesn't exist or the specified variants are invalid).
 
 ==Example==
-This example lets the vehicle driver set their vehicle variant with setvehvar
+This example lets the vehicle driver set their vehicle's variant with a command:
 <syntaxhighlight lang="lua">
-function setMyVehiclesVariant(theUser, command, var1, var2)
-    local var1, var2 = tonumber(var1), tonumber(var2) -- If anything was passed make sure its number or nil
-    local myVeh = getPedOccupiedVehicle(theUser) -- Get the vehicle that they're in
-    if (myVeh and getVehicleController(myVeh) == theUser) then -- Make sure they're in control
-        local wasSet = setVehicleVariant(myVeh, var1, var2) -- Set what they wanted
-        if (wasSet) then
-            outputChatBox("Vehicle variant successfully set!", theUser, 0, 255, 0)
+function setMyVehicleVariants (thePlayer, commandName, arg1, arg2)
+    local variant1, variant2 = tonumber (arg1), tonumber (arg2) -- If anything was passed make sure the arguments are numbers or pass nil
+    local myVeh = getPedOccupiedVehicle (thePlayer) -- Get the vehicle that the player is in
+
+    if (myVeh and getVehicleController (myVeh) == thePlayer) then -- Make sure the player is the vehicle driver (controller)
+        local wasSet = setVehicleVariant (myVeh, variant1, variant2) -- Set the vehicle variants the player passed as arguments
+
+        if wasSet then
+            outputChatBox ("Vehicle variant successfully set!", thePlayer, 0, 255, 0)
         else
-            outputChatBox("Vehicle variant unsuccessfully set.", theUser, 255, 255, 0)
+            outputChatBox ("Vehicle variant unsuccessfully set.", thePlayer, 255, 255, 0)
         end
     end
 end
-addCommandHandler("setvehvar", setMyVehiclesVariant) -- Add the command
+
+addCommandHandler ("setvehvar", setMyVehicleVariants) -- Create the command
 </syntaxhighlight>
+
 ==Requirements==
-{{Requirements|1.2|1.5.8-9.20693|}}
+{{Requirements|1.2.0|1.5.8-9.20693|}}
 
 ==See Also==
 {{Vehicle functions}}

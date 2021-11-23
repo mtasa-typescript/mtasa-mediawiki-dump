@@ -1,7 +1,6 @@
 {{Client function}}
 __NOTOC__
-{{New feature/item|3.0159|1.5.8|20797|
-This function returns the position of the dummy for the given vehicle.}}
+{{Added feature/item|1.5.9|1.5.8|20797|This function returns the position of the dummy for the given [[vehicle]].}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
@@ -10,34 +9,38 @@ float, float, float getVehicleDummyPosition ( vehicle theVehicle, string dummy )
 {{OOP||[[vehicle]]:getDummyPosition||setVehicleDummyPosition}}
 
 ===Required Arguments=== 
-*'''theVehicle:''' The [[vehicle]] you want to get the dummy positions from
-*'''dummy:''' The dummy whose position you want to get
+*'''theVehicle:''' The [[vehicle]] you want to get the dummy positions from.
+*'''dummy:''' The dummy whose position you want to get.
 
-==Allowed dummies==
+===Allowed Dummies===
 {{VehicleDummies}}
 
 ===Returns===
-Returns three floats indicating the position ''x'', ''y'' and ''z'' of the vehicle's dummy. It returns ''false'' otherwise.
+Returns 3 [[Float|floats]] indicating the position X, Y and Z of the vehicle's dummy. It returns ''false'' otherwise.
 
+==Example==
 This is a command to get the position of the player's vehicle dummy position specified as an argument.
 <syntaxhighlight lang="lua">
-function getDummyPosition(cmd, dummy)
-    if (not dummy) then
+function getDummyPosition (commandName, dummy)
+    if not dummy then
         return false
     end
-    local veh = getPedOccupiedVehicle(localPlayer)
-    if (not veh) then
-        outputChatBox("You should be in a vehicle to use this command", 255, 25, 25)
+    local veh = getPedOccupiedVehicle (localPlayer)
+
+    if not veh then
+        outputChatBox ("You should be in a vehicle to use this command", 255, 25, 25)
         return false
     end
-    local x, y, z = getVehicleDummyPosition(veh, dummy)
-    outputChatBox("X: "..x..", Y: "..y..", Z: "..z, 0, 255, 0)
+
+    local x, y, z = getVehicleDummyPosition (veh, dummy)
+    outputChatBox ("X: "..x..", Y: "..y..", Z: "..z, 0, 255, 0)
 end
-addCommandHandler("getdummy", getDummyPosition)
+
+addCommandHandler ("getdummy", getDummyPosition)
 </syntaxhighlight>
 
 ==Requirements==
-{{Requirements||1.5.8-9.20797|}}
+{{Requirements|n/a|1.5.8-9.20797|}}
 
 ==See Also==
 {{Client vehicle functions}}

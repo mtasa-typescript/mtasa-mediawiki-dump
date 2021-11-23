@@ -4,11 +4,9 @@ This function stores [[element data]] under a certain key, attached to an elemen
 
 As element data is synced to all clients, it can generate a lot of network traffic and be heavy on performance. Events are much more efficient for sending data from a client to the server only, or from the server to a specific client. <br/>
 Usage of element data should be disencouraged where your goal can be achieved with events like above, and [[table|tables]] for storing and retrieving data.
-
 {{Tip|A simple and efficient way to make a variable known to the server and clients is to use setElementData on the [[root]] element.}}
 {{Note|See [[Script security]] for tips on preventing cheaters when using events and element data}}
 {{Note|For performance reasons, never use setElementData in events that fire often (like [[onClientRender]]) without further optimization or conditions. In fact, using element data in general can take such a toll on performance that not using it unless strictly neccesary (e.g use alternatives such as storing data in tables) is recommended.}}.
-
 
 {{New items|5.0157|1.5.7-9.20477|A subscription mode has been introduced for [[setElementData]] serverside. When setting data in subscription mode, only clients that are added through [[addElementDataSubscriber]] will receive the data, which is good for performance.
 Note this mode only works when setting element data serverside. Setting data clientside still sends the update to all clients if 'synchronize' is set to true.

@@ -1,37 +1,34 @@
 __NOTOC__ 
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20914|This function sets the parameter of a sound effect.}}
+{{Added feature/item|1.5.9|1.5.8|20914|This function sets the parameter of a [[sound]] effect.}}
 {{Note|Using this function on a player voice sound element is not supported at this time.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">bool setSoundEffectParameter ( element sound, string effectName, string effectParam, var paramValue )</syntaxhighlight>
 {{OOP||[[sound]]:setEffectParameter}}
 ===Required Arguments===
-*'''sound''': the [[sound]] element.
-*'''effectName''': the name of the effect whose parameter you want to change.
+*'''sound''': The [[sound]] element.
+*'''effectName''': The name of the effect whose parameter you want to change:
 {{Sound_Effects}}
-*'''effectParam''': the parameter [[#Effects Parameters|name]].
-*'''paramValue''': the parameter [[#Effects Parameters|value]].
+*'''effectParam''': The parameter [[#Effects Parameters|name]].
+*'''paramValue''': The parameter [[#Effects Parameters|value]].
 ===Returns===
-Returns '''true''' if everything went well, error is raised otherwise.
+Returns ''true'' if effect have been set successfully, ''false'' otherwise.
 
 ===Effects Parameters===
 {{Sound_Effects_Parameters}}
 
+==Example== 
+<syntaxhighlight lang="lua">
+local sound = playSound3D ("music.mp3", 0, 0, 10)
+
+setSoundEffectEnabled (sound, "echo", true)
+setSoundEffectParameter (sound, "echo", "wetDryMix", 80)
+setSoundEffectParameter (sound, "echo", "feedback", 30)
+</syntaxhighlight>
+
 ==Requirements==
 {{Requirements|n/a|1.5.8-9.20914|}}
 
-==Example== 
-<section name="Client" class="client" show="true">
-<syntaxhighlight lang="lua">
-local sound = playSound3D("music.mp3", 0, 0, 10)
-setSoundEffectEnabled(sound, "echo", true)
-setSoundEffectParameter(sound, "echo", "wetDryMix", 80)
-setSoundEffectParameter(sound, "echo", "feedback", 30)
-</syntaxhighlight>
-</section>
-
 ==See Also==
 {{Client_audio_functions}}
-
-[[PT-BR:setSoundEffectParameter]]

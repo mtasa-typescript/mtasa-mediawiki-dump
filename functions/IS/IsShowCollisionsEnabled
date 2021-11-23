@@ -1,0 +1,27 @@
+__NOTOC__ 
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20844|This function gets the collision previews state.}}
+{{Note|This function only works in development mode.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">bool isShowCollisionsEnabled ( )</syntaxhighlight>
+===Returns===
+* Returns ''true'' if the collision previews are enabled, ''false'' otherwise.
+
+==Example==
+You can refer to the example below:
+<syntaxhighlight lang="lua">
+setDevelopmentMode (true)
+
+addCommandHandler ("devdebug",
+    function ()
+        showCol (not isShowCollisionsEnabled())
+    end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20844|}}
+
+==See Also==
+{{Client_utility_functions}}

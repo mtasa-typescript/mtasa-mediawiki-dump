@@ -22,7 +22,9 @@ Returns ''true'' if the player was unsubscribed, ''false'' otherwise.
 ==Example== 
 <section name="Server" class="server" show="true">
 <syntaxhighlight>
-TODO
+addEventHandler("onVehicleExit", getRootElement(), function(thePlayer)
+      removeElementDataSubscriber(source, "id", thePlayer) 
+   end)
 </syntaxhighlight>
 </section>
 

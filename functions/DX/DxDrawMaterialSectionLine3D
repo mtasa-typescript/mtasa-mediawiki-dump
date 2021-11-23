@@ -22,13 +22,11 @@ bool dxDrawMaterialSectionLine3D ( float startX, float startY, float startZ, flo
 * '''width:''' The width/thickness of the line in GTA world units. (This is 1/75th of the width used in dxDrawLine3D)
 
 ==Optional Arguments==
-{{New items|3.0159|1.5.8|
+{{Added feature/item|1.5.9|1.5.8|20862|
 * '''flipUV''': A bool representing whether a UV orientation should be flipped.
-|20862}}
-* '''color:''' An integer of the hex color, produced using [[tocolor]] or 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
-{{New items|5.0155|1.5.5-9.11998|
-* '''postGUI''': A bool representing whether the line should be drawn on top of or behind any ingame GUI.
 }}
+* '''color:''' An integer of the hex color, produced using [[tocolor]] or 0xAARRGGBB (AA = alpha, RR = red, GG = green, BB = blue).
+* '''postGUI''': A bool representing whether the line should be drawn on top of or behind any ingame GUI.
 * '''faceTowardX/Y/Z:''' The direction the front of the line should face towards. If this is not set, the front of the line always faces toward the camera.
 
 ===Returns===
@@ -69,7 +67,8 @@ end
 
 ==Changelog==
 {{ChangelogHeader}}
-{{ChangelogItem|1.5.5-9.11998|Added postGUI argument}}
+{{ChangelogItem|1.5.5-9.11998|Added ''postGUI'' argument}}
+{{ChangelogItem|1.5.8-9.20862|Added ''flipUV'' argument}}
 
 ==See Also==
 {{Drawing_functions}}

@@ -1,6 +1,6 @@
-__NOTOC__
 {{Client function}}
-{{New feature/item|1|1.5.8|20704|This function re-streams everything in world.}}
+__NOTOC__
+{{Added feature/item|1.5.9|1.5.8|20704|This function re-streams everything in the GTA world.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
@@ -11,10 +11,10 @@ bool engineRestreamWorld ( )
 Returns ''true'' if the world was restreamed successfully, ''false'' otherwise.
 
 ==Example==
-This function can be used after model is loaded with [[engineLoadDFF]].
+This function can be used after a model (or more) is loaded with [[engineLoadDFF]]:
 <syntaxhighlight lang="lua">
-addEventHandler("onClientResourceStart", resourceRoot, function()
-	engineRestreamWorld()
+addEventHandler ("onClientResourceStart", resourceRoot, function ()
+    engineRestreamWorld ()
 end)
 </syntaxhighlight>
 

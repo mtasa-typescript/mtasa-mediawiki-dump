@@ -1,0 +1,32 @@
+__NOTOC__
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20945|This function allows to get the opacity of the radar map (F11).}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+int getPlayerMapOpacity ( )
+</syntaxhighlight>
+{{OOP||[[player]].getMapOpacity}}
+
+===Returns===
+Returns an [[integer]] with a value from 0 to 255, where 0 is fully transparent and 255 is fully opaque.
+
+==Example==
+<section name="Client" class="client" show="true">
+This example implements a command that tells you what your current map opacity is.
+<syntaxhighlight lang="lua">
+function showMapOpacity()
+	-- We get the map opacity value
+	local mapOpacity = getPlayerMapOpacity()
+	-- We tell what the map opacity is to the player
+	outputChatBox("Your map's opacity is at "..mapOpacity, 0, 255, 0)
+end
+addCommandHandler("mapopacity", showMapOpacity)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20945}}
+
+==See Also==
+{{Client_player_functions}}

@@ -1,26 +1,26 @@
 {{Client function}}
 __NOTOC__ 
-{{New feature/item|3.0159|1.5.8|20704|This function returns the transformation matrix of a specific bone. Currently the following element types are accepted:
-* [[Element/Player|Player]]
-* [[Element/Ped|Ped]]
-}}
-{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]]}}
+{{Added feature/item|1.5.9|1.5.8|20704|This function returns the transformation matrix of a specific bone. Currently the [[Element/Player|Player]] and [[Element/Ped|Ped]] element types are accepted.}}
+{{Tip|If you want to attach an element to a bone, see [[attachElementToBone]].}}
 {{Tip|For [[matrix]] manipulation which goes beyond the basic examples given on this page, see the [[Lua matrix library]]. Using the built-in [[matrix]] class is also recommended.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-table getElementBoneMatrix ( element theElement, int bone )
+table getElementBoneMatrix ( element theElement, int boneId )
 </syntaxhighlight>
 
 ===Required Arguments=== 
-*'''theElement:''' the element to get the bone matrix on.
-*'''bone:''' the ID of the bone to get the matrix of. See [[Bone IDs]]
+*'''theElement:''' the [[element]] to get the bone matrix on.
+*'''boneId:''' the ID of the bone to get the matrix of. See [[Bone IDs]].
 
 ===Returns===
 Returns a multi-dimensional array (which can be transformed into a proper [[matrix]] class using ''Matrix.create'' method) containing a 4x4 matrix. Returns ''false'' if invalid arguments were passed.
 
 ==Example== 
 {{Needs Example}}
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20704|}}
 
 ==See Also==
 {{Client_element_functions}}

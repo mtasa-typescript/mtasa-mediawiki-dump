@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Server client function}} 
-This function will take a reference and returns its Lua element.
+This function will take a reference obtained by the [[ref]] function and returns its Lua element.
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
@@ -12,6 +12,9 @@ mixed deref( int reference )
 
 ===Returns===
 Returns ''mixed'' if the reference were valid. Returns ''false'' if the reference were invalid.
+
+==Remarks==
+This function was originally created to prevent garbage-collection of specific Lua objects/elements which should persist even though no script would reference them. The storage of those references can be obtained by a call to the debug.getregistry function. The '''ref''' and '''deref''' template can easily be remade using a locally-hidden Lua table and two such function implementations.
 
 ==See Also==
 {{Utility functions}}

@@ -1,32 +1,31 @@
 {{Client function}}
 __NOTOC__
-Resets the motion blur level on the clients screen to default value (36).
+Resets the motion blur level on the client's screen to default value (36).
 
 ==Syntax==
-<section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
 bool resetBlurLevel ( )
 </syntaxhighlight>
-</section>
 
 ==Returns==
-Returns ''true'' if the blur level was reset successfully. Returns ''false'' otherwise.
+Returns ''true'' if the blur level was reset successfully, ''false'' otherwise.
 
 ==Example==
-<section name="Client" class="client" show="true">
-This example allows the player to reset their blur level via a command
-<syntaxhighlight lang="lua"> 
-function resetBlurCommand()
-	if resetBlurLevel() then
-		outputChatBox("Reset blur level.", 0, 255, 0)
-	else
-		outputChatBox("Failed to reset blur level.", 255, 0, 0)
-	end
+This example allows the player to reset their blur level with a command:
+<syntaxhighlight lang="lua">
+function resetBlurCommand ()
+    if resetBlurLevel () then
+        outputChatBox ("Reset blur level.", 0, 255, 0)
+    else
+        outputChatBox ("Failed to reset blur level.", 255, 0, 0)
+    end
 end
-addCommandHandler("resetblur", resetBlurCommand)
+
+addCommandHandler ("resetblur", resetBlurCommand)
 </syntaxhighlight>
-</section>
+
 ==Requirements==
 {{Requirements|n/a|1.5.7-9.20450|}}
+
 ==See Also==
 {{Player functions}}

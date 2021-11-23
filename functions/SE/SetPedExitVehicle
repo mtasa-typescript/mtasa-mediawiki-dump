@@ -1,9 +1,7 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0159|1.5.8|20740|This function makes a [[ped]] exit a [[vehicle]], similar to the enter_exit control state.}}
-
-{{Note|For this function to work on peds, the server and all clients are required to be on version '''1.5.8 r20740''' or newer.}}
-{{Note|This function only works on synced peds and vehicles (ie. created serverside).}}
+{{Added feature/item|1.5.9|1.5.8|20740|This function makes a [[ped]] exit a [[vehicle]], similar to the enter_exit control state.}}
+{{Note|This function only works on synced peds and vehicles (i.e. created server-side).}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
@@ -16,17 +14,18 @@ bool setPedExitVehicle ( ped thePed )
 ===Returns===
 Returns ''true'' if the function was successful, ''false'' otherwise.
 
-When this function returns ''true'', the client will ask server for permission to exit a vehicle. Exiting can still fail in the following cases
-*The function is used on a ped, but another client is not on version '''1.5.8 r20740''' or newer.
+When this function returns ''true'', the client will ask server for permission to exit a vehicle.
 
 This function returns ''false'' in the following cases
 *Invalid arguments were parsed.
-*The function is used on a ped but the server is not on version '''1.5.8 r20740''' or newer.
 *Time passed since last enter/exit for this ped is less than 1500 ms.
-*The ped is getting jacked.
+*The ped is already being jacked.
 
 ==Example==
 {{Needs Example}}
+
+==Requirements==
+{{Requirements|1.5.8-9.20740|1.5.8-9.20740}}
 
 ==See Also==
 {{Client ped functions}}

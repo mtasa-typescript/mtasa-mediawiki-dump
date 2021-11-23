@@ -12,7 +12,7 @@ bool showChat ( bool show [, bool inputBlocked ] )
 *'''show:''' A boolean value determining whether to show (''true'') or hide (''false'') the chat.
 
 ===Optional Arguments===
-{{New feature/item|3.0159|1.5.8|20898|
+{{Added feature/item|1.5.9|1.5.8|20898|
 *'''inputBlocked:''' A boolean value determining whether chat input is blocked/hidden, regardless of chat visibility. If unset, this will keep the default behaviour prior to r20898 (''true'' when chat is hidden, ''false'' when chat is visible).
 }}
 ===Returns===
@@ -28,7 +28,7 @@ bool showChat ( player thePlayer, bool show [, bool inputBlocked ] )
 *'''show:''' A boolean value determining whether to show (''true'') or hide (''false'') the chat.
 
 ===Optional Arguments===
-{{New feature/item|3.0159|1.5.8|20898|
+{{Added feature/item|1.5.9|1.5.8|20898|
 *'''inputBlocked:''' A boolean value determining whether chat input is blocked/hidden, regardless of chat visibility. If unset, this will keep the default behaviour prior to r20898 (''true'' when chat is hidden, ''false'' when chat is visible).
 }}
 

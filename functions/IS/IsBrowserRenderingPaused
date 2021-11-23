@@ -1,0 +1,52 @@
+__NOTOC__
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|20806|This function gets the rendering state of a [[browser]] [[element]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+bool isBrowserRenderingPaused ( browser webBrowser )
+</syntaxhighlight>
+{{OOP||[[browser]]:isRenderingPaused|renderingPaused|setBrowserRenderingPaused}}
+
+===Required Arguments===
+*'''webBrowser:''' The [[browser]] [[element]] to get the rendering state of.
+
+===Returns===
+Returns ''true'' if the browser rendering is paused, ''false'' otherwise.
+
+==Example==
+This will create a [[browser]] [[element]] and a command to pause the browser rendering:
+<syntaxhighlight lang="lua">
+-- In order to render the browser on the full screen, we need to know the dimensions.
+local screenWidth, screenHeight = guiGetScreenSize ()
+ 
+-- Let's create a new browser in remote mode.
+local window = guiCreateWindow (0, 0, screenWidth, screenHeight, "Webbrowser", false)
+local browser = guiCreateBrowser (0, 0, 800, 600, false, false, false, window)
+ 
+-- The event onClientBrowserCreated will be triggered, after the browser has been initialized.
+-- After this event has been triggered, we will be able to load our URL
+local theBrowser = guiGetBrowser (browser) -- Get the browser element from gui-browser
+addEventHandler ("onClientBrowserCreated", theBrowser, 
+    function ()
+		-- After the browser has been initialized, we can load www.youtube.com
+		loadBrowserURL (source, "http://www.youtube.com")
+	end
+)
+
+addCommandHandler ("pause", -- Add a command named 'pause'
+  function (player, commandName)
+      if isBrowserRenderingPaused (theBrowser) then
+          setBrowserRenderingPaused (theBrowser, false)
+      else
+          setBrowserRenderingPaused (theBrowser, true)
+      end
+  end
+)
+</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20806|}}
+
+==See also==
+{{CEF_functions}}

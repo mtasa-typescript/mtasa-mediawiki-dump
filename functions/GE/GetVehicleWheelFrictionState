@@ -1,6 +1,6 @@
 {{Client function}}
 __NOTOC__
-{{New feature/item|3.0159|1.5.8|20726|This function returns the current wheel friction state of the [[vehicle]].}}
+{{Added feature/item|1.5.9|1.5.8|20726|This function returns the current wheel friction state of the [[vehicle]].}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">
@@ -22,25 +22,26 @@ Returns a [[int]] indicating the wheel friction state. This value can be:
 * '''3:''' Locked wheel (on brake or handbrake).
 
 ==Example==
-<section name="Client" class="client" show="true">
-This example will show the friction state of each wheel of the player's current vehicle.
+This example will show the friction state of each wheel of the player's current vehicle:
 
 <syntaxhighlight lang="lua">
-addEventHandler('onClientRender', root, function()
-    local veh = getPedOccupiedVehicle(localPlayer)
+addEventHandler("onClientRender", root, function ()
+    local veh = getPedOccupiedVehicle (localPlayer)
     
-    if (not veh) then
+    if not veh then
         return false
     end
     
-    dxDrawRectangle(0, 0, 300, 140, tocolor(0, 0, 0, 150))
-    dxDrawText('FRICTION FRONT LEFT = ' .. getVehicleWheelFrictionState(veh, 0), 8, 10, 290, 40, tocolor(255, 255, 255), 1.5)
-    dxDrawText('FRICTION FRONT RIGHT = ' .. getVehicleWheelFrictionState(veh, 2), 8, 40, 290, 70, tocolor(255, 255, 255), 1.5)
-    dxDrawText('FRICTION REAR LEFT = ' .. getVehicleWheelFrictionState(veh, 1), 8, 70, 290, 100, tocolor(255, 255, 255), 1.5)
-    dxDrawText('FRICTION REAR RIGHT = ' .. getVehicleWheelFrictionState(veh, 3), 8, 100, 290, 130, tocolor(255, 255, 255), 1.5)
+    dxDrawRectangle (0, 0, 300, 140, tocolor (0, 0, 0, 150))
+    dxDrawText ("FRICTION FRONT LEFT = ".. getVehicleWheelFrictionState (veh, 0), 8, 10, 290, 40, tocolor (255, 255, 255), 1.5)
+    dxDrawText ("FRICTION FRONT RIGHT = ".. getVehicleWheelFrictionState (veh, 2), 8, 40, 290, 70, tocolor (255, 255, 255), 1.5)
+    dxDrawText ("FRICTION REAR LEFT = ".. getVehicleWheelFrictionState (veh, 1), 8, 70, 290, 100, tocolor (255, 255, 255), 1.5)
+    dxDrawText ("FRICTION REAR RIGHT = ".. getVehicleWheelFrictionState (veh, 3), 8, 100, 290, 130, tocolor (255, 255, 255), 1.5)
+end)
+</syntaxhighlight>
 
-end)</syntaxhighlight>
-</section>
+==Requirements==
+{{Requirements|n/a|1.5.8-9.20726|}}
 
 ==See Also==
 {{Client vehicle functions}}

@@ -3,7 +3,7 @@ __NOTOC__
 This function toggles the panning of a sound (hearing it closer to the left or right side of the speakers due to the camera position). By default a sound has its panning enabled.
 ==Syntax== 
 <syntaxhighlight lang="lua">bool setSoundPanningEnabled ( element sound, bool enable )</syntaxhighlight>
-{{New feature/item|3.0141|1.4.0|6987|{{OOP|The method name was incorrect (setPann'''n'''ingEnabled) before version '''1.5.8-9.20761.0'''.|[[sound]]:setPanningEnabled|panningEnabled|isSoundPanningEnabled}}}}
+{{New feature/item|3.0141|1.4.0|6987|{{OOP|The method name was incorrect (setPann'''n'''ingEnabled) before version '''1.5.8 r20761'''.|[[sound]]:setPanningEnabled|panningEnabled|isSoundPanningEnabled}}}}
 
 ===Required arguments=== 
 *'''sound:''' a [[sound]] element to change the panning of.

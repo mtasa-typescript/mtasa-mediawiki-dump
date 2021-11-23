@@ -1,32 +1,30 @@
 __NOTOC__
 {{Client event}} 
-{{New feature/item|3.0159|1.5.8|20788|This event is triggered every time the resource file downloader (aka. transfer box) updates the download progress.}}
+{{Added feature/item|1.5.9|1.5.8|20788|This event is triggered every time the [[resource]] file downloader (aka. transfer box) updates the download progress.}}
 
 ==Parameters==
 <syntaxhighlight lang="lua">
 float downloadedSizeTotal, float downloadTotalBytes
 </syntaxhighlight>
-*'''downloadedSizeTotal:''' total progress in bytes
-*'''downloadTotalBytes:''' download total size in bytes
+*'''downloadedSizeTotal:''' The total progress in bytes.
+*'''downloadTotalBytes:''' The total size of the download in bytes.
 
 ==Source==
 The [[event system#Event source|source]] of this event is the [[root element]].
 
 ==Example==
-This example will show the percentage of the download progress, whenever a resource is started.<br>
-<section name="Client-side" class="client" show="true">
+This example will show the percentage of the download progress, whenever a resource is started:
 <syntaxhighlight lang="lua">
-addEventHandler("onClientTransferBoxProgressChange", root, function(downloadedSize, totalSize)
-    local percentage = math.min((downloadedSize / totalSize) * 100, 100)
+addEventHandler ("onClientTransferBoxProgressChange", root, function (downloadedSize, totalSize)
+    local percentage = math.min ((downloadedSize / totalSize) * 100, 100)
 
-    print(percentage .. "%")
+    print (percentage .. "%")
 end)
 </syntaxhighlight>
-</section>
 '''NOTE''': The code must be in a separated resource. It will be responsible to be watching other resources.
 
 ==Requirements==
-{{Requirements||1.5.8-9.20788|}}
+{{Requirements|n/a|1.5.8-9.20788|}}
 
 ==See Also==
 ===Client other events===

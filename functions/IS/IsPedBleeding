@@ -1,26 +1,27 @@
 {{Client function}}
 __NOTOC__
-{{New feature/item|3.0159|1.5.8|20935|This function gets the state of a [[player|player's]] or [[ped|ped's]] bleeding effect.}}
+{{Added feature/item|1.5.9|1.5.8|20935|This function gets the state of a [[player|player's]] or [[ped|ped's]] bleeding effect.}}
 ==Syntax== 
-<syntaxhighlight lang="lua">bool isPedBleeding( ped thePed ) </syntaxhighlight> 
+<syntaxhighlight lang="lua">bool isPedBleeding ( ped thePed ) </syntaxhighlight> 
 {{OOP||[[ped]]:isBleeding|bleeding|setPedBleeding}}
 
 ===Required Arguments===
-*'''thePed:''' the player or ped whose bleeding effect state you want to get.
+*'''thePed:''' The [[player]] or [[ped]] whose bleeding effect state you want to get.
 
 ===Returns===
-Returns ''true'' if the player or ped is bleeding, ''false'' otherwise.
+Returns ''true'' if the [[player]] or [[ped]] is bleeding, ''false'' otherwise.
 
 ==Example==
 <syntaxhighlight lang="lua">
-function checkBleeding()
-   if isPedBleeding(localPlayer) then
-      outputChatBox("The ped is bleeding")
+function checkBleeding ()
+   if isPedBleeding (localPlayer) then
+      outputChatBox ("The ped is bleeding!")
    else
-      outputChatBox("The ped is not bleeding")
+      outputChatBox ("The ped is not bleeding!")
    end
 end
-addCommandHandler("cBleed", checkBleeding)
+
+addCommandHandler ("checkbleed", checkBleeding)
 </syntaxhighlight>
 
 ==Requirements==
