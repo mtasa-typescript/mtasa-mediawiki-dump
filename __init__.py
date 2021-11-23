@@ -2564,12 +2564,6 @@ URL_LIST = [
         type=ListType.CLIENT,
     ),
     PageUrl(
-        url="/wiki/SvgCreate",
-        name="svgCreate",
-        category="SVG functions",
-        type=ListType.CLIENT,
-    ),
-    PageUrl(
         url="/wiki/SvgGetDocumentXML",
         name="svgGetDocumentXML",
         category="SVG functions",
@@ -2578,18 +2572,6 @@ URL_LIST = [
     PageUrl(
         url="/wiki/SvgGetSize",
         name="svgGetSize",
-        category="SVG functions",
-        type=ListType.CLIENT,
-    ),
-    PageUrl(
-        url="/wiki/SvgSetDocumentXML",
-        name="svgSetDocumentXML",
-        category="SVG functions",
-        type=ListType.CLIENT,
-    ),
-    PageUrl(
-        url="/wiki/SvgSetSize",
-        name="svgSetSize",
         category="SVG functions",
         type=ListType.CLIENT,
     ),
