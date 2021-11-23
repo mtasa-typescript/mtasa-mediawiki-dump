@@ -17,15 +17,18 @@ Returns ''true'' if the passed element is local, ''false'' if not or if invalid 
 ==Example==
 This clientside function destroys all local radar blips.
 <syntaxhighlight lang="lua">
-function destroyAllLocalBlips ( )
-	-- get a table containing all blips
-	local allBlips = getElementsByType( "blip" )
-	-- for each blip in this table,
-	for index, theBlip in ipairs ( allBlips ) do
-		-- check if it's a blip that only exists locally,
-		if isElementLocal ( theBlip ) then
-			-- and destroy it in that case
-			destroyElement ( theBlip )
+function destroyAllLocalBlips()
+	-- Get a table containing all blips
+	local allBlips = getElementsByType("blip")
+	-- For each blip in this table
+
+	for blipID = 1, #allBlips do
+		local blipElement = allBlips[blipID]
+		-- Check if it's a blip that only exists locally
+
+		if isElementLocal(blipElement) then
+			-- And destroy it in that case
+			destroyElement(blipElement)
 		end
 	end
 end

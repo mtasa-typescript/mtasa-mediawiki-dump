@@ -8,6 +8,9 @@ No parameters.
 ==Source==
 The [[event system#Event source|source]] of this event is the [[element]] that streamed out.
 
+==Remarks==
+This event is not triggered for elements that are streamed-in at the point of a [[destroyElement]] call. Use the [[onClientElementDestroy]] event in combination with the [[isElementStreamedIn]] function to handle such a case.
+
 ==Example== 
 This example shows you how to tell player that a marker was streamed out and the distance between player and the marker.
 <syntaxhighlight lang="lua">

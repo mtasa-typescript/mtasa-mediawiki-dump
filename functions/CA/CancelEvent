@@ -31,19 +31,21 @@ Always returns ''true''.
 
 ==Example== 
 <section name="Example 1 - Server" class="server" show="true">
-This example stops the player ''huntedPlayer'' from entering a vehicle:
+This example stops the player from entering a vehicle.
 <syntaxhighlight lang="lua">
--- call 'stopVehicleEntry' whenever hunterPlayer is about to enter a vehicle:
-function stopVehicleEntry ( theplayer, seat, jacked )
-   cancelEvent() -- stop the event, the player will can't enter in vehicle 
+function onVehicleStartEnter()
+   cancelEvent()
 end
-addEventHandler("onVehicleStartEnter", getRootElement(), stopVehicleEntry)
+addEventHandler("onVehicleStartEnter", root, onVehicleStartEnter)
 </syntaxhighlight>
 </section>
 <section name="Example 2 - Client" class="client" show="true">
 This example prevents any damage to a player clientside by making [[cancelEvent]] an event handler for the [[onClientPlayerDamage]] event.
 <syntaxhighlight lang="lua">
-addEventHandler ( "onClientPlayerDamage", getRootElement(), function() cancelEvent() end )
+function onClientPlayerDamage()
+	cancelEvent()
+end
+addEventHandler("onClientPlayerDamage", root, onClientPlayerDamage)
 </syntaxhighlight>
 </section>
 

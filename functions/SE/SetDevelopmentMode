@@ -1,5 +1,5 @@
 __NOTOC__
-{{Server client function}}
+{{Client function}}
 This function is used to set the development mode. Setting development mode allows access to special commands which can assist with script debugging.
 
 '''Client-side''' development mode commands:

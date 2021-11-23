@@ -3,7 +3,7 @@ __NOTOC__
 This function is used to get the current time in the game. If you want to get the real server time, use [[getRealTime]].
 
 ==Syntax==
-<syntaxhighlight lang="lua">int int getTime ()</syntaxhighlight>
+<syntaxhighlight lang="lua">int, int getTime ()</syntaxhighlight>
 
 ===Returns===
 Returns two ''ints'' that represent hours and minutes.

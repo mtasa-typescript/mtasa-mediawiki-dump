@@ -1,6 +1,6 @@
 __NOTOC__ 
 {{Server event}}
-{{Needs Checking|Event is not triggered. There might be more parameters to this event. The cancel effect hasn't been tested.}}
+{{Needs Checking|Event is not triggered. There might be more parameters to this event.<!-- The cancel effect hasn't been tested. | cancelEvent has no effect on this event -->}}
 This event is triggered when a ped is damaged. For player damage, use [[onPlayerDamage]] instead.
 
 ==Parameters==

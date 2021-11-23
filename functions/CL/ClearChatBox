@@ -22,24 +22,34 @@ bool clearChatBox ( [ element clearFor = getRootElement() ])
 Returns ''true'' if the player's chat was cleared successfully, ''false'' otherwise.
 </section>
 
-==Example== 
-<section name="Client" class="client" show="true">
-This example removes spam caused by outputChatBox
+==Example==
+<section name="Server" class="server" show="true">
+This example adds an admin command to clear the chatbox for everyone
 <syntaxhighlight lang="lua">
-for i=1,10 do
-  outputChatBox( "spam ..." )
+function cmdClearChat(p, cmd)
+    if not isPlayerStaff(p) then return end
+    clearChatBox()
 end
+addCommandHandler("clearchat", cmdClearChat)
 
-clearChatBox()
-outputChatBox("Chat cleared successfully!")
-</syntaxhighlight>
-</section>
+-- Utility function
+local staffACLs = {
+    aclGetGroup("Admin"),
+    aclGetGroup("Moderator")
+}
 
-<section name="Server" class="server" show="false">
-This example deletes messages for reandom player
-<syntaxhighlight lang="lua">
-local RandomPlayer = getRandomPlayer ( )
-clearChatBox(RandomPlayer)
+function isPlayerStaff(p)
+	if isElement(p) and getElementType(p) == "player" and not isGuestAccount(getPlayerAccount(p)) then
+		local object = getAccountName(getPlayerAccount(p))
+
+		for _, group in ipairs(staffACLs) do
+			if isObjectInACLGroup("user." .. object, group) then
+				return true
+			end
+		end
+	end
+	return false
+end
 </syntaxhighlight>
 </section>
 

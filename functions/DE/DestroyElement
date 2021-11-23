@@ -19,6 +19,9 @@ bool destroyElement ( element elementToDestroy )
 ===Returns===
 Returns ''true'' if the element was destroyed successfully, ''false'' if either the element passed to it was invalid or it could not be destroyed for some other reason (for example, clientside destroyElement can't destroy serverside elements).
 
+==Remarks==
+If a streamed-in element is destroyed then it is NOT streamed out, i.e. the [[onClientElementStreamOut]] client-side event is NOT triggered. Thus it is wrong to assume a clean stream-in and stream-out sequence on the client-side. Additionally to onClientElementStreamOut use a [[onClientElementDestroy]] event handler to detect the destruction of streamed-in elements.
+
 ==Example==
 '''Example 1:''' This example would destroy every element in the map, with the exception of players and the root element itself.
 <syntaxhighlight lang="lua">

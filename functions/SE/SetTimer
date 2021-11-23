@@ -17,6 +17,7 @@ timer setTimer ( function theFunction, int timeInterval, int timesToExecute [, v
 ===Required Arguments=== 
 *'''theFunction:''' The function you wish the timer to call.
 {{Note|The hidden global variable '''sourceTimer''' contains the currently executing timer userdata}}
+{{Note|The hidden global variable '''source''' becomes ''nil'' inside a timer function. You need to declare it on the function arguments if you need to use it.}}
 *'''timeInterval:''' The number of milliseconds that should elapse before the function is called. (the minimum is 50 (0 on 1.5.6 r16715); 1000 milliseconds = 1 second)
 *'''timesToExecute:''' The number of times you want the timer to execute, or 0 for infinite repetitions.
 

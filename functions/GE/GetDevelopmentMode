@@ -1,5 +1,5 @@
 __NOTOC__
-{{Server client function}}
+{{Client function}}
 
 This function is used to get the development mode of the client. For more information see [[setDevelopmentMode]]
 

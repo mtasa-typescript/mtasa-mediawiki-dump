@@ -67,3 +67,5 @@ addCommandHandler ( "kick", onKickCommandHandler )
 <!-- Change FunctionArea to the area that this function is in on the main function list page, e.g. Server, Player, Vehicle etc -->
 {{ACL_functions}}
 [[zh-cn:hasObjectPermissionTo]]
+[[pt-br:hasObjectPermissionTo]]
+[[ru:hasObjectPermissionTo]]

@@ -10,8 +10,8 @@ string guiGridListGetItemText ( element gridList, int rowIndex, int columnIndex 
 
 ===Required Arguments=== 
 *'''gridList:''' the gridlist containing the item you're interested in
-*'''rowIndex:''' row id of the item
-*'''columnIndex:''' column id of the item
+*'''rowIndex:''' row id of the item (first is 0)
+*'''columnIndex:''' column id of the item (first is 0)
 
 ===Returns===
 Returns the text of the item if the arguments are right, ''false'' otherwise.

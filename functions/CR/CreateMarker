@@ -1,6 +1,7 @@
 __NOTOC__
 {{Server client function}}
 {{Warning|When using type "arrow" markers, you may experience positioning issues. This is a known issue with how GTA creates these types of markers. It is recommended you keep the position at least 1 game unit above the ground to avoid issues.}}
+{{Warning|"cylinder" marker type doesn't have the same size for collisions and visible textures. Note that the marker collisions are around 10-20% bigger than the visible texture.}}
 
 [[Image:Mtasa_markers.png|thumb|337px|This image shows all the different marker types available using this function.]]
 

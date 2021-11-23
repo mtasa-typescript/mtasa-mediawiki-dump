@@ -17,12 +17,10 @@ Returns ''true'' if the map info was reset successfully, otherwise ''false''.
 ==Example==
 This will reset all map info when the resource is stopped.
 <syntaxhighlight lang="lua">
-addEventHandler("onResourceStop", getResourceRootElement(getThisResource()),
-	-- Resource stop event
-	function()
-            resetMapInfo()
-        end
-)
+function onResourceStop()
+	resetMapInfo()
+end
+addEventHandler("onResourceStop", resourceRoot, onResourceStop)
 </syntaxhighlight>
 
 ==See Also==

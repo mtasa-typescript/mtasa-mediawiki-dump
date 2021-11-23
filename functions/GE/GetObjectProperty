@@ -6,8 +6,8 @@ __NOTOC__
 <syntaxhighlight lang="lua">mixed getObjectProperty ( object theObject, string property )</syntaxhighlight> 
 {{OOP||[[object]]:getProperty||setProperty}}
 ===Required Arguments===
-*'''theObject''': the [[object]] you wish to get a property of.
-*'''property:''': the property you want to get the value of:
+*'''theObject:''' the [[object]] you wish to get a property of.
+*'''property:''' the property you want to get the value of:
 <div style="padding-left:20px">
 * "all" - ''table'' with values of all properties below (OOP method: ''getProperties'')
 </div>

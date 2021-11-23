@@ -6,10 +6,10 @@ __NOTOC__
 <syntaxhighlight lang="lua">bool setObjectProperty ( object theObject, string property, var value )</syntaxhighlight> 
 {{OOP||[[object]]:setProperty||getProperty}}
 ===Required Arguments===
-*'''theObject''': the [[object]] you wish to change a property of.
-*'''property:''': the property you want to set the value of:
+*'''theObject:''' the [[object]] you wish to change a property of.
+*'''property:''' the property you want to set the value of:
 {{Object Properties}}
-*'''value:''': the new value for the property.
+*'''value:''' the new value for the property.
 
 ===Returns===
 Returns ''true'' if the property was set successfully, ''false'' otherwise.

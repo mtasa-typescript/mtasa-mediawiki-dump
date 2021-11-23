@@ -39,6 +39,8 @@ Returns a ''true'' if the operation was successful, ''false'' otherwise.
 ==Example==
 {{Example}}
 
+This function can be used to draw billboards in the game world. You have to [https://forum.mtasa.com/topic/133065-naruto-jutsus-help-me/?do=findComment&comment=1003073 understand the mathematical models about the human vision] to calculate the proper vertices.
+
 ==Requirements==
 {{Requirements|n/a|1.5.7-9.19626|}}
 
