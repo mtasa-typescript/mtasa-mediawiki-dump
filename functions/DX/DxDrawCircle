@@ -30,6 +30,8 @@ Returns ''true'' if the creation of the 2D circle was successful, ''false'' othe
 ==Remarks==
 By documentation this function does perform a '''triangle approximation of the cicle'''. This is important for when there is no shader support on the end-user hardware. If there is shader support then you can instead use shaders with euler-based math (sin/cos/asin) to create a smoother circle. The performance does scale much better than increasing the segment count of this function because drawing using shader would take up only one draw-call. Take look at [https://forum.mtasa.com/topic/133045-dxdrawcircle-chart/?do=findComment&comment=1002953 this post] for more details.
 
+The above remark is about drawing circles on modern end-user hardware with angle-interval support, as necessary by example for pie-charts. '''Drawing full circles''' is easier because the math can be simplified to a euler distance calculation from the texcoord (0.5, 0.5) to the currently drawing pixel. Then the HLSL clip function can be used to not render any pixels outside of the circle. Read more about it in [https://forum.mtasa.com/topic/133453-round-render-target/#comment-1004102 this post].
+
 ==Example==
 This function draws a rectangle with rounded corners.
 <syntaxhighlight lang="lua">

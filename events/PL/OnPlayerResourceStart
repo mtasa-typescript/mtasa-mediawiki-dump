@@ -18,7 +18,7 @@ addEventHandler("onPlayerResourceStart", root, function(loadedResource)
 	outputChatBox(getResourceName(loadedResource) .. " started for " .. getPlayerName(source))
 
 	-- Trigger a custom clientside event defined in this resource
-	if (getResourceRootElement(loadedResource) == resourceRoot) then
+	if loadedResource == resource then
 		triggerClientEvent(source, "onClientCustomEvent", resourceRoot) 
 	end
 end)

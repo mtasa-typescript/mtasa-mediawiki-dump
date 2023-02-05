@@ -2,7 +2,7 @@ __NOTOC__
 {{Client function}}
 
 Changes the voice of a ped.
-{{Note|A ped voice is one of the GTA built in voice character types. Not to be confused with a [[https://wiki.multitheftauto.com/wiki/Resource:Voice player voice]]}}
+{{Note|A ped voice is one of the GTA built in voice character types. Not to be confused with a [[Resource:Voice|player voice]].}}
 ==Syntax==
 <syntaxhighlight lang="lua">bool setPedVoice ( ped thePed, string voiceType, string voiceName )</syntaxhighlight>
 {{OOP||[[ped]]:setVoice}}

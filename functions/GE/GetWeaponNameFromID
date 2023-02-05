@@ -39,7 +39,7 @@ addEventHandler ( "onPlayerWasted", root, scriptOnPlayerWasted ) --add an event 
 
 == Issues ==
 {{Issues|
-{{Issue|7968|getWeaponNameFromID() returns duplicate ID's for 10/11 and 12/13}}
+{{Issue|514|getWeaponNameFromID() returns duplicate ID's for 10/11 and 12/13}}
 }}
 
 ==See Also==

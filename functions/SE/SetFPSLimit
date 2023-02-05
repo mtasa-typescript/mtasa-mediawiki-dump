@@ -1,14 +1,17 @@
 {{Server client function}}
 __NOTOC__
 This function sets the maximum [http://en.wikipedia.org/wiki/Frame_rate FPS (Frames per second)] that players on the server can run their game at.  
-{{Note|When set client side, the actual limit used is the lowest of both the server and client set values.}}
+{{Note|
+* When set client side, the actual limit used is the lowest of both the server and client set values.
+* Starting from version [[https://buildinfo.mtasa.com/?Revision=21313&Branch r21313]] and above '''fpsLimit''' range is '''25-32767'''. In older MTA releases it was '''25-100'''.
+}}
 ==Syntax== 
 <syntaxhighlight lang="lua">
 bool setFPSLimit ( int fpsLimit )         
 </syntaxhighlight> 
 
 ===Required Arguments=== 
-*'''fpsLimit:''' An integer value representing the maximum FPS. This value may be between '''25''' and '''100''' FPS. You can also pass '''0''' or ''false'', in which case the FPS limit will be the one set in the client settings (by default, 100 FPS and the client fps limit should also be manually changed via "fps_limit=0" in console or '''MTA San Andreas 1.5\MTA\config\coreconfig.xml''').
+*'''fpsLimit:''' An integer value representing the maximum FPS. Refer to the note above for possible values. You can also pass '''0''' or '''false''', in which case the FPS limit will be the one set in the client settings (by default, 100 FPS and the client fps limit should also be manually changed via "fps_limit=0" in console or '''MTA San Andreas 1.5\MTA\config\coreconfig.xml''').
 
 ===Returns===
 Returns ''true'' if successful, or ''false'' if it was not possible to set the limit or an invalid value was passed.
@@ -16,9 +19,6 @@ Returns ''true'' if successful, or ''false'' if it was not possible to set the l
 ==Issues when increasing FPS==
 Note: with "very high" FPS, any FPS limit over 74 is meant.
 It is recommended to set a conservative FPS limit (between 40-60 and 74 highest) because high FPS can break some GTA internal calculations, causing various bugs. The higher the FPS the more of a problem these become:
-
-* The higher your FPS, the longer it takes for you to start moving sideways while aiming certain weapons. At very high FPS, it may become impossible to do so. 
-As the most common issue, you should know that the breaking point for this bug is 70 FPS, so we recommend using a limit of 70 FPS if you intend to avoid this bug. Using 74 FPS is only recommended in non-combat focussed gamemodes (no gunfights) as the aforementioned breaking point of 70 FPS means that at 71 FPS, you will start getting a delay in moving sideways while aiming (having to hold the strafe key for longer). At 70 FPS, it still works perfectly.
 
 74 FPS is the breaking point that opens the door to various more severe GTA bugs related to FPS and physics.
 
@@ -47,59 +47,6 @@ function fpsFunction(command, limit)
 end
 addCommandHandler("limitfps", fpsFunction)
 addCommandHandler("fpslimit", fpsFunction)
-</syntaxhighlight>
-</section>
-
-
-This example lets servers that have chosen to use FPS above 70 (even 100 FPS), fix the "walking sideways while aiming" (strafing) bug for all of their players.
-<section name="Client" class="client" show="true">
-<syntaxhighlight lang="lua">
-local previousTask = false
-local defaultFpsLimit
-
-
--- Store FPS limit on resource start to ensure its reliability (as server FPS limit)
-function getLimit()
-	defaultFpsLimit = getFPSLimit()
-end
-addEventHandler("onClientResourceStart", resourceRoot, getLimit)
-
-local isAdded = false
-
--- Not important to understand the logic of this script example, but just optimization for the render event to limit unnecesary execution
-function optimizeRender(prevSlot, curSlot)
-	if not isAdded and (curSlot >= 2 and curSlot <= 6) then
-		addEventHandler("onClientRender", getRootElement(), fixStrafing)
-		isAdded = true
-	elseif isAdded and (curSlot <= 1 or curSlot >= 7) then
-		removeEventHandler("onClientRender", getRootElement(), fixStrafing)
-		isAdded = false
-	end
-end
-addEventHandler("onClientPlayerWeaponSwitch", localPlayer, optimizeRender)
-
-
-function fixStrafing()
-
-	local weapon = getPedWeaponSlot(localPlayer)
-
-	-- Don't execute if player isn't holding a (suitable) weapon
-	-- This selects only weapons that are guns and suffer from strafing bug (slot 2, 3, 4, 5 and 6)
-	-- Allowing other weapon types will bug the script as throwing/punch weapons don't support 'release' state of TASK_SIMPLE_USE_GUN
-	if not (weapon >= 2 and weapon <= 6)
-		then return
-	end
-
-	local newTask = getPedTask(localPlayer, "secondary", 0)
-
-	if (previousTask ~= "TASK_SIMPLE_USE_GUN" or false) and (previousTask ~= newTask) then
-		setFPSLimit(70)
-	elseif (previousTask == "TASK_SIMPLE_USE_GUN") and (previousTask ~= newTask) then
-		setFPSLimit(defaultFpsLimit)
-	end
-
-	previousTask = newTask
-end
 </syntaxhighlight>
 </section>
 

@@ -56,5 +56,12 @@ addCommandHandler("set", Health)
 </syntaxhighlight>
 </section>
 
+==Issues==
+{{Issues|
+{{Issue|414|Using setElementHealth on a dead ped makes it invincible}}
+{{Issue|2223|setElementHealth in onClientPlayerDamage bug}}
+{{Issue|472|setElementHealth in onClientPedDamage can cause crash}}
+}}
+
 ==See Also==
 {{Element functions}}

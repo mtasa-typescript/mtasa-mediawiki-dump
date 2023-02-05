@@ -1,7 +1,6 @@
 {{Client function}} 
 __NOTOC__ 
 This function sets if the camera will "collide" with any objects or vehicles in its way. This means that if object clip is enabled an object is in the way of where the camera actually wants to be, the camera will try to be in front of it. This function can disable that.
-{{Note|This function doesn't fix the issue of camera clip not working on objects out of world bounds.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">

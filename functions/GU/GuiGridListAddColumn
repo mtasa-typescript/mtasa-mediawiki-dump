@@ -2,6 +2,8 @@
 __NOTOC__
 This function is used to create columns in grid lists.
 
+{{Note|If the width of all columns exceeds 0.95 horizontal scrollbar will appear.}}
+
 ==Syntax== 
 <syntaxhighlight lang="lua">
 int guiGridListAddColumn ( element gridList, string title, float width )

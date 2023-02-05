@@ -1,0 +1,33 @@
+{{Client function}}
+__NOTOC__
+[[File:Corona-reflections.png|500px|thumb|right|Corona reflections.]]
+{{Added feature/item|1.5.9|1.5.8|21251|This function sets visibility of corona reflections.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setCoronaReflectionsEnabled ( int enabled )
+</syntaxhighlight> 
+
+===Required Arguments=== 
+*'''enabled:'''
+** '''0''': disabled
+** '''1''': enabled (will be visible during rain)
+** '''2''': force enabled (will be visible even if there is no rain)
+
+===Returns===
+Returns ''true'' if passed arguments are correct, ''false'' otherwise.
+
+==Example== 
+<syntaxhighlight lang="lua">
+-- Force enable corona reflections even if there is no rain
+setCoronaReflectionsEnabled(2)
+</syntaxhighlight>
+
+==Issues== 
+{{Issues|
+{{Issue|2755|Corona reflections do not render on custom placed objects}}
+{{Issue|2750|Corona reflections do not render on all roads}}
+}}
+
+==See Also==
+{{client world functions}}

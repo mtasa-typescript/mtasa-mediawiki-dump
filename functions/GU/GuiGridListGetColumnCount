@@ -14,24 +14,16 @@ int guiGridListGetColumnCount ( element gridList )
 ===Returns===
 Returns an integer with the amount of columns in the gridlist, false otherwise.
 
-==Example== 
-This example outputs number of columns in gridList to chatBox when player uses command ''getColumns''.
 <syntaxhighlight lang="lua">
-addCommandHandler("getColumns",
-function(command)
+-- create the grid list
+local list = guiCreateGridList(0.80, 0.40, 0.15, 0.35, true)
+-- add three columns to the grid list
+guiGridListAddColumn(list, "Column 1", 0.33)
+guiGridListAddColumn(list, "Column 2", 0.33)
+guiGridListAddColumn(list, "Column 3", 0.33)
 
-local columns = guiGridListGetColumnCount(theGridList)
-
-if columns < 1 then
-	outputChatBox("There are no columns.")
-elseif columns >= 1 then
-	outputChatBox("There are " .. tostring(columns) .. " columns.")
-else
-	outputChatBox("Unable to get number of columns.")
-	
-end	
-end)
-
+-- display the number of columns in the grid list in the debug or server console (/debugscript 3)
+print("Number of columns: " .. guiGridListGetColumnCount(list))
 </syntaxhighlight>
 
 ==See Also==

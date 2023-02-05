@@ -25,7 +25,6 @@ addEventHandler("onPlayerLogin",root,outputOnLogin ) --add an event handler
 ==See Also==
 {{Account_functions}}
 
-[[en:getAccountName]]
 [[ru:getAccountName]]
 [[es:getAccountName]]
 [[ar:getAccountName]]

@@ -37,12 +37,10 @@ Returns ''true'' if the function executed succesfully, ''false'' otherwise.
 -- Cause massive lag by maxing out draw distance of all objects
 
 local objectsTable = getElementsByType("object")
-local objectElement = false
-local objectModel = false
 
 for i = 1, #objectsTable do
-	objectElement = objectsTable[i]
-	objectModel = getElementModel(objectElement)
+	local objectElement = objectsTable[i]
+	local objectModel = getElementModel(objectElement)
 
 	engineSetModelLODDistance(objectModel, 300) -- Set maximum draw distance
 end

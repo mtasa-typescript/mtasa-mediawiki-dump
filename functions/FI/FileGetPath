@@ -8,6 +8,7 @@ This function retrieves the path of the given file.
 <syntaxhighlight lang="lua">
 string fileGetPath ( file theFile )
 </syntaxhighlight>
+{{OOP||[[file]]:getPath|path}}
 
 ===Required Arguments===
 *'''theFile:''' The file you want to get the path.

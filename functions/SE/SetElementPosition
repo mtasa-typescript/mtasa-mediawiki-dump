@@ -66,7 +66,8 @@ If you want to put a vehicle or player out of the water or simulate the position
 
 ==Issues==
 {{Issues|
-{{Issue|9522|Setting a [[ped|ped's]] or [[player|player's]] position whilst occupying a [[givePedJetPack|jetpack]] will remove their jetpack, but not the jetpack sound}}
+{{Issue|539|Changing player position when he/she has a jetpack will remove the jetpack and bug when skin is changed}}
+{{Issue|529|Player falls from his bike when its teleported by setElementPosition}}
 }}
 
 ==See Also==

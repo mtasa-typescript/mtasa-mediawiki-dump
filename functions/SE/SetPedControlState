@@ -17,6 +17,9 @@ bool setPedControlState ( ped thePed, string control, bool state )
 ===Returns===
 Returns ''true'' if successful, ''false'' if otherwise.
 
+==Remarks==
+If you set the control state on the localPlayer element, then the control state is synchronized to every other client as if the input was made through the game input. But if you set any control states to server-side peds then the control state is not automatically synchronized. This behaviour is unaffected by being the syncer of the server-side ped or not. Let's assume that the syncer client calls setPedControlState on the ped. The other game clients - the ones where setPedControlState was not manually called by scripts - will see the ped teleport around. It will clearly look as if synchronization were broken.
+
 ==Example==
 <section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">

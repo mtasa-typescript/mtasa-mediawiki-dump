@@ -14,9 +14,10 @@ Returns the rain level as a number.
 <section name="Client" class="client" show="true">
 '''Example:''' Sets the rain (So it can detect it) before returning it. (In this case, when resource starts.)
 <syntaxhighlight lang="lua">
-addEventHandler("onClientResourceStart", getResourceRootElement(), function()
+addEventHandler("onClientResourceStart", resourceRoot, function()
 	setRainLevel(math.random(5))
 end)
+
 function returnRain()
 	local rain = getRainlevel()
 	if(rain >= 1) then
@@ -32,7 +33,7 @@ addCommandHandler("rain", returnRain)
 <section name="Server" class="server" show="true">
 '''Example:''' Sets the rain (So it can detect it) before returning it. (In this case, when resource starts.)
 <syntaxhighlight lang="lua">
-addEventHandler("onResourceStart", getResourceRootElement(), function()
+addEventHandler("onResourceStart", resourceRoot, function()
 	setRainLevel(math.random(5))
 end)
 

@@ -27,21 +27,18 @@ bool triggerEvent ( string eventName, element baseElement, [ var argument1, ... 
 ==Example== 
 If you define a new custom event as follows:
 <syntaxhighlight lang="lua">
--- Add a new event called onSpecialEvent
-addEvent ( "onSpecialEvent", true )
--- Define our handler function
-function specialEventHandler ( text )
-	outputChatBox ( text )
-end
--- Add the event handler
-addEventHandler ( "onSpecialEvent", root, specialEventHandler )
+addEvent('onMyCustomEvent', true)
+addEventHandler('onMyCustomEvent', root, function(chatMessage)
+    outputChatBox(chatMessage)
+end)
 </syntaxhighlight>
 
 You can then trigger this event later on using:
 <syntaxhighlight lang="lua">
-triggerEvent ( "onSpecialEvent", root, "test" )
+triggerEvent('onMyCustomEvent', root, 'Hello, World!')
 </syntaxhighlight>
 
 ==See Also==
 {{Event_functions}}
+
 [[ru:triggerEvent]]

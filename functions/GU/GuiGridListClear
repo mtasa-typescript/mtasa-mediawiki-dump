@@ -15,18 +15,26 @@ bool guiGridListClear ( element gridList )
 Returns ''true'' if the grid list element is valid and has been cleared successfully, ''false'' otherwise.
 
 ==Example== 
-This example creates a grid list, puts 2 items in to display the text "Hello" and "world" and clears the grid list after 5 seconds.
-<syntaxhighlight lang="lua">function clientsideResourceStart ()
-        -- Create the grid list element
-	local testList = guiCreateGridList ( 0.45, 0.45, 0.15, 0.15, true ) 
-        -- Create a column in the list and add 2 rows displaying "Hello" text and "world" text
-	local column = guiGridListAddColumn( testList, "test", 0.85 ) 
-	guiGridListSetItemText ( testList, guiGridListAddRow ( testList ), column, "Hello", false, false )
-	guiGridListSetItemText ( testList, guiGridListAddRow ( testList ), column, "World", false, false )
-        -- Set a timer to call the guiGridListClear function to clear the grid list items in 5 seconds
-	setTimer ( guiGridListClear, 5000, 1, testList ) 
+This creates a player list and then clears it when a button is clicked:
+<syntaxhighlight lang="lua">
+-- create the grid list
+local playerList = guiCreateGridList(0.80, 0.40, 0.15, 0.35, true)
+guiGridListAddColumn(playerList, "#", 0.15)
+guiGridListAddColumn(playerList, "Player", 0.75)
+
+-- fill the grid list with player names
+for index, player in ipairs(getElementsByType("player")) do
+    guiGridListAddRow(playerList, index, getPlayerName(player))
 end
-addEventHandler ( "onClientResourceStart", resourceRoot, clientsideResourceStart )</syntaxhighlight>
+
+-- create a button to clear the grid list
+local clearButton = guiCreateButton(0.80, 0.30, 0.15, 0.05, "Clear list", true)
+
+-- when the button is clicked, clear the grid list
+addEventHandler("onClientGUIClick", clearButton, function()
+    guiGridListClear(playerList)
+end)
+</syntaxhighlight>
 
 ==See Also==
 {{GUI functions}}

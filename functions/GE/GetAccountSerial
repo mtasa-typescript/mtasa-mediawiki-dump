@@ -37,5 +37,4 @@ addCommandHandler("getaccserial",
 {{Account_functions}}
 
 [[ru:getAccountSerial]]
-[[en:getAccountSerial]]
 [[zh-cn:getAccountSerial]]

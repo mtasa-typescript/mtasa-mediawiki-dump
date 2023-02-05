@@ -1,7 +1,5 @@
 __NOTOC__ 
 {{Client function}}
-{{Needs_Example}}
-
 This function gets the end position of a [[Element/Searchlight|searchlight]] element.
 
 ==Syntax== 
@@ -18,7 +16,6 @@ If the specified searchlight element is valid, this function will return three '
 
 ==Example==
 <syntaxhighlight lang="lua">
-
 local helmetLantern
 
 local function updateHelmetLantern()

@@ -6,6 +6,9 @@ This function can be used to check whether specified element is collidable with 
 *[[Ped]]
 *[[Vehicle]]
 *[[Object]]
+{{Added feature/item|1.5.9|1.5.8|21348|
+* [[Element/Weapon|Weapon]]
+}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">

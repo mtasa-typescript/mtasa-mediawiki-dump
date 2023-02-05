@@ -44,7 +44,6 @@ addCommandHandler("checkaccount",
 {{Account functions}}
 
 [[en:getAccount]]
-[[ru:getAccount]]
 [[ar:getAccount]]
 [[es:getAccount]]
 [[pl:GetAccount]]

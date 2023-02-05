@@ -23,7 +23,7 @@ function elementColShapeHit( colShapeHit )
         outputChatBox( getElementType( source ) .. " entered the colCircle!" ) -- print the type of the element to chatbox
     end
 end
-addEventHandler( "onElementColShapeHit", getRootElement(), elementColShapeHit ) -- add a handler function for the event
+addEventHandler( "onElementColShapeHit", root, elementColShapeHit ) -- add a handler function for the event
 </syntaxhighlight>
 
 {{See also/Server event|Element events}}

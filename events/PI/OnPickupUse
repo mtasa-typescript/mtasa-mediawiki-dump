@@ -26,3 +26,5 @@ addEventHandler( "onPickupUse", root, pickupUse )
 </syntaxhighlight>
 
 {{See also/Server event|Pickup events}}
+
+[[ru:onPickupUse]]

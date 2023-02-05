@@ -29,3 +29,4 @@ addCommandHandler("createfile", createFileHandler)
 ==See Also==
 {{XML functions}}
 [[ru:xmlCreateChild]]
+[[pt-br:XmlCreateChild]]

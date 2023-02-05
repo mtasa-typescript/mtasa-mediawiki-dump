@@ -24,4 +24,4 @@ addCommandHandler ( "checkID", checkID )
 {{Requirements|n/a|1.5.7-9.19626|}}
 
 ==See Also==
-{{Client_object_functions}}
+{{Engine_functions}}

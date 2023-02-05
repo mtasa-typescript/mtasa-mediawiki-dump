@@ -31,7 +31,7 @@ addCommandHandler ( "amiflying", isHeFlying )
 
 == Issues ==
 {{Issues|
-{{Issue|8378|isPedOnGround issues}}
+{{Issue|534|isPedOnGround issues}}
 }}
 
 ==See Also==

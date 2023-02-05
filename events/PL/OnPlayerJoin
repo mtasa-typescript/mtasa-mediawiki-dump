@@ -24,24 +24,35 @@ addEventHandler ( "onPlayerJoin", root, greetPlayer )
 </syntaxhighlight>
 This example sets random color to every player who joins.
 <syntaxhighlight lang="lua">
--- create a table to save the color
-ChatColors = {}
+local chatColors = {} -- Create a table to save the color
 
--- sets colors when player join
-function onJoin ()
-        -- create a table to add rgb values. Index will be the player element
-	ChatColors[source] = {math.random (50, 255), math.random (50, 255), math.random (50, 255)}
+function onPlayerJoin()
+	-- Create a table to add rgb values, index will be the player element
+
+	chatColors[source] = {math.random(50, 255), math.random (50, 255), math.random (50, 255)}
 end
--- checks if player has sent a message
-function onChat ( message, messageType )
-	if messageType == 0 then
-                -- use the table to get the saved rgb values
-		outputChatBox ( getPlayerName ( source ) .. ": #E0D0B0" .. message, root, ChatColors[source][1], ChatColors[source][2], ChatColors[source][3], true )
-		cancelEvent()
+addEventHandler("onPlayerJoin", root, onPlayerJoin)
+
+function onPlayerChat(playerMessage, messageType)
+	local normalMessage = messageType == 0
+
+	if not normalMessage then
+		return false -- If it's not normal type message, cancel code execution
 	end
+
+	local playerName = getPlayerName(source) -- Get player name
+	local playerColors = chatColors[source] -- Get player stored colors
+	local colorR, colorG, colorB = playerColors[1], playerColors[2], playerColors[3] -- Store them into different variables
+
+	outputChatBox(playerName..": #E0D0B0"..playerMessage, root, colorR, colorG, colorB, true) -- Output our message
+	cancelEvent()
 end
-addEventHandler ( "onPlayerJoin", root, onJoin)
-addEventHandler ( "onPlayerChat", root, onChat )
+addEventHandler("onPlayerChat", root, onPlayerChat)
+
+function onPlayerQuit()
+	chatColors[source] = nil -- Clear stored data to avoid memory leaks
+end
+addEventHandler("onPlayerQuit", root, onPlayerQuit)
 </syntaxhighlight>
 <section name="Example 1" class="server" show="true">
 This example redirects any player joins to the server automatically to any other server, add the script for admin group.

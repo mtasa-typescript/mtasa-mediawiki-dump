@@ -15,8 +15,8 @@ element getPedContactElement ( ped thePed )
 Returns an [[object]] or a [[vehicle]] if the ped is standing on one, ''false'' if he is touching none or an invalid element was passed.
 
 ==Example==
-<section name="Server" class="server" show="true">
-This function outputs the name of the vehicle the specified player is standing on, or a message saying he isn't on one.
+<section name="Client" class="client" show="true">
+This clientside function outputs the name of the vehicle the specified player is standing on, or a message saying he isn't on one.
 <syntaxhighlight lang="lua">
 function outputContactVehicleMessage ( thePlayer )
     local elementStandingOn = getPedContactElement ( thePlayer )

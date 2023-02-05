@@ -140,11 +140,6 @@ addCommandHandler( "set_wall", createWallCommandHandler )
 </syntaxhighlight>
 </section>
 
-==Issues==
-{{Issues|
-{{Issue|9742|[Fixed in 1.5.5-3.12343] Passing this function [[Vector2|Vector2s]] are not fully supported}}
-}}
-
 ==See Also==
 {{Collision shape functions}}
 

@@ -46,12 +46,6 @@ end
 addEventHandler("onPlayerChangeNick", root, wasNickChangedByUser) -- add an event handler
 </syntaxhighlight></section>|9765}}
 
-==Issues==
-{{Issues|
-{{Issue|7362|onPlayerChangeNick triggered when nick doesn't changed}}
-{{GH_Issue|52|Add 'manuallyChanged' parameter to onPlayerChangeNick}}
-}}
-
 {{See also/Server event|Player events}}
 
 [[ru:onPlayerChangeNick]]

@@ -2,6 +2,8 @@
 __NOTOC__ 
 This event is triggered whenever a physical element is streamed out. This is triggered for all elements that are streamable, such as players, peds, vehicles, objects and markers when the local player is leaving the element. When this event is triggered, that element is no longer physical and is now virtualized by MTA.
 
+__NOTOC__ {{Note|Be aware that this event triggers for local player (as itself being the element that got streamed out) when said local player dies and respawns, as this is the removal & recreation of entity local ped.}}
+
 ==Parameters==
 No parameters.
 
@@ -12,18 +14,18 @@ The [[event system#Event source|source]] of this event is the [[element]] that s
 This event is not triggered for elements that are streamed-in at the point of a [[destroyElement]] call. Use the [[onClientElementDestroy]] event in combination with the [[isElementStreamedIn]] function to handle such a case.
 
 ==Example== 
-This example shows you how to tell player that a marker was streamed out and the distance between player and the marker.
+This example shows you how to tell player that another player was streamed out and the distance between them and said player
 <syntaxhighlight lang="lua">
-addEventHandler( "onClientElementStreamOut", root,
-    function ( )
-        if getElementType( source ) == "marker" then
-            local myPosTab = { getElementPosition( localPlayer ) };
-            local markerPosTab = { getElementPosition( source ) };
-            local distance = getDistanceBetweenPoints3D( unpack( myPosTab ), unpack( markerPosTab ) );
-            outputChatBox( "A marker has just streamed out. Distance to the marker: " .. tostring( distance ) .."." );
+addEventHandler( "onClientElementStreamOut", root, 
+    function ()
+        if getElementType(source) == "player" then
+            local x, y, z = getElementPosition(localPlayer)
+            local xh, xy, xz = getElementPosition(source)
+            local distance = getDistanceBetweenPoints3D(x, y, z, xh, xy, xz )
+            outputChatBox( "A player has just streamed out. Distance to the player: " .. tostring(distance) .."." )
         end
     end
-);
+)
 </syntaxhighlight>
 
 ==See Also==

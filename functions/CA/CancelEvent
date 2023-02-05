@@ -51,3 +51,5 @@ addEventHandler("onClientPlayerDamage", root, onClientPlayerDamage)
 
 ==See Also==
 {{Event functions}}
+
+[[ru:cancelEvent]]

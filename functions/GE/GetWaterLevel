@@ -44,10 +44,5 @@ end
 addCommandHandler( "getlevel", scriptGetLevel ) -- add a command "getloc" which
 </syntaxhighlight>
 
-== Issues ==
-{{Issues|
-{{GH_Issue|458|bCheckWaves argument does nothing}}
-}}
-
 ==See Also==
 {{Client water functions}}

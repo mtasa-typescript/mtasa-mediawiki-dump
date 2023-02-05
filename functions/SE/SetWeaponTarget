@@ -22,7 +22,7 @@ Fires the weapon at a physical [[element]].
 *** '''2''': rear left tire.
 *** '''3''': rear right tire.
 *** '''255''': center of the car (position returned by [[getElementPosition]]).
-** '''[[Ped|Peds]]''' (players '''not''' included; see [[getPedBonePosition]] to know where is located each bone):
+** '''[[Ped|Peds]]''' (players '''not''' included; see [[getPedBonePosition]] to know where each bone is located):
 ***'''1:''' ''BONE_PELVIS1'' position.
 ***'''2:''' ''BONE_PELVIS'' position.
 ***'''3:''' ''BONE_SPINE1'' position.

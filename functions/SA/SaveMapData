@@ -18,11 +18,12 @@ This converts a set of elements in the element tree into XML. This is a format t
 ==Example==
 Saving your resource's data to an [https://forum.mtasa.com/topic/126081-map-files map file] (untested)
 <syntaxhighlight lang="lua">
-local file = xmlCreateFile("saved.map", "map")
-if file then
-   saveMapData ( file, getResourceRootElement(getThisResource()) )
-   xmlSaveFile ( file )
-   xmlUnloadFile ( file )
+local mapFile = xmlCreateFile("saved.map", "map")
+
+if mapFile then
+	saveMapData(mapFile, resourceRoot)
+	xmlSaveFile(mapFile)
+	xmlUnloadFile(mapFile)
 end
 </syntaxhighlight>
 

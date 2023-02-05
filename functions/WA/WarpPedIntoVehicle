@@ -42,7 +42,7 @@ addCommandHandler ( "startrace", setupForRace )                   -- add a comma
 
 ==Issues==
 {{Issues|
-{{Issue|7855|Network trouble when calling warpPedIntoVehicle on resourceStart}}
+{{Issue|475|Network trouble when calling warpPedIntoVehicle on resourceStart}}
 }}
 
 ==See Also==

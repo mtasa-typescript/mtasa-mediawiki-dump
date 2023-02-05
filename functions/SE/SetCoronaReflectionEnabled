@@ -1,0 +1,25 @@
+{{Client function}}
+__NOTOC__
+{{Added feature/item|1.5.9|1.5.8|21251|This function sets visibility of corona reflection.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setCoronaReflectionEnabled ( marker theMarker, bool enabled )
+</syntaxhighlight> 
+{{OOP||[[Marker]]:setCoronaReflectionEnabled||isCoronaReflectionEnabled}}
+===Required Arguments=== 
+*'''theMarker:''' the corona marker that you wish set visibility of corona reflection
+*'''enabled:''' whenever corona reflection should be visible
+
+===Returns===
+Returns ''true'' if [[setMarkerType|marker type]] is ''corona'', ''false'' otherwise.
+
+==Issues== 
+{{Issues|
+{{Issue|2755|Corona reflections do not render on custom placed objects}}
+{{Issue|2750|Corona reflections do not render on all roads}}
+}}
+
+==See Also==
+{{client marker functions}}* [[setCoronaReflectionsEnabled]]
+* [[getCoronaReflectionsEnabled]]

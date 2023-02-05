@@ -27,7 +27,7 @@ int guiGridListInsertRowAfter ( element gridList [, int rowIndex, int/string ite
 }}
 
 ===Returns===
-Returns ''true'' if the row was successfully added, ''false'' otherwise.
+Returns ''row id'' if the row was successfully added, ''false'' otherwise.
 
 ==Example== 
 This example would create a gridlist then add the current players in the server and if anyone joins, it would insert a row at the bottom.

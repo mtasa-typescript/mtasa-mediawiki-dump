@@ -95,7 +95,6 @@ end
 <!-- Change FunctionArea to the area that this function is in on the main function list page, e.g. Server, Player, Vehicle etc -->
 {{Account_functions}}
 
-[[en:addAccount]]
 [[ru:addAccount]]
 [[es:addAcount]]
 [[pl:addAccount]]

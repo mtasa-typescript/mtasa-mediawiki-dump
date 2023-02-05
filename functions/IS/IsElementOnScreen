@@ -15,7 +15,7 @@ bool isElementOnScreen ( element theElement )
 Returns ''true'' if element is on screen, ''false'' if not.
 ==Issues==
 {{Issues|
-{{Issue|3510|isElementOnScreen doesn't work for markers}}
+{{Issue|2029|isElementOnScreen doesn't work for markers}}
 }}
 ==Example==
 This function will check if you can see your killer when you die.

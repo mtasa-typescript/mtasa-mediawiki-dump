@@ -26,7 +26,7 @@ function hill_Enter ( thePlayer, matchingDimension )
                 --let's get the name of the player
                 local nameOfThePlayer = getPlayerName ( thePlayer )
 	        --announce to everyone that the player entered the hill
-	        outputChatBox ( nameOfThePlayer.." entered the zone!", getRootElement(), 255, 255, 109 )
+	        outputChatBox ( nameOfThePlayer.." entered the zone!", root, 255, 255, 109 )
         end
 end
 addEventHandler ( "onColShapeHit", hillArea, hill_Enter )
@@ -39,7 +39,7 @@ function hill_Exit ( thePlayer, matchingDimension )
                         --let's get the name of the player
                         local nameOfThePlayer = getPlayerName ( thePlayer )
 	        	--if he was alive, announce to everyone that the player has left the hill
-	        	outputChatBox ( nameOfThePlayer.." left the zone!", getRootElement(), 255, 255, 109 )
+	        	outputChatBox ( nameOfThePlayer.." left the zone!", root, 255, 255, 109 )
 	        end
         end
 end

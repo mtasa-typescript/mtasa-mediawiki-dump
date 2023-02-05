@@ -22,7 +22,7 @@ bool setVehicleHandling(element theVehicle, true)                         -- Res
 *'''property:''' The property you wish to set the handling of the vehicle to.
 
 {{Note|For functionality reasons, suspension modification is disabled on monster trucks, trains, boats and trailers.
-Additionally, helicopters are not affected by custom handling. The vehicle-on-wheels handling does not affect planes when they are on the ground either.}}
+Additionally, helicopters are not affected by custom handling. The vehicle-on-wheels handling does not affect planes when they are on the ground either. For more information on this, see [https://github.com/multitheftauto/mtasa-blue/issues/2426 issue 2426]}}
 {{Warning|To change handling values of aircraft like ''maxVelocity'', you must first set [[SetAircraftMaxVelocity|setAircraftMaxVelocity]].}}
 
 {{Handling Properties}}

@@ -36,15 +36,15 @@ This example makes a rocket minigun (minigun shooting with rockets).
 -- This function gets triggered everytime player shoots.
 function onClientPlayerWeaponFireFunc(weapon,ammo,ammoInClip,hitX,hitY,hitZ,hitElement)
 	if weapon == 38 then -- if source is a local player and he uses minigun...
-                x,y,z = getElementPosition(getLocalPlayer())
-		if not createProjectile(getLocalPlayer(),19,x,y,z,200) then -- then we either create a projectile...
+                x,y,z = getElementPosition(localPlayer)
+		if not createProjectile(localPlayer,19,x,y,z,200) then -- then we either create a projectile...
 			outputChatBox ( "Rocket minigun overheated! Give it a rest pal!", source ) -- or if projectile limit is reached we output player a chat message
 		end
 	end
 end
 
 -- Don't forget to add the onClientPlayerWeaponFireFunc function as a handler for onClientPlayerWeaponFire.
-addEventHandler("onClientPlayerWeaponFire", getLocalPlayer(), onClientPlayerWeaponFireFunc)
+addEventHandler("onClientPlayerWeaponFire", localPlayer, onClientPlayerWeaponFireFunc)
 </syntaxhighlight>
 
 This example code shoots a projectile from your occupied vehicle that travels in the direction your vehicle is facing when you press vehicle_fire (left mouse button with default controls)
@@ -64,8 +64,8 @@ bindKey("vehicle_fire", "down", shootProjectile)
 
 ==Issues== 
 {{Issues|
-{{Issue|8132|Projectile target only allows player element (and a projectile?)}}
-{{Issue|5072|createProjectile creates one projectile for every person in the vehicle}}
+{{Issue|584|createProjectile creates one projectile for every person in the vehicle}}
+{{Issue|616|Projectile rotation is set exactly opposite for creator}}
 }} 
 
 

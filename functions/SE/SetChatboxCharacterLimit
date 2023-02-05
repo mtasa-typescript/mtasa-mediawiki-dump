@@ -1,0 +1,30 @@
+__NOTOC__ 
+{{Client function}}
+
+{{Added feature/item|1.5.9|1.5.8|21476|
+Sets the maximum amount of characters that can be input via chatbox
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool setChatboxCharacterLimit(int charLimit)
+</syntaxhighlight>
+{{OOP||[[GUI widgets|GuiElement]].setChatboxCharacterLimit|chatboxCharacterLimit|getChatboxCharacterLimit}}
+
+===Required Arguments=== 
+*'''charLimit:''' an [[integer]] between 0-255. Passing -1 will reset the character limit (96)
+
+===Returns===
+Returns ''true'' if the character limit was set, ''false'' otherwise
+
+==Example== 
+This example shows how you can set the character limit to maximum when a player joins the server (assuming this resource is running when they join).
+<syntaxhighlight lang="lua">
+addEventHandler("onClientResourceStart", resourceRoot, function()
+    setChatboxCharacterLimit(255)
+end)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

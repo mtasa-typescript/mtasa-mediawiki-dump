@@ -79,22 +79,23 @@ end
 
 This example shows how to print the results of the query:
 <syntaxhighlight lang="lua">
-connection = dbConnect("sqlite", "test.db")
-queryhandle = dbQuery( connection, 'SELECT * FROM Test1')
-result = dbPoll(queryhandle, -1)
+local dbConnection = dbConnect("sqlite", "test.db")
+local queryHandle = dbQuery(dbConnection, "SELECT * FROM `Test1`")
+local queryResult = dbPoll(queryHandle, -1)
 	
-for rid, row in ipairs (result) do -- row represents the tables that are in 'result', which represent the rows
-    for column, value in pairs (row) do -- column represents column name, value represents column value
-        outputChatBox(column..', '..value)
-    end
+for rowID, rowData in ipairs(queryResult) do
+
+	for columnName, columnValue in pairs(rowData) do
+		outputChatBox(columnName..", "..columnValue)
+	end
 end
 </syntaxhighlight>
 
 This is another example of printing the results:
 <syntaxhighlight lang="lua">
-connection = dbConnect("sqlite", "test.db")
-queryhandle = dbQuery( connection, 'SELECT * FROM Test1')
-result = dbPoll(queryhandle, -1)
+local connection = dbConnect("sqlite", "test.db")
+local queryhandle = dbQuery(connection, 'SELECT * FROM Test1')
+local result = dbPoll(queryhandle, -1)
 	
 for rid, row in ipairs (fromJSON(toJSON(result))) do -- row represents the tables that are in 'result', which represent the rows
     for column, value in pairs (row) do -- column represents column name, value represents column value
@@ -105,9 +106,10 @@ end
 
 This is another example of printing the results:
 <syntaxhighlight lang="lua">
-connection = dbConnect("sqlite", "test.db")
-queryhandle = dbQuery( connection, 'INSERT INTO Test1 ("Name1", "Name2") VALUES ("Hello", "Hi");')
-result = dbPoll(queryhandle, -1)
+local connection = dbConnect("sqlite", "test.db")
+local queryhandle = dbQuery( connection, 'INSERT INTO Test1 ("Name1", "Name2") VALUES ("Hello", "Hi");')
+local result = dbPoll(queryhandle, -1)
+
 outputChatBox(toJSON(result)) -- Shows only rowid 1 affected because we only used INSERT INTO statement and not a SELECT statement.
 
 queryhandle = nil -- Making the query handle and result to nil
@@ -120,9 +122,9 @@ outputChatBox(toJSON(result)) -- Now shows rowid 2 affected.
 
 This is another example of printing the results:
 <syntaxhighlight lang="lua">
-connection = dbConnect("sqlite", "test.db")
-queryhandle = dbQuery( connection, 'INSERT INTO Test1 (Name1) VALUES ("Hello"); SELECT * FROM Test1')
-multiResults = dbPoll(queryhandle, -1)
+local connection = dbConnect("sqlite", "test.db")
+local queryhandle = dbQuery( connection, 'INSERT INTO Test1 (Name1) VALUES ("Hello"); SELECT * FROM Test1')
+local multiResults = dbPoll(queryhandle, -1)
 
 for sid, statementResult in ipairs ( multiResults ) do
     local resultRows, num_affected_rows, last_insert_id =  unpack(statementResult) 
@@ -136,9 +138,9 @@ end
 
 This is another example of printing the results:
 <syntaxhighlight lang="lua">
-connection = dbConnect("sqlite", "test.db")
-queryhandle = dbQuery( connection, 'INSERT INTO Test1 (Name1) VALUES ("Hello"); SELECT * FROM Test1')
-multiResults = dbPoll(queryhandle, -1)
+local connection = dbConnect("sqlite", "test.db")
+local queryhandle = dbQuery( connection, 'INSERT INTO Test1 (Name1) VALUES ("Hello"); SELECT * FROM Test1')
+local multiResults = dbPoll(queryhandle, -1)
 
 for sid, statementResult in ipairs ( multiResults ) do
     local resultRows, num_affected_rows, last_insert_id =  unpack(statementResult) 
@@ -177,26 +179,24 @@ end
 This example shows how to obtain data without server freeze.
 <syntaxhighlight lang="lua">
 local dbConnection = dbConnect("sqlite", "sql.db")
+local playerName = "testPlayer"
 
-function onServerCallback(queryHandler, extraData)
+function onServerQueryCallback(queryHandler, extraData)
 	local queryResult = dbPoll(queryHandler, 0)
+	local validResult = type(queryResult) == "table"
 
-	print(extraData)
+	outputDebugString("Extra data which have been passed through dbQuery:", extraData)
 
-	if type(queryResult) == "table" then
-		print("queryResult == table")
+	if not validResult then
+		outputDebugString("Result ~= table")
 
-		if #queryResult > 0 then
-			print("#queryResult > 0")
-		else
-			print("#queryResult == 0")
-		end
-	else
-		print("queryResult ~= table")
+		return false
 	end
+
+	outputDebugString("Query results:", queryResult)
 end
 
-dbQuery(onServerCallback, {"Extra data :)"}, dbConnection, "SELECT * FROM `Players` WHERE `playerName` = ?", "playerName")
+dbQuery(onServerQueryCallback, {"Some data"}, dbConnection, "SELECT * FROM `Players` WHERE `playerName` = ?", playerName)
 </syntaxhighlight>
 
 ==Requirements==

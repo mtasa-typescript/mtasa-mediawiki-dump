@@ -20,10 +20,5 @@ Returns ''true'' if the dirt level was set on the vehicle, ''false'' if the dirt
 --TODO
 </syntaxhighlight>
 
-==Issues==
-{{Issues|
-{{Issue|3164|Not fixable and closed}}
-}}
-
 ==See Also==
 {{Vehicle functions}}

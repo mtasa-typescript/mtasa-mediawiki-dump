@@ -31,11 +31,6 @@ end
 addCommandHandler( "cursorpos", centerCursorFunction )
 </syntaxhighlight>
 
-==Issues==
-{{Issues|
-{{Issue|8941|setCursorPosition [fixed]}}
-}}
-
 ==See Also==
 {{Client_input_functions}}
 

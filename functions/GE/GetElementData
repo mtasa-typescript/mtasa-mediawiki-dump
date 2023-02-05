@@ -49,3 +49,5 @@ addCommandHandler ( "joinTime", showJoinTime )
 
 ==See Also==
 {{Element functions}}
+
+[[pt-br:getElementData]]

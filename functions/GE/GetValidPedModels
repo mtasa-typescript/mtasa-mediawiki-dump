@@ -40,4 +40,5 @@ addCommandHandler("checkskin",isValidSkin) -- bind 'checkskin' command to 'isVal
 ==See Also==
 {{Ped functions}}
 
+[[ru:getValidPedModels]]
 [[pl:GetValidPedModels]]

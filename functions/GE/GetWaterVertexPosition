@@ -1,7 +1,5 @@
 __NOTOC__
 {{Server client function}}
-{{Needs_Example}}
-
 Gets the world position of a vertex (i.e. corner) of a [[water]] area. Each water area is either a triangle or quad (rectangle) so each has 3 or 4 corners.
 
 ==Syntax==

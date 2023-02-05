@@ -15,11 +15,13 @@ Returns three floats describing the x, y and z rotation
 
 ==Example==
 <syntaxhighlight lang="lua">
-addCommandHandler("getangularvelocity", function(player)
-    --retrieve angular velocity of the player
-    local avx, avy, avz = getElementAngularVelocity(player)
-    outputChatBox("Your current angular velocity is: X: "..avx.." Y: "..avy.." Z: "..avz, player, 0, 255, 0, false)
-end)
+addCommandHandler("getangularvelocity", 
+	function(sourcePlayer, commandName)
+		local aX, aY, aZ = getElementAngularVelocity(sourcePlayer)
+
+		outputChatBox("Your current angular velocity is: X: " .. aX .." Y: " .. aY .." Z: " .. aZz, sourcePlayer)
+	end
+)
 </syntaxhighlight>
 
 ==Requirements==

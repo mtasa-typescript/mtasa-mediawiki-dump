@@ -22,7 +22,7 @@ This example opens the file test.txt and outputs its contents to the console.
 function readFile(path)
     local file = fileOpen(path) -- attempt to open the file
     if not file then
-        return false -- stop function on failture
+        return false -- stop function on failure
     end
     local count = fileGetSize(file) -- get file's total size
     local data = fileRead(file, count) -- read whole file

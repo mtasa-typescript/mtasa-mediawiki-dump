@@ -15,6 +15,9 @@ bool setVehiclesLODDistance(float vehiclesDistance [, float trainsAndPlanesDista
 {{OptionalArg}} 
 *'''trainsAndPlanesDistance:''' distance used for trains and planes, this value is clamped to 0 – 500
 
+== Returns ==
+This function returns ''true'' if arguments are valid. Returns ''false'' otherwise.
+
 ==Example==
 <syntaxhighlight lang="lua">
 addEventHandler("onClientResourceStart",resourceRoot,function()

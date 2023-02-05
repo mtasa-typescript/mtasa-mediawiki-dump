@@ -23,7 +23,7 @@ This example creates a button when the resource starts and defines a console com
 function onStart()
   button = guiCreateButton( 20, 200, 150, 30, "Test", false )
 end
-addEventHandler( "onClientResourceStart", getResourceRootElement(), onStart )
+addEventHandler( "onClientResourceStart", resourceRoot, onStart )
 
 function toogleButton()
   local currentState = guiGetProperty( button, "Disabled" )
@@ -42,7 +42,7 @@ function onStart()
   guiSetProperty (button, "NormalTextColour", "FFFF0000") -- Color format: AARRGGBB
   guiSetProperty (button, "HoverTextColour", "FFFFFF00")
 end
-addEventHandler ("onClientResourceStart", getResourceRootElement(), onStart)
+addEventHandler ("onClientResourceStart", resourceRoot, onStart)
 </syntaxhighlight>
 
 ==See Also==

@@ -1,0 +1,20 @@
+{{Client function}}
+__NOTOC__
+{{Added feature/item|1.5.9|1.5.8|21251|This function resets visibility of corona reflections. Default value depends on client setting. If client has enabled ''corona rain reflections'' in video options, value will be reset to '''1''', otherwise to '''0'''. You can check value of this option using [[dxGetStatus]] (''SettingCoronaReflections'').}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool resetCoronaReflectionsEnabled ( )
+</syntaxhighlight> 
+
+===Returns===
+Returns ''true''.
+
+==Issues== 
+{{Issues|
+{{Issue|2755|Corona reflections do not render on custom placed objects}}
+{{Issue|2750|Corona reflections do not render on all roads}}
+}}
+
+==See Also==
+{{client world functions}}

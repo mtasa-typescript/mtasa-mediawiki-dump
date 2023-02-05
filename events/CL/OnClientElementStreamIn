@@ -2,6 +2,10 @@
 __NOTOC__ 
 This event is triggered whenever a physical element is streamed in. This is triggered for all elements that are streamable, such as players, peds, vehicles, objects and markers. When this event is triggered, that element is guaranteed to be physically created as a GTA object.
 
+Be aware that this event triggers for local player (as itself being the element that got streamed in) when said local player spawns, as this is the creation of entity local ped.
+
+__NOTOC__ {{Note|This event also triggers for a remote player that dies in front of local player, even if they respawn far away.. the moment they do so, this event will be triggered, and if you'd measure distance between local and said remote player (that spawned far away) during this event, it would output the distance at which they died in front of local player, e.g 2 metres. This is bug-prone behavior and likely incorrect, to be fixed in the future, but for now be aware. The 'low distance' aspect of this (which could worsen your results) is caused by the split second that their ped elements may 'flash' past its wasted location during the respawning process. For now you can work around these side effect (both, or the distance aspect.. results may vary based on randomness) by adding an isPedDead check inside the event, checking source (said remote player), as this delays the onClientElementIn until after full respawn has taken place. The below script example incorporates this workaround}}
+
 ==Parameters== 
 No parameters.
 
@@ -9,18 +13,18 @@ No parameters.
 The [[event system#Event source|source]] of this event is the [[element]] that streamed in.
 
 ==Example== 
-This example shows you how to tell player that a marker was streamed in and the distance between player and the marker.
+This example shows you how to tell player that another player was streamed in and the distance between them and said player
 <syntaxhighlight lang="lua">
-addEventHandler( "onClientElementStreamIn", root,
-    function ( )
-        if getElementType( source ) == "marker" then
-            local myPosTab = { getElementPosition( localPlayer ) };
-            local markerPosTab = { getElementPosition( source ) };
-            local distance = getDistanceBetweenPoints3D( unpack( myPosTab ), unpack( markerPosTab ) );
-            outputChatBox( "A marker has just streamed in. Distance to the marker: " .. tostring( distance ) .."." );
+addEventHandler( "onClientElementStreamIn", root, 
+    function ()
+        if getElementType(source) == "player" and isPedDead(source) == false then
+            local x, y, z = getElementPosition(localPlayer)
+            local xh, xy, xz = getElementPosition(source)
+            local distance = getDistanceBetweenPoints3D(x, y, z, xh, xy, xz )
+            outputChatBox( "A player has just streamed in. Distance to the player: " .. tostring(distance) .."." )
         end
     end
-);
+)
 </syntaxhighlight>
 ==See Also==
 ===Client element events===

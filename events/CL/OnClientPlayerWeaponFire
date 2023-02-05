@@ -62,7 +62,7 @@ function onClientPlayerWeaponFireFunc(weapon, ammo, ammoInClip, hitX, hitY, hitZ
     end
 end
 -- Add this as a handler so that the function will be triggered every time the local player fires.
-addEventHandler ( "onClientPlayerWeaponFire", getLocalPlayer(), onClientPlayerWeaponFireFunc )
+addEventHandler ( "onClientPlayerWeaponFire", localPlayer, onClientPlayerWeaponFireFunc )
 </syntaxhighlight>
 
 This example makes the Shotgun fire explosive rounds.
@@ -75,11 +75,6 @@ end
 -- Add this as a handler so that the function will be triggered every time a player fires.
 addEventHandler("onClientPlayerWeaponFire", root, onClientPlayerWeaponFireFunc)
 </syntaxhighlight>
-
-==Issues==
-{{Issues|
-{{Issue|7459|[Fixed in 1.3.1-4916] onClientPlayerWeaponFire hitElement being nil sometimes with shotgun}}
-}}
 
 ==See Also==
 ===Client player events===

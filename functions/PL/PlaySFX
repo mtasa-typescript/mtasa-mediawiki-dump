@@ -9,6 +9,7 @@ This function plays a sound from GTA's big sound containers.
 In case of these invalid audio files, this function returns ''false''.
 
 It also returns ''false'' when trying to play a track deleted in the recent GTA: SA Steam patches (and if the client is using a Steam GTA: SA copy).|true}}
+{{Note|PlaySFX sounds are MTA driven sounds, so MTA volume affects the volume.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">

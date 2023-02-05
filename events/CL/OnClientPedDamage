@@ -28,11 +28,6 @@ end
 addEventHandler ( "onClientPedDamage", getRootElement(), cancelPedDamage )
 </syntaxhighlight>
 
-==Issues==
-{{Issues|
-{{Issue|8082|(Fixed in r9762) Custom weapons don't fully work with onClientPlayerDamage}}
-}}
-
 ==See Also==
 ===Client ped events===
 {{Client_ped_events}}

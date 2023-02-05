@@ -70,11 +70,13 @@ addCommandHandler("sit", toggleSit)
 
 ==Issues==
 {{Issues|
-{{GH_Issue|1110|retainPedState in setPedAnimation() does not work when latency reduction is set to 1}}
-{{GH_Issue|1090|A replaced "weapon_crouch" animation gets reset to default when using setPedAnimation()}}
-{{GH_Issue|953|setPedAnimation() "interrupt" and "time" has no effect in certain situations}}
-{{GH_Issue|512|setPedAnimation isn't synced properly on server side}}
-{{GH_Issue|467|Ped animations don't sync for new players}}
+{{Issue|1110|retainPedState in setPedAnimation() does not work when latency reduction is set to 1}}
+{{Issue|953|setPedAnimation() "interrupt" and "time" has no effect in certain situations}}
+{{Issue|512|setPedAnimation isn't synced properly on server side}}
+{{Issue|467|Ped animations don't sync for new players}}
+{{Issue|463|setPedAnimation() does not work when a ped is attached and floating in air}}
+{{Issue|1173|setPedAnimation() removes player jetpack}}
+{{Issue|884|setPedAnimation() messes up collisions of peds inside vehicles}}
 }}
 
 ==See Also==

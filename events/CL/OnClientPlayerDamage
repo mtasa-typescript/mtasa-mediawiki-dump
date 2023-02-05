@@ -24,18 +24,13 @@ If this event is [[Event system#Canceling|canceled]], then any damaging effects 
 ==Example== 
 This example prevents any damage from the minigun.
 <syntaxhighlight lang="lua">
-function stopMinigunDamage ( attacker, weapon, bodypart )
-	if ( weapon == 38 ) then --if the weapon used was the minigun
+function stopMinigunDamage(attacker, weapon, bodypart)
+	if (weapon == 38) then --if the weapon used was the minigun
 		cancelEvent() --cancel the event
 	end
 end
-addEventHandler ( "onClientPlayerDamage", getLocalPlayer(), stopMinigunDamage )
+addEventHandler("onClientPlayerDamage", localPlayer, stopMinigunDamage)
 </syntaxhighlight>
-
-==Issues==
-{{Issues|
-{{Issue|8082|(Fixed in r9762) Custom weapons don't fully work with onClientPlayerDamage}}
-}}
 
 ==See Also==
 ===Client player events===

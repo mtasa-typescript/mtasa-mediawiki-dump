@@ -50,6 +50,12 @@ function checkIfClose(p, cmd)
     end
 end
 addCommandHandler("closeornot", checkIfClose)
+
+[REWRITE BY ANDREI]
+local half = 1 / 2
+function getDistanceFromPoints(x1, y1, z1, x2, y2, z2)
+    return ((x2 - x1) * (x2 - x1) ^ 2 + (y2 - y1) * (y2 - y1) ^ 2 + (z2 - z1) * (z2 - z1)) ^ half
+end
 </syntaxhighlight>
 </section>
 

@@ -35,7 +35,7 @@ addCommandHandler( "ammo", showAmmo )
 
 == Issues ==
 {{Issues|
-{{Issue|7719|[[getPedTotalAmmo]]() & [[getPedAmmoInClip]]() serverside sometimes return invalid values}}
+{{Issue|734|Sometimes wrong count of player ammo, if get it in onPlayerWeaponFire}}
 }}
 
 ==See Also==

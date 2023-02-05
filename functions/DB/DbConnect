@@ -35,6 +35,9 @@ element dbConnect ( string databaseType, string host [, string username = "", st
 ===Returns===
 Returns a database connection element unless there are problems, in which case it return ''false''.
 
+==Remarks==
+Under certain platforms, for example on Unix-based OSes like Linux, using this function could fail with a debug warning containing "[Could not connect]" accompanied by a prior debug error explaining the problem. In that case you should check the [[Server Manual]] to see if you have missed any recommended (best-effort) steps for server set-up.
+
 ==Example==
 This example opens a connection to a SQLite database file in the current resource
 <syntaxhighlight lang="lua">

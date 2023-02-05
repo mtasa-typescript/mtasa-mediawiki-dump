@@ -25,7 +25,8 @@ string getZoneName ( float x, float y, float z, [bool citiesonly=false] )
 ** Los Santos
 
 ===Returns===
-Returns the string of the zone name
+Returns the string of the zone name.
+{{ZoneNames}}
 
 ==Example==
 <section name="Server" class="server" show="true">

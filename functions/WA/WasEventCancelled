@@ -33,3 +33,5 @@ addEventHandler ( "onMarkerHit", getRootElement(), flagHitCheck )
 
 ==See Also==
 {{Event functions}}
+
+[[ru:wasEventCancelled]]

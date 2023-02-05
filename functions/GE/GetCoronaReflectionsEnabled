@@ -1,0 +1,17 @@
+{{Client function}}
+__NOTOC__
+{{Added feature/item|1.5.9|1.5.8|21251|This function gets visibility of corona reflections.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int getCoronaReflectionsEnabled ( )
+</syntaxhighlight> 
+
+===Returns===
+One of the following integers will be returned:
+* '''0''': corona reflections are disabled
+* '''1''': corona reflections are enabled (are visible during rain)
+* '''2''': corona reflections are force enabled (are visible even if there is no rain)
+
+==See Also==
+{{client world functions}}

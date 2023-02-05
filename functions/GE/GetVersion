@@ -3,6 +3,7 @@ __NOTOC__
 
 This function gives you various version information about MTA and the operating system.
 {{Note|Clientside will return the version from the player, and the server-sided will return version from the server.}}
+{{Note|Current <!-- Newest --> server version: {{CurrentVersion}}}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">table getVersion ( )</syntaxhighlight>

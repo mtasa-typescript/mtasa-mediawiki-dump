@@ -36,8 +36,7 @@ Returns ''true'' if successful, ''false'' otherwise.
 ==Example== 
 Example of a pendulum swinging from the top of the screen, made using dxDrawImage.
 <syntaxhighlight lang="lua">
-local screenWidth,screenHeight = guiGetScreenSize()  -- Get screen resolution.
-
+local screenWidth, screenHeight = guiGetScreenSize()  -- Get screen resolution.
 
 function renderDisplay ( )
 	local seconds = getTickCount() / 1000
@@ -47,12 +46,7 @@ function renderDisplay ( )
 	-- The center of rotation is at the top of the image.
 	dxDrawImage ( screenWidth/2 - 50, 0, 100, 240, 'arrow.png', angle, 0, -120 )
 end
-
-
-function HandleTheRendering ( )
-	addEventHandler("onClientRender", root, renderDisplay)  -- Keep everything visible with onClientRender.
-end
-addEventHandler("onClientResourceStart",resourceRoot, HandleTheRendering)
+addEventHandler("onClientRender", root, renderDisplay)  -- Keep everything visible with onClientRender.
 </syntaxhighlight>
 
 ==See Also==

@@ -20,11 +20,6 @@ The [[Element/Browser|browser]] element.
 ==Example== 
 {{Example}}
 
-== Issues ==
-{{Issues|
-{{Issue|9173|onClientBrowserNavigate is triggered for <iframe> elements}}
-}}
-
 [[pl:onClientBrowserNavigate]]
 
 ==See Also==

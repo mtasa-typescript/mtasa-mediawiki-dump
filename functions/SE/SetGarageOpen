@@ -1,7 +1,7 @@
 __NOTOC__ 
 {{Server client function}}
 This function opens or closes the specified garage door in the world.
-{{Note|setGarageOpen does not work with ID 32 (Pay 'n' Spray near Royal Casino). This garage doesn't work in SP too. You can remove this gate by [[removeWorldModel]] and recreate them for later using with moveObject.}}
+{{Note|setGarageOpen does not work with ID 32 (Pay 'n' Spray near Royal Casino). This garage has been disabled by Rockstar Games due to floor collision issues (see TheJizzy's video "BETA Leftovers and Glitches" at 12:12 timestamp). You can remove the door by using [[removeWorldModel]] and recreating it for later with [[moveObject]].}}
 ==Syntax== 
 <syntaxhighlight lang="lua">
 bool setGarageOpen ( int garageID, bool open )

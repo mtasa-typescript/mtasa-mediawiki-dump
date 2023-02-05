@@ -22,11 +22,58 @@ bool takePlayerScreenShot ( player thePlayer, int width, int height [, string ta
 Returns ''true'' if the function was successfully, ''false'' if invalid arguments are specified.
 
 ==Example==  
-This example will initiate a capture of a Random Players screen
+===Example 1===
+This example will take a player screenshot whenever a player takes a picture with the camera weapon and then send the picture to all clients, which will render the latest screenshot in the bottom right corner of their screen.
+
+<section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
-local player = getRandomPlayer()
-takePlayerScreenShot( player, 320, 240 )
+local screenSizeX,screenSizeY = guiGetScreenSize() -- save the current screen dimensions
+local imgtexture
+local takenBy
+
+function wepFire(weapon)
+	if weapon == 43 then -- if the weapon the player just fired is the camera
+		triggerServerEvent("onPlayerTakesPhoto",getLocalPlayer())
+	end
+end
+addEventHandler("onClientPlayerWeaponFire",getLocalPlayer(),wepFire)
+
+function updateLatestPhoto(img)
+	if imgtexture then -- clean up the old dxTextrue if there is one
+		destroyElement(imgtexture)
+	end
+	imgtexture = dxCreateTexture(img) -- create a new dxTexture from the image data so that we can render it using dxDrawImage
+	takenBy = "taken by "..getPlayerName(source) -- let's also credit the photographer
+end
+addEvent("updatePhoto",true)
+addEventHandler("updatePhoto",getRootElement(),updateLatestPhoto)
+
+function renderPhoto()
+	if imgtexture then
+		local sizeX, sizeY = 320, 240
+		dxDrawImage(screenSizeX-sizeX,screenSizeY-sizeY,sizeX,sizeY,imgtexture) -- render the picture as well as the name of the photographer in the bottom right corner of the screen
+		dxDrawText(takenBy,screenSizeX-sizeX,screenSizeY-sizeY,screenSizeX,screenSizeY,tocolor(0,0,0))
+	end
+end
+addEventHandler("onClientRender",getRootElement(),renderPhoto)
 </syntaxhighlight>
+</section>
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+function requestScreenshot()
+	takePlayerScreenShot(source,320,240,"cameraphoto",50) -- the player just took a picture with the camera, let's request a screenshot to see what they took a photo of
+end
+addEvent("onPlayerTakesPhoto",true)
+addEventHandler("onPlayerTakesPhoto",getRootElement(),requestScreenshot)
+
+function incomingPlayerScreenshot(res,status,img,timestamp,tag)
+	if status == "ok" and tag == "cameraphoto" then -- make sure a picture was taken successfully and that we're the ones who requested this screenshot
+		triggerClientEvent("updatePhoto",source,img)  -- trigger a client event to share the image with everyone on the server
+	end
+end
+addEventHandler("onPlayerScreenShot",getRootElement(),incomingPlayerScreenshot)
+</syntaxhighlight>
+</section>
 
 ==Requirements==
 {{Requirements|1.3|n/a|}}

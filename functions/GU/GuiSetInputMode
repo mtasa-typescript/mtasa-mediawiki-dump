@@ -23,10 +23,10 @@ Returns ''true'' if input mode could be changed, ''false'' if invalid parameters
 
 ==Example== 
 <syntaxhighlight lang="lua">
-addEventHandler("onClientResourceStart", getResourceRootElement(),
-function()
-	guiSetInputMode("no_binds_when_editing") --Calls guiSetInputMode once and for all to not have to handle binds state dynamically
-end)
+function onClientResourceStartSetGUIInputMode()
+	guiSetInputMode("no_binds_when_editing") -- Calls guiSetInputMode once and for all to not have to handle binds state dynamically
+end
+addEventHandler("onClientResourceStart", resourceRoot, onClientResourceStartSetGUIInputMode)
 </syntaxhighlight>
 
 ==Note==

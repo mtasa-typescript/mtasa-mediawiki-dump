@@ -49,3 +49,5 @@ addEventHandler ( "onPlayerVehicleEnter", root, planeEnter )
 
 ==See Also==
 {{Element functions}}
+
+[[ru:getElementModel]]

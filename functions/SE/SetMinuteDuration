@@ -23,7 +23,7 @@ function resourceStart()
     setTime(realtime.hour, realtime.minute)
     setMinuteDuration(60000)
 end
-addEventHandler("onResourceStart", getResourceRootElement(), resourceStart)
+addEventHandler("onResourceStart", resourceRoot, resourceStart)
 </syntaxhighlight>
 </section>
 

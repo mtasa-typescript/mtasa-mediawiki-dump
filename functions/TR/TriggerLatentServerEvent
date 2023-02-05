@@ -2,6 +2,8 @@ __NOTOC__
 {{Client function}}
 This function is the same as [[triggerServerEvent]] except the transmission rate of the data contained in the arguments can be limited and other network traffic is not blocked while the data is being transferred.
 
+{{Note|Calling [[kickPlayer]] inside a function which was called from triggerLatentServerEvent causes server to crash. ([https://github.com/multitheftauto/mtasa-blue/issues/2386 #2386])}}
+
 ==Syntax== 
 <syntaxhighlight lang="lua">
 bool triggerLatentServerEvent ( string event, [int bandwidth=5000, bool persist=false,] element theElement, [arguments...] )

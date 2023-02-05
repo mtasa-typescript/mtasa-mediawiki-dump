@@ -7,8 +7,8 @@ This event is triggered when a player logs into their account in-game.
 account thePreviousAccount, account theCurrentAccount
 </syntaxhighlight> 
 
-*'''thePreviousAccount''': the [[account]] the player was logged into before.
-*'''theCurrentAccount''': the [[account]] the player logged into just now.
+*'''thePreviousAccount''': The [[account]] the player was logged into before.
+*'''theCurrentAccount''': The [[account]] the player logged into just now.
 
 ==Source==
 The [[event system#Event source|source]] of this event is the player [[element]] that just logged in.
@@ -19,7 +19,6 @@ If this event is canceled the player will not be logged in.
 ==Example== 
 This example just outputs to the player console that a player in one account logged into an another account:
 <syntaxhighlight lang="lua">
--- root = getElementRoot()
 addEventHandler("onPlayerLogin", root,
   function()
     outputChatBox(getPlayerName(source).." has logged in!", root)

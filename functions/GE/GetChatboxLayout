@@ -29,6 +29,7 @@ These values come from the file called: [[Chatboxpresets.xml]] but it depends on
 **'''chat_line_fade_out''' - Returns how long takes for text to fade out
 **'''chat_use_cegui''' - Returns whether CEGUI is used to render the chatbox
 **'''text_scale''' - Returns text scale
+**{{Added feature/item|1.6.0|1.5.9|21160|'''chat_text_outline''' - Returns whether text black/white outline is used}}
 
 ===Returns===
 *4 numbers if the CVar contains "color"

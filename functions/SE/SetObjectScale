@@ -23,15 +23,22 @@ bool setObjectScale ( object theObject, float scale [, float scaleY = scale, flo
 This example creates an antenna, and changes the size of it.
 <section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
--- get the position of the player
-local x, y, z = getElementPosition(getLocalPlayer())
--- create the object
-antenna = createObject (1595, x + 2, y, z )
-if ( antenna ) then -- if it was created
-	-- set the scale to half the normal scale
-	setObjectScale ( antenna, 0.5)
-	-- remove the collision
-        setElementCollisionsEnabled (antenna, false)
+-- Get the position of the player
+
+local x, y, z = getElementPosition(localPlayer)
+
+-- Create the object
+
+local antennaObject = createObject(1595, x + 2, y, z)
+
+if antennaObject then -- If it was created
+	-- Set the scale to half the normal scale
+
+	setObjectScale(antennaObject, 0.5)
+
+	-- Remove the collision
+
+	setElementCollisionsEnabled(antennaObject, false)
 end
 </syntaxhighlight>
 </section>

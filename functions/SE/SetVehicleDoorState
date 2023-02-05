@@ -29,6 +29,7 @@ This function sets the state of the specified door on a vehicle.
 ===Optional Arguments=== 
 {{OptionalArg}}
 {{New feature/item|9.0158|1.5.8|20319|
+{{Note|This parameter doesn't work during the vehicle creation. You need a [[SetTimer]] if you need to create the vehicle using this parameter.}}
 *'''spawnFlyingComponent:''' A boolean, if set to true, spawns flying doors etc. if you remove a component with <nowiki>state == 4</nowiki>.
 }}
 
@@ -38,9 +39,11 @@ Returns ''true'' if the door state was successfully set, ''false'' otherwise.
 ==Example==
 <syntaxhighlight lang="lua">
 -- create a new vehicle
-local newcar = createVehicle ( 520, 1024, 1024, 1024 )
+local newcar = createVehicle (420, 2472.5, -1688, 13.3)
 -- break its front left door off
-state = setVehicleDoorState ( newcar, 2, 4 )
+setVehicleDoorState (newcar, 2, 4)
+-- make its hood disapear
+setTimer (setVehicleDoorState, 100, 1, newcar, 0, 4, false)
 </syntaxhighlight>
 
 ==See Also==

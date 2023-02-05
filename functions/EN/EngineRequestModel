@@ -1,18 +1,17 @@
 __NOTOC__
 {{Client function}}
-{{New feature/item|3.0158|1.5.7|20147|This function is used to assign the next available model ID to a certain element type. After release '''1.5.8 r20716''' this function supports "vehicle" and "object" too.}}
-{{note|IMPORTANT:
-*Before release '''1.5.8 r20716''' this must be "ped".
-}}
+{{New feature/item|3.0158|1.5.7|20147|This function is used to assign the next available model ID to a certain element type.}}
+{{note|Before release '''1.5.8 r20716''' this must be "ped". After release '''1.5.8 r20716''' this function supports "vehicle" and "object" too.}}
+{{note|Vehicle unique features may be unsupported, see [https://github.com/multitheftauto/mtasa-blue/issues/1861 issue 1861] for examples and details}}
 ==Syntax==
 <syntaxhighlight lang="lua">
 int engineRequestModel ( string elementType [, int parentID ] )
 </syntaxhighlight>
 ===Required Arguments===
-*'''elementType''': "ped", "vehicle" and "object".
+*'''elementType''': "ped", "vehicle" or "object".
 
 ===Optional Arguments=== 
-*'''parentID''': The model ID of the model being allocated. '''(By default this is: 1337 - objects, 400 - vehicles, 7 - peds)'''
+*'''parentID''': The ID of the parent model (by default this is: 1337 - objects, 400 - vehicles, 7 - peds).
 
 ===Returns===
 {{New feature/item|3.0158|1.5.7|20147| Returns an ''integer'' of the model ID that was available to be assigned to the element type, ''false'' if no free model ID available or invalid element type.}}

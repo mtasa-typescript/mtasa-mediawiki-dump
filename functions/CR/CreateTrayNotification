@@ -1,12 +1,14 @@
 __NOTOC__ 
 {{Client function}}
-This functions creates a notification ballon on the desktop.
+This function creates a notification balloon on the desktop.
 
-{{Note|MTA won't show any tray notifications if the MTA window is focused, because there is no reason to show tray notifications if you are ingame. If you want to test this function you should use a Timer and switch to your desktop.}}
+{{Note|MTA won't show any tray notifications if the MTA window is focused, because there is no reason to show tray notifications if you are in-game. If you want to test this function you should use a Timer and switch to your desktop.}}
 {{Note|You can only show a tray notification every 30 seconds.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">bool createTrayNotification ( string notificationText [, string iconType = "default", bool useSound = true ] )</syntaxhighlight>
+
+[[File:TrayNotification.gif|301px|thumb|right|alt=GIF preview of a tray notification|Tray Notification GIF]]
 
 ===Required Arguments===
 *'''notificationText:''' The text to send in the notification.
@@ -22,22 +24,19 @@ Returns ''true'' if the notification is correctly created, ''false'' otherwise.
 <syntaxhighlight lang="lua">
 -- Note: You have to wait 30 seconds before showing another tray notification, there is no queuing
 
--- Show a 'Hello World' notification
-createTrayNotification( "Hello World" )
+createTrayNotification("Hello World") -- Show a 'Hello World' notification
 
--- Show a notification with a warning symbol
-createTrayNotification( "Hello World", "warning" )
+createTrayNotification("Hello World", "warning") -- Show a notification with a warning symbol
 
--- Show a default notification without sound
-createTrayNotification( "Hello World", "default", false )
+createTrayNotification("Hello World", "default", false) -- Show a default notification without sound
 </syntaxhighlight>
 
 ==Example of notification on minimize MTA application==
 <syntaxhighlight lang="lua">
-function setTrayOnMinimize( )
-     createTrayNotification( "We are waiting for you again...", "warning" )
+function setTrayOnMinimize()
+     createTrayNotification("We are waiting for you again...", "warning")
 end
-addEventHandler( "onClientMinimize", getRootElement( ), setTrayOnMinimize )
+addEventHandler("onClientMinimize", root, setTrayOnMinimize)
 </syntaxhighlight>
 
 ==Changelog==

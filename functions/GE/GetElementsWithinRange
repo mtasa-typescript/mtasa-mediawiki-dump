@@ -1,10 +1,16 @@
 {{Server client function}}
 __NOTOC__
 This function is used to retrieve a list of all elements of specified type within a range of 3D coordinates.
+{{Deprecated items|3.0160|1.5.9|
+* Z argument isn't in use currently, but make your scripts like it is for future compatibility reasons.
+|21438}}
+{{New feature/item|3.0160|1.5.9|21438|
+* Z argument is now being taken into consideration when checking for elements.
+}}
 {{Note|
 * This function checks if elements are in a box, not in a sphere.
-* Z argument isn't in use currently, but make your scripts like it is for future compatibility reasons.
-* This function doesn't work with elements which is created by createElement.}}
+* This function doesn't work with elements which are created by createElement.
+}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">

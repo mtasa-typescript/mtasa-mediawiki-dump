@@ -73,11 +73,6 @@ bindKey("arrow_r", "down", spectateNext)
 </syntaxhighlight>
 </section>
 
-== Issues ==
-{{Issues|
-{{Issue|7594|(Fixed in r11452) setCameraTarget on a player inside a vehicle with hydraulics bugs camera}}
-}}
-
 ==See Also==
 {{Camera functions}}
 

@@ -31,7 +31,7 @@ function initGUI( )
     editBox = guiCreateEdit( 0.3, 0.1, 0.4, 0.1, "Type your message here!", true )
     guiEditSetMaxLength ( editBox, 128 ) -- The max chatbox text length is 128, so force this
 end
-addEventHandler( "onClientResourceStart", getResourceRootElement( getThisResource( ) ), initGUI )
+addEventHandler( "onClientResourceStart", resourceRoot, initGUI )
 
 -- Setup our function to output the message to the chatbox
 function outputEditBox ( button )

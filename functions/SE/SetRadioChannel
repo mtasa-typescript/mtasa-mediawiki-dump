@@ -35,7 +35,7 @@ addCommandHandler ( "setradio",
 
 == Issues ==
 {{Issues|
-{{Issue|8908|setRadioChannel sometimes doesn't work when outside a vehicle}}
+{{Issue|423|setRadioChannel doesn't work when outside a vehicle}}
 }}
 
 ==See Also==

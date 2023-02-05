@@ -33,7 +33,7 @@ bool moveObject ( object theObject, int time, float targetx, float targety, floa
 <syntaxhighlight lang="lua">
 allObjects = getElementsByType ( "object" )
 for key, theObject in ipairs ( allObjects ) do
-	local origX, origY, origZ = getElementPosition ( theObject ) --get the origanal position
+	local origX, origY, origZ = getElementPosition ( theObject ) --get the original position
 	local newZ = origZ + 100 -- make a new z position
 	moveObject ( theObject, 10000, origX, origY, newZ ) --move the object to this position in 10 seconds.
 end
@@ -110,7 +110,7 @@ addEventHandler("onMarkerLeave", marker, moveBack)
 
 == Issues ==
 {{Issues|
-{{Issue|8576|Object rotation is wrong after moveObject serverside}}
+{{Issue|549|Object rotation is wrong after moveObject serverside}}
 }}
 ==See Also==
 {{Object functions}}

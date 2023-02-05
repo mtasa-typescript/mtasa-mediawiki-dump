@@ -2,7 +2,6 @@ __NOTOC__
 {{Server client function}}
 Creates an [[object]] [[element]] at a given position and rotation.
 {{Note|Dynamic objects do not automatically have physics applied to them. Use [[setElementVelocity]](object, 0, 0, 0) to fix this.}}
-{{Note|Creating objects server-side can help for syncing the objects with all clients (for example, if you create a glass object client-side, it will break only for the client that broke the glass. Server-side, it will broke for all clients.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">object createObject ( int modelId, float x, float y, float z, [ float rx, float ry, float rz, bool isLowLOD = false ] )</syntaxhighlight> 

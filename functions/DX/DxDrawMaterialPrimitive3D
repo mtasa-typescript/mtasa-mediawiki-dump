@@ -36,6 +36,13 @@ More info on primitives may be found on [https://msdn.microsoft.com/en-us/librar
 ===Returns===
 Returns a ''true'' if the operation was successful, ''false'' otherwise.
 
+==Remarks==
+When a 3D draw call is issued by any such material MTA function then the principle to [https://github.com/multitheftauto/mtasa-blue/blob/16769b8d1c94e2b9fe6323dcba46d1305f87a190/Client/core/Graphics/CMaterialPrimitive3DBatcher.cpp#L42 push it directly to the 3D adapter] does apply. To achieve this there is '''no software-side 3D clipping mathematics''' being performed. This way the vertex data is always being pushed to the vertex shader, leaving the entire freedom to the developer on how to interpret this vertex data in the shader. For example, even though this function does imply an use in 3D world space, the vertex coordinates could be translated directly into Direct3D 9 screen space instead, effectively discarding any multiplication with the camera projection matrix. The mathematical model for translation into valid Direct3D 9 screen-space coordinates is described [https://docs.microsoft.com/en-us/windows/win32/direct3d9/viewports-and-clipping here]. Let's assume that you are drawing the rectangle on a classic sheet of paper with a mathematical 2D X,Y coordinate system.
+
+[[File:D3d9_screen_space_transformation.png|frameless|center|Direct3D 9 screen-space transformation]]
+
+To transform the coordinates you first have to flip the Y coordinate using negation and then apply the Direct3D 9 screen-space rasterization cross-hair by using the screen dimensions (sw, sh). Since linear shapes are being preserved across linear translations, you can simplify each vertex-based figure into it's set of vertices for the purpose shown above. By using this function in such a way it can perform all the operations in the same quality such as the simpler [[dxDrawMaterialPrimitive]] function.
+
 ==Example==
 {{Example}}
 

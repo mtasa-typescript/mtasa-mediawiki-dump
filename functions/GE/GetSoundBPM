@@ -17,13 +17,13 @@ Returns the beats per minute of the given sound.
 ==Example== 
 <section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
-function bpm ()
-    -- Long version (might be more understandable as example)
-    sound = playSound ( "song.mp3" ) -- Play the song
-    beats = getSoundBPM ( sound ) -- Get the beats per minute of the song
-    outputChatBox ( "Long code version: " .. beats ) -- Output the beats to the chat box
+function getBPM()
+    local soundElement = playSound("song.mp3") -- Play the song
+    local beatsValue = getSoundBPM(soundElement) -- Get the beats per minute of the song
+
+    outputChatBox("BPM: "..beatsValue) -- Output the beats to the chat box
 end
-addCommandHandler ( "bpm", bpm )
+addCommandHandler("bpm", getBPM)
 </syntaxhighlight>
 </section>
 

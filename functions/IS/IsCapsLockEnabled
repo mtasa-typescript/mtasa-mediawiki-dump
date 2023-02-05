@@ -1,0 +1,22 @@
+__NOTOC__
+{{Client function}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool isCapsLockEnabled()
+</syntaxhighlight> 
+
+===Returns===
+Returns ''true'' if caps lock is toggled (on), ''false'' otherwise.
+
+==Example== 
+<syntaxhighlight lang="lua">function checkCaps()
+    iprint(isCapsLockEnabled(), getTickCount())
+end
+addCommandHandler("caps", checkCaps)</syntaxhighlight>
+
+==Requirements==
+{{Requirements|n/a|1.5.9-9.21313|}}
+
+==See Also==
+{{Input functions}}

@@ -1,18 +1,15 @@
 __NOTOC__ 
 {{Client function}}
-Creates a [[sound]] [[element]] and plays it immediately after creation for the local player.<br />
-<br />
+Creates a [[sound]] [[element]] and plays it immediately after creation for the local player.
+{{Added feature/item|1.6.0|1.5.9|21034|Added the feature of playing WebM files.}}
 {{Note|
-*The only supported audio formats are MP3, WAV, OGG, RIFF, MOD, XM, IT, S3M and PLS (e.g. Webstream).
+*The only supported audio formats are MP3, WAV, OGG, FLAC, RIFF, MOD, WEBM, XM, IT, S3M and PLS (e.g. Webstream).
 *For performance reasons, when using playSound for effects that will be played lots (i.e. weapon fire), it is recommend that you convert your audio file to a one channel (mono) WAV with sample rate of 22050 Hz or less. Also consider adding a limit on how often the effect can be played e.g. once every 50ms.}}
 ==Syntax== 
-<syntaxhighlight lang="lua">element playSound ( string soundPath, [ bool looped = false, bool throttled = true ] )</syntaxhighlight> 
+<syntaxhighlight lang="lua">element playSound ( string soundPath, [ bool looped = false, bool throttled = true ] )</syntaxhighlight>
 {{OOP||[[Sound]]}}
 ===Required Arguments=== 
-*'''soundPath:''' the [[filepath]] or URL (http://, https:// or ftp://) of the sound file you want to play. ('''Note:''' Playing sound files from other resources requires the target resource to be in the running state)
-{{New items|5.0157|1.5.7|
-*'''soundPath:''' Can also be raw sound data.
-|20460}}
+*'''soundPath:''' [[filepath]], raw data or URL (http://, https:// or ftp://) of the sound file you want to play. ('''Note:''' Playing sound files from other resources requires the target resource to be in the running state)
 
 ===Optional Arguments=== 
 {{OptionalArg}} 
@@ -27,11 +24,11 @@ Returns a [[sound]] [[element]] if the sound was successfully created, ''false''
 ==Example==
 <syntaxhighlight lang="lua">
 function wasted (killer, weapon, bodypart) 
-	local sound = playSound("sounds/wasted.mp3") --Play wasted.mp3 from the sounds folder
-	setSoundVolume(sound, 0.5) -- set the sound volume to 50%
+	local sound = playSound("sounds/wasted.mp3") -- Play wasted.mp3 from the sounds folder
+	setSoundVolume(sound, 0.5) -- Set the sound volume to 50%
 end
 
-addEventHandler("onClientPlayerWasted", localPlayer, wasted) --add the event handler
+addEventHandler("onClientPlayerWasted", localPlayer, wasted) -- Add the event handler
 </syntaxhighlight>
 
 ==See Also==

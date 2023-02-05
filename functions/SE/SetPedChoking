@@ -19,22 +19,25 @@ Returns ''true'' if successful, ''false'' otherwise (e.g. player handle is inval
 This script will make all players choke on resource start
 <syntaxhighlight lang="lua">
 -- Choke all the players when the resource starts
-function ResourceStart ()
-    setPedChoking ( root, true )
+
+function onResourceStart()
+    setPedChoking(root, true)
 end
-addEventHandler ( "onResourceStart", getResourceRootElement (), ResourceStart, true )
+addEventHandler("onResourceStart", resourceRoot, onResourceStart)
 
 -- Unchoke all the players when the resource stops
-function ResourceStop ()
-    setPedChoking ( root, false )
+
+function onResourceStop()
+    setPedChoking(root, false)
 end
-addEventHandler ( "onResourceStop", getResourceRootElement (), ResourceStop, true )
+addEventHandler("onResourceStop", resourceRoot, onResourceStop)
 
 -- Choke players spawning
-function PlayerSpawn ()
-    setPedChoking ( source, true )
+
+function onPlayerSpawn()
+    setPedChoking(source, true)
 end
-addEventHandler ( "onPlayerSpawn", root, PlayerSpawn )
+addEventHandler("onPlayerSpawn", root, onPlayerSpawn)
 
 </syntaxhighlight>
 

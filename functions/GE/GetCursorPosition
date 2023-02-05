@@ -8,11 +8,11 @@ float, float, float, float, float getCursorPosition ( )
 </syntaxhighlight>
 
 ===Returns===
-Returns 5 values: ''cursorX'', ''cursorY'', ''worldX'', ''worldY'', ''worldZ''. The first two values are the 2D relative screen coordinates of the cursor: ''cursorX'' goes from 0 (left side of the screen) to 1 (right side), ''cursorY'' goes from 0 (top) to 1 (bottom). The 3 values that follow are the 3D world map coordinates that the cursor points at. If the cursor isn't showing, returns ''false'' as the first value.
+Returns 5 values: ''cursorX'', ''cursorY'', ''worldX'', ''worldY'', ''worldZ''. The first two values are the 2D '''relative''' screen coordinates of the cursor. The 3 values that follow are the 3D world map coordinates that the cursor points at. If the cursor isn't showing, returns ''false'' as the first value.
 
 ===Issues===
 {{Issues|
-{{Issue|5226|getCursorPosition() 3D Positions Return Inaccurate, But Nearby Positions - Also Negative WorldZ}}
+{{Issue|1166|getCursorPosition() returns false even when cursor is showing due to opened console}}
 }}
 
 ==Example==

@@ -39,7 +39,7 @@ end
 
 == Issues ==
 {{Issues|
-{{Issue|8827|If you use setJetpackWeaponEnabled to make weapons usable on jetpack and then wield them on jetpack, the weapon can become invisible.}}
+{{Issue|508|Texture bug with setJetpackWeaponEnabled.}}
 }}
 
 ==Requirements==

@@ -1,0 +1,51 @@
+__NOTOC__
+{{Shared function}}
+{{Added feature/item|1.6.0|1.5.9|21389|This function returns a breakdown of the process memory usage. The reported numbers are always byte units and these numbers can be '''inaccurate'''.}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+table|nil getProcessMemoryStats ( )
+</syntaxhighlight> 
+
+==Returns==
+Returns a table if successful, otherwise returns '''nil'''
+
+{| class="wikitable" style="cellpadding: 10px;"
+|-
+! Property || Description
+|-
+| <code>virtual</code> || total program size
+|-
+| <code>resident</code> || resident set size (memory in physical space/ram, also known as ''working set'')
+|-
+| <code>shared</code> || size of resident shared memory (shared with other processes)
+|-
+| <code>private</code> || size of resident private memory (only for this process)
+|}
+
+'''Note:''' Resident set size should be roughly <code>shared</code> + <code>private</code> from the table.
+
+==Example==
+This example will output the memory usage by the server process to the console every 5 minutes.
+
+<section name="Server" class="server" show="true">
+<syntaxhighlight lang="lua">
+setTimer(function()
+    local div = 1024^2
+
+    local pmem = getProcessMemoryStats()
+
+    if pmem then
+        outputServerLog(("[SYS] %.2f MiB  rss:%.2f MiB  shr:%.2f MiB  prv:%.2f MiB"):format(
+            pmem.virtual / div,
+            pmem.resident / div,
+            pmem.shared / div,
+            pmem.private / div
+        ))
+    end
+end, 5 * 60000, 0)
+</syntaxhighlight>
+</section>
+
+==See Also==
+{{Utility functions}}

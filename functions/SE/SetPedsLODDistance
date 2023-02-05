@@ -9,7 +9,7 @@ __NOTOC__
 <syntaxhighlight lang="lua">bool setPedsLODDistance ( float distance )</syntaxhighlight> 
 
 ===Required arguments=== 
-*'''distance:''' the new peds LOD distance. It must be between '''0''' and '''500'''. (Default for ''high_detail_peds'' on is '''500''', when off, it is '''60''').
+*'''distance:''' the new peds LOD distance. This value is clamped to '''0''' – '''500'''. (Default for ''high_detail_peds'' on is '''500''', when off, it is '''60''').
 
 ===Returns===
 This function returns ''true'' if the argument is valid. Returns ''false'' otherwise.

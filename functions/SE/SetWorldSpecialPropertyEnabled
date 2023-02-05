@@ -9,14 +9,16 @@ Enables or disables a special world property.
 [[File:Randomfoliage.jpeg|frame|right|A photo demonstrating ''randomfoliage'' enabled and disabled.]]
 ===Required Arguments===
 *'''propname:''' the name of the property to set. Possible values are:
-**'''hovercars''' - equivalent of the JBGVNB cheat, and allows cars to drive on water.
-**'''aircars''' - equivalent of the RIPAZHA cheat, and allows cars to fly.
-**'''extrabunny''' - equivalent of the CJPHONEHOME or JHJOECW cheat, and allows you to bunny hop on bicycles much higher.
-**'''extrajump''' - equivalent of the KANGAROO cheat, and allows you to jump on foot much higher.
+**'''hovercars''' - equivalent of the JBGVNB cheat, and allows cars to drive on water. (default: false)
+**'''aircars''' - equivalent of the RIPAZHA cheat, and allows cars to fly. (default: false)
+**'''extrabunny''' - equivalent of the CJPHONEHOME or JHJOECW cheat, and allows you to bunny hop on bicycles much higher. (default: false)
+**'''extrajump''' - equivalent of the KANGAROO cheat, and allows you to jump on foot much higher. (default: false)
 **'''randomfoliage''' - toggle randomly generated foliage on the GTA:SA map (default: true)
 **'''snipermoon''' - toggle the GTA:SA easter egg, which increases the size of the moon every time you shoot it with a sniper rifle (default: false)
 **'''extraairresistance''' - toggle the vehicle speed limit on cross-country roads (default: true)
 **{{New feature/item|3.0156|1.5.5|12286|'''underworldwarp''' - toggle warp of peds and vehicles when fall under map (default: true)}}
+**{{New feature/item|3.0160|1.5.9|21125|'''vehiclesunglare''' - toggle the vehicle sun glare effect (default: false) }}
+**{{New feature/item|3.0160|1.5.9|21313| '''coronaztest''' - disable big sun lensflare effect (default: true) }}
 *'''enable:''' whether or not to enable the property.
 
 ===Returns===
@@ -24,26 +26,34 @@ Returns ''true'' if successful, ''false'' otherwise.
 
 ==Example==
 
-'''Example 1:''' Allows cars to fly.
+This code allows you to enable/disable certain property using '''true''' or '''false'''.
 <syntaxhighlight lang="lua">
-addEventHandler( "onClientResourceStart", resourceRoot,
-    function( )
-        setWorldSpecialPropertyEnabled( "aircars", true )
-    end
-)
+function onClientResourceStart()
+	local worldSpecialProperties = {
+		["hovercars"] = false,
+		["aircars"] = false,
+		["extrabunny"] = false,
+		["extrajump"] = false,
+		["randomfoliage"] = true,
+		["snipermoon"] = false,
+		["extraairresistance"] = true,
+		["underworldwarp"] = true,
+		["vehiclesunglare"] = false,
+		["coronaztest"] = true,
+	}
+	
+	for propertyName, propertyState in pairs(worldSpecialProperties) do
+		setWorldSpecialPropertyEnabled(propertyName, propertyState)
+	end
+end
+addEventHandler("onClientResourceStart", resourceRoot, onClientResourceStart)
 </syntaxhighlight>
-
-'''Example 2:''' Allow cars to drive on water.
-<syntaxhighlight lang="lua">
-addEventHandler( "onClientResourceStart", resourceRoot,
-    function( )
-        setWorldSpecialPropertyEnabled( "hovercars", true )
-    end
-)</syntaxhighlight>
 
 ==Changelog==
 {{ChangelogHeader}}
 {{ChangelogItem|1.5.5-3.12286|Added "underworldwarp" property}}
+{{ChangelogItem|1.5.9-1.21125|Added "vehiclesunglare" property}}
+{{ChangelogItem|1.5.9-9.21313|Added "coronaztest" property}}
 
 ==See Also==
 {{Client world functions}}

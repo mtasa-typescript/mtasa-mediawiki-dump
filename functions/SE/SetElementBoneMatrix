@@ -11,13 +11,8 @@ bool setElementBoneMatrix ( element theElement, int boneId, matrix matrix )
 
 ===Required Arguments=== 
 *'''theElement:''' the [[element]] to set the bone matrix on.
-*'''boneID:''' the ID of the bone. See [[Bone IDs]].
-*'''X:''' The X coordinate of the matrix.
-*'''Y:''' The Y coordinate of the matrix.
-*'''Z:''' The Z coordinate of the matrix.
-*'''rotationX:''' The X rotation of the matrix.
-*'''rotationY:''' The Y rotation of the matrix.
-*'''rotationZ:''' The Z rotation of the matrix.
+*'''boneId:''' the ID of the bone. See [[Bone IDs]].
+*'''matrix:''' the MTA [[matrix]] to set.
 
 ===Returns===
 Returns ''true'' if the function was successful, ''false'' otherwise.

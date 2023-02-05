@@ -28,17 +28,17 @@ Returns ''true'' if the player was spawned successfully, ''false'' otherwise.
 This example spawns all the players in the middle of the game map.
 <syntaxhighlight lang="lua">
 -- Get a table of all the players
-players = getElementsByType ( "player" )
+local players = getElementsByType ( "player" )
 -- Go through every player
-for playerKey, playerValue in ipairs(players) do
+for _, player in ipairs(players) do
 	-- Spawn them at the desired coordinates
-	spawnPlayer ( playerValue, 0.0, 0.0, 5.0, 90.0, 0 )
-        fadeCamera ( playerValue, true)
-	setCameraTarget ( playerValue, source)
+	spawnPlayer ( player, 0.0, 0.0, 5.0, 90.0, 0 )
+	fadeCamera ( player, true)
+	setCameraTarget ( player, player )
 end
 </syntaxhighlight>
 
-This example spawns a player when he logs in.
+This example spawns a player '''when he logs in.'''
 <syntaxhighlight lang="lua">
 spawnTeam = createTeam ("Teamname", 255, 0, 0) -- Create team to spawn.
 function spawnOnLogin (prevA, curA )

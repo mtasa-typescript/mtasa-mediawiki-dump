@@ -37,7 +37,7 @@ function replaceEffect()
 	engineApplyShaderToWorldTexture(theTechnique, "fireball6")
 	dxSetShaderValue (theTechnique, "gTexture", explosionTexture)
 end
-addEventHandler("onClientResourceStart",resourceRoot,replaceEffect)
+addEventHandler("onClientResourceStart", resourceRoot, replaceEffect)
 </syntaxhighlight>
 
 This example will apply a shader to the "des_logwall" world texture (which is used by the house near the 'play' gamemode spawn point)
@@ -58,7 +58,7 @@ local theVehicle = source
 		engineApplyShaderToWorldTexture(theTechnique, "?emap*", theVehicle)
 	end
 end
-addEventHandler("onClientVehicleEnter", getRootElement(), applyShader)
+addEventHandler("onClientVehicleEnter", root, applyShader)
 
 function removeShader(thePlayer, seat)
 local theVehicle = source
@@ -68,7 +68,7 @@ local theVehicle = source
         	engineRemoveShaderFromWorldTexture(theTechnique, "?emap*", theVehicle)
 	end
 end
-addEventHandler("onClientVehicleExit", getRootElement(), removeShader)
+addEventHandler("onClientVehicleExit", root, removeShader)
 </syntaxhighlight>
 
 

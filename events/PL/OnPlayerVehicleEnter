@@ -26,7 +26,7 @@ function enterVehicle ( theVehicle, seat, jacked ) --when a player enters a vehi
         outputChatBox ( "Only policeman can enter police cars!", source ) -- and tell the player why
     end
 end
-addEventHandler ( "onPlayerVehicleEnter", getRootElement(), enterVehicle ) -- add an event handler for onPlayerVehicleEnter
+addEventHandler ( "onPlayerVehicleEnter", root, enterVehicle ) -- add an event handler for onPlayerVehicleEnter
 </syntaxhighlight>
 
 '''Example 2:''' This example adds a 'moto' helmet to a player when he gets on a nrg bike, and removes it when he gets off.
@@ -36,14 +36,14 @@ function addHelmetOnEnter ( theVehicle, seat, jacked )
         addPedClothes ( source, "moto", "moto", 16 ) -- add the helmet
     end
 end
-addEventHandler ( "onPlayerVehicleEnter", getRootElement(), addHelmetOnEnter )
+addEventHandler ( "onPlayerVehicleEnter", root, addHelmetOnEnter )
 
 function removeHelmetOnExit ( theVehicle, seat, jacked )
     if ( getElementModel ( theVehicle ) == 522 ) then -- if its a nrg
         removePedClothes ( source, 16 ) -- remove the helmet
     end
 end
-addEventHandler ( "onPlayerVehicleExit", getRootElement(), removeHelmetOnExit )
+addEventHandler ( "onPlayerVehicleExit", root, removeHelmetOnExit )
 </syntaxhighlight>
 
 {{See also/Server event|Player events}}

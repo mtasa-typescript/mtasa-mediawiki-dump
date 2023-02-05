@@ -78,6 +78,17 @@ addEventHandler ( "onPlayerJoin", root,
 </section>
 
 <section name="Client" class="client" show="true">
+This example lets players hide or bring up their bottom-left radar with a command
+<syntaxhighlight lang="lua">
+function toggleRadar()
+	state = not state
+	setPlayerHudComponentVisible("radar", state)
+end
+addCommandHandler( "toggleradar", toggleRadar)
+</syntaxhighlight>
+</section>
+
+<section name="Client" class="client" show="true">
 This example hides the weapon icon, weapon ammo, health bar, clock, money, breath bar, armor bar & wanted level stars displays for players when they join.
 <syntaxhighlight lang="lua">
 -- Hide the hud when the resource is started

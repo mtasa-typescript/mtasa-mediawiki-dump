@@ -43,8 +43,12 @@ end
 
 ==Issues==
 {{Issues|
-{{Issue|9522|Freezing a [[ped]] or [[player]] whilst occupying a [[givePedJetPack|jetpack]] will remove their jetpack, but not the jetpack sound}}
+{{Issue|1291|Ped rotation is always zero on client side if ped has been frozed after creating it}}
+{{Issue|541|Frozen ped rotation goes wrong with latency reduction enabled}}
+{{Issue|442|Client-side setElementFrozen should sync vehicle driven by local player}}
 }}
+
+
 [[ar:SetElementFrozen]]
 [[en:SetElementFrozen]]
 ==See Also==

@@ -26,7 +26,6 @@ The Element Type of this element is gui-memo.
 Returns a gui-memo element of the created memo if it was successfully created, false otherwise.
 
 ==Example== 
-{{Client functions}}
 <syntaxhighlight lang="lua">
 function cMemoFPlayer()
 Window = guiCreateWindow(0.3664,0.2764,0.3508,0.3477,"GUI Window",true)

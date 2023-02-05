@@ -1,0 +1,36 @@
+{{Client function}}
+__NOTOC__
+{{Added feature/item|1.5.9|1.5.9|21367|This function returns the lighting value for the specified [[element]]. This can be a [[player]], [[ped]], [[vehicle]], [[object]].}}
+
+==Syntax==
+<syntaxhighlight lang="lua">
+float getElementLighting ( element theElement )
+</syntaxhighlight>
+{{OOP||[[element]]:getLighting|lighting}}
+
+===Required Arguments===
+*'''theElement:''' The [[element]] whose lighting you want to retrieve.
+
+===Returns===
+Returns a float (0.0-0.5; 0 = dark; 0.5 = light) indicating the element's lighting, or ''false'' if invalid arguments were passed. This function will fail if called right after element creation.
+
+==Example==
+<section name="Clientside example" class="client" show="true">
+This example displays lighting values of streamed in players.
+<syntaxhighlight lang="lua">
+addEventHandler("onClientRender", root, function()
+	for _, pl in ipairs(getElementsByType("player", root, true)) do
+		local sX, sY = getScreenFromWorldPosition(getElementPosition(pl))
+		if sX then
+			dxDrawText("Lighting: "..tostring(getElementLighting(pl)), sX, sY)
+		end
+	end
+end)
+</syntaxhighlight>
+</section>
+
+==Requirements==
+{{Requirements|n/a|1.5.9-9.21367|}}
+
+==See Also==
+{{Client element functions}}

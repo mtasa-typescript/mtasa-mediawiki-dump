@@ -2,6 +2,8 @@
 __NOTOC__
 Checks to see if a vehicle has contact with the ground.
 
+{{Note|This function has a few issues, see below. Consider using the clientside function [[isVehicleWheelOnGround]] instead.}}
+
 ==Syntax== 
 <syntaxhighlight lang="lua">
 bool isVehicleOnGround ( vehicle theVehicle )
@@ -33,8 +35,8 @@ addEventHandler ( "onPlayerVehicleExit", getRootElement(), checkVState )
 
 == Issues ==
 {{Issues|
-{{Issue|7880|isVehicleOnGround always returns false for Monsters}}
-{{Issue|8672|isVehicleOnGround returns false on some vehicles upside down}}
+{{Issue|471|isVehicleOnGround sometimes returns false incorrectly}}
+{{Issue|2093|isVehicleOnGround does not work after setVehicleHandling}}
 }}
 
 ==See Also==

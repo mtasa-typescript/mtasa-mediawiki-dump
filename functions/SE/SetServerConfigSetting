@@ -2,6 +2,7 @@ __NOTOC__
 {{Server function}}
 This function sets server settings which are stored in the [[Server mtaserver.conf|mtaserver.conf]] file.
 {{Note|This function is protected by default and must be explicitly allowed in the servers acl before it can be used.}}
+{{Warning|"bandwidth_reduction" set to 'maximum' will cause player movement synchronization issues, on locations built outside 3000m radius from world center.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">

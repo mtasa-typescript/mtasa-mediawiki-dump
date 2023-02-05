@@ -7,6 +7,8 @@ This function returns whether any system windows that take focus are active. Thi
 * Transferbox
 To get the status of the debug view, see [[isDebugViewActive]].
 
+{{Note|You cannot rely on this function to get the focus state of the MTA window - use [[isMTAWindowFocused]] instead}}
+
 ==Syntax== 
 <syntaxhighlight lang="lua">
 bool isMTAWindowActive ()

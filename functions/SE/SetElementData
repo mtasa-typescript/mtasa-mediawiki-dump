@@ -1,12 +1,12 @@
 {{Server client function}}
 __NOTOC__ 
-This function stores [[element data]] under a certain key, attached to an element. Element data set using this is then synced with all clients and the server. The data can contain server created elements, but you should avoid passing data that is not able to be synced such as xmlnodes, acls, aclgroups etc.
+This function stores [[element data]] under a certain key, attached to an element. Element data set using this is then synced with all clients and the server. The data can contain server-created elements, but you should avoid passing data that is not able to be synced such as xmlnodes, acls, aclgroups etc.
 
 As element data is synced to all clients, it can generate a lot of network traffic and be heavy on performance. Events are much more efficient for sending data from a client to the server only, or from the server to a specific client. <br/>
-Usage of element data should be disencouraged where your goal can be achieved with events like above, and [[table|tables]] for storing and retrieving data.
+Usage of element data should be discouraged where your goal can be achieved with events like above, and [[table|tables]] for storing and retrieving data.
 {{Tip|A simple and efficient way to make a variable known to the server and clients is to use setElementData on the [[root]] element.}}
 {{Note|See [[Script security]] for tips on preventing cheaters when using events and element data}}
-{{Note|For performance reasons, never use setElementData in events that fire often (like [[onClientRender]]) without further optimization or conditions. In fact, using element data in general can take such a toll on performance that not using it unless strictly neccesary (e.g use alternatives such as storing data in tables) is recommended.}}.
+{{Note|For performance reasons, never use setElementData in events that fire often (like [[onClientRender]]) without further optimization or conditions. In fact, using element data in general, can take such a toll on performance that not using it unless strictly necessary (e.g use alternatives such as storing data in tables) is recommended.}}.
 
 {{New items|5.0157|1.5.7-9.20477|A subscription mode has been introduced for [[setElementData]] serverside. When setting data in subscription mode, only clients that are added through [[addElementDataSubscriber]] will receive the data, which is good for performance.
 Note this mode only works when setting element data serverside. Setting data clientside still sends the update to all clients if 'synchronize' is set to true.
@@ -28,7 +28,7 @@ bool setElementData ( element theElement, string key, var value [, bool synchron
 *'''synchronize:''' Determines whether or not the data will be synchronized with the clients(server-side variation) or server(client-side variation)
 
 ===Returns===
-Returns ''true'' if the data was set succesfully, ''false'' otherwise.
+Returns ''true'' if the data was set successfully, ''false'' otherwise.
 
 {{New items|5.0157|1.5.7-9.20477|
 ==Syntax== 
@@ -66,15 +66,11 @@ bool setElementData ( element theElement, string key, var value [, bool synchron
 </section>
 
 ===Returns===
-Returns ''true'' if the data was set succesfully, ''false'' otherwise.
+Returns ''true'' if the data was set successfully, ''false'' otherwise.
 }}
 
-===Issues===
-{{Issues|
-{{Issue|7389|[Fixed in 1.3.5-7389] Problem with floating numbers}}
-}}
-
-==Example== 
+==Example==
+Example 1
 <section name="Server" class="server" show="true">
 This example allows a player to add a custom tag onto their nickname, and also reverts it back to normal if they wish.
 <syntaxhighlight lang="lua">

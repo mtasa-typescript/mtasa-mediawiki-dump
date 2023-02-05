@@ -45,11 +45,6 @@ end
 addEventHandler ( "onPlayerDamage", getRootElement(), headshotKill )
 </syntaxhighlight>
 
-== Issues ==
-{{Issues|
-{{IssuePR|27|Fix stealthkill crash and add killPed client side}}
-}}
-
 ==See Also==
 {{Ped functions}}
 [[ru:killPed]]

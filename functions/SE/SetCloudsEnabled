@@ -15,12 +15,12 @@ Returns ''true'' if the cloud state was changed succesfully, ''false'' if an inv
 
 ==Example== 
 <section name="Server" class="server" show="true">
-This example Disables clouds for all players
+This example disables clouds for all players when resource starts.
 <syntaxhighlight lang="lua">
-function disableClouds ()
-    setCloudsEnabled ( false )    -- Hide the clouds for all players when the resource starts
+function onResourceStart()
+    setCloudsEnabled(false)
 end
-addEventHandler ( "onResourceStart", getResourceRootElement(), disableClouds )
+addEventHandler("onResourceStart", resourceRoot, onResourceStart)
 </syntaxhighlight>
 </section>
 

@@ -6,12 +6,20 @@ This function returns a hash of the specified string in the specified algorithm.
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-string hash ( string algorithm, string dataToHash )
+string hash ( string algorithm, string dataToHash, [ table options ] )
 </syntaxhighlight>
 
 ===Required Arguments===
-*'''algorithm''': A string which must be one of these: "md5", "sha1", "sha224", "sha256", "sha384", "sha512"
+*'''algorithm''': A string which must be one of these: "md5", "sha1", "sha224", "sha256", "sha384", "sha512", "hmac"
 *'''dataToHash''': A string of the data to hash.
+*'''options''': A table with options and other necessary data for the algorithm, as detailed below.
+
+===Options for each algorithm===
+{{Added feature/item|1.5.9|1.5.8|21329|
+* ''hmac'' ([https://en.wikipedia.org/wiki/HMAC HMAC])
+** '''key''': a key to encode the input with.
+** '''algorithm''': a string which must be one of these: "md5", "sha1", "sha224", "sha256", "sha384", "sha512".
+|21329}}
 
 ===Returns===
 Returns the hash of the data, false if an invalid argument was used.

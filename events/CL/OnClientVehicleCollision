@@ -30,8 +30,8 @@ The source of this event is the vehicle that collided with something.
 
 ==Issues==
 {{Issues|
-{{Issue|7422|onClientVehicleCollision doesnt trigger when hitting some frozen objects}}
-{{Issue|8265|(Fixed in r14744) onClientVehicleCollision doesn't trigger for planes, trains and boats}}
+{{Issue|522|onClientVehicleCollision doesn't trigger when world objects are broken}}
+{{Issue|2320|hitElement in onClientVehicleCollision returns nil for projectile}}
 }}
 
 ==Example== 

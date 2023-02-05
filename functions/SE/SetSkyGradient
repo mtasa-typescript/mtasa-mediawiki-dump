@@ -26,7 +26,7 @@ This example sets the sky to a hot pink gradient.
 function ClientStarted ()
 setSkyGradient( 200, 0, 100, 150, 0, 70 )
 end 
-addEventHandler( "onClientResourceStart", getResourceRootElement(getThisResource()), ClientStarted )
+addEventHandler( "onClientResourceStart", resourceRoot, ClientStarted )
 </syntaxhighlight>
 </section>
 
@@ -36,7 +36,7 @@ This example will set a blue '''realistic sky'''.
 function ClientStarted ()
 setSkyGradient( 60, 100, 196, 136, 170, 212 )
 end 
-addEventHandler( "onClientResourceStart", getResourceRootElement(getThisResource()), ClientStarted )
+addEventHandler( "onClientResourceStart", resourceRoot, ClientStarted )
 </syntaxhighlight>
 </section>
 

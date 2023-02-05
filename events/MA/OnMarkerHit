@@ -30,7 +30,9 @@ addEventHandler("onMarkerHit", playerMarker, handlePlayerMarker)
 
 ==Issues==
 {{Issues|
-{{Issue|6098|If a marker was attached to another element, onMarkerHit won't be triggered}}
+{{Issue|551|If a marker was attached to another element, onMarkerHit won't be triggered}}
+{{Issue|519|onMarkerHit not always triggered in interiors}}
+{{Issue|923|Server side markers with size < 1.5 don't trigger event}}
 }}
 
 {{See also/Server event|Marker events}}

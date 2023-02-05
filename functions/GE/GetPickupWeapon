@@ -3,7 +3,7 @@ __NOTOC__
 This function retrieves the weapon ID of a weapon pickup.
 ==Syntax== 
 <syntaxhighlight lang="lua">
-int getPickupWeapon ( pickup thePickup )         
+int getPickupWeapon ( pickup thePickup )
 </syntaxhighlight> 
 
 ===Required Arguments=== 

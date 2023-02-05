@@ -1,6 +1,6 @@
 __NOTOC__
 {{Server function}}
-This function executes a database query using the supplied connection. No result is returned.
+This function executes a database query using the supplied connection. No query result is returned.
 {{Tip|The server command [[Server_Commands#debugdb|debugdb 2]] will output verbose information on each query to a logging file (usually '''logs/db.log''')}} 
 ==Syntax== 
 <syntaxhighlight lang="lua">

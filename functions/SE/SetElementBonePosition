@@ -6,12 +6,12 @@ __NOTOC__
 
 ==Syntax==
 <syntaxhighlight lang="lua">
-bool setElementBonePosition ( element theElement, int boneId, float x, float y, float z )
+bool setElementBonePosition ( element theElement, int bone, float x, float y, float z )
 </syntaxhighlight>
 
 ===Required Arguments===
 *'''theElement:''' the [[Element|element]] to set the bone position on.
-*'''boneId:''' the ID of the bone to set the position of. See [[Bone IDs]].
+*'''bone:''' the ID of the bone to set the position of. See [[Bone IDs]].
 *'''x:''' The X coordinate of the destination.
 *'''y:''' The Y coordinate of the destination.
 *'''z:''' The Z coordinate of the destination.
@@ -20,23 +20,23 @@ bool setElementBonePosition ( element theElement, int boneId, float x, float y, 
 Returns ''true'' if the function was successful, ''false'' otherwise.
 
 ==Example==
-This example is a command where the player should input the bone ID and the XYZ coordinates to set one of his bones' position:
+[[File:CJ with long neck.png|thumb|alt=CJ with long neck|Example preview]]
+This example shows a surprised CJ with a long neck
 <syntaxhighlight lang="lua">
-function setBonePosition (commandName, boneId, x, y, z)
-    if (not boneId or not x or not y or not z) then
-        outputChatBox ("Syntax: /setbonepos [boneID, x, y, z]", 255, 25, 25)
-        return false
+local bones = {
+    [4] = Vector3(0, 0, 0.15),
+    [5] = Vector3(0, 0, 0.15),
+    [6] = Vector3(0, 0, 0.13),
+    [7] = Vector3(0, 0, 0.13),
+    [8] = Vector3(0, 0, 0.1),
+}
+function updatePed()
+    for bone,v in pairs(bones) do
+        local pos = localPlayer:getBonePosition(bone)+v
+        setElementBonePosition(localPlayer, bone, pos)
     end
-    if (not tonumber(id) or not tonumber(x) or not tonumber(y) or not tonumber(z)) then
-        outputChatBox ("Command arguments should be numbers!", 255, 25, 25)
-        return false
-    end
-
-    setElementBonePosition (localPlayer, ID, x, y, z)
-    outputChatBox ("Bone position set successfully!", 0, 255, 0)
 end
-
-addCommandHandler ("setbonepos", setBonePosition)
+addEventHandler("onClientPedsProcessed", root, updatePed)
 </syntaxhighlight>
 
 ==Requirements==

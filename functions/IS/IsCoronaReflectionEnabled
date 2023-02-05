@@ -1,0 +1,18 @@
+{{Client function}}
+__NOTOC__
+{{Added feature/item|1.5.9|1.5.8|21251|This function gets visibility of corona reflection.}}
+==Syntax== 
+<syntaxhighlight lang="lua">
+bool isCoronaReflectionEnabled ( marker theMarker )
+</syntaxhighlight> 
+{{OOP||[[Marker]]:isCoronaReflectionEnabled||setCoronaReflectionEnabled}}
+===Required Arguments=== 
+*'''theMarker:''' marker
+
+===Returns===
+* Returns ''false'' is [[setMarkerType|marker type]] is not ''corona''.
+* Returns ''true'' if corona reflection is enabled, ''false'' otherwise.
+
+==See Also==
+{{client marker functions}}* [[setCoronaReflectionsEnabled]]
+* [[getCoronaReflectionsEnabled]]

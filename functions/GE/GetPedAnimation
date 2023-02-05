@@ -17,7 +17,7 @@ Gets the animation of a player or ped that was set using [[setPedAnimation]].
 {{Deprecated items|3.0158|1.5.7|Returns two [[string|strings]]: the first is the name of the block, the second is the name of the animation. Returns ''false'' if there was an error or if the ped is not doing an animation.|20450}}
 
 {{New feature/item|3.0158|1.5.7|20450|The function returns 9 values in the same order as required by [[setPedAnimation]]:
-<syntaxhighlight lang="lua">string anim, string block, int time, bool loop, bool updatePosition, bool interruptable, bool freezeLastFrame, int blendTime, bool restoreTaskOnAnimEnd</syntaxhighlight>
+<syntaxhighlight lang="lua">string block, string anim, int time, bool loop, bool updatePosition, bool interruptable, bool freezeLastFrame, int blendTime, bool restoreTaskOnAnimEnd</syntaxhighlight>
 }}
 
 ==Example==
@@ -26,9 +26,9 @@ This example adds a command that allows you to copy the animation being used by 
 function CopyAnimation(theCommand, thePlayer) -- The Command Function
 	if thePlayer then -- If a player name entered then
 		thePlayerToCopyFrom = getPlayerFromName(thePlayer) -- get player from his name
-		Block, Anim = getPedAnimation(thePlayerToCopyFrom) -- get the player animation
-		if Block then -- if got the animation successfully then
-			setPedAnimation(localPlayer, Block, Anim) -- set my animation the same
+		block, anim = getPedAnimation(thePlayerToCopyFrom) -- get the player animation
+		if block then -- if got the animation successfully then
+			setPedAnimation(localPlayer, block, anim) -- set my animation the same
 			outputChatBox("* Copied Successfully !") -- output chat message
 		end
 	else	

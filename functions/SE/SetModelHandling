@@ -79,7 +79,8 @@ addEventHandler("onResourceStop", resourceRoot, resetHandling)
 
 == Issues ==
 {{Issues|
-{{Issue|7454|setModelHandling doesn't work with already created vehicles}}
+{{Issue|553|setModelHandling doesn't work with already created vehicles}}
+{{Issue|1198|"setModelHandling" function doesn't affect vehicles that have been changed using "setElementModel"}}
 }}
 
 ==See other vehicle functions==

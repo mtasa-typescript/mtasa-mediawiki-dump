@@ -33,7 +33,8 @@ setTimer(pedLookAt, 120, 0)
 
 == Issues ==
 {{Issues|
-{{Issue|4325|setPedLookAt does not work for remote players}}
+{{Issue|509|setPedLookAt does not work for remote players}}
+{{Issue|626|setPedLookAt cancels damage done by any sort of fire}}
 }}
 ==See Also==
 {{Client ped functions}}

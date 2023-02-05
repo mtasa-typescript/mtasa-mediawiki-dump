@@ -1,7 +1,7 @@
 __NOTOC__ 
 {{Server client function}}
 This function checks if a 2D position is inside a [[radararea|radar area]] or not.
-{{MessageBox|bordercolorhex=FFB2B2|bgcolorhex=FFE5E5|image=File:Dialog-warning.png|title=Warning:|message= Before 1.5.5 [https://buildinfo.mtasa.com/?Author=&Branch=&Revision=11746 r11746], this function does not always work correctly if dimensions of the radararea (sizeX or sizeY) are negative numbers.}} <!-- The {Warning} template didn't want to work with an external link to buildinfo, so I had to use the {MessageBox} template -->
+
 ==Syntax== 
 <syntaxhighlight lang="lua">
 bool isInsideRadarArea ( radararea theArea, float posX, float posY )
@@ -26,11 +26,6 @@ function isElementInsideRadarArea ( theElement, theArea )
 	return isInsideRadarArea ( theArea, posX, posY )
 end
 </syntaxhighlight>
-
-===Issues===
-{{Issues|
-{{Issue|9699|[Fixed in 1.5.5-r11746] isInsideRadarArea returns always false, when sizeX or sizeY of radarArea is negative}}
-}}
 
 ==See Also==
 {{Radar area functions}}

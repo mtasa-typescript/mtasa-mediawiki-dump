@@ -22,7 +22,7 @@ local thePickup = createPickup( 10, 10, 10, 2, 31, 3000, 50 ) -- Create a M4 wea
 function leftWeaponPickup( player )
     outputChatBox( "You have left the M4 weapon pickup.", player ) -- Output a message to the chatbox
 end
-addEventHandler( "onPickupLeave", thePickup, pickedUpWeaponCheck )
+addEventHandler( "onPickupLeave", thePickup, leftWeaponPickup)
 </syntaxhighlight>
 
 {{See also/Server event|Pickup events}}

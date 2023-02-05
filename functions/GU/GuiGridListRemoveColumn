@@ -51,12 +51,6 @@ end
 addEventHandler ( "onClientResourceStart", resourceRoot, clientsideResourceStart )
 </syntaxhighlight>
 
-
-==Issues==
-{{Issues|
-{{Issue|5620|guiGridListAddColumn returns wrong index after deleting columns }}
-}}
-
 ==See Also==
 <!-- Change FunctionArea to the area that this function is in on the main function list page, e.g. Server, Player, Vehicle etc -->
 {{GUI functions}}

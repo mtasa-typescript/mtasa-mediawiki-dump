@@ -17,7 +17,9 @@ string getUserdataType ( userdata value )
 ***''vector3'': a 3D vector, used in the [[Vector/Vector3|Vector3]] class.
 ***''vector4'': a 4D vector, used in the [[Vector/Vector4|Vector4]] class.
 ***''matrix'': a matrix, used in the [[Matrix]] class.
+***''request'': a userdata type returned via [[fetchRemote]] (since [https://buildinfo.mtasa.com/?Revision=21436&Branch= r21436])
 ***''userdata'': a fallback userdata type return value, when no other type could be found for the object.
+
 **'''Server only'''
 ***''account'': a [[Account|player account]].
 ***''db-query'': a [[dbQuery|database query handle]].

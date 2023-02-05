@@ -4,13 +4,13 @@ This function can be used to detonate a players satchels.
 ==Syntax==
 <section name="Client" class="client" show="true">
 <syntaxhighlight lang="lua">
-bool detonateSatchels ( )
+bool detonateSatchels()
 </syntaxhighlight>
 </section>
 
 <section name="Server" class="server" show="true">
 <syntaxhighlight lang="lua">
-bool detonateSatchels ( player Player )
+bool detonateSatchels(player Player)
 </syntaxhighlight>
 </section>
 
@@ -18,14 +18,25 @@ bool detonateSatchels ( player Player )
 Returns ''true'' if successful, ''false'' otherwise.
 
 ==Example==
-The below example allows a player to detonate any of their placed satchels via the command /blowsatchels
-<section name="Client" class="client" show="true">
+The below example allows a player to detonate any of their placed satchels via the command /blowsatchels (Client-side)
+<section name="Client-side" class="client" show="true">
 <syntaxhighlight lang="lua">
-function blowMySatchels()
-    detonateSatchels()
-    outputChatBox("Satchels blown!", 0, 255, 0)
-end
-addCommandHandler("blowsatchels", blowMySatchels)
+addCommandHandler("blowsatchels",
+    function()
+        detonateSatchels()
+    end
+)
+</syntaxhighlight>
+</section>
+
+The below example allows a player to detonate any of their placed satchels via the command /blowsatchels (Server-side)
+<section name="Server-side" class="server" show="true">
+<syntaxhighlight lang="lua">
+addCommandHandler("blowsatchels",
+    function(sourcePlayer, commandName)
+        detonateSatchels(sourcePlayer)
+    end
+)
 </syntaxhighlight>
 </section>
 

@@ -80,12 +80,6 @@ addEventHandler ("onResourceStart", resourceRoot, fillDock)
 </syntaxhighlight>
 </section>
 
-== Issues ==
-{{Issues|
-{{Issue|7542|Water functions in general do not work outside the -3000 -3000 3000 3000 bounds}}
-{{Issue|9608|(Fixed in r13987) "shallow" argument only works client-side}}
-}}
-
 ==See Also==
 {{Client water functions}}
 

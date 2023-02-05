@@ -1,0 +1,22 @@
+{{Client function}}
+{{Added feature/item|1.5.9|1.5.8|21155|Sets the update callback of an [[svg]] element}}
+==Syntax== 
+<syntaxhighlight lang="lua">bool svgSetUpdateCallback( svg svgElement, function / bool callback )</syntaxhighlight>
+
+===Required Arguments===
+*'''svgElement:''' The [[svg]] you want to set the callback function of.
+*'''callback:''' The callback function to store on the SVG. If '''false''' is provided, any existing callback function will be removed from the SVG.
+
+===Returns===
+* Returns true if successful, false otherwise
+
+==Example==
+For example of callback usage, see [[svgSetSize]] or [[svgSetDocumentXML]].
+
+==Requirements==
+{{Requirements|n/a|1.5.8-9.21155|}}
+
+==See Also==
+{{SVG_functions}}
+
+[[pt-br:SvgSetUpdateCallback]]

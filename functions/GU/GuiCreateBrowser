@@ -2,7 +2,7 @@ __NOTOC__
 {{Client function}}
 {{New feature/item|150|1.5.0|7172|
 This function creates a new CEGUI web [[Element/Browser|browser]] element.
-<br>The difference between this, and createBrowser is that, this handles inputs internally, and it can be attached to GUI windows. So this one is more suitable for custom dx based interfaces.
+<br>The difference between this and createBrowser is that this function handles inputs internally, and it can be attached to GUI windows. So the createBrowser function is more suitable for custom dx based interfaces, while this one is favorable for CEGUI all-in-all integration.
 You can learn more about the differences [[https://forum.mtasa.com/topic/80422-dx-browser-vs-gui-browser/?do=findComment&comment=737334 here]].
 }}
 
@@ -28,6 +28,16 @@ You can learn more about the differences [[https://forum.mtasa.com/topic/80422-d
 Returns a [[gui-browser]] element if it was created successfully, ''false'' otherwise. Returns also ''false'', if the user disabled remote pages and ''isLocal'' was set to ''false''.
 
 ==Example==
+This examples simply creates a web browser and loads an URL
+<syntaxhighlight lang="lua">
+local browserGUI = guiCreateBrowser(100, 100, 300, 50, true, true, false)
+local browser    = guiGetBrowser(browserGUI)
+
+addEventHandler("onClientBrowserCreated", browser, function()
+  loadBrowserURL(browser, "http://mta/local/html/index.html")
+end)
+</syntaxhighlight>
+
 This examples attaches a web browser to a CEGUI window.
 <syntaxhighlight lang="lua">
 -- In order to render the browser fullscreen, we need to get the dimensions of the screen

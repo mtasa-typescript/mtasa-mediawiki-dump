@@ -16,21 +16,16 @@ The [[event system#Event source|source]] of this event is the [[element]] which 
 ==Example==
 This script creates a vehicle in the center of the map and outputs a message to its old syncer if he is not syncing the vehicle anymore.
 <syntaxhighlight lang="lua">
---create our testing vehicle onResourceStart
-addEventHandler ( "onResourceStart", getResourceRootElement( ),
-function ( )
-    vehicle = createVehicle ( 520, 0, 0, 0 )
-end )
+function onResourceStart()
+	local vehicleElement = createVehicle(434, 0, 0, 3) -- Create vehicle
 
-function syncStop ( oldSyncer )
-    -- check if the element that stopped being synced was our vehicle
-    if source == vehicle then
-        --tell the player (oldSyncer) he stopped syncing the vehicle
-        outputChatBox ( "The vehicle is not being synced by you anymore", oldSyncer )
-    end
+	addEventHandler("onElementStopSync", vehicleElement, onElementStopSync) -- Bind handler specifically to it
 end
---add the event handler
-addEventHandler( "onElementStopSync", getRootElement(), syncStop ) 
+addEventHandler("onResourceStart", resourceRoot, onResourceStart)
+
+function onElementStopSync(oldSyncer)
+	outputChatBox("The vehicle is not being synced by you anymore.", oldSyncer) -- Tell player (oldSyncer) that he's not syncing vehicle
+end
 </syntaxhighlight>
 
 {{See also/Server event|Element events}}

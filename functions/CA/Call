@@ -77,6 +77,7 @@ Returns anything that the designated function has returned, if the function has 
 <section name="Server" class="server" show="true"> 
 This extract shows adding of a "kills" column to the scoreboard resource. This then sets the ''gameShowKills'' variable to true(or false), telling the rest of the script to start outputting kills.
 
+'''Main Resource:'''
 <syntaxhighlight lang="lua">
 function showKills ( option )
 	if not option then
@@ -90,11 +91,23 @@ function showKills ( option )
 	gameShowKills = option 
 end
 </syntaxhighlight>
+'''scoreboard Resource:'''
+<syntaxhighlight lang="lua">
+function removeScoreboardColumn(columnName)
+    -- What ever scripted ...
+end
+
+function addScoreboardColumn(columnName)
+    -- What ever scripted ...
+end
+</syntaxhighlight>
 </section>
 
-<section name="Server" class="server" show="false"> 
+
+<section name="Server" class="server" show="true"> 
 This extract shows adding of a "kills" column to the scoreboard resource. This then sets the ''gameShowKills'' variable to true(or false), telling the rest of the script to start outputting kills.
 
+'''Main Resource:'''
 <syntaxhighlight lang="lua">
 function showKills ( option )
 	if not option then
@@ -106,6 +119,16 @@ function showKills ( option )
 		outputDebugString ( "Showing kills now..." )
 	end
 	gameShowKills = option 
+end
+</syntaxhighlight>
+'''scoreboard Resource:'''
+<syntaxhighlight lang="lua">
+function removeScoreboardColumn(columnName)
+    -- What ever scripted ...
+end
+
+function addScoreboardColumn(columnName)
+    -- What ever scripted ...
 end
 </syntaxhighlight>
 </section>

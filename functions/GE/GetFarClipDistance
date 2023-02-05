@@ -2,6 +2,7 @@
 __NOTOC__
 This function will tell you what is the current render distance.
 {{Note|The function will return ''false'' server-side if far clip distance has not been set before the function is called.}}
+{{Note|Default far clip distance value is 800.}}
 ==Syntax==
 <syntaxhighlight lang="lua">
 float getFarClipDistance ( )

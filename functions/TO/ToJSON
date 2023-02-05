@@ -2,7 +2,7 @@ __NOTOC__
 {{Server client function}}
 This function converts a '''single''' value (preferably a Lua table) into a [[JSON]] encoded string. You can use this to store the data and then load it again using [[fromJSON]].
 
-{{Important Note|Due to tehnical limitations (partly of json-c) the stringified keys will be truncated to the first 255 characters}}
+{{Important Note|Due to technical limitations (partly of json-c) the stringified keys will be truncated to the first 255 characters}}
 
 ==Syntax== 
 <!-- NOTE: don't use 'special' names for variable names, e.g. you shouldn't be writing things like 'player player, vehicle vehicle', instead write something like 'player thePlayer, vehicle vehicleToGetInto'. This is less confusing and prevents the syntax highlighting being odd -->

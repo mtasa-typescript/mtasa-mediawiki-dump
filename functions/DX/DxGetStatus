@@ -37,6 +37,12 @@ Returns a table with the following entries:
 {{Added feature/item|1.5.9|1.5.8|20508|
 *'''SettingHighDetailPeds:''' High detail peds setting. (true/false)
 }}
+{{Added feature/item|1.5.9|1.5.8|21251|
+*'''SettingCoronaReflections:''' Corona rain reflections setting. (true/false)
+}}
+{{Added feature/item|1.5.9|1.5.8|21348|
+*'''SettingDynamicPedShadows:''' Dynamic ped shadows setting. (true/false)
+}}
 *'''AllowScreenUpload:''' The allows screen uploads setting. (true/false)
 *'''DepthBufferFormat:''' The format of the shader readable depth buffer, or 'unknown' if not available.
 {{Added feature/item|1.5.9|1.5.8|20901|

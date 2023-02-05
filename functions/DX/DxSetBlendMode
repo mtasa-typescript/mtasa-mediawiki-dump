@@ -18,6 +18,7 @@ bool dxSetBlendMode ( string blendMode )
 Returns true if successful, or ''false'' if invalid arguments were passed to the function.
 
 ==Example==
+<section name="Client" class="client" show="true">
 This example shows how to use '''modulate_add''' and '''add''' to avoid quality problems when using a render target:
 <syntaxhighlight lang="lua">
 local myRenderTarget = dxCreateRenderTarget(500, 500, true)
@@ -47,6 +48,7 @@ addEventHandler("onClientRender", root,
     end
 )
 </syntaxhighlight>
+</section>
 
 ==Requirements==
 {{Requirements|n/a|1.3.0-9.03782|}}

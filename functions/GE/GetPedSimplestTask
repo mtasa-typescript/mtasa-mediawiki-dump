@@ -1,7 +1,7 @@
 __NOTOC__
 {{Client function}}
 This function is used to get the name of a specified ped's current simplest [[task]].<br>
-{{Note|See [[getPedTask]] to get a all tasks.}}
+{{Note|See [[getPedTask]] to get a ped's task.}}
 
 ==Syntax==
 <syntaxhighlight lang="lua">

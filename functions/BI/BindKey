@@ -1,6 +1,8 @@
 {{Server client function}}
 __NOTOC__
-Binds a player's key to a handler function or command, which will be called when the key is pressed. 
+Binds a player's key to a handler function or command, which will be called when the key is pressed.
+
+{{Note|Using escape key will always return false. Use [[onClientKey]] event instead.}}
 
 ==Syntax== 
 <section name="Server - Syntax 1" class="server" show="true">

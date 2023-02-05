@@ -30,7 +30,7 @@ addEventHandler("onClientBrowserCreated", browser,
 --The page has to load first
 addEventHandler("onClientBrowserDocumentReady", browser,
     function ()
-        executeBrowserJavascript(source, "document.getElementById('nick').innerHTML = '" .. getPlayerName(localPlayer) .. "'");
+        executeBrowserJavascript(source, "document.getElementById('nick').innerHTML = '" .. getPlayerName(localPlayer) .. "';")
     end)
 </syntaxhighlight>
 

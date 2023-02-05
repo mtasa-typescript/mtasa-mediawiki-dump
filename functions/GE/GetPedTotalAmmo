@@ -34,8 +34,8 @@ end
 
 ==Issues==
 {{Issues|
-{{Issue|6639|Flame thrower ammo will be returned ten times higher than what they're given.}}
-{{Issue|7719|[[getPedTotalAmmo]]() & [[getPedAmmoInClip]]() serverside sometimes return invalid values}}
+{{Issue|481|Flame Thrower Ammo Multiples By Ten}}
+{{Issue|734|Sometimes wrong count of player ammo, if get it in onPlayerWeaponFire}}
 }}
 
 ==See Also==

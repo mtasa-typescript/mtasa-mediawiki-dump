@@ -24,7 +24,12 @@ Returns ''true'' if the development mode is enabled and arguments are correct, '
 <syntaxhighlight lang="lua" side="client">
 addCommandHandler ( "zzz",
     function ( command, sleep )
-        debugSleep ( sleep )
+        if ( sleep ) then
+            local ms = tonumber ( sleep )
+            if ( ms ) then
+                debugSleep ( ms )
+            end
+        end
     end
 )
 </syntaxhighlight>

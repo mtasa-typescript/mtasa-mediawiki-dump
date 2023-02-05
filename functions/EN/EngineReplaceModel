@@ -1,6 +1,5 @@
 __NOTOC__ 
 {{Client function}}
-{{Note|Please note the loading order that is used in the examples as other orders can cause collisions, textures or the DFF not to load due to technical limitations}}
 
 This function replaces the given model ID with the model contained in a DFF file loaded by [[engineLoadDFF]]. This function supports [[vehicle|vehicles]], [[object|objects]], [[ped|peds]] and [[player|players]] but not CJ clothing and body parts.
 
@@ -8,7 +7,10 @@ This function replaces the given model ID with the model contained in a DFF file
 
 To replace weapon models you must use their object IDs, not weapon IDs. There is a weapon model list available at [[weapons]].
 {{Note|
-* Default GTA map objects behave inconsistently when using this function on them. If you want to replace models in the original GTA map, use one of the [[EngineReplaceModel notes|methods shown here]].}}
+* Please note the loading order that is used in the examples as other orders can cause collisions, textures or the DFF not to load due to technical limitations.
+* Default GTA map objects behave inconsistently when using this function on them. If you want to replace models in the original GTA map, use one of the [[EngineReplaceModel notes|methods shown here]].
+* A raw data DFF element can only be used once, because the underlying memory for the model is released after replacement.
+* If the replacement model is broken and the original model is not loaded/streamed-in at the time of replacement, this function will succeed and you won't see any error message, neither when the model replacement fails once the original model starts to load/stream-in.}}
 
 ==Syntax== 
 <syntaxhighlight lang="lua">
@@ -26,71 +28,65 @@ bool engineReplaceModel ( dff theModel, int modelID [, bool alphaTransparency = 
 Returns ''true'' if the model was successfully replaced, ''false'' if it failed for some reason, ie. the DFF or the model ID is not valid.
 
 ==Example== 
-'''Example 1:'''
 <section name="Client" class="client" show="true">
-Client-side example for replacing vehicle model and texture with custom ones.
+This example allows you to replace single or many models (with ability to toggle TXD filtering/DFF alpha transparency) - by using [[table]]. Do not forget to add those file paths to [[meta.xml]]
 <syntaxhighlight lang="lua">
-function ReplaceVehicle()
-    outputChatBox ("> replacing the euros vehicle")
+function onClientResourceStartReplaceModels()
+	local modelsToReplace = {
+		{ -- replace object
+			colFile = "object.col",
+			txdFile = "object.txd",
+			dffFile = "object.dff",
+			modelID = 1337,
+			alphaTransparency = false,
+			filteringEnabled = true,
+		},
+		{ -- replace vehicle
+			colFile = false, -- if .col is not present set to false/nil
+			txdFile = "vehicle.txd",
+			dffFile = "vehicle.dff",
+			modelID = 434,
+			alphaTransparency = false,
+			filteringEnabled = true,
+		},
+	}
 
-    txd = engineLoadTXD ("data/euros.txd")
-    engineImportTXD (txd, 587)
-    dff = engineLoadDFF ("data/euros.dff")
-    engineReplaceModel (dff, 587)
-end
+	for assetID = 1, #modelsToReplace do
+		local modelData = modelsToReplace[assetID]
+		local modelCol = modelData.colFile
+		local modelTxd = modelData.txdFile
+		local modelDff = modelData.dffFile
+		local modelID = modelData.modelID
 
-addEvent ("replaceVeh", true)
-addEventHandler ("replaceVeh", root, ReplaceVehicle)
-</syntaxhighlight>
-</section>
-<section name="Server" class="server" show="true">
-Server-side example function for triggering the replace.
-<syntaxhighlight lang="lua">
-function ReplaceCommand()
-    triggerClientEvent ("replaceVeh", root, replaceVeh)
-end
-addCommandHandler ("replace", ReplaceCommand)
-</syntaxhighlight>
-</section>
+		if modelCol then
+			local colData = engineLoadCOL(modelCol)
 
-'''Example 2:'''
-<section name="Client" class="client" show="true">
-Client-side example for replacing weapons with custom mods.
-<syntaxhighlight lang="lua">
-function ReplaceWeapon() 
-    txd = engineLoadTXD ("m4.txd")
-    engineImportTXD (txd, 356)
-    dff = engineLoadDFF ("m4.dff", 356) -- use weapon model ID, not weapon ID (model ID from https://wiki.multitheftauto.com/wiki/Weapons)
-    engineReplaceModel (dff, 356) -- Likewise, model ID, for M4 as example it's 356
-end
-addEventHandler ("onClientResourceStart", getResourceRootElement(getThisResource()), replaceWeapon)
-</syntaxhighlight>
-</section>
+			if colData then
+				engineReplaceCOL(colData, modelID)
+			end
+		end
 
-'''Example 3:'''
-<section name="Client" class="client" show="true">
-Client-Side example for replacing object collision, texture and model with custom ones.
-<syntaxhighlight lang="lua">
-function ReplaceObject()
-    col = engineLoadCOL ("MyModel.col")
-    txd = engineLoadTXD ("MyModel.txd")
-    dff = engineLoadDFF ("MyModel.dff")
+		if modelTxd then
+			local filteringEnabled = modelData.filteringEnabled
+			local txdData = engineLoadTXD(modelTxd, filteringEnabled)
 
-    engineReplaceCOL (col, 1234)
-    engineImportTXD (txd, 1234)
-    engineReplaceModel (dff, 1234) -- replace the model at least
+			if txdData then
+				engineImportTXD(txdData, modelID)
+			end
+		end
+
+		if modelDff then
+			local dffData = engineLoadDFF(modelDff)
+
+			if dffData then
+				local alphaTransparency = modelData.alphaTransparency
+				
+				engineReplaceModel(dffData, modelID, alphaTransparency)
+			end
+		end
+	end
 end
-addEvent ("replaceObj", true)
-addEventHandler ("replaceObj", root, ReplaceObject)
-</syntaxhighlight>
-</section>
-<section name="Server" class="server" show="true">
-Server-side example function for triggering the replace.
-<syntaxhighlight lang="lua">
-function ReplaceCommand()
-    triggerClientEvent ("replaceObj", root, replaceObj)
-end
-addCommandHandler ("replace", ReplaceCommand)
+addEventHandler("onClientResourceStart", resourceRoot, onClientResourceStartReplaceModels)
 </syntaxhighlight>
 </section>
 

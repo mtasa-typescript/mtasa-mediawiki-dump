@@ -1,6 +1,6 @@
 __NOTOC__
 {{Server client function}}
-This function will set the color of a vehicle using either a RGB format, or the [[Vehicle Colors|standard San Andreas color IDs.]] Vehicles can have up to 4 colors, most of the vehicles have 2 colors only. 
+This function will set the color of a vehicle using either a RGB format, or the [[Vehicle Colors|standard San Andreas color IDs.]] Vehicles can have up to 3 colors, most of the vehicles have 2 colors only. 
 
 {{New feature|3.0110|1.1|
 ==Syntax== 
@@ -61,11 +61,6 @@ addCommandHandler("banshee", function(player)
 end)
 </syntaxhighlight>
 </section>
-
-== Issues ==
-{{Issues|
-{{Issue|9033|Clientside setVehicleColor doesn't work directly after creation}}
-}}
 
 ==See Also==
 {{Vehicle_functions}}

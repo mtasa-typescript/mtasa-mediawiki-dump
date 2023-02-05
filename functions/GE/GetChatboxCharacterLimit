@@ -1,0 +1,27 @@
+__NOTOC__ 
+{{Client function}}
+
+{{Added feature/item|1.5.9|1.5.8|21476|
+Gets the current maximum amount of characters that can be input via chatbox
+}}
+
+==Syntax== 
+<syntaxhighlight lang="lua">
+int getChatboxCharacterLimit()
+</syntaxhighlight>
+{{OOP||[[GUI widgets|GuiElement]].getChatboxCharacterLimit|chatboxCharacterLimit|setChatboxCharacterLimit}}
+
+===Returns===
+Returns a number between 0-255, representing the chatbox input character limit
+
+==Example== 
+This example shows how you can check your current chatbox character limit via command
+<syntaxhighlight lang="lua">
+addCommandHandler("chatlimit", function()
+    outputChatBox("Current chatbox character limit: " .. tostring( getChatboxCharacterLimit() ) )
+end)
+</syntaxhighlight>
+
+==See Also==
+{{GUI_functions}}
+{{GUI_events}}

@@ -7,7 +7,7 @@ This event is triggered whenever a player, including those remote, dies.
 element killer, int weapon, int bodypart, bool stealth
 </syntaxhighlight> 
 
-*'''killer''': A [[player]] [[element]] representing the killer.
+*'''killer''': A [[player]], [[ped]] or [[vehicle]] [[element]] representing the killer.
 *'''weapon''': An [[int|integer]] representing the [[Weapons|killer weapon]] or the [[Damage Types|damage types]].
 *'''bodypart''': An [[int|integer]] representing the bodypart the player was damaged.
 {{BodyParts}}

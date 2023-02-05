@@ -52,8 +52,8 @@ end
 
 addEventHandler( "onClientRender", root,
     function()
-        drawCircle( 350, 350, 10, tocolor(255,0,255) );
-        drawCircle( 350, 350, 50, tocolor(255,0,255) );
+        drawCircle( 350, 350, 10, tocolor(255,0,255) )
+        drawCircle( 350, 350, 50, tocolor(255,0,255) )
     end
 )
 </syntaxhighlight>
