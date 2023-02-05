@@ -1,7 +1,10 @@
 {{Client function}}
 {{Added feature/item|1.5.9|1.5.8|20979|Sets the underlying XML document from an SVG element.}}
+
+{{Important Note|Before r21155 ([https://github.com/multitheftauto/mtasa-blue/commit/31579051cc046bc5cb55c59fc4e9e70ec1bdce34 3157905]) the provided callback wasn't stored on the SVG and was only fired '''once''' after the function had performed its task. This is no longer the case - each SVG can now store a single callback function (optional) which is fired '''every time''' the SVG texture has been changed/updated. }}
+
 ==Syntax== 
-<syntaxhighlight lang="lua">bool svgSetSize( svg svgElement, int width, int height [, function callback ( bool didLoad ) ] )</syntaxhighlight>
+<syntaxhighlight lang="lua">bool svgSetSize( svg svgElement, int width, int height [, function callback ( element svg ) ] )</syntaxhighlight>
 
 ===Required Arguments===
 *'''svgElement:''' The svg element you want to set the size of.
@@ -10,58 +13,68 @@
 
 ===Optional Arguments===
 {{OptionalArg}}
-*'''callback:''' A callback function which is invoked upon SVG document and texture creation (after resizing), useful for knowing when the SVG element is ready
+*'''callback:''' A callback function which is stored on the SVG and fired every time the SVG texture is updated (for example, via [[svgSetDocumentXML]]). '''Note''': if present, this will overwrite the current callback stored on the svg
 
 ===Returns===
 * Returns '''true''' if successful, '''false''' otherwise
 
 ==Example==
-This example creates an [[svg]] element (with callbacks to initialize drawing) including a keybind to resize the [[svg]] randomly (see bindKey).
-
-'''IMPORTANT''': Depending on your implementation, callback usage may be necessary to ensure the SVG texture and XML document are ready.
+This example creates an [[svg]] element including a keybind (F2) to resize the SVG randomly, with the use of callbacks to notify in debugscript when the SVG was updated.
 
 <syntaxhighlight lang="lua">
--- This could also be a file, with the path provided to svgCreate
+-- This could also be a file, with the path provided to svgCreate instead
 local rawSvgData = [[
     <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
         <circle cx="250" cy="250" r="250" fill="#0fc0fc" />
     </svg>
 ]]
 
-local svg
+local svgs = {}
 
-function init()
-    -- Create an SVG containing a circle, using the raw XML data above
-    svg = svgCreate(500, 500, rawSvgData, function(didLoad)
-        if (not didLoad) then -- SVG failed to load, so don't continue
-            return 
-        end
+local function render(svg)
+    if (not isElement(svg)) or (getElementType(svg) ~= "svg") then
+        removeEventHandler("onClientRender", root, svgs[svg].handler)
+        svgs[svg] = nil
+    end
 
-        onSvgLoad(svg)
-    end)
-end
-addEventHandler("onClientResourceStart", resourceRoot, init)
-
-
--- Implement a callback for SVG load
-function onSvgLoad(svg)
-    addEventHandler("onClientRender", root, render)
-end
-
-function render()
     local width, height = svgGetSize(svg)
     dxDrawImage(0, 0, width, height, svg, 0, 0, 0, tocolor(255, 255, 255), false)
 end
 
--- Add a keybind which sets the SVG to a random size
-bindKey("r", "down", function()
-    if (not isElement(svg)) or (getElementType(svg) ~= "svg") then
-        return false
+local function onUpdate(svg)
+    -- If this is the first update, add svg to our table and start drawing it
+    if (not svgs[svg]) then
+        svgs[svg] = {
+            state = true,
+            handler = function()
+                render(svg)
+            end
+        }
+
+        addEventHandler("onClientRender", root, svgs[svg].handler)
     end
 
+    iprint("SVG texture updated", svg, getTickCount())
+end
+
+local function init()
+    -- Create an SVG containing a circle, using the raw XML data above
+    local mySvg = svgCreate(500, 500, rawSvgData, onUpdate)
+
+    -- Bind a key to set SVG to a random size, which will trigger the onUpdate callback
+    bindKey("F2", "down", function()
+        setRandomSVGSize(mySvg)
+    end)
+end
+addEventHandler("onClientResourceStart", resourceRoot, init)
+
+function setRandomSVGSize(svg)
+    local width, height = svgGetSize(svg)
+    local diff = math.min(width, height) /  math.max(width, height)
     local size = math.random(100, 500)
-    svgSetSize(svg, size, size)
-end)
+
+    svgSetSize(svg, size, size * diff)
+end
 </syntaxhighlight>
 
 ==Requirements==
@@ -69,3 +82,5 @@ end)
 
 ==See Also==
 {{SVG_functions}}
+
+[[pt-br:svgSetSize]]
